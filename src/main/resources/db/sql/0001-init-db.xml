@@ -1,0 +1,207 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="0001-init-db" author="hkarapetyan">
+        <createTable tableName="user">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="surname" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role" type="enum('USER', 'ADMIN')">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createTable tableName="company">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pic_name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_company_user_id_user" references="user(id)"/>
+            </column>
+        </createTable>
+        <createTable tableName="team_member">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="surname" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="profession" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="company_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_team_company_id_company" references="company(id)"/>
+            </column>
+        </createTable>
+        <createTable tableName="message">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="from_en" type="int">
+                <constraints foreignKeyName="fk_message_from_user" references="user(id)"/>
+            </column>
+            <column name="to_en" type="int">
+                <constraints foreignKeyName="fk_message_to_user" references="user(id)"/>
+            </column>
+            <column name="message" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="message_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createTable tableName="manager">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="user_id" type="int">
+                <constraints foreignKeyName="fk_manager_user_userid" references="user(id)"/>
+            </column>
+            <column name="company_id" type="int">
+                <constraints foreignKeyName="fk_manager_company_user" references="company(id)"/>
+            </column>
+        </createTable>
+        <createTable tableName="comments">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="company_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_comments_company_id_company"/>
+            </column>
+            <column name="user_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_comments_user_id_user" references="user(id)"/>
+            </column>
+            <column name="comment" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="comment_data" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createTable tableName="office">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="country" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="city" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="work_start_time" type="time">
+                <constraints nullable="false"/>
+            </column>
+            <column name="work_end_time" type="time">
+                <constraints nullable="false"/>
+            </column>
+            <column name="street" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="company_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_office_company_id_company" references="company(id)"/>
+            </column>
+        </createTable>
+        <createTable tableName="plane">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="plane_pic" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="company_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_plane_company_id_company" references="company(id)"/>
+            </column>
+            <column name="max_baggage" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_passengers" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createTable tableName="flight">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="from" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="to" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="scheduled_time" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="estimated_time" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="arrival_time" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="enum('ARRIVED', 'PREMATURE', 'ON_TIME', 'EARLIER')">
+                <constraints nullable="false"/>
+            </column>
+            <column name="plane_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_flight_plane_id_plane" references="plane(id)"/>
+            </column>
+            <column name="company_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_flight_company_id_company" references="company(id)"/>
+            </column>
+        </createTable>
+        <createTable tableName="ticket">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="sit_belt" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="baggage_kg" type="double"/>
+            <column name="flight_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_ticket_flight_id_flight" references="flight(id)"/>
+            </column>
+            <column name="price" type="double">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createTable tableName="booking">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="ticket_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_booking_ticket_id_ticket" references="ticket(id)"/>
+            </column>
+            <column name="user_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_booking_user_id_user" references="user(id)"/>
+            </column>
+            <column name="booking_data" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
