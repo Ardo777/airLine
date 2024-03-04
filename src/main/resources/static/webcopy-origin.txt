@@ -1,0 +1,924 @@
+Uri: https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\css2
+Content Type: text/css
+
+Uri: https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuDyYMZg.ttf
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\s\inter\v13\UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuDyYMZg.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuFuYMZg.ttf
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\s\inter\v13\UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuFuYMZg.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuGKYMZg.ttf
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\s\inter\v13\UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuGKYMZg.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuI6fMZg.ttf
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\s\inter\v13\UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuI6fMZg.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfMZg.ttf
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\s\inter\v13\UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfMZg.ttf
+Content Type: font/ttf
+
+Uri: https://uiparadox.co.uk/templates/flynow/
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\index.htm
+Content Type: text/html
+
+Uri: https://uiparadox.co.uk/templates/flynow/about-us.html
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\about-us.html
+Content Type: text/html
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/app.css
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\app.css
+Content Type: text/css
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/fonts/ajax-loader.gif
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\fonts\ajax-loader.gif
+Content Type: image/gif
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/fonts/fa-brands-400.eot
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\fonts\fa-brands-400.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/fonts/fa-brands-400.eot?
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\fonts\fa-brands-400-1.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/fonts/fa-brands-400.svg
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\fonts\fa-brands-400.svg
+Content Type: image/svg+xml
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/fonts/fa-brands-400.ttf
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\fonts\fa-brands-400.ttf
+Content Type: font/ttf
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/fonts/fa-brands-400.woff
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\fonts\fa-brands-400.woff
+Content Type: font/woff
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/fonts/fa-brands-400.woff2
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\fonts\fa-brands-400.woff2
+Content Type: font/woff2
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/fonts/fa-duotone-900.eot
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\fonts\fa-duotone-900.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/fonts/fa-duotone-900.eot?
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\fonts\fa-duotone-900-1.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/fonts/fa-duotone-900.ttf
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\fonts\fa-duotone-900.ttf
+Content Type: font/ttf
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/fonts/fa-duotone-900.woff
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\fonts\fa-duotone-900.woff
+Content Type: font/woff
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/fonts/fa-duotone-900.woff2
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\fonts\fa-duotone-900.woff2
+Content Type: font/woff2
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/fonts/fa-light-300.eot
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\fonts\fa-light-300.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/fonts/fa-light-300.eot?
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\fonts\fa-light-300-1.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/fonts/fa-light-300.ttf
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\fonts\fa-light-300.ttf
+Content Type: font/ttf
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/fonts/fa-light-300.woff
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\fonts\fa-light-300.woff
+Content Type: font/woff
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/fonts/fa-light-300.woff2
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\fonts\fa-light-300.woff2
+Content Type: font/woff2
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/fonts/fa-regular-400.eot
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\fonts\fa-regular-400.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/fonts/fa-regular-400.eot?
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\fonts\fa-regular-400-1.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/fonts/fa-regular-400.svg
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\fonts\fa-regular-400.svg
+Content Type: image/svg+xml
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/fonts/fa-regular-400.ttf
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\fonts\fa-regular-400.ttf
+Content Type: font/ttf
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/fonts/fa-regular-400.woff
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\fonts\fa-regular-400.woff
+Content Type: font/woff
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/fonts/fa-regular-400.woff2
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\fonts\fa-regular-400.woff2
+Content Type: font/woff2
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/fonts/fa-solid-900.eot
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\fonts\fa-solid-900.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/fonts/fa-solid-900.eot?
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\fonts\fa-solid-900-1.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/fonts/fa-solid-900.svg
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\fonts\fa-solid-900.svg
+Content Type: image/svg+xml
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/fonts/fa-solid-900.ttf
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\fonts\fa-solid-900.ttf
+Content Type: font/ttf
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/fonts/fa-solid-900.woff
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\fonts\fa-solid-900.woff
+Content Type: font/woff
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/fonts/fa-solid-900.woff2
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\fonts\fa-solid-900.woff2
+Content Type: font/woff2
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/fonts/icomoon/style.css
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\fonts\icomoon\style.css
+Content Type: text/css
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/vendor/aksVideoPlayer.css
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\vendor\aksVideoPlayer.css
+Content Type: text/css
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/vendor/bootstrap.min.css
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\vendor\bootstrap.min.css
+Content Type: text/css
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/vendor/calendar/classic.css
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\vendor\calendar\classic.css
+Content Type: text/css
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/vendor/calendar/classic.date.css
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\vendor\calendar\classic.date.css
+Content Type: text/css
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/vendor/datetime.css
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\vendor\datetime.css
+Content Type: text/css
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/vendor/font-awesome.css
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\vendor\font-awesome.css
+Content Type: text/css
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/vendor/ionrangeslider.css
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\vendor\ionrangeslider.css
+Content Type: text/css
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/vendor/jquery.timepicker.min.css
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\vendor\jquery.timepicker.min.css
+Content Type: text/css
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/vendor/sal.css
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\vendor\sal.css
+Content Type: text/css
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/vendor/slick-theme.css
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\vendor\slick-theme.css
+Content Type: text/css
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/vendor/slick.css
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\vendor\slick.css
+Content Type: text/css
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/vendor/ui-autocomplete.css
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\vendor\ui-autocomplete.css
+Content Type: text/css
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/css/vendor/wizard/smart_wizard_all.min.css
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\css\vendor\wizard\smart_wizard_all.min.css
+Content Type: text/css
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/js/app.js
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\js\app.js
+Content Type: application/javascript
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/js/date.js
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\js\date.js
+Content Type: application/javascript
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/js/vendor/aksVideoPlayer.js
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\js\vendor\aksVideoPlayer.js
+Content Type: application/javascript
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/js/vendor/autoComplete.js
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\js\vendor\autoComplete.js
+Content Type: application/javascript
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/js/vendor/bootstrap.min.js
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\js\vendor\bootstrap.min.js
+Content Type: application/javascript
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/js/vendor/calendar/picker.date.js
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\js\vendor\calendar\picker.date.js
+Content Type: application/javascript
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/js/vendor/calendar/picker.js
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\js\vendor\calendar\picker.js
+Content Type: application/javascript
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/js/vendor/calendar/popper.min.js
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\js\vendor\calendar\popper.min.js
+Content Type: application/javascript
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/js/vendor/ionrangeslider.js
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\js\vendor\ionrangeslider.js
+Content Type: application/javascript
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/js/vendor/jquery-3.6.3.min.js
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\js\vendor\jquery-3.6.3.min.js
+Content Type: application/javascript
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/js/vendor/jquery-appear.js
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\js\vendor\jquery-appear.js
+Content Type: application/javascript
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/js/vendor/jquery-validator.js
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\js\vendor\jquery-validator.js
+Content Type: application/javascript
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/js/vendor/jquery.smartWizard.min.js
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\js\vendor\jquery.smartWizard.min.js
+Content Type: application/javascript
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/js/vendor/jquery.timepicker.min.js
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\js\vendor\jquery.timepicker.min.js
+Content Type: application/javascript
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/js/vendor/sal.js
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\js\vendor\sal.js
+Content Type: application/javascript
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/js/vendor/slick.min.js
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\js\vendor\slick.min.js
+Content Type: application/javascript
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/js/vendor/tilt.jquery.js
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\js\vendor\tilt.jquery.js
+Content Type: application/javascript
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/js/vendor/wizard.js
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\js\vendor\wizard.js
+Content Type: application/javascript
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/airline-ad.mp4
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\airline-ad.mp4
+Content Type: video/mp4
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/backgrounds/bg-2.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\backgrounds\bg-2.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/backgrounds/inner-banner-1.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\backgrounds\inner-banner-1.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/backgrounds/title-banner.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\backgrounds\title-banner.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/banner/car.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\banner\car.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/banner/hotel.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\banner\hotel.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/banner/location.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\banner\location.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/banner/plane-2.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\banner\plane-2.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/banner/plane.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\banner\plane.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/banner/vacation.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\banner\vacation.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/blog/blog-1.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\blog\blog-1.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/blog/blog-2.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\blog\blog-2.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/blog/blog-3.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\blog\blog-3.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/blog/blog-4.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\blog\blog-4.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/blog/blog-5.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\blog\blog-5.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/blog/blog-6.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\blog\blog-6.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/blog/blog-banner.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\blog\blog-banner.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/blog/blog-detail-2.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\blog\blog-detail-2.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/blog/blog-detail.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\blog\blog-detail.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/blog/blog-side-1.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\blog\blog-side-1.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/blog/blog-side-2.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\blog\blog-side-2.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/blog/blog-side-3.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\blog\blog-side-3.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/blog/play-btn.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\blog\play-btn.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/blog/since-1.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\blog\since-1.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/blog/since-2.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\blog\since-2.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/blog/since-3.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\blog\since-3.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/blog/since-4.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\blog\since-4.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/car/brand-logo-1.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\car\brand-logo-1.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/car/brand-logo-2.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\car\brand-logo-2.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/car/brand-logo-3.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\car\brand-logo-3.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/car/brand-logo-4.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\car\brand-logo-4.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/car/brand-logo-5.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\car\brand-logo-5.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/car/brand-logo-6.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\car\brand-logo-6.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/car/brand-logo-7.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\car\brand-logo-7.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/car/car-1.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\car\car-1.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/car/car-2.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\car\car-2.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/car/car-3.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\car\car-3.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/car/car-4.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\car\car-4.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/car/car-5.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\car\car-5.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/car/car-6.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\car\car-6.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/car/car-brand-1.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\car\car-brand-1.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/car/car-mini.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\car\car-mini.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/cities/image-1.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\cities\image-1.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/cities/image-2.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\cities\image-2.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/cities/image-3.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\cities\image-3.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/cities/image-4.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\cities\image-4.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/close.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\close.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/favicon.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\favicon.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/flight_icon/icon-1.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\flight_icon\icon-1.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/flight_icon/icon-2.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\flight_icon\icon-2.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/hotel-1.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\hotel-1.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/hotel-10.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\hotel-10.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/hotel-11.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\hotel-11.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/hotel-12.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\hotel-12.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/hotel-13.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\hotel-13.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/hotel-14.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\hotel-14.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/hotel-2.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\hotel-2.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/hotel-3.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\hotel-3.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/hotel-4.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\hotel-4.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/hotel-5.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\hotel-5.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/hotel-6.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\hotel-6.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/hotel-7.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\hotel-7.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/hotel-8.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\hotel-8.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/hotel-9.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\hotel-9.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/hotel-detail-1.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\hotel-detail-1.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/hotel-detail-2.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\hotel-detail-2.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/hotel-detail.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\hotel-detail.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/icons/balcony.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\icons\balcony.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/icons/garden.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\icons\garden.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/icons/hotel.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\icons\hotel.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/icons/icon-1.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\icons\icon-1.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/icons/icon-2.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\icons\icon-2.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/icons/icon-3.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\icons\icon-3.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/icons/icon-4.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\icons\icon-4.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/icons/icon-5.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\icons\icon-5.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/icons/icon-6.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\icons\icon-6.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/icons/icon-7.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\icons\icon-7.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/icons/icon-8.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\icons\icon-8.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/icons/kitchen.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\icons\kitchen.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/icons/parking.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\icons\parking.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/icons/pets.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\icons\pets.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/icons/sea.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\icons\sea.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/icons/swim.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\icons\swim.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/icons/tick-lg.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\icons\tick-lg.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/icons/tick.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\icons\tick.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/icons/washing-machine.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\icons\washing-machine.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/hotel/icons/wifi.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\hotel\icons\wifi.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/icons/benefit-1.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\icons\benefit-1.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/icons/benefit-2.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\icons\benefit-2.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/icons/benefit-3.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\icons\benefit-3.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/icons/booster-seat.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\icons\booster-seat.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/icons/calender-lg.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\icons\calender-lg.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/icons/calender.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\icons\calender.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/icons/car.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\icons\car.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/icons/child-seat.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\icons\child-seat.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/icons/coach.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\icons\coach.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/icons/facebook-icon.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\icons\facebook-icon.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/icons/facebook.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\icons\facebook.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/icons/food-bk.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\icons\food-bk.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/icons/google-icon.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\icons\google-icon.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/icons/google.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\icons\google.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/icons/hotel-lg.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\icons\hotel-lg.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/icons/hotel.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\icons\hotel.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/icons/instagram.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\icons\instagram.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/icons/linkedin.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\icons\linkedin.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/icons/location-bk.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\icons\location-bk.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/icons/location-blue.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\icons\location-blue.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/icons/location.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\icons\location.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/icons/mail.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\icons\mail.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/icons/qoutes.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\icons\qoutes.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/icons/route-plan.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\icons\route-plan.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/icons/support-lg.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\icons\support-lg.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/icons/telephone.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\icons\telephone.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/icons/ticket-bk.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\icons\ticket-bk.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/icons/twitter.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\icons\twitter.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/icons/user-2.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\icons\user-2.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/icons/user-bk.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\icons\user-bk.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/icons/user.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\icons\user.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/images/achievement-image.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\images\achievement-image.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/images/dubai.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\images\dubai.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/images/flight-1.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\images\flight-1.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/images/flight-2.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\images\flight-2.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/images/flight-3.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\images\flight-3.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/images/flight-4.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\images\flight-4.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/images/italy.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\images\italy.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/images/map.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\images\map.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/images/paris.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\images\paris.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/images/signin.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\images\signin.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/logo.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\logo.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/tour/tour-1.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\tour\tour-1.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/tour/tour-2.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\tour\tour-2.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/tour/tour-3.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\tour\tour-3.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/tour/tour-4.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\tour\tour-4.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/user/user-1.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\user\user-1.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/user/user-2.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\user\user-2.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/user/user-3.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\user\user-3.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/vector/benefit-1.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\vector\benefit-1.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/vector/benefit-2.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\vector\benefit-2.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/vector/benefit-3.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\vector\benefit-3.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/vector/border-line.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\vector\border-line.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/vector/cloud-vector.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\vector\cloud-vector.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/media/vector/vector-line.png
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\media\vector\vector-line.png
+Content Type: image/png
+
+Uri: https://uiparadox.co.uk/templates/flynow/assets/sass/helpers/_search-popup.scss
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\assets\sass\helpers\_search-popup.scss
+Content Type: application/octet-stream
+
+Uri: https://uiparadox.co.uk/templates/flynow/blog-detail.html
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\blog-detail.html
+Content Type: text/html
+
+Uri: https://uiparadox.co.uk/templates/flynow/blog-listing.html
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\blog-listing.html
+Content Type: text/html
+
+Uri: https://uiparadox.co.uk/templates/flynow/car-booking.html
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\car-booking.html
+Content Type: text/html
+
+Uri: https://uiparadox.co.uk/templates/flynow/car-detail.html
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\car-detail.html
+Content Type: text/html
+
+Uri: https://uiparadox.co.uk/templates/flynow/car-listing.html
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\car-listing.html
+Content Type: text/html
+
+Uri: https://uiparadox.co.uk/templates/flynow/contact.html
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\contact.html
+Content Type: text/html
+
+Uri: https://uiparadox.co.uk/templates/flynow/flight-booking.html
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\flight-booking.html
+Content Type: text/html
+
+Uri: https://uiparadox.co.uk/templates/flynow/flight-listing.html
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\flight-listing.html
+Content Type: text/html
+
+Uri: https://uiparadox.co.uk/templates/flynow/hotel-booking.html
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\hotel-booking.html
+Content Type: text/html
+
+Uri: https://uiparadox.co.uk/templates/flynow/hotel-detail.html
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\hotel-detail.html
+Content Type: text/html
+
+Uri: https://uiparadox.co.uk/templates/flynow/hotel-listing.html
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\hotel-listing.html
+Content Type: text/html
+
+Uri: https://uiparadox.co.uk/templates/flynow/index.html
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\index.html
+Content Type: text/html
+
+Uri: https://uiparadox.co.uk/templates/flynow/login.html
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\login.html
+Content Type: text/html
+
+Uri: https://uiparadox.co.uk/templates/flynow/privacy-policy.html
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\privacy-policy.html
+Content Type: text/html
+
+Uri: https://uiparadox.co.uk/templates/flynow/sign-up.html
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\sign-up.html
+Content Type: text/html
+
+Uri: https://uiparadox.co.uk/templates/flynow/tour-packages.html
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\templates\flynow\tour-packages.html
+Content Type: text/html
+
+Uri: https://www.zupimages.net/up/19/34/4820.gif
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\up\19\34\4820.gif
+Content Type: image/gif
+
+Uri: https://www.zupimages.net/up/19/34/6vlb.gif
+File Name: C:\Downloaded Web Sites\fly\uiparadox.co.uk\up\19\34\6vlb.gif
+Content Type: image/gif
+
