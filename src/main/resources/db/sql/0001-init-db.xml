@@ -61,10 +61,10 @@
             <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="from_en" type="int">
+            <column name="from_n" type="int">
                 <constraints foreignKeyName="fk_message_from_user" references="user(id)"/>
             </column>
-            <column name="to_en" type="int">
+            <column name="to_n" type="int">
                 <constraints foreignKeyName="fk_message_to_user" references="user(id)"/>
             </column>
             <column name="message" type="text">
@@ -79,10 +79,10 @@
                 <constraints primaryKey="true"/>
             </column>
             <column name="user_id" type="int">
-                <constraints foreignKeyName="fk_manager_user_userid" references="user(id)"/>
+                <constraints unique="true" foreignKeyName="fk_manager_user_userid" references="user(id)"/>
             </column>
             <column name="company_id" type="int">
-                <constraints foreignKeyName="fk_manager_company_user" references="company(id)"/>
+                <constraints unique="true" foreignKeyName="fk_manager_company_user" references="company(id)"/>
             </column>
         </createTable>
         <createTable tableName="comments">
@@ -90,7 +90,7 @@
                 <constraints primaryKey="true"/>
             </column>
             <column name="company_id" type="int">
-                <constraints nullable="false" foreignKeyName="fk_comments_company_id_company"/>
+                <constraints nullable="false" foreignKeyName="fk_comments_company_id_company" references="company(id)"/>
             </column>
             <column name="user_id" type="int">
                 <constraints nullable="false" foreignKeyName="fk_comments_user_id_user" references="user(id)"/>
