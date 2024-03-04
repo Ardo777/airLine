@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/air_line
+    username: root
+    password: root
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 10MB
+  jpa:
+    hibernate:
+      ddl-auto: none
+  liquibase:
+    change-log: classpath*:db/change-log.xml
