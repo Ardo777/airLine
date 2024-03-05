@@ -7,133 +7,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="FlyNow HTML5 Template">
 
-    <title>FlyNow | Travling And Tours Template</title>
+    <title>FlyNow | Flight and Book</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/media/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/media/favicon.png">
 
     <!-- All CSS files -->
-    <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
-    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
-    <!-- <link rel="stylesheet" href="assets/css/vendor/wizard/smart_wizard_all.min.css"> -->
-    <link rel="stylesheet" href="assets/sass/helpers/_search-popup.scss">
-    <link rel="stylesheet" href="assets/css/fonts/icomoon/style.css">
-    <link rel="stylesheet" href="assets/sass/helpers/_search-popup.scss">
-    <link rel="stylesheet" href="assets/css/vendor/datetime.css">
-    <link rel="stylesheet" href="assets/css/vendor/calendar/classic.css">
-    <link rel="stylesheet" href="assets/css/vendor/calendar/classic.date.css">
-    <link rel="stylesheet" href="assets/css/vendor/jquery.timepicker.min.css">
-    <link rel="stylesheet" href="assets/css/vendor/ui-autocomplete.css">
-    <link rel="stylesheet" href="assets/css/vendor/ionrangeslider.css">
-    <link rel="stylesheet" href="assets/css/vendor/sal.css">
+    <link rel="stylesheet" href="/css/vendor/font-awesome.css">
+    <link rel="stylesheet" href="/css/vendor/bootstrap.min.css">
+     <link rel="stylesheet" href="/css/vendor/wizard/smart_wizard_all.min.css">
+    <link rel="stylesheet" href="/sass/helpers/_search-popup.scss">
+    <link rel="stylesheet" href="/css/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="/sass/helpers/_search-popup.scss">
+    <link rel="stylesheet" href="/css/vendor/datetime.css">
+    <link rel="stylesheet" href="/css/vendor/calendar/classic.css">
+    <link rel="stylesheet" href="/css/vendor/calendar/classic.date.css">
+    <link rel="stylesheet" href="/css/vendor/jquery.timepicker.min.css">
+    <link rel="stylesheet" href="/css/vendor/ui-autocomplete.css">
+    <link rel="stylesheet" href="/css/vendor/ionrangeslider.css">
+    <link rel="stylesheet" href="/css/vendor/sal.css">
 
 
-    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="/css/app.css">
 </head>
 
 <body class="o-scroll" id="js-scroll">
-    <!-- Preloader-->
-    <div id="preloader">
-        <div class="loader">
-            <div class="wait"> Veuillez patienter svp</div>
-            <div class="plane">
-                <img src="../../up/19/34/4820.gif" class="plane-img" alt="">
-            </div>
-            <div class="earth-wrapper">
-                <div class="earth"></div>
-            </div>
-        </div>
-        <!-- <dotlottie-player src="https://lottie.host/cd993b04-33dd-4600-a4b6-62897a52f071/6gZOhSlbtF.json" background="#b5c5ff" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player> -->
-    </div>
+<!-- Preloader Start-->
+<th:block th:insert="~{/fragments/preloader::preloader}"/>
+<!-- Preloader End-->
     <!-- Back To Top Start -->
     <a href="#main-wrapper" id="backto-top" class="back-to-top"><i class="fas fa-angle-up"></i></a>
     <!-- Main Wrapper Start -->
     <div id="main-wrapper" class="main-wrapper overflow-hidden">
 
         <!-- Header Area Start -->
-        <header>
-            <nav class="main-menu">
-                <div class="container-fluid">
-                    <div class="main-menu__block">
-                        <div class="main-menu__left">
-
-                            <div class="main-menu__logo">
-                                <a href="indexTwo.html">
-                                    <img src="assets/media/logo.png" alt="FlyNow">
-                                </a>
-                            </div>
-
-                            <div class="main-menu__nav">
-                                <ul class="main-menu__list">
-                                    <li><a href="indexTwo.html">Home</a></li>
-                                    <li class="dropdown">
-                                        <a href="javascript:void(0);">Flight</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="flight-listing.html">Flight Listing</a></li>
-                                            <li><a href="flight-booking.html">Flight Booking</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="javascript:void(0);">Car</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="car-listing.html">Car Listing</a></li>
-                                            <li><a href="car-booking.html">Car Booking</a></li>
-                                            <li><a href="car-detail.html">Car Detail</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="javascript:void(0);" class="active">Hotel</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="hotel-listing.html">Hotel Listing</a></li>
-                                            <li><a href="hotel-booking.html" class="active">Hotel Booking</a></li>
-                                            <li><a href="hotel-detail.html">Hotel Detail</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="tour-packages.html">Tour Package</a></li>
-
-                                    <li class="dropdown">
-                                        <a href="javascript:void(0);">Pages</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="about-us.html">About</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                                            <li><a href="login.html">Login</a></li>
-                                            <li><a href="sign-up.html">Signup</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="javascript:void(0);">News</a>
-                                        <ul>
-                                            
-                                            <li><a href="blog-listing.html">News Listing</a></li>
-                                            <li><a href="blog-detail.html">News Detail</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="main-menu__right">
-                            <a href="#" class="main-menu__search search-toggler d-xl-flex d-none">
-                                <i class="fal fa-search"></i>
-                            </a>
-                            <div class="main-menu-signup__login d-xl-flex d-none">
-                                <a href="login.html" class="main-menu__login">
-                                    Login
-                                </a>
-                                <div class="center_slach d-xl-flex d-none">/</div>
-                                <a href="sign-up.html" class="main-menu__login">
-                                    Signup
-                                </a>
-                            </div>
-                            <a href="#" class="main-menu__toggler mobile-nav__toggler">
-                                <i class="fa fa-bars"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </header>
-        <!-- Header Area end -->
+        <th:block th:insert="~{/fragments/header::header}"/>
+        <!-- Header Area End -->
 
 
         <!-- Title-Banner Start -->
@@ -431,7 +340,7 @@
                                             </div>
                                         </fieldset>
                                         <fieldset id="step-3" class="tab-pane wizard-fieldset p-0">
-                                            <!-- <form action="hotel-booking.html" method="post" class="contact-form"> -->
+                                            <!-- <form action="hotel.html" method="post" class="contact-form"> -->
                                             <div class="detail-form mb-32">
                                                 <h4 class="black p-0 mb-24">Enter you info</h4>
                                                 <div class="row">
@@ -555,86 +464,7 @@
         <!-- Main Content End -->
 
         <!-- Footer Start -->
-        <footer class="bg-white p-40 mt-48" data-sal="slide-up" data-sal-duration="800" data-sal-delay="100" data-sal-easing="ease-in-out">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 mb-lg-0 mb-32 ">
-                        <a href=""><img src="assets/media/logo.png" alt="" class="mb-16"></a>
-                        <p class="dark-gray mb-16">Lorem ipsum dolor sit amet consectetur. Aliquet vulputate augue
-                            penatibus in
-                            libero et id aliquam. In ridiculus pretium est velit euismod. </p>
-                        <h6 class="lightest-black mb-8">Subscribe to our special offers</h6>
-                        <form action="indexTwo.html" method="post">
-                            <input type="email" class="form-control" placeholder="Email address" name="email">
-                            <button type="submit" class="subscribe">Subscribe</button>
-                        </form>
-                    </div>
-                    <div class="col-xl-2 col-lg-2 col-md-6 col-6 mb-lg-0 mb-32">
-                        <h4 class="light-black mb-24">Booking</h4>
-                        <div class="our-links">
-                            <ul class="unstyled">
-                                <li class="mb-16"><a href="flight-booking.html" class="light-black">Book Flights</a>
-                                </li>
-                                <li class="mb-16"><a href="tour-packages.html" class="light-black">Travel Services</a>
-                                </li>
-                                <li class="mb-16"><a href="car-booking.html" class="light-black">Transportation</a></li>
-                                <li class="mb-16"><a href="tour-packages.html" class="light-black">Planning Your
-                                        Trip</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-xl-2 col-lg-2 col-md-6 col-6 mb-lg-0 mb-32">
-                        <h4 class="light-black mb-24">Useful Links</h4>
-                        <div class="our-links">
-                            <ul class="unstyled">
-                                <li class="mb-16"><a href="indexTwo.html" class="light-black">Home</a>
-                                </li>
-                                <li class="mb-16"><a href="blog-listing.html" class="light-black">Blogs</a>
-                                </li>
-                                <li class="mb-16"><a href="about-us.html" class="light-black">About </a></li>
-                                <li class="mb-16"><a href="contact.html" class="light-black">Contact Us</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-xl-2 col-lg-2 col-md-6 col-6 mb-md-0 mb-32">
-                        <h4 class="light-black mb-24">Manage</h4>
-                        <div class="our-links">
-                            <ul class="unstyled">
-                                <li class="mb-16"><a href="flight-booking.html" class="light-black">Check-in</a></li>
-                                <li class="mb-16"><a href="tour-packages.html" class="light-black">Manage Your
-                                        Booking</a></li>
-                                <li class="mb-16"><a href="car-listing.html" class="light-black">Chaurfeur Drive</a>
-                                </li>
-                                <li class="mb-16"><a href="flight-listing.html" class="light-black">Flight Status</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                        <h4 class="light-black mb-16">Contact Us</h4>
-                        <div class="follow-us">
-                            <ul class="unstyled">
-                                <li class="mb-8"><img src="assets/media/icons/location-bk.png" alt="">&nbsp;&nbsp;123
-                                    Main Street, Anytown, USA.</li>
-                                <li class="mb-8 h-27 color-primary"><img src="assets/media/icons/telephone.png" alt="">&nbsp;&nbsp;+1 234 567 890</li>
-                                <li class="mb-24"><a href=""><img src="assets/media/icons/mail.png" alt="">&nbsp;&nbsp;email@example.com</a></li>
-                            </ul>
-                        </div>
-                        <div class="social-link mb-32">
-                            <h6 class="light-black mb-8">Follow Us!</h6>
-                            <ul class="unstyled">
-                                <li><a href="" class="active"><img src="assets/media/icons/instagram.png" alt=""></a></li>
-                                <li><a href=""><img src="assets/media/icons/facebook.png" alt=""></a></li>
-                                <li><a href=""><img src="assets/media/icons/linkedin.png" alt=""></a></li>
-                                <li><a href=""><img src="assets/media/icons/twitter.png" alt=""></a></li>
-                            </ul>
-                        </div>
-                        <p class="light-black">©2023 FlyNow All Rights Reserved.</p>
-
-                    </div>
-                </div>
-            </div>
-        </footer>
+        <th:block th:insert="~{/fragments/footer::footer}"/>
         <!-- Footer Area End  -->
 
         <!-- modal-popup area Start  -->
@@ -651,53 +481,29 @@
     </div>
 
 
-    <!-- Mobile Menu Start -->
-    <div class="mobile-nav__wrapper">
-        <div class="mobile-nav__overlay mobile-nav__toggler"></div>
-        <div class="mobile-nav__content">
-            <span class="mobile-nav__close mobile-nav__toggler"></span>
-            <div class="logo-box">
-                <a href="indexTwo.html" aria-label="logo image"><img src="assets/media/logo.png" alt="" class="invisible"></a>
-            </div>
-            <div class="mobile-nav__container"></div>
-            <ul class="mobile-nav__contact list-unstyled">
-                <li>
-                    <i class="fas fa-envelope"></i>
-                    <a href="mailto:example@company.com">example@company.com</a>
-                </li>
-                <li>
-                    <i class="fa fa-phone-alt"></i>
-                    <a href="tel:+12345678">+123 (4567) -890</a>
-                </li>
-            </ul>
-            <!-- <div class="mobile-nav__social">
-        <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
-        <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
-      </div> -->
-        </div>
-    </div>
-    <!-- Mobile Menu End -->
+<!-- Mobile Menu Start -->
+<th:block th:insert="~{/fragments/mobileMenu::mobileMenu}"/>
+<!-- Mobile Menu End -->
 
     <!-- Jquery Js -->
-    <script src="assets/js/vendor/jquery-3.6.3.min.js"></script>
-    <script src="assets/js/vendor/bootstrap.min.js"></script>
-    <script src="assets/js/vendor/jquery-appear.js"></script>
-    <script src="assets/js/vendor/jquery-validator.js"></script>
+    <script src="/js/vendor/jquery-3.6.3.min.js"></script>
+    <script src="/js/vendor/bootstrap.min.js"></script>
+    <script src="/js/vendor/jquery-appear.js"></script>
+    <script src="/js/vendor/jquery-validator.js"></script>
     <!-- <script src="assets/js/vendor/jquery.smartWizard.min.js"></script> -->
-    <script src="assets/js/vendor/calendar/popper.min.js"></script>
-    <script src="assets/js/vendor/jquery-appear.js"></script>
-    <script src="assets/js/vendor/jquery-validator.js"></script>
-    <script src="assets/js/vendor/calendar/picker.js"></script>
-    <script src="assets/js/vendor/calendar/picker.date.js"></script>
-    <script src="assets/js/vendor/autoComplete.js"></script>
-    <script src="assets/js/vendor/jquery.timepicker.min.js"></script>
-    <script src="assets/js/vendor/sal.js"></script>
-    <script src="assets/js/vendor/wizard.js"></script>
+    <script src="/js/vendor/calendar/popper.min.js"></script>
+    <script src="/js/vendor/jquery-appear.js"></script>
+    <script src="/js/vendor/jquery-validator.js"></script>
+    <script src="/js/vendor/calendar/picker.js"></script>
+    <script src="/js/vendor/calendar/picker.date.js"></script>
+    <script src="/js/vendor/autoComplete.js"></script>
+    <script src="/js/vendor/jquery.timepicker.min.js"></script>
+    <script src="/js/vendor/sal.js"></script>
+    <script src="/js/vendor/wizard.js"></script>
 
     <!-- Site Scripts -->
-    <script src="assets/js/date.js"></script>
-    <script src="assets/js/app.js"></script>
+    <script src="/js/date.js"></script>
+    <script src="/js/app.js"></script>
 </body>
 
 </html>
