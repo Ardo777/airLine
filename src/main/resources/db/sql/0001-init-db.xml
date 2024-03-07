@@ -98,7 +98,7 @@
             <column name="comment" type="text">
                 <constraints nullable="false"/>
             </column>
-            <column name="comment_data" type="datetime">
+            <column name="comment_date" type="datetime">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -199,7 +199,7 @@
             <column name="user_id" type="int">
                 <constraints nullable="false" foreignKeyName="fk_booking_user_id_user" references="user(id)"/>
             </column>
-            <column name="booking_data" type="datetime">
+            <column name="booking_date" type="datetime">
                 <constraints nullable="false"/>
             </column>
         </createTable>
