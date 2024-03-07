@@ -90,6 +90,7 @@ body{
 .forget-link, .register-link{
   color: #007bff;
   font-weight: bold;
+  margin-right: 70px;
 }
 
 .forget-link:hover, .register-link:hover{
