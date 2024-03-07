@@ -1,138 +1,118 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login Form</title>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="FlyNow HTML5 Template">
-
-    <title>FlyNow | Login</title>
-
+    <link rel="stylesheet" type="text/css" href="/css/vendor/loginRegister.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="/media/favicon.png">
+    <style>
+        .back-to-home {
+            position: fixed;
+            top: 184px;
+            left: 528px;
+            text-decoration: none;
+            color: #333;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
 
+        .back-to-home:hover {
+            background-color: #f0f0f0;
+        }
+        .home-icon {
+            width: 30px;
+            height: auto;
+        }
+    </style>
     <!-- All CSS files -->
     <link rel="stylesheet" href="/css/vendor/font-awesome.css">
     <link rel="stylesheet" href="/css/fonts/icomoon/style.css">
     <link rel="stylesheet" href="/css/vendor/bootstrap.min.css">
     <link rel="stylesheet" href="/css/vendor/slick.css">
     <link rel="stylesheet" href="/css/vendor/slick-theme.css">
-    <link rel="stylesheet" href="/sass/helpers/_search-popup.scss">
-    <link rel="stylesheet" href="/css/vendor/aksVideoPlayer.css">
-
+    <link rel="stylesheet" href="/css/vendor/datetime.css">
+    <link rel="stylesheet" href="/css/vendor/calendar/classic.css">
+    <link rel="stylesheet" href="/css/vendor/calendar/classic.date.css">
+    <link rel="stylesheet" href="/css/vendor/jquery.timepicker.min.css">
+    <link rel="stylesheet" href="/css/vendor/ui-autocomplete.css">
+    <link rel="stylesheet" href="/css/vendor/sal.css">
+    <link rel="stylesheet" href="/css/vendor/flightsList.css">
     <link rel="stylesheet" href="/css/app.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <a href="/" class="back-to-home"><img src="/media/7777777777.png"  class="home-icon"></a>
 </head>
+<body style="background-color: whitesmoke ">
 
-<body class="o-scroll" id="js-scroll">
-    <!-- Preloader-->
-    <div id="preloader">
-        <div class="loader">
-            <div class="wait"> Veuillez patienter svp</div>
-            <div class="plane">
-                <img src="../../up/19/34/4820.gif" class="plane-img" alt="">
-            </div>
-            <div class="earth-wrapper">
-                <div class="earth"></div>
-            </div>
-        </div>
-        <!-- <dotlottie-player src="https://lottie.host/cd993b04-33dd-4600-a4b6-62897a52f071/6gZOhSlbtF.json" background="#b5c5ff" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player> -->
-    </div>
-    <!-- Back To Top Start -->
-    <a href="#main-wrapper" id="backto-top" class="back-to-top"><i class="fas fa-angle-up"></i></a>
-    <!-- Main Wrapper Start -->
-    <div id="main-wrapper" class="main-wrapper overflow-hidden">
-
-        <!-- Main Content Start -->
-        <div class="page-content m-0">
-
-        <!-- Signup Form Start -->
-        <section class="signup bg-white">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-xl-4 col-lg-6 col-md-7 mb-lg-0 mb-48">
-                    <div class="form-block">
-                        <a href="indexTwo.html" class="color-primary h6 mb-30"><i class="fal fa-chevron-left"></i>&nbsp;&nbsp;Back To Home</a>
-                        <h2 class="mb-30 light-black">Log in</h2>
-                            <div class="google mb-24">
-                                <h6 class="color-white"><a href="" class="link-btn mb-24 mb-sm-0"> Continue with Google&nbsp;<img src="/media/icons/google-icon.png" alt=""></a></h6>
-                            </div>
-                            <div class="facebook mb-30">
-                                <h6 class="color-white"><a href="" class="link-btn"> Continue with Facebook&nbsp;<img src="/media/icons/facebook-icon.png" alt=""></a></h6>
-                            </div>
-                        <h5 class="or mb-8">or</h5>
-                        <h6 class="mb-24 text-center">Sign up with your email address</h6>
-                        <form method="post" action="login.html" class="form-group contact-form">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="mb-24">
-                                        <input type="email" class="form-control" id="signup-mail" name="email" required="" placeholder="Email">
-                                    </div>
-                                </div>
-                                <div class="col-sm-12">
-                                    <div class="mb-24">
-                                        <input type="password" class="form-control" id="create-password" name="password" required="" placeholder="Password">
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-end">
-                                    <button type="submit" class="cus-btn small-pad mb-24">Login</button>
-                                    <!-- Alert Message -->
-                                    <div id="message" class="alert-msg"></div>
-                                </div>
-                            </div>
-                        </form>
+<div class="container" style="margin: 240px">
+    <div class="row px-3">
+        <div class="col-lg-10 col-xl-9 card flex-row mx-auto px-0">
+            <div class="img-left d-none d-md-flex"></div>
+            <div class="card-body">
+                <h4 class="title text-center mt-4">
+                    Sign In
+                </h4>
+                <form class="form-box px-3">
+                    <div class="form-input">
+                        Email:    <input type="email" name="" placeholder="Email Address" tabindex="10" required>
                     </div>
-                </div>
-                
+                    <div class="form-input">
+
+                        Password:   <input type="password" name="" placeholder="Password" required>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-block text-uppercase">
+                            Login
+                        </button>
+                    </div>
+
+                    <div class="text-right">
+                        <a href="#" class="forget-link">
+                            Forget Password?
+                        </a>
+                    </div>
+
+                    <hr class="my-4">
+
+                    <div class="text-center mb-2">
+                        Don't have an account?
+                        <a href="/register" class="register-link">
+                            Register here
+                        </a>
+                    </div>
+                </form>
             </div>
         </div>
-        </section>
-        <!-- Signup Form End -->
-
-        </div>
-        <!-- Main Content End -->
-        
     </div>
+</div>
+<!--<div style="position: fixed; top: 212px; left: 388px;">-->
+<!--    <a href="/home">Back to Home</a>-->
+<!--</div>-->
+<!-- Jquery Js -->
+<script src="/js/vendor/jquery-3.6.3.min.js"></script>
+<script src="/js/vendor/calendar/popper.min.js"></script>
+<script src="/js/vendor/bootstrap.min.js"></script>
+<script src="/js/vendor/slick.min.js"></script>
+<script src="/js/vendor/jquery-appear.js"></script>
+<script src="/js/vendor/jquery-validator.js"></script>
+<script src="/js/vendor/aksVideoPlayer.js"></script>
+<script src="/js/vendor/tilt.jquery.js"></script>
+<script src="/js/vendor/calendar/picker.js"></script>
+<script src="/js/vendor/calendar/picker.date.js"></script>
+<script src="/js/vendor/autoComplete.js"></script>
+<script src="/js/vendor/jquery.timepicker.min.js"></script>
+<script src="/js/vendor/sal.js"></script>
 
-
-    <!-- Mobile Menu Start -->
-    <div class="mobile-nav__wrapper">
-        <div class="mobile-nav__overlay mobile-nav__toggler"></div>
-        <div class="mobile-nav__content">
-            <span class="mobile-nav__close mobile-nav__toggler"></span>
-            <div class="logo-box">
-                <a href="indexTwo.html" aria-label="logo image"><img src="assets/media/logo.png" alt="" class="invisible"></a>
-            </div>
-            <div class="mobile-nav__container"></div>
-            <ul class="mobile-nav__contact list-unstyled">
-                <li>
-                    <i class="fas fa-envelope"></i>
-                    <a href="mailto:example@company.com">example@company.com</a>
-                </li>
-                <li>
-                    <i class="fa fa-phone-alt"></i>
-                    <a href="tel:+12345678">+123 (4567) -890</a>
-                </li>
-            </ul>
-            <!-- <div class="mobile-nav__social">
-        <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
-        <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
-      </div> -->
-        </div>
-    </div>
-    <!-- Mobile Menu End -->
-
-    <!-- Jquery Js -->
-    <script src="/js/vendor/jquery-3.6.3.min.js"></script>
-    <script src="/js/vendor/bootstrap.min.js"></script>
-    <script src="/js/vendor/slick.min.js"></script>
-    <script src="/js/vendor/jquery-appear.js"></script>
-    <script src="/js/vendor/jquery-validator.js"></script>
-    <script src="/js/vendor/aksVideoPlayer.js"></script>
-
-    <!-- Site Scripts -->
-    <script src="/js/app.js"></script>
+<!-- Site Scripts -->
+<script src="/js/date.js"></script>
+<script src="/js/app.js"></script>
 </body>
-
 </html>
