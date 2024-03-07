@@ -18,8 +18,10 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @ManyToOne
+    @JoinColumn(name = "from_n")
     private User from;
     @ManyToOne
+    @JoinColumn(name = "to_n")
     private User to;
     private String message;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
