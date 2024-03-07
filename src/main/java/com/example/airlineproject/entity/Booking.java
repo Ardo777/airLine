@@ -22,8 +22,6 @@ public class Booking {
     @ManyToOne
     private User user;
     private String comment;
-    //*booking_dat(a) must replace like this <booking_date>*
-    @Column(name = "comment_data")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date bookingDate;
 

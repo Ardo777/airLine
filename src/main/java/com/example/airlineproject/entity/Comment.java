@@ -21,8 +21,6 @@ public class Comment {
     @ManyToOne
     private User user;
     private String comment;
-    //*comment_data must replace like this <comment_date>*
-    @Column(name = "comment_data")
     private Date commentDate;
 
 }
