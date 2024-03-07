@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Login Form</title>
+    <title> FlyNow | Add Your Company</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="/css/vendor/loginRegister.css">
@@ -12,7 +12,7 @@
     <style>
         .back-to-home {
             position: relative;
-            top: 64px;
+            top: 101px;
             left: -395px;
             text-decoration: none;
             color: #333;
@@ -46,28 +46,24 @@
     <link rel="stylesheet" href="/css/vendor/flightsList.css">
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/vendor/picture.css">
-
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <a href="/" class="back-to-home"><img src="/media/7777777777.png"  class="home-icon"></a>
 </head>
 <body>
-<div class="container" style="margin: 70px">
+<div class="container" style="margin: 108px">
     <div class="row px-3">
         <div class="col-lg-10 col-xl-9 card flex-row mx-auto px-0">
             <div class="img-left d-none d-md-flex"></div>
             <div class="card-body">
                 <h4 class="title text-center mt-4">
-                    Sign Up
+                   Add Your Company
                 </h4>
                 <form class="form-box px-3">
                     <div class="form-input">
-                        Name:    <input type="text" name="" placeholder="Name" tabindex="10" required>
+                     Company Name:    <input type="text" name="" placeholder="Name" tabindex="10" required>
                     </div>
                     <div class="form-input">
-                        Surname:    <input type="text" name="" placeholder="Surname" tabindex="10" required>
-                    </div>
-                    <div class="form-input">
-                        Email:    <input type="email" name="" placeholder="Email Address" tabindex="10" required>
+                        Company Email:    <input type="email" name="" placeholder="Email Address" tabindex="10" required>
                     </div>
                     <div class="form-input">
                         Password:    <input type="password" name="" placeholder="Password" tabindex="10" required>
@@ -79,29 +75,31 @@
                     <div class="mb-3">
                         <label class="file normal">
                             <input type="file" id="thefile">
-                            Choose an image
+                            Company Logo
                         </label>
                     </div>
-
+                    <div class="mb-3">
+                        <label class="file normal">
+                            <input type="file" id="thefile2">
+                            Certificate
+                        </label>
+                    </div>
                     <div class="mb-3">
                         <button type="submit" class="btn btn-block text-uppercase">
-                            Register
+                            Send Request
                         </button>
                     </div>
 
                     <div class="text-right">
-                        <a href="#" class="forget-link">
-                            Forget Password?
-                        </a>
+                        <span  class="forget-link">
+                           We Are Glad To New Cooperation!
+                        </span>
                     </div>
 
                     <hr class="my-4">
 
                     <div class="text-center mb-2">
-                        Do you have an account?
-                        <a href="/login" class="register-link">
-                            Login here
-                        </a>
+                        Thank you for choosing us.
                     </div>
                 </form>
             </div>
