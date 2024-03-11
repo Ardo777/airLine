@@ -26,9 +26,18 @@
         .back-to-home:hover {
             background-color: #f0f0f0;
         }
+
         .home-icon {
             width: 30px;
             height: auto;
+        }
+
+        .success-message {
+            color: green;
+            font-size: 17px;
+            margin-top: -29px;
+            padding: 10px;
+            margin-left: 98px;
         }
     </style>
     <!-- All CSS files -->
@@ -46,10 +55,9 @@
     <link rel="stylesheet" href="/css/vendor/flightsList.css">
     <link rel="stylesheet" href="/css/app.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <a href="/" class="back-to-home"><img src="/media/7777777777.png"  class="home-icon"></a>
+    <a href="/" class="back-to-home"><img src="/media/7777777777.png" class="home-icon"></a>
 </head>
 <body style="background-color: whitesmoke ">
-
 <div class="container" style="margin: 108px">
     <div class="row px-3">
         <div class="col-lg-10 col-xl-9 card flex-row mx-auto px-0">
@@ -58,16 +66,15 @@
                 <h4 class="title text-center mt-4">
                     Sign In
                 </h4>
+                <div class="success-message" th:text="${successMsg}"></div>
                 <form class="form-box px-3">
                     <div class="form-input">
-                        Email:    <input type="email" name="" placeholder="Email Address" tabindex="10" required>
+                        Email: <input type="email" name="" placeholder="Email Address" tabindex="10" required>
                     </div>
                     <div class="form-input">
 
-                        Password:   <input type="password" name="" placeholder="Password" required>
+                        Password: <input type="password" name="" placeholder="Password" required>
                     </div>
-
-
                     <div class="mb-3">
                         <button type="submit" class="btn btn-block text-uppercase">
                             Login
@@ -92,7 +99,10 @@
             </div>
         </div>
     </div>
+
 </div>
+
+
 <!--<div style="position: fixed; top: 212px; left: 388px;">-->
 <!--    <a href="/home">Back to Home</a>-->
 <!--</div>-->

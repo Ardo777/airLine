@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FlyNow | Mail Verification</title>
+</head>
+<body>
+<h3>Mail Verification</h3>
+The code has been sent to your email please enter your code
+<br><br>
+<form action="/user/register/verification" method="post">
+    Verification Code:
+    <label>
+        <input type="hidden" name="id" th:value="${user.id}" required>
+    </label><br>
+    <label>
+        <input type="text" name="verificationCode" placeholder="Code" required>
+    </label><br>
+    <input type="submit" value="Submit">
+
+</form>
+</body>
+</html>
