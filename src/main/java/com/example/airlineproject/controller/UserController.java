@@ -17,9 +17,18 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping("/user/register")
-    private String registration(@RequestParam(value = "msg", required = false) String msg, ModelMap modelMap) {
-        if (msg != null) {
-            modelMap.put("msg", msg);
+    private String registration(@RequestParam(value = "emailMsg", required = false) String emailMsg,
+                                @RequestParam(value = "passwordErrorMsg", required = false) String passwordErrorMsg,
+                                @RequestParam(value = "errorCode", required = false) String errorCode,
+                                ModelMap modelMap) {
+        if (emailMsg != null) {
+            modelMap.put("emailMsg", emailMsg);
+        }
+        if (passwordErrorMsg != null) {
+            modelMap.put("passwordErrorMsg", passwordErrorMsg);
+        }
+        if (errorCode != null) {
+            modelMap.put("errorCode", errorCode);
         }
         return "register";
     }
@@ -37,12 +46,12 @@ public class UserController {
                                @RequestParam("picture") MultipartFile multipartFile) throws IOException {
         Optional<User> byEmail = userService.findByEmail(user.getEmail());
         if (byEmail.isPresent()) {
-            String msg = "User with this email " + user.getEmail() + " already  exist";
-            return "redirect:/user/register?msg=" + msg;
+            String emailMsg = "User with this email " + user.getEmail() + " already  exist";
+            return "redirect:/user/register?emailMsg=" + emailMsg;
         }
         if (user.getPassword().length() < 6) {
-            String passwordError = "Password cannot be shorter than 6 characters";
-            return "redirect:/user/register?passwordError=" + passwordError;
+            String passwordErrorMsg = "Password cannot be shorter than 6 characters";
+            return "redirect:/user/register?passwordErrorMsg=" + passwordErrorMsg;
         }
         if (!user.getPassword().equals(user.getConfirmPassword())) {
             String msg = "Password mismatch";
@@ -75,8 +84,8 @@ public class UserController {
             return "redirect:/user/login?successMsg=" + successMsg;
         } else {
             userService.deleteById(id);
-            String msg = "Invalid verification code. Please register again.";
-            return "redirect:/user/register?msg=" + msg;
+            String errorCode = "Invalid verification code. Please register again.";
+            return "redirect:/user/register?errorCode=" + errorCode;
         }
 
     }

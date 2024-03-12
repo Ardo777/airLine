@@ -15,7 +15,7 @@
     <!-- All CSS files -->
     <link rel="stylesheet" href="/css/vendor/font-awesome.css">
     <link rel="stylesheet" href="/css/vendor/bootstrap.min.css">
-     <link rel="stylesheet" href="/css/vendor/wizard/smart_wizard_all.min.css">
+    <link rel="stylesheet" href="/css/vendor/wizard/smart_wizard_all.min.css">
     <link rel="stylesheet" href="/sass/helpers/_search-popup.scss">
     <link rel="stylesheet" href="/css/fonts/icomoon/style.css">
     <link rel="stylesheet" href="/sass/helpers/_search-popup.scss">
@@ -35,475 +35,532 @@
 <!-- Preloader Start-->
 <th:block th:insert="~{/fragments/preloader::preloader}"/>
 <!-- Preloader End-->
-    <!-- Back To Top Start -->
-    <a href="#main-wrapper" id="backto-top" class="back-to-top"><i class="fas fa-angle-up"></i></a>
-    <!-- Main Wrapper Start -->
-    <div id="main-wrapper" class="main-wrapper overflow-hidden">
+<!-- Back To Top Start -->
+<a href="#main-wrapper" id="backto-top" class="back-to-top"><i class="fas fa-angle-up"></i></a>
+<!-- Main Wrapper Start -->
+<div id="main-wrapper" class="main-wrapper overflow-hidden">
 
-        <!-- Header Area Start -->
-        <th:block th:insert="~{/fragments/header::header}"/>
-        <!-- Header Area End -->
+    <!-- Header Area Start -->
+    <th:block th:insert="~{/fragments/header::header}"/>
+    <!-- Header Area End -->
 
 
-        <!-- Title-Banner Start -->
-        <div class="title-banner">
+    <!-- Title-Banner Start -->
+    <div class="title-banner">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="banner-area">
+                    <img src="assets/media/banner/vacation.png" alt="" class="left-image">
+                    <div class="content-box">
+                        <h1 class="fw-700 lightest-black">Hotel <br class="title-break"> Booking</h1>
+                    </div>
+                    <img src="assets/media/banner/hotel.png" alt="" class="right-image">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Title-Banner End -->
+
+    <!-- Main Content Start -->
+    <div class="page-content m-0">
+
+        <!-- Flight-Booking Start -->
+        <section class="flight-booking" data-sal="slide-down" data-sal-duration="800" data-sal-delay="100"
+                 data-sal-easing="ease-in-out">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="banner-area">
-                        <img src="assets/media/banner/vacation.png" alt="" class="left-image">
-                        <div class="content-box">
-                            <h1 class="fw-700 lightest-black">Hotel <br class="title-break">  Booking</h1>
+                    <div class="col-xl-4 mb-xl-0 mb-32">
+                        <div class="flight-booking-detail light-shadow mb-32">
+                            <div class="flight-title">
+                                <h4 class="color-black">Hotel Info</h4>
+                            </div>
+                            <div class="content-block bg-white p-24 light-shadow">
+                                <h4 class="color-black mb-12">GLOBALSTAY Holiday Homes</h4>
+                                <p class="dark-gray mb-32">Lorem ipsum dolor sit amet consectetur. Orci elementum
+                                    egestas blandit a. Elementum blandit sit egestas urna.</p>
+                                <h5 class="color-black mb-24">Facilities</h5>
+                                <div class="d-flex gap-24 flex-wrap">
+                                    <div class="d-flex align-items-center facility gap-8">
+                                        <img src="assets/media/hotel/icons/kitchen.png" alt="">
+                                        <h6 class="light-black">Kitchen</h6>
+                                    </div>
+                                    <div class="d-flex align-items-center facility gap-8">
+                                        <img src="assets/media/hotel/icons/pets.png" alt="">
+                                        <h6 class="light-black">Pet allowed</h6>
+                                    </div>
+                                    <div class="d-flex align-items-center facility gap-8">
+                                        <img src="assets/media/hotel/icons/wifi.png" alt="">
+                                        <h6 class="light-black">Free WiFi</h6>
+                                    </div>
+                                    <div class="d-flex align-items-center facility gap-8">
+                                        <img src="assets/media/hotel/icons/parking.png" alt="">
+                                        <h6 class="light-black">Free Parking</h6>
+                                    </div>
+                                    <div class="d-flex align-items-center facility gap-8">
+                                        <img src="assets/media/hotel/icons/balcony.png" alt="">
+                                        <h6 class="light-black">Balcony</h6>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <img src="assets/media/banner/hotel.png" alt="" class="right-image">
+
+
+                        <div class="flight-booking-detail light-shadow mb-32">
+                            <div class="flight-title">
+                                <h4 class="color-black">Your Booking Detail</h4>
+                            </div>
+                            <div class="content-block bg-white p-24 light-shadow">
+                                <div class="d-flex justify-content-between mb-32">
+                                    <div class="flight-departure">
+                                        <h6 class="dark-gray">Departure</h6>
+                                        <h5 class="color-black">14 Aug, 2023</h5>
+                                        <h6 class="dark-gray">To 10:00 AM</h6>
+                                    </div>
+                                    <div class="vr-line d-xl-flex d-none"></div>
+                                    <div class="flight-departure">
+                                        <h6 class="dark-gray">Arrival</h6>
+                                        <h5 class="color-black">14 Aug, 2023</h5>
+                                        <h6 class="dark-gray">From 12:00 AM</h6>
+                                    </div>
+                                </div>
+                                <div class="text mb-32">
+                                    <h6 class="color-medium-gray mb-2">Total Length of Stay</h6>
+                                    <h5 class="color-black">3 Days</h5>
+                                </div>
+                                <hr class="bg-medium-gray mb-32">
+                                <div class="text">
+                                    <h6 class="color-primary mb-2">You Selected</h6>
+                                    <h5 class="color-black">1 Room for 2 Guests</h5>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="flight-booking-detail light-shadow">
+                            <div class="flight-title">
+                                <h4 class="color-black">Price Summary</h4>
+                            </div>
+                            <div class="content-block bg-white p-24">
+                                <div class="d-flex align-items-center justify-content-between mb-24">
+                                    <div>
+                                        <h5 class="color-black">Room</h5>
+                                        <p class="dark-gray">Lorem ipsum dolor sit amet consectetur.</p>
+                                    </div>
+                                    <h5 class="color-black">$140</h5>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mb-24">
+                                    <div>
+                                        <h5 class="color-black">Room Service</h5>
+                                        <p class="dark-gray">Lorem ipsum dolor sit amet consectetur.</p>
+                                    </div>
+                                    <h5 class="color-black">$50</h5>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mb-24">
+                                    <div>
+                                        <h5 class="color-black">Gym Fee</h5>
+                                        <p class="dark-gray">Lorem ipsum dolor sit amet consectetur.</p>
+                                    </div>
+                                    <h5 class="color-black">$30</h5>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mb-24">
+                                    <div>
+                                        <h5 class="color-black">Service Charges</h5>
+                                        <p class="dark-gray">Lorem ipsum dolor sit amet consectetur.</p>
+                                    </div>
+                                    <h5 class="color-black">$20</h5>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mb-24">
+                                    <div>
+                                        <h5 class="color-black">Sub Total</h5>
+                                        <p class="dark-gray">Lorem ipsum dolor sit amet consectetur.</p>
+                                    </div>
+                                    <h5 class="color-black">$640</h5>
+                                </div>
+                                <hr class="bg-medium-gray mb-24">
+                                <div class="d-flex align-items-center justify-content-between mb-24">
+                                    <div>
+                                        <h4 class="color-black">Deal / Discount</h4>
+                                    </div>
+                                    <h4 class="color-black">$40</h4>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <h4 class="color-black">Total</h4>
+                                    </div>
+                                    <h4 class="color-black">$600</h4>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <!-- Title-Banner End -->
-
-        <!-- Main Content Start -->
-        <div class="page-content m-0">
-
-            <!-- Flight-Booking Start -->
-            <section class="flight-booking" data-sal="slide-down" data-sal-duration="800" data-sal-delay="100" data-sal-easing="ease-in-out">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-xl-4 mb-xl-0 mb-32">
-                            <div class="flight-booking-detail light-shadow mb-32">
-                                <div class="flight-title">
-                                    <h4 class="color-black">Hotel Info</h4>
+                    <div class="col-xl-8">
+                        <div class="booking-form">
+                            <form action="hotel-listing.html" id="hotel-form" method="post" role="form"
+                                  class="contact-form form-wizard">
+                                <div class="form-wizard-header">
+                                    <ul class="nav list-unstyled form-wizard-steps clearfix">
+                                        <li class="nav-item activated">
+                                            <button class="nav-link">
+                                                <span class="number">1</span><i class="fal fa-check"></i>
+                                            </button>
+                                            <h5 class="color-black">Your Selection</h5>
+                                        </li>
+                                        <li class="nav-item active">
+                                            <button class="nav-link">
+                                                <span class="number">2</span><i class="fal fa-check"></i>
+                                            </button>
+                                            <h5 class="color-black">Your Details</h5>
+                                        </li>
+                                        <li class="nav-item">
+                                            <button class="nav-link">
+                                                <span class="number">3</span><i class="fal fa-check"></i>
+                                            </button>
+                                            <h5 class="color-black">Final Step</h5>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <div class="content-block bg-white p-24 light-shadow">
-                                    <h4 class="color-black mb-12">GLOBALSTAY Holiday Homes</h4>
-                                    <p class="dark-gray mb-32">Lorem ipsum dolor sit amet consectetur. Orci elementum egestas blandit a. Elementum blandit sit egestas urna.</p>
-                                    <h5 class="color-black mb-24">Facilities</h5>
-                                    <div class="d-flex gap-24 flex-wrap">
-                                        <div class="d-flex align-items-center facility gap-8">
-                                            <img src="assets/media/hotel/icons/kitchen.png" alt="">
-                                            <h6 class="light-black">Kitchen</h6>
-                                        </div>  
-                                        <div class="d-flex align-items-center facility gap-8">
-                                            <img src="assets/media/hotel/icons/pets.png" alt="">
-                                            <h6 class="light-black">Pet allowed</h6>
-                                        </div>  
-                                        <div class="d-flex align-items-center facility gap-8">
-                                            <img src="assets/media/hotel/icons/wifi.png" alt="">
-                                            <h6 class="light-black">Free WiFi</h6>
-                                        </div>  
-                                        <div class="d-flex align-items-center facility gap-8">
-                                            <img src="assets/media/hotel/icons/parking.png" alt="">
-                                            <h6 class="light-black">Free Parking</h6>
-                                        </div>  
-                                        <div class="d-flex align-items-center facility gap-8">
-                                            <img src="assets/media/hotel/icons/balcony.png" alt="">
-                                            <h6 class="light-black">Balcony</h6>
-                                        </div>  
-                                    </div>
-                                </div>
-                            </div>
+                                <div class="wizard-content overflow-visible mb-24">
 
-
-                            <div class="flight-booking-detail light-shadow mb-32">
-                                <div class="flight-title">
-                                    <h4 class="color-black">Your Booking Detail</h4>
-                                </div>
-                                <div class="content-block bg-white p-24 light-shadow">
-                                    <div class="d-flex justify-content-between mb-32">
-                                        <div class="flight-departure">
-                                            <h6 class="dark-gray">Departure</h6>
-                                            <h5 class="color-black">14 Aug, 2023</h5>
-                                            <h6 class="dark-gray">To 10:00 AM</h6>
-                                        </div>
-                                        <div class="vr-line d-xl-flex d-none"></div>
-                                        <div class="flight-departure">
-                                            <h6 class="dark-gray">Arrival</h6>
-                                            <h5 class="color-black">14 Aug, 2023</h5>
-                                            <h6 class="dark-gray">From 12:00 AM</h6>
-                                        </div>
-                                    </div>
-                                    <div class="text mb-32">
-                                        <h6 class="color-medium-gray mb-2">Total Length of Stay</h6>
-                                        <h5 class="color-black">3 Days</h5>
-                                    </div>
-                                    <hr class="bg-medium-gray mb-32">
-                                    <div class="text">
-                                        <h6 class="color-primary mb-2">You Selected</h6>
-                                        <h5 class="color-black">1 Room for 2 Guests</h5>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="flight-booking-detail light-shadow">
-                                <div class="flight-title">
-                                    <h4 class="color-black">Price Summary</h4>
-                                </div>
-                                <div class="content-block bg-white p-24">
-                                    <div class="d-flex align-items-center justify-content-between mb-24">
-                                        <div>
-                                            <h5 class="color-black">Room</h5>
-                                            <p class="dark-gray">Lorem ipsum dolor sit amet consectetur.</p>
-                                        </div>
-                                        <h5 class="color-black">$140</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between mb-24">
-                                        <div>
-                                            <h5 class="color-black">Room Service</h5>
-                                            <p class="dark-gray">Lorem ipsum dolor sit amet consectetur.</p>
-                                        </div>
-                                        <h5 class="color-black">$50</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between mb-24">
-                                        <div>
-                                            <h5 class="color-black">Gym Fee</h5>
-                                            <p class="dark-gray">Lorem ipsum dolor sit amet consectetur.</p>
-                                        </div>
-                                        <h5 class="color-black">$30</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between mb-24">
-                                        <div>
-                                            <h5 class="color-black">Service Charges</h5>
-                                            <p class="dark-gray">Lorem ipsum dolor sit amet consectetur.</p>
-                                        </div>
-                                        <h5 class="color-black">$20</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between mb-24">
-                                        <div>
-                                            <h5 class="color-black">Sub Total</h5>
-                                            <p class="dark-gray">Lorem ipsum dolor sit amet consectetur.</p>
-                                        </div>
-                                        <h5 class="color-black">$640</h5>
-                                    </div>
-                                    <hr class="bg-medium-gray mb-24">
-                                    <div class="d-flex align-items-center justify-content-between mb-24">
-                                        <div>
-                                            <h4 class="color-black">Deal / Discount</h4>
-                                        </div>
-                                        <h4 class="color-black">$40</h4>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div>
-                                            <h4 class="color-black">Total</h4>
-                                        </div>
-                                        <h4 class="color-black">$600</h4>
-                                    </div>
-            
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-8">
-                            <div class="booking-form">
-                                <form action="hotel-listing.html" id="hotel-form" method="post" role="form" class="contact-form form-wizard">
-                                    <div class="form-wizard-header">
-                                        <ul class="nav list-unstyled form-wizard-steps clearfix">
-                                            <li class="nav-item activated">
-                                                <button class="nav-link">
-                                                    <span class="number">1</span><i class="fal fa-check"></i>
-                                                </button>
-                                                <h5 class="color-black">Your Selection</h5>
-                                            </li>
-                                            <li class="nav-item active">
-                                                <button class="nav-link">
-                                                    <span class="number">2</span><i class="fal fa-check"></i>
-                                                </button>
-                                                <h5 class="color-black">Your Details</h5>
-                                            </li>
-                                            <li class="nav-item">
-                                                <button class="nav-link">
-                                                    <span class="number">3</span><i class="fal fa-check"></i>
-                                                </button>
-                                                <h5 class="color-black">Final Step</h5>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="wizard-content overflow-visible mb-24">
-                                        
-                                        <fieldset id="step-2" class="tab-pane show wizard-fieldset p-0">
-                                            <div id="wizardValidator">
-                                                <div class="detail-form mb-32">
-                                                    <h4 class="black p-0 mb-40">Enter Your Details</h4>
-                                                    <div class="row">
-                                                        <h5 class="light-black mb-16">Are you travelling for work?</h5>
-                                                        <div class="custom-control d-flex gap-16 mb-32">
-                                                            <div class="radio-button">
-                                                                <input type="radio" name="choice" class="custom-control-input" id="yes">
-                                                                <label class="custom-control-label light-black" for="yes">Yes</label>
-                                                            </div>
-                                                            <div class="radio-button">
-                                                                <input type="radio" name="choice" class="custom-control-input" id="no">
-                                                                <label class="custom-control-label light-black" for="no">No</label>
-                                                            </div>
+                                    <fieldset id="step-2" class="tab-pane show wizard-fieldset p-0">
+                                        <div id="wizardValidator">
+                                            <div class="detail-form mb-32">
+                                                <h4 class="black p-0 mb-40">Enter Your Details</h4>
+                                                <div class="row">
+                                                    <h5 class="light-black mb-16">Are you travelling for work?</h5>
+                                                    <div class="custom-control d-flex gap-16 mb-32">
+                                                        <div class="radio-button">
+                                                            <input type="radio" name="choice"
+                                                                   class="custom-control-input" id="yes">
+                                                            <label class="custom-control-label light-black" for="yes">Yes</label>
                                                         </div>
-                                                        <div class="col-sm-6 mb-30">
-                                                            <input type="text" class="form-control wizard-required" id="first-name" name="name" placeholder="First Name">
-                                                                <div class="wizard-form-error"></div>
+                                                        <div class="radio-button">
+                                                            <input type="radio" name="choice"
+                                                                   class="custom-control-input" id="no">
+                                                            <label class="custom-control-label light-black"
+                                                                   for="no">No</label>
                                                         </div>
-                                                        <div class="col-sm-6 mb-30">
-                                                            <input type="text" class="form-control wizard-required" id="last-name" name="last-name" placeholder="Last Name">
-                                                            <div class="wizard-form-error"></div>
+                                                    </div>
+                                                    <div class="col-sm-6 mb-30">
+                                                        <input type="text" class="form-control wizard-required"
+                                                               id="first-name" name="name" placeholder="First Name">
+                                                        <div class="wizard-form-error"></div>
+                                                    </div>
+                                                    <div class="col-sm-6 mb-30">
+                                                        <input type="text" class="form-control wizard-required"
+                                                               id="last-name" name="last-name" placeholder="Last Name">
+                                                        <div class="wizard-form-error"></div>
+                                                    </div>
+                                                    <div class="col-sm-6 mb-40">
+                                                        <input type="email" class="form-control wizard-required"
+                                                               id="email" name="email" placeholder="Email">
+                                                        <div class="wizard-form-error"></div>
+                                                    </div>
+                                                    <h5 class="light-black mb-16">Who are you booking for?</h5>
+                                                    <div class="custom-control d-flex gap-16">
+                                                        <div class="radio-button">
+                                                            <input type="radio" name="booking_choice"
+                                                                   class="custom-control-input" id="guest">
+                                                            <label class="custom-control-label color-black" for="guest">I
+                                                                am the main guest</label>
                                                         </div>
-                                                        <div class="col-sm-6 mb-40">
-                                                            <input type="email" class="form-control wizard-required" id="email" name="email" placeholder="Email">
-                                                            <div class="wizard-form-error"></div>
-                                                        </div>
-                                                        <h5 class="light-black mb-16">Who are you booking for?</h5>
-                                                        <div class="custom-control d-flex gap-16">
-                                                            <div class="radio-button">
-                                                                <input type="radio" name="booking_choice" class="custom-control-input" id="guest">
-                                                                <label class="custom-control-label color-black" for="guest">I am the main guest</label>
-                                                            </div>
-                                                            <div class="radio-button">
-                                                                <input type="radio" name="booking_choice" class="custom-control-input" id="booking">
-                                                                <label class="custom-control-label color-black" for="booking">Booking is for someone else</label>
-                                                            </div>
+                                                        <div class="radio-button">
+                                                            <input type="radio" name="booking_choice"
+                                                                   class="custom-control-input" id="booking">
+                                                            <label class="custom-control-label color-black"
+                                                                   for="booking">Booking is for someone else</label>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="detail-form term_conditions mb-32">
-                                                    <h5 class="black p-0 mb-24">Premier Deluxe Room with Complimentary Private Beach & Wild Wadi Waterpark Access</h5>
-                                                    <div class="d-flex align-items-center facility gap-2 mb-24">
-                                                        <img src="assets/media/hotel/icons/tick-lg.png" alt="">
-                                                        <h6 class="light-black">Free Cancellation <span class="dark-gray">before 26 August 2023</span></h6>
+                                            </div>
+                                            <div class="detail-form term_conditions mb-32">
+                                                <h5 class="black p-0 mb-24">Premier Deluxe Room with Complimentary
+                                                    Private Beach & Wild Wadi Waterpark Access</h5>
+                                                <div class="d-flex align-items-center facility gap-2 mb-24">
+                                                    <img src="assets/media/hotel/icons/tick-lg.png" alt="">
+                                                    <h6 class="light-black">Free Cancellation <span class="dark-gray">before 26 August 2023</span>
+                                                    </h6>
+                                                </div>
+                                                <div class="d-flex align-items-center facility gap-2 mb-24">
+                                                    <img src="assets/media/hotel/icons/tick-lg.png" alt="">
+                                                    <h6 class="light-black">Guest <span class="dark-gray">2 Adults, 0 Child (inder 13 of age)</span>
+                                                    </h6>
+                                                </div>
+                                                <div class="d-flex align-items-center facility gap-2 mb-32">
+                                                    <img src="assets/media/hotel/icons/tick-lg.png" alt="">
+                                                    <h6 class="light-black">Parking & High Speed Internet </h6>
+                                                </div>
+                                                <div class="d-flex flex-wrap align-items-center gap-16 mb-24">
+                                                    <div class="d-flex align-items-center facility gap-8">
+                                                        <img src="assets/media/hotel/icons/icon-2.png" alt="">
+                                                        <h6 class="light-black">Sound Proof</h6>
                                                     </div>
-                                                    <div class="d-flex align-items-center facility gap-2 mb-24">
-                                                        <img src="assets/media/hotel/icons/tick-lg.png" alt="">
-                                                        <h6 class="light-black">Guest <span class="dark-gray">2 Adults, 0 Child (inder 13 of age)</span></h6>
+                                                    <div class="d-flex align-items-center facility gap-8">
+                                                        <img src="assets/media/hotel/icons/icon-3.png" alt="">
+                                                        <h6 class="light-black">44m²</h6>
                                                     </div>
-                                                    <div class="d-flex align-items-center facility gap-2 mb-32">
-                                                        <img src="assets/media/hotel/icons/tick-lg.png" alt="">
-                                                        <h6 class="light-black">Parking & High Speed Internet </h6>
+                                                    <div class="d-flex align-items-center facility gap-8">
+                                                        <img src="assets/media/hotel/icons/icon-4.png" alt="">
+                                                        <h6 class="light-black">Landmarks</h6>
                                                     </div>
-                                                    <div class="d-flex flex-wrap align-items-center gap-16 mb-24">
-                                                        <div class="d-flex align-items-center facility gap-8">
-                                                            <img src="assets/media/hotel/icons/icon-2.png" alt="">
-                                                            <h6 class="light-black">Sound Proof</h6>
-                                                        </div>
-                                                        <div class="d-flex align-items-center facility gap-8">
-                                                            <img src="assets/media/hotel/icons/icon-3.png" alt="">
-                                                            <h6 class="light-black">44m²</h6>
-                                                        </div>
-                                                        <div class="d-flex align-items-center facility gap-8">
-                                                            <img src="assets/media/hotel/icons/icon-4.png" alt="">
-                                                            <h6 class="light-black">Landmarks</h6>
-                                                        </div>
-                                                        <div class="d-flex align-items-center facility gap-8">
-                                                            <img src="assets/media/hotel/icons/icon-5.png" alt="">
-                                                            <h6 class="light-black">City View</h6>
-                                                        </div>
-                                                        <div class="d-flex align-items-center facility gap-8">
-                                                            <img src="assets/media/hotel/icons/icon-6.png" alt="">
-                                                            <h6 class="light-black">Air Conditioning</h6>
-                                                        </div>
-                                                        <div class="d-flex align-items-center facility gap-8">
-                                                            <img src="assets/media/hotel/icons/icon-7.png" alt="">
-                                                            <h6 class="light-black">Private bathroom</h6>
-                                                        </div>
-                                                        <div class="d-flex align-items-center facility gap-8">
-                                                            <img src="assets/media/hotel/icons/icon-8.png" alt="">
-                                                            <h6 class="light-black">Flat-screen TV</h6>
+                                                    <div class="d-flex align-items-center facility gap-8">
+                                                        <img src="assets/media/hotel/icons/icon-5.png" alt="">
+                                                        <h6 class="light-black">City View</h6>
+                                                    </div>
+                                                    <div class="d-flex align-items-center facility gap-8">
+                                                        <img src="assets/media/hotel/icons/icon-6.png" alt="">
+                                                        <h6 class="light-black">Air Conditioning</h6>
+                                                    </div>
+                                                    <div class="d-flex align-items-center facility gap-8">
+                                                        <img src="assets/media/hotel/icons/icon-7.png" alt="">
+                                                        <h6 class="light-black">Private bathroom</h6>
+                                                    </div>
+                                                    <div class="d-flex align-items-center facility gap-8">
+                                                        <img src="assets/media/hotel/icons/icon-8.png" alt="">
+                                                        <h6 class="light-black">Flat-screen TV</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control wizard-required"
+                                                               id="full_name" name="name" placeholder="Full Guest Name">
+                                                        <div class="wizard-form-error"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="detail-form extra-item p-24 mb-32">
+                                                <h4 class="black p-0 mb-16">Special Requests</h4>
+                                                <p class="dark-gray fw-400 mb-24">Lorem ipsum dolor sit amet
+                                                    consectetur. Enim sodales aliquet interdum vitae mi. <br> Habitant
+                                                    fusce sit quis sit lorem. Porta lectus vitae pharet. <span
+                                                            class="h6 light-black"> (Optional)</span></p>
+                                                <textarea name="message" class="form-control" id="msg" cols="30"
+                                                          rows="3" placeholder="Your Text"></textarea>
+                                            </div>
+                                            <div class="detail-form extra-item p-24 mb-32">
+                                                <h4 class="black p-0 mb-16">Your Arrival Time</h4>
+                                                <ul>
+                                                    <li class="dark-gray mb-8">Lorem ipsum dolor sit amet consectetur.
+                                                        Enim sodales aliquet interdum vitae mi. <br> Habitant fusce sit
+                                                        quis sit lorem. Porta lectus vitae pharet.
+                                                    </li>
+                                                    <li class="dark-gray mb-24">Lorem ipsum dolor sit amet consectetur.
+                                                        Lorem proin faucibus sit non.
+                                                    </li>
+                                                </ul>
+                                                <div class="hotel-booking-time">
+
+                                                    <div class="input-date-picker">
+                                                        <label for="dateCheck" class="h-16 color-medium-gray">Check
+                                                            In</label>
+                                                        <div class="d-flex align-items-center gap-2">
+                                                            <i class="fal fa-calendar-alt"></i>
+                                                            <input type="text" class="sel-input date_from"
+                                                                   id="dateCheck" placeholder="Aug 18, 2023">
                                                         </div>
                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex gap-24">
+                                            <a href="javascript:;" class="form-wizard-next-btn cus-btn w-100">
+                                                Next
+                                            </a>
+                                        </div>
+                                    </fieldset>
+                                    <fieldset id="step-3" class="tab-pane wizard-fieldset p-0">
+                                        <!-- <form action="hotel.html" method="post" class="contact-form"> -->
+                                        <div class="detail-form mb-32">
+                                            <h4 class="black p-0 mb-24">Enter you info</h4>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="gender-select">
+                                                        <div class="select">
+                                                            <select name="nationality" id="nationality"
+                                                                    class="wizard-required">
+                                                                <option selected="" disabled="">Nationality</option>
+                                                                <option value="american">American</option>
+                                                                <option value="britian">Britian</option>
+                                                                <option value="indian">Indian</option>
+                                                                <option value="canadian">Canadian</option>
+                                                                <option value="pakistani">Pakistani</option>
+                                                            </select>
+                                                            <div class="wizard-form-error"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control wizard-required" required=""
+                                                           name="phone" id="ph_number" placeholder="Number">
+                                                    <div class="wizard-form-error"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="detail-form mb-32">
+                                            <h4 class="black p-0 mb-8">Save your details!</h4>
+                                            <p class="dark-gray mb-24">Use your contact details to create an account and
+                                                speed up future <br> bookings.(We won't save your payment information.)
+                                            </p>
+                                            <div class="filter-checkbox mb-24">
+                                                <input type="checkbox" id="save_detail">
+                                                <label for="save_detail" class="dark-gray">Save my detail so I can book
+                                                    faster next time.</label>
+                                            </div>
+                                            <p class="dark-gray">By signing in or creating an account, you agree with
+                                                our <a href="privacy-policy.html" class="color-primary">Terms &
+                                                    conditions</a></p>
+                                        </div>
+                                        <div class="detail-form mb-32">
+                                            <h4 class="black p-0 mb-24">When would you like to pay?</h4>
+                                            <div class="custom-control">
+                                                <div class="radio-button mb-8">
+                                                    <input type="radio" name="payMentmethod" required=""
+                                                           class="custom-control-input input-control" id="payLater">
+                                                    <label class="custom-control-label pay light-black" for="payLater">Pay
+                                                        Later</label>
+                                                </div>
+                                                <p class="dark-gray mb-24 pl-36">Lorem ipsum dolor sit amet consectetur.
+                                                    Orci elementum egestas blandit a. Elementum blandit sit egestas
+                                                    urna.</p>
+                                                <div class="radio-button mb-8">
+                                                    <input type="radio" name="payMentmethod" required=""
+                                                           class="custom-control-input input-control" id="payNow">
+                                                    <label class="custom-control-label pay light-black" for="payNow">Pay
+                                                        Now</label>
+                                                </div>
+                                                <p class="dark-gray pl-36">Lorem ipsum dolor sit amet consectetur. Orci
+                                                    elementum egestas blandit a. Elementum blandit sit egestas urna.</p>
+
+                                            </div>
+                                        </div>
+                                        <div class="detail-form v-2">
+                                            <h4 class="black p-0 mb-24">How would you like to pay?</h4>
+                                            <div class="content-block mb-32">
+                                                <div class="radio-tile-group sidebar d-block">
                                                     <div class="row">
                                                         <div class="col-sm-6">
-                                                            <input type="text" class="form-control wizard-required" id="full_name" name="name" placeholder="Full Guest Name">
-                                                            <div class="wizard-form-error"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="detail-form extra-item p-24 mb-32">
-                                                    <h4 class="black p-0 mb-16">Special Requests</h4>
-                                                    <p class="dark-gray fw-400 mb-24">Lorem ipsum dolor sit amet consectetur. Enim sodales aliquet interdum vitae mi. <br> Habitant fusce sit quis sit lorem. Porta lectus vitae pharet. <span class="h6 light-black"> (Optional)</span></p>
-                                                    <textarea name="message" class="form-control" id="msg" cols="30" rows="3" placeholder="Your Text"></textarea>
-                                                </div>
-                                                <div class="detail-form extra-item p-24 mb-32">
-                                                    <h4 class="black p-0 mb-16">Your Arrival Time</h4>
-                                                    <ul>
-                                                        <li class="dark-gray mb-8">Lorem ipsum dolor sit amet consectetur. Enim sodales aliquet interdum vitae mi. <br> Habitant fusce sit quis sit lorem. Porta lectus vitae pharet.</li>
-                                                        <li class="dark-gray mb-24">Lorem ipsum dolor sit amet consectetur. Lorem proin faucibus sit non.</li>
-                                                    </ul>
-                                                    <div class="hotel-booking-time">
-                                                        
-                                                        <div class="input-date-picker">
-                                                            <label for="dateCheck" class="h-16 color-medium-gray">Check In</label>
-                                                            <div class="d-flex align-items-center gap-2"> 
-                                                                <i class="fal fa-calendar-alt"></i>
-                                                                <input type="text" class="sel-input date_from" id="dateCheck" placeholder="Aug 18, 2023">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex gap-24">
-                                                <a href="javascript:;" class="form-wizard-next-btn cus-btn w-100">
-                                                    Next
-                                                </a>
-                                            </div>
-                                        </fieldset>
-                                        <fieldset id="step-3" class="tab-pane wizard-fieldset p-0">
-                                            <!-- <form action="hotel.html" method="post" class="contact-form"> -->
-                                            <div class="detail-form mb-32">
-                                                <h4 class="black p-0 mb-24">Enter you info</h4>
-                                                <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <div class="gender-select">
-                                                            <div class="select">
-                                                                <select name="nationality" id="nationality" class="wizard-required">
-                                                                    <option selected="" disabled="">Nationality</option>
-                                                                    <option value="american">American</option>
-                                                                    <option value="britian">Britian</option>
-                                                                    <option value="indian">Indian</option>
-                                                                    <option value="canadian">Canadian</option>
-                                                                    <option value="pakistani">Pakistani</option>
-                                                                </select>
-                                                                <div class="wizard-form-error"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" class="form-control wizard-required" required="" name="phone" id="ph_number" placeholder="Number">
-                                                        <div class="wizard-form-error"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="detail-form mb-32">
-                                                <h4 class="black p-0 mb-8">Save your details!</h4>
-                                                <p class="dark-gray mb-24">Use your contact details to create an account and speed up future <br> bookings.(We won't save your payment information.)</p>
-                                                <div class="filter-checkbox mb-24">
-                                                    <input type="checkbox" id="save_detail">
-                                                    <label for="save_detail" class="dark-gray">Save my detail so I can book faster next time.</label>
-                                                </div>
-                                                <p class="dark-gray">By signing in or creating an account, you agree with our <a href="privacy-policy.html" class="color-primary">Terms & conditions</a></p>
-                                            </div>
-                                            <div class="detail-form mb-32">
-                                                <h4 class="black p-0 mb-24">When would you like to pay?</h4>
-                                                <div class="custom-control">
-                                                    <div class="radio-button mb-8">
-                                                        <input type="radio" name="payMentmethod" required="" class="custom-control-input input-control" id="payLater">
-                                                        <label class="custom-control-label pay light-black" for="payLater">Pay Later</label>
-                                                    </div>
-                                                    <p class="dark-gray mb-24 pl-36">Lorem ipsum dolor sit amet consectetur. Orci elementum egestas blandit a. Elementum blandit sit egestas urna.</p>
-                                                    <div class="radio-button mb-8">
-                                                        <input type="radio" name="payMentmethod" required="" class="custom-control-input input-control" id="payNow">
-                                                        <label class="custom-control-label pay light-black" for="payNow">Pay Now</label>
-                                                    </div>
-                                                    <p class="dark-gray pl-36">Lorem ipsum dolor sit amet consectetur. Orci elementum egestas blandit a. Elementum blandit sit egestas urna.</p>
-
-                                                </div>
-                                            </div>
-                                            <div class="detail-form v-2">
-                                                <h4 class="black p-0 mb-24">How would you like to pay?</h4>
-                                                <div class="content-block mb-32">
-                                                    <div class="radio-tile-group sidebar d-block">
-                                                        <div class="row">
-                                                            <div class="col-sm-6">
-                                                                <div class="input-container">
-                                                                    <input id="payment" class="radio-button" type="radio" name="radio" value="payment">
-                                                                    <div class="radio-tile wizard-page">
-                                                                        <label for="payment" class="radio-tile-label wizard-label"><i class="fal fa-credit-card-front"></i>&nbsp;&nbsp;New Card</label>
-                                                                    </div>
+                                                            <div class="input-container">
+                                                                <input id="payment" class="radio-button" type="radio"
+                                                                       name="radio" value="payment">
+                                                                <div class="radio-tile wizard-page">
+                                                                    <label for="payment"
+                                                                           class="radio-tile-label wizard-label"><i
+                                                                            class="fal fa-credit-card-front"></i>&nbsp;&nbsp;New
+                                                                        Card</label>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-sm-6">
-                                                                <div class="input-container">
-                                                                    <input id="g-pay" class="radio-button" type="radio" name="radio" value="g-pay">
-                                                                    <div class="radio-tile wizard-page">
-                                                                        <label for="g-pay" class="radio-tile-label wizard-label"><img src="assets/media/icons/google.png" alt="">&nbsp;&nbsp;Google Pay</label>
-                                                                    </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="input-container">
+                                                                <input id="g-pay" class="radio-button" type="radio"
+                                                                       name="radio" value="g-pay">
+                                                                <div class="radio-tile wizard-page">
+                                                                    <label for="g-pay"
+                                                                           class="radio-tile-label wizard-label"><img
+                                                                            src="assets/media/icons/google.png" alt="">&nbsp;&nbsp;Google
+                                                                        Pay</label>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <h4 class="black p-0 mb-24">Account Holder Details</h4>
-                                                <div class="row">
-                                                    <div class="col-sm-6 mb-24">
-                                                        <input type="text" class="form-control wizard-required" required="" name="name" id="holder-name" placeholder="Card Holder's Name">
-                                                        <div class="wizard-form-error"></div>
-                                                    </div>
-                                                    <div class="col-sm-6 mb-24">
-                                                        <input type="text" class="form-control wizard-required" required="" name="number" id="card-name" placeholder="Card Number">
-                                                        <div class="wizard-form-error"></div>
-                                                    </div>
-                                                    <div class="col-sm-6 mb-24">
-                                                        <div class="input-date-picker">
-                                                            <input type="text" class="sel-input date_from form-control wizard-required" name="date" id="exp-date" required="" placeholder="Expiry Date">
-                                                            <div class="wizard-form-error"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-6 mb-24">
-                                                        <input type="text" class="form-control wizard-required" required="" name="cvc" id="cVc" placeholder="CVC">
+                                            </div>
+                                            <h4 class="black p-0 mb-24">Account Holder Details</h4>
+                                            <div class="row">
+                                                <div class="col-sm-6 mb-24">
+                                                    <input type="text" class="form-control wizard-required" required=""
+                                                           name="name" id="holder-name"
+                                                           placeholder="Card Holder's Name">
+                                                    <div class="wizard-form-error"></div>
+                                                </div>
+                                                <div class="col-sm-6 mb-24">
+                                                    <input type="text" class="form-control wizard-required" required=""
+                                                           name="number" id="card-name" placeholder="Card Number">
+                                                    <div class="wizard-form-error"></div>
+                                                </div>
+                                                <div class="col-sm-6 mb-24">
+                                                    <div class="input-date-picker">
+                                                        <input type="text"
+                                                               class="sel-input date_from form-control wizard-required"
+                                                               name="date" id="exp-date" required=""
+                                                               placeholder="Expiry Date">
                                                         <div class="wizard-form-error"></div>
                                                     </div>
                                                 </div>
+                                                <div class="col-sm-6 mb-24">
+                                                    <input type="text" class="form-control wizard-required" required=""
+                                                           name="cvc" id="cVc" placeholder="CVC">
+                                                    <div class="wizard-form-error"></div>
+                                                </div>
                                             </div>
-                                            <!-- </form> -->
-                                            <div class="d-flex gap-24">
-                                                <a href="javascript:;" class="form-wizard-previous-btn cus-btn w-100">
-                                                    Back
-                                                </a>
-                                                <a href="hotel-listing.html" class="form-wizard-next-btn cus-btn w-100">
-                                                    Submit
-                                                </a>
-                                            </div>
-                                        </fieldset>
-                                    </div>
-                                    <!-- <h6><a href="#step-2" class="cus-btn float-end btn"><span class="icon"><img src="assets/media/icons/orange-cart.png" alt=""></span>Continue</a></h6>
-                                     <div class="sw-toolbar-elm toolbar toolbar-bottom" role="toolbar">
-                                         <button class="btn sw-btn-prev sw-btn" type="button">Continue</button>
-                                        <button class="btn sw-btn-next sw-btn" type="button">Next</button> 
-                                    </div> -->
-                                </form>
-                            </div>
+                                        </div>
+                                        <!-- </form> -->
+                                        <div class="d-flex gap-24">
+                                            <a href="javascript:;" class="form-wizard-previous-btn cus-btn w-100">
+                                                Back
+                                            </a>
+                                            <a href="hotel-listing.html" class="form-wizard-next-btn cus-btn w-100">
+                                                Submit
+                                            </a>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <!-- <h6><a href="#step-2" class="cus-btn float-end btn"><span class="icon"><img src="assets/media/icons/orange-cart.png" alt=""></span>Continue</a></h6>
+                                 <div class="sw-toolbar-elm toolbar toolbar-bottom" role="toolbar">
+                                     <button class="btn sw-btn-prev sw-btn" type="button">Continue</button>
+                                    <button class="btn sw-btn-next sw-btn" type="button">Next</button>
+                                </div> -->
+                            </form>
                         </div>
                     </div>
                 </div>
-            </section>
-            <!-- Flight-Booking End -->
-
-        </div>
-        <!-- Main Content End -->
-
-        <!-- Footer Start -->
-        <th:block th:insert="~{/fragments/footer::footer}"/>
-        <!-- Footer Area End  -->
-
-        <!-- modal-popup area Start  -->
-        <div class="search-popup">
-            <div class="search-popup__overlay search-toggler"></div>
-            <div class="search-popup__content">
-                <form role="search" method="get" class="search-popup__form" action="indexTwo.html">
-                    <input type="text" id="search" placeholder="Search Here...">
-                    <button type="submit"><i class="fal fa-search"></i></button>
-                </form>
             </div>
-        </div>
-        <!-- search-popup end-->
+        </section>
+        <!-- Flight-Booking End -->
+
     </div>
+    <!-- Main Content End -->
+
+    <!-- Footer Start -->
+    <th:block th:insert="~{/fragments/footer::footer}"/>
+    <!-- Footer Area End  -->
+
+    <!-- modal-popup area Start  -->
+    <div class="search-popup">
+        <div class="search-popup__overlay search-toggler"></div>
+        <div class="search-popup__content">
+            <form role="search" method="get" class="search-popup__form" action="indexTwo.html">
+                <input type="text" id="search" placeholder="Search Here...">
+                <button type="submit"><i class="fal fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+    <!-- search-popup end-->
+</div>
 
 
 <!-- Mobile Menu Start -->
 <th:block th:insert="~{/fragments/mobileMenu::mobileMenu}"/>
 <!-- Mobile Menu End -->
 
-    <!-- Jquery Js -->
-    <script src="/js/vendor/jquery-3.6.3.min.js"></script>
-    <script src="/js/vendor/bootstrap.min.js"></script>
-    <script src="/js/vendor/jquery-appear.js"></script>
-    <script src="/js/vendor/jquery-validator.js"></script>
-    <!-- <script src="assets/js/vendor/jquery.smartWizard.min.js"></script> -->
-    <script src="/js/vendor/calendar/popper.min.js"></script>
-    <script src="/js/vendor/jquery-appear.js"></script>
-    <script src="/js/vendor/jquery-validator.js"></script>
-    <script src="/js/vendor/calendar/picker.js"></script>
-    <script src="/js/vendor/calendar/picker.date.js"></script>
-    <script src="/js/vendor/autoComplete.js"></script>
-    <script src="/js/vendor/jquery.timepicker.min.js"></script>
-    <script src="/js/vendor/sal.js"></script>
-    <script src="/js/vendor/wizard.js"></script>
+<!-- Jquery Js -->
+<script src="/js/vendor/jquery-3.6.3.min.js"></script>
+<script src="/js/vendor/bootstrap.min.js"></script>
+<script src="/js/vendor/jquery-appear.js"></script>
+<script src="/js/vendor/jquery-validator.js"></script>
+<!-- <script src="assets/js/vendor/jquery.smartWizard.min.js"></script> -->
+<script src="/js/vendor/calendar/popper.min.js"></script>
+<script src="/js/vendor/jquery-appear.js"></script>
+<script src="/js/vendor/jquery-validator.js"></script>
+<script src="/js/vendor/calendar/picker.js"></script>
+<script src="/js/vendor/calendar/picker.date.js"></script>
+<script src="/js/vendor/autoComplete.js"></script>
+<script src="/js/vendor/jquery.timepicker.min.js"></script>
+<script src="/js/vendor/sal.js"></script>
+<script src="/js/vendor/wizard.js"></script>
 
-    <!-- Site Scripts -->
-    <script src="/js/date.js"></script>
-    <script src="/js/app.js"></script>
+<!-- Site Scripts -->
+<script src="/js/date.js"></script>
+<script src="/js/app.js"></script>
 </body>
 
 </html>
