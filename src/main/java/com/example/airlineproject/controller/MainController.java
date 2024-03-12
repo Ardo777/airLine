@@ -23,10 +23,7 @@ public class MainController {
     public String aboutUsPage() {
         return "aboutUs";
     }
-    @GetMapping("/login")
-    public String loginPage() {
-        return "login";
-    }
+
     @GetMapping("/register")
     public String registerPage() {
         return "register";
