@@ -14,8 +14,5 @@ public class AirLineProjectApplication {
     public static void main(String[] args) {
         SpringApplication.run(AirLineProjectApplication.class, args);
     }
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+
 }

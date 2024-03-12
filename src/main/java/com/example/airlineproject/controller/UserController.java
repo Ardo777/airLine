@@ -26,8 +26,8 @@ public class UserController {
 
     @GetMapping("/user/login")
     public String loginPage(@RequestParam(value = "successMsg", required = false) String successMsg, ModelMap modelMap) {
-         if (successMsg != null) {
-            modelMap.put("successMsg",successMsg);
+        if (successMsg != null) {
+            modelMap.put("successMsg", successMsg);
         }
         return "login";
     }
@@ -39,6 +39,10 @@ public class UserController {
         if (byEmail.isPresent()) {
             String msg = "User with this email " + user.getEmail() + " already  exist";
             return "redirect:/user/register?msg=" + msg;
+        }
+        if (user.getPassword().length() < 6) {
+            String passwordError = "Password cannot be shorter than 6 characters";
+            return "redirect:/user/register?passwordError=" + passwordError;
         }
         if (!user.getPassword().equals(user.getConfirmPassword())) {
             String msg = "Password mismatch";
@@ -67,6 +71,7 @@ public class UserController {
         User user = byId.get();
         if (user.getVerificationCode().equals(verificationCode)) {
             String successMsg = "Verification was successful!";
+            user.setActive(true);
             return "redirect:/user/login?successMsg=" + successMsg;
         } else {
             userService.deleteById(id);

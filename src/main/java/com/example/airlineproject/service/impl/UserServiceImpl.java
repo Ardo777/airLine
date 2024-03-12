@@ -34,11 +34,15 @@ public class UserServiceImpl implements UserService {
         Optional<User> byEmail = userRepository.findByEmail(user.getEmail());
         if (byEmail.isEmpty()) {
             user.setRole(UserRole.USER);
-            user.setActive(true);
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             if (multipartFile != null && !multipartFile.isEmpty()) {
                 String picName = System.currentTimeMillis() + "_" + multipartFile.getOriginalFilename();
-                File file = new File(uploadDirectory, picName);
+                File picturesDir = new File(uploadDirectory);
+                if (!picturesDir.exists()) {
+                    picturesDir.mkdirs();
+                }
+                String filePath = picturesDir.getAbsolutePath() + "/" + picName;
+                File file = new File(filePath);
                 multipartFile.transferTo(file);
                 user.setPicName(picName);
             }

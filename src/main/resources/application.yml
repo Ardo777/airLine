@@ -25,4 +25,4 @@ spring:
     change-log: classpath*:db/change-log.xml
 picture:
   upload:
-    directory: C:\\Users\\xXx\\IdeaProjects\\spring\\airLineProject\\pictures
+    directory: ./pictures
