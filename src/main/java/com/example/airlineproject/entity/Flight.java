@@ -1,5 +1,6 @@
 package com.example.airlineproject.entity;
 
+import com.example.airlineproject.entity.enums.Status;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
