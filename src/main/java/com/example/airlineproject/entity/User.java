@@ -23,5 +23,4 @@ public class User {
     private UserRole role;
     @ManyToOne
     private Company company;
-
 }
