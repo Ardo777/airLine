@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome Aboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #444;
+            margin-bottom: 10px;
+        }
+        .verification-code-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .verification-code {
+            font-size: 28px;
+            font-weight: bold;
+            color: #007bff;
+            margin-left: 235px;
+        }
+        .verification-icon {
+            color: #007bff;
+            margin-right: 10px;
+            font-size: 24px;
+        }
+        .logo {
+            max-width: 200px;
+            display: block;
+            margin: 0 auto 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #0056b3; /* Темно-синий цвет при наведении */
+        }
+        .welcome-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        .thank-you {
+            font-weight: bold;
+            margin-top: 30px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <img src="https://assets.norbr.io/image/partners/FlyNowPayLater_colorbg@2x.png" alt="Airline Logo" class="logo">
+    <h1>Welcome Aboard!</h1>
+    <p class="welcome-text">We're thrilled to have you join our airline family. Your journey with us starts now!</p>
+    <p>We're delighted to have you join us. Please find your verification code below:</p>
+    <div class="verification-code-container">
+        <span class="verification-icon"><i class="fas fa-key"></i></span>
+        <span class="verification-code" th:text="${user.getVerificationCode()}"></span>
+    </div>
+    <p>Enjoy your journey with us!</p>
+    <a href="http://localhost:8080/" class="button">Start Booking</a>
+    <p class="thank-you">Thank you for choosing us!</p>
+</div>
+</body>
+</html>

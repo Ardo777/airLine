@@ -1,0 +1,173 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>FlyNow | Mail Verification</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h3>Mail Verification</h3>-->
+<!--The code has been sent to your email please enter your code-->
+<!--<br><br>-->
+<!--<form action="/user/register/verification" method="post">-->
+<!--    Verification Code:-->
+<!--    <label>-->
+<!--        <input type="hidden" name="id" th:value="${user.id}" required>-->
+<!--    </label><br>-->
+<!--    <label>-->
+<!--        <input type="text" name="verificationCode" placeholder="Code" required>-->
+<!--    </label><br>-->
+<!--    <input type="submit" value="Submit">-->
+
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlyNow | Mail and SMS Verification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #007bff; /* Blue background color */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 400px;
+            width: 100%;
+            padding: 20px;
+            background-color: #fff; /* White background color */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .header {
+            margin-bottom: 20px;
+        }
+
+        .header img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #007bff; /* Blue color for the heading */
+            margin-top: 0;
+        }
+
+        form {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333; /* Black color for the label text */
+        }
+
+        .code-input {
+            display: inline-block;
+            width: 40px;
+            padding: 10px;
+            margin: 0 5px;
+            border: 1px solid #ccc; /* Gray border color */
+            border-radius: 5px;
+            text-align: center;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            background-color: #007bff; /* Blue color for the button */
+            color: #fff; /* White color for the button text */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3; /* Darker blue color on hover */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <img src="https://assets.norbr.io/image/partners/FlyNowPayLater_colorbg@2x.png" alt="Airline Logo">
+    </div>
+    <h1>Welcome to FlyNow Airlines</h1>
+    <h3>Mail and SMS Verification</h3>
+    <p style="color: #333;">The verification code has been sent to your email and phone. </p><br>
+    <p tyle="color: #333;">Please enter the six-digit codes.</p>
+    <form action="/user/register/verification" method="post" id="verificationForm">
+        <input type="hidden" name="id" th:value="${user.id}" required>
+        <input type="hidden" name="verificationCode" id="verificationCodeInput" required>
+        <div id="verificationInputs">
+            <input type="text" class="code-input" name="code1" maxlength="1" required>
+            <input type="text" class="code-input" name="code2" maxlength="1" required>
+            <input type="text" class="code-input" name="code3" maxlength="1" required>
+            <input type="text" class="code-input" name="code4" maxlength="1" required>
+            <input type="text" class="code-input" name="code5" maxlength="1" required>
+            <input type="text" class="code-input" name="code6" maxlength="1" required>
+        </div>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+<script>
+    const inputs = document.querySelectorAll('.code-input');
+
+    inputs.forEach((input, index) => {
+        input.addEventListener('input', (e) => {
+            if (e.inputType === 'deleteContentBackward' && index > 0) {
+                inputs[index - 1].focus();
+            } else if (index < inputs.length - 1 && input.value !== '') {
+                inputs[index + 1].focus();
+            }
+        });
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("verificationForm");
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault(); // Предотвращаем стандартное поведение отправки формы
+
+            let verificationCode = ""; // Создаем пустую строку для хранения кода
+
+            // Получаем значения из всех полей ввода и добавляем их к verificationCode
+            document.querySelectorAll('.code-input').forEach(function (input) {
+                verificationCode += input.value;
+            });
+
+            // Присваиваем значение verificationCode скрытому полю формы
+            document.getElementById('verificationCodeInput').value = verificationCode;
+
+            // Отправляем форму
+            form.submit();
+        });
+    });
+    form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Предотвращаем стандартное поведение отправки формы
+
+        console.log("Форма отправлена");
+
+        // Ваш код для отправки формы
+    });
+
+</script>
+</body>
+</html>

@@ -26,9 +26,26 @@
         .back-to-home:hover {
             background-color: #f0f0f0;
         }
+
         .home-icon {
             width: 30px;
             height: auto;
+        }
+
+        .error {
+            font-size: 17px;
+            color: red;
+            margin-top: -26px;
+            padding: 10px;
+            margin-left: -8px;
+        }
+
+        .errorCode {
+            font-size: 17px;
+            color: red;
+            margin-top: -27px;
+            padding: 10px;
+            margin-left: 41px;
         }
     </style>
     <!-- All CSS files -->
@@ -48,7 +65,10 @@
     <link rel="stylesheet" href="/css/vendor/picture.css">
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <a href="/" class="back-to-home"><img src="/media/7777777777.png"  class="home-icon"></a>
+    <!--    Captcha Script Start-->
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <!--    Captcha Script End-->
+    <a href="/" class="back-to-home"><img src="/media/7777777777.png" class="home-icon"></a>
 </head>
 <body>
 <div class="container" style="margin: 70px">
@@ -59,26 +79,31 @@
                 <h4 class="title text-center mt-4">
                     Sign Up
                 </h4>
-                <form class="form-box px-3">
+                <div class="error" th:text="${emailMsg}"></div>
+                <div class="errorCode" th:text="${errorCode}"></div>
+                <form class="form-box px-3" action="/user/register" method="post" enctype="multipart/form-data">
                     <div class="form-input">
-                        Name:    <input type="text" name="" placeholder="Name" tabindex="10" required>
+                        Name: <input type="text" name="name" placeholder="Name" tabindex="10" required>
                     </div>
                     <div class="form-input">
-                        Surname:    <input type="text" name="" placeholder="Surname" tabindex="10" required>
+                        Surname: <input type="text" name="surname" placeholder="Surname" tabindex="10" required>
                     </div>
                     <div class="form-input">
-                        Email:    <input type="email" name="" placeholder="Email Address" tabindex="10" required>
+                        Email: <input type="email" name="email" placeholder="Email Address" tabindex="10" required>
                     </div>
                     <div class="form-input">
-                        Password:    <input type="password" name="" placeholder="Password" tabindex="10" required>
+                        Password: <input type="password" name="password" placeholder="Password" tabindex="10" required>
                     </div>
+                    <div class="error"
+                         th:text="${passwordErrorMsg}"></div>
                     <div class="form-input">
 
-                     Confirm Password:   <input type="password" name="" placeholder="Password" required>
+                        Confirm Password: <input type="password" name="confirmPassword" placeholder="Password" required>
                     </div>
+                    <div class="error" th:text="${msg}"></div>
                     <div class="mb-3">
                         <label class="file normal">
-                            <input type="file" id="thefile">
+                            <input type="file" id="thefile" name="picture">
                             Choose an image
                         </label>
                     </div>
@@ -99,7 +124,7 @@
 
                     <div class="text-center mb-2">
                         Do you have an account?
-                        <a href="/login" class="register-link">
+                        <a href="/user/login" class="register-link">
                             Login here
                         </a>
                     </div>
