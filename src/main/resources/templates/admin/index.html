@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>INSPINIA | Mailbox</title>
+
+    <link href="/staticAdminManager/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/staticAdminManager/css/font-awesome.css" rel="stylesheet">
+    <link href="/staticAdminManager/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="/staticAdminManager/css/animate.css" rel="stylesheet">
+    <link href="/staticAdminManager/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="wrapper">
+    <!--header start-->
+    <th:block th:insert="~{/fragments/headerAdmin::header}"/>
+    <!--header end-->
+
+    <div id="page-wrapper" class="gray-bg">
+
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <form role="search" class="navbar-form-custom" action="../../../../../../../OneDrive/Рабочий%20стол/website/webapplayers.com/inspinia_admin-v2.9.4/search_results.html">
+                        <div class="form-group" style="display:flex; align-items: center; margin: 10px">
+                            <input type="text" placeholder="Search for something..." style="width:500px; padding-left:30px">
+                            <input type="submit" class="search-link" style="width: 200px; height: 30px; background: cornflowerblue" >
+
+                        </div>
+                    </form>
+                </div>
+                <ul class="nav navbar-top-links navbar-right">
+                    <li>
+                    </li>
+                    <li class="dropdown">
+                        <ul class="dropdown-menu dropdown-messages">
+                            <li>
+                                <div class="dropdown-messages-box">
+                                    <a class="dropdown-item float-left" href="profile.html">
+                                        <img alt="image" class="rounded-circle" src="img/a7.jpg">
+                                    </a>
+                                    <div class="media-body">
+                                        <small class="float-right">46h ago</small>
+                                        <strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>.
+                                        <br>
+                                        <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="dropdown-divider"></li>
+                            <li>
+                                <div class="dropdown-messages-box">
+                                    <a class="dropdown-item float-left" href="profile.html">
+                                        <img alt="image" class="rounded-circle" src="img/a4.jpg">
+                                    </a>
+                                    <div class="media-body ">
+                                        <small class="float-right text-navy">5h ago</small>
+                                        <strong>Chris Johnatan Overtunk</strong> started following <strong>Monica
+                                        Smith</strong>. <br>
+                                        <small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="dropdown-divider"></li>
+                            <li>
+                                <div class="dropdown-messages-box">
+                                    <a class="dropdown-item float-left" href="profile.html">
+                                        <img alt="image" class="rounded-circle" src="img/profile.jpg">
+                                    </a>
+                                    <div class="media-body ">
+                                        <small class="float-right">23h ago</small>
+                                        <strong>Monica Smith</strong> love <strong>Kim Smith</strong>. <br>
+                                        <small class="text-muted">2 days ago at 2:30 am - 11.06.2014</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="dropdown-divider"></li>
+                            <li>
+                                <div class="text-center link-block">
+                                    <a href="index.html" class="dropdown-item">
+                                        <i class="fa fa-envelope"></i> <strong>Read All Messages</strong>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <ul class="dropdown-menu dropdown-alerts">
+                            <li>
+                                <a href="index.html" class="dropdown-item">
+                                    <div>
+                                        <i class="fa fa-envelope fa-fw"></i> You have 16 messages
+                                        <span class="float-right text-muted small">4 minutes ago</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="dropdown-divider"></li>
+                            <li>
+                                <a href="profile.html" class="dropdown-item">
+                                    <div>
+                                        <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                        <span class="float-right text-muted small">12 minutes ago</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="dropdown-divider"></li>
+                            <li>
+                                <a href="grid_options.html" class="dropdown-item">
+                                    <div>
+                                        <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                        <span class="float-right text-muted small">4 minutes ago</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="dropdown-divider"></li>
+                            <li>
+                                <div class="text-center link-block">
+                                    <a href="notifications.html" class="dropdown-item">
+                                        <strong>See All Alerts</strong>
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                    <li>
+                        <a href="login.html">
+                            <i class="fa fa-sign-out"></i> Log out
+                        </a>
+                    </li>
+                </ul>
+
+            </nav>
+        </div>
+
+        <div class="wrapper wrapper-content">
+
+            <div class="mail-box">
+                <table class="table table-hover table-mail">
+                    <tbody>
+                    <tr class="unread">
+
+                        <td class="mail-ontact"><a href="mail_detail.html">Anna Smith</a></td>
+                        <td class="mail-subject"><a href="mail_detail.html">Lorem ipsum dolor noretek imit set.</a></td>
+                        <td class=""><i class="fa fa-paperclip"></i></td>
+                        <td class="text-right mail-date">6.10 AM</td>
+                    </tr>
+                    <tr class="unread">
+                        <td class="mail-ontact"><a href="mail_detail.html">Jack Nowak</a></td>
+                        <td class="mail-subject"><a href="mail_detail.html">Aldus PageMaker including versions of Lorem
+                            Ipsum.</a></td>
+                        <td class=""></td>
+                        <td class="text-right mail-date">8.22 PM</td>
+                    </tr>
+                    <tr class="read">
+                        <td class="mail-ontact"><a href="mail_detail.html">Mailchip</a></td>
+                        <td class="mail-subject"><a href="mail_detail.html">There are many variations of passages of
+                            Lorem Ipsum.</a></td>
+                        <td class=""></td>
+                        <td class="text-right mail-date">Mar 22</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="ibox ">
+                        <div class="ibox-title">
+                            <h5>users</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <h1 class="no-margins">40 886,200</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="ibox ">
+                        <div class="ibox-title">
+                            <h5>companies</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <h1 class="no-margins">275,800</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="ibox ">
+                        <div class="ibox-title">
+                            <h5>applications of the companies</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <h1 class="no-margins">106,120</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="ibox ">
+                        <div class="ibox-title">
+                            <h5>messages</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <h1 class="no-margins">80,600</h1>
+                            <small>new messages</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+</div>
+
+<!-- Mainly scripts -->
+<script src="/staticAdminManager/js/jquery-3.1.1.min.js"></script>
+<script src="/staticAdminManager/js/popper.min.js"></script>
+<script src="/staticAdminManager/js/bootstrap.js"></script>
+<script src="/staticAdminManager/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="/staticAdminManager/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="/staticAdminManager/js/inspinia.js"></script>
+<script src="/staticAdminManager/js/plugins/pace/pace.min.js"></script>
+
+<!-- iCheck -->
+<script src="/staticAdminManager/js/plugins/iCheck/icheck.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+        });
+    });
+</script>
+</body>
+
+</html>
