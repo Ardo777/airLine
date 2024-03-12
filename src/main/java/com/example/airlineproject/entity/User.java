@@ -1,5 +1,6 @@
 package com.example.airlineproject.entity;
 
+import com.example.airlineproject.entity.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,6 +28,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserRole role;
 
+
     private boolean isActive;
 
     private String verificationCode;
@@ -34,5 +36,7 @@ public class User {
     private String picName;
     @Transient
     private String confirmPassword;
+    @ManyToOne
+    private Company company;
 
 }
