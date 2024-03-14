@@ -23,9 +23,7 @@ spring:
       ddl-auto: none
   liquibase:
     change-log: classpath*:db/change-log.xml
-  devtools:
-    restart:
-      log-condition-evaluation-delta: false
+
 picture:
   upload:
     directory: ./pictures

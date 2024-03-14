@@ -1,19 +1,13 @@
 package com.example.airlineproject.config;
 
 import com.example.airlineproject.entity.enums.UserRole;
-import com.example.airlineproject.security.UserDetailService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
@@ -43,8 +37,8 @@ public class SecurityConfig {
                         .loginProcessingUrl("/login")
                         .successForwardUrl("/login/successfully")
                         .defaultSuccessUrl("/login/successfully", true)
-                        .failureUrl("/login/error")
-        ).logout(withDefaults());
+                        .failureUrl("/user/login?errorMessage=your username or password is incorrect")
+        );
 
         return httpSecurity.build();
     }

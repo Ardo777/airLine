@@ -4,6 +4,7 @@ import com.example.airlineproject.entity.User;
 import com.example.airlineproject.entity.enums.UserRole;
 import com.example.airlineproject.security.SpringUser;
 import com.example.airlineproject.service.UserService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -42,7 +43,7 @@ public class UserController {
                             ModelMap modelMap) {
         if (successMsg != null) {
             modelMap.put("successMsg", successMsg);
-        }else if (errorMessage != null) {
+        } else if (errorMessage != null) {
             modelMap.put("errorMessage", errorMessage);
         }
         return "login";
@@ -106,7 +107,6 @@ public class UserController {
     }
 
 
-
     @GetMapping("/login/successfully")
     public String successLoginPage(@AuthenticationPrincipal SpringUser springUser) {
         if (springUser.getUser().getRole() == UserRole.ADMIN) {
@@ -117,9 +117,11 @@ public class UserController {
         return "redirect:/";
     }
 
-    @GetMapping("/login/error")
-    public String loginMessage(){
-        return "redirect:/user/login?errorMessage=" + "username or password is invalide";
-    }
 
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/user/login";
+    }
 }
