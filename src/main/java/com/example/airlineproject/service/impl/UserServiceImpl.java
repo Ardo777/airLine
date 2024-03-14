@@ -1,7 +1,7 @@
 package com.example.airlineproject.service.impl;
 
 import com.example.airlineproject.entity.User;
-import com.example.airlineproject.entity.UserRole;
+import com.example.airlineproject.entity.enums.UserRole;
 import com.example.airlineproject.repository.UserRepository;
 import com.example.airlineproject.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -32,28 +32,41 @@ public class UserServiceImpl implements UserService {
     @Override
     public User save(User user, MultipartFile multipartFile) throws IOException {
         Optional<User> byEmail = userRepository.findByEmail(user.getEmail());
-        if (byEmail.isEmpty()) {
-            user.setRole(UserRole.USER);
-            user.setPassword(passwordEncoder.encode(user.getPassword()));
-            if (multipartFile != null && !multipartFile.isEmpty()) {
-                String picName = System.currentTimeMillis() + "_" + multipartFile.getOriginalFilename();
-                File picturesDir = new File(uploadDirectory);
-                if (!picturesDir.exists()) {
-                    picturesDir.mkdirs();
-                }
-                String filePath = picturesDir.getAbsolutePath() + "/" + picName;
-                File file = new File(filePath);
-                multipartFile.transferTo(file);
-                user.setPicName(picName);
-            }
-            String lUUID = String.format("%040d", new BigInteger(UUID.randomUUID().toString().replace("-", ""), 16));
-            String uuid = lUUID.substring(0, Math.min(lUUID.length(), 6));
-            mailService.sendMail(user);
-            user.setVerificationCode(uuid);
+        if (byEmail.isPresent() & !byEmail.get().isActive()){
+            userRepository.deleteById(byEmail.get().getId());
+            validation(user,multipartFile);
+            userRepository.save(user);
+            return user;
+        } else {
+            validation(user, multipartFile);
             userRepository.save(user);
             return user;
         }
-        return null;
+
+    }
+
+    private void validation(User user, MultipartFile multipartFile) throws IOException {
+        user.setRole(UserRole.USER);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        addPicture(multipartFile, user);
+        String lUUID = String.format("%040d", new BigInteger(UUID.randomUUID().toString().replace("-", ""), 16));
+        String uuid = lUUID.substring(0, Math.min(lUUID.length(), 6));
+        mailService.sendMail(user);
+        user.setVerificationCode(uuid);
+    }
+
+    private void addPicture(MultipartFile multipartFile,User user) throws IOException {
+        if (multipartFile != null && !multipartFile.isEmpty()) {
+            String picName = System.currentTimeMillis() + "_" + multipartFile.getOriginalFilename();
+            File picturesDir = new File(uploadDirectory);
+            if (!picturesDir.exists()) {
+                picturesDir.mkdirs();
+            }
+            String filePath = picturesDir.getAbsolutePath() + "/" + picName;
+            File file = new File(filePath);
+            multipartFile.transferTo(file);
+            user.setPicName(picName);
+        }
     }
 
     @Override

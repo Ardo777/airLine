@@ -1,6 +1,7 @@
 package com.example.airlineproject.controller;
 
 import com.example.airlineproject.entity.User;
+import com.example.airlineproject.repository.UserRepository;
 import com.example.airlineproject.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
+    private final UserRepository userRepository;
 
     @GetMapping("/user/register")
     private String registration(@RequestParam(value = "emailMsg", required = false) String emailMsg,
@@ -45,7 +47,7 @@ public class UserController {
     public String registration(@ModelAttribute User user,
                                @RequestParam("picture") MultipartFile multipartFile) throws IOException {
         Optional<User> byEmail = userService.findByEmail(user.getEmail());
-        if (byEmail.isPresent()) {
+        if (byEmail.isPresent() && byEmail.get().isActive()) {
             String emailMsg = "User with this email " + user.getEmail() + " already  exist";
             return "redirect:/user/register?emailMsg=" + emailMsg;
         }
@@ -70,7 +72,7 @@ public class UserController {
             User user = userOptional.get();
             modelMap.addAttribute("user", user);
         }
-        return "mailVerification";
+        return "mail/mailVerification";
     }
 
     @PostMapping("/user/register/verification")
@@ -79,8 +81,10 @@ public class UserController {
         Optional<User> byId = userService.findById(id);
         User user = byId.get();
         if (user.getVerificationCode().equals(verificationCode)) {
-            String successMsg = "Verification was successful!";
             user.setActive(true);
+            userRepository.save(user);
+            String successMsg = "Verification was successful!";
+
             return "redirect:/user/login?successMsg=" + successMsg;
         } else {
             userService.deleteById(id);
