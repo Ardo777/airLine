@@ -8,58 +8,61 @@
 <!-- Header Area Start -->
 <header>
     <div th:fragment="header">
-    <nav class="main-menu">
-        <div class="container-fluid">
-            <div class="main-menu__block">
-                <div class="main-menu__left">
+        <nav class="main-menu">
+            <div class="container-fluid">
+                <div class="main-menu__block">
+                    <div class="main-menu__left">
 
-                    <div class="main-menu__logo">
-                        <a href="/">
-                            <img src="/media/logo.png" alt="FlyNow">
+                        <div class="main-menu__logo">
+                            <a href="/">
+                                <img src="/media/logo.png" alt="FlyNow">
+                            </a>
+                        </div>
+
+                        <div class="main-menu__nav">
+                            <ul class="main-menu__list">
+                                <li><a href="/" class="active">Home</a></li>
+                                <li class="dropdown">
+                                    <a href="#scroll">Flight</a>
+                                </li>
+
+                                <li class="dropdown">
+                                    <a href="/hotel">Hotel</a>
+                                </li>
+
+                                <li class="dropdown">
+                                    <a href="/aboutUs">About Us</a>
+                                </li>
+
+                                <li class="dropdown">
+                                    <a href="/news">News</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="main-menu__right">
+                        <a href="#" class="main-menu__search search-toggler d-xl-flex d-none">
+                            <i class="fal fa-search"></i>
+                        </a>
+                        <div class="main-menu-signup__login d-xl-flex d-none">
+                            <a th:if="${currentUser == null}"  href="/user/login" class="main-menu__login">
+                                Login
+                            </a>
+                            <div class="center_slach d-xl-flex d-none">/</div>
+                            <a th:if="${currentUser == null}"  href="/user/register" class="main-menu__login">
+                                Signup
+                            </a>
+                            <a th:if="${currentUser != null}" href="/logout" class="main-menu__login">
+                                logout
+                            </a>
+                        </div>
+                        <a href="#" class="main-menu__toggler mobile-nav__toggler">
+                            <i class="fa fa-bars"></i>
                         </a>
                     </div>
-
-                    <div class="main-menu__nav">
-                        <ul class="main-menu__list">
-                            <li><a href="/" class="active">Home</a></li>
-                            <li class="dropdown">
-                                <a href="#scroll">Flight</a>
-                            </li>
-
-                            <li class="dropdown">
-                                <a href="/hotel">Hotel</a>
-                            </li>
-
-                            <li class="dropdown">
-                                <a href="/aboutUs">About Us</a>
-                            </li>
-
-                            <li class="dropdown">
-                                <a href="/news">News</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="main-menu__right">
-                    <a href="#" class="main-menu__search search-toggler d-xl-flex d-none">
-                        <i class="fal fa-search"></i>
-                    </a>
-                    <div class="main-menu-signup__login d-xl-flex d-none">
-                        <a href="/user/login" class="main-menu__login">
-                            Login
-                        </a>
-                        <div class="center_slach d-xl-flex d-none">/</div>
-                        <a href="/user/register" class="main-menu__login">
-                            Signup
-                        </a>
-                    </div>
-                    <a href="#" class="main-menu__toggler mobile-nav__toggler">
-                        <i class="fa fa-bars"></i>
-                    </a>
                 </div>
             </div>
-        </div>
-    </nav>
+        </nav>
     </div>
 </header>
 <!-- Header Area end -->

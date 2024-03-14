@@ -79,6 +79,7 @@
                 <div class="error" th:text="${emailMsg}"></div>
                 <div class="errorCode" th:text="${errorCode}"></div>
                 <form class="form-box px-3" action="/user/register" method="post" enctype="multipart/form-data">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                     <div class="form-input">
                         Name: <input type="text" name="name" placeholder="Name" tabindex="10" required>
                     </div>

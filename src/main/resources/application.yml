@@ -23,6 +23,7 @@ spring:
       ddl-auto: none
   liquibase:
     change-log: classpath*:db/change-log.xml
+
 picture:
   upload:
     directory: ./pictures

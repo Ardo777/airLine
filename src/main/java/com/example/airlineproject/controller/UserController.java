@@ -1,9 +1,16 @@
 package com.example.airlineproject.controller;
 
 import com.example.airlineproject.entity.User;
+
+import com.example.airlineproject.entity.enums.UserRole;
+import com.example.airlineproject.security.SpringUser;
+
 import com.example.airlineproject.repository.UserRepository;
+
 import com.example.airlineproject.service.UserService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -36,9 +43,13 @@ public class UserController {
     }
 
     @GetMapping("/user/login")
-    public String loginPage(@RequestParam(value = "successMsg", required = false) String successMsg, ModelMap modelMap) {
+    public String loginPage(@RequestParam(value = "successMsg", required = false) String successMsg,
+                            @RequestParam(value = "errorMessage", required = false) String errorMessage,
+                            ModelMap modelMap) {
         if (successMsg != null) {
             modelMap.put("successMsg", successMsg);
+        } else if (errorMessage != null) {
+            modelMap.put("errorMessage", errorMessage);
         }
         return "login";
     }
@@ -77,7 +88,6 @@ public class UserController {
 
     @PostMapping("/user/register/verification")
     public String verification(@RequestParam("id") int id, @RequestParam("verificationCode") String verificationCode) {
-
         Optional<User> byId = userService.findById(id);
         User user = byId.get();
         if (user.getVerificationCode().equals(verificationCode)) {
@@ -91,6 +101,34 @@ public class UserController {
             String errorCode = "Invalid verification code. Please register again.";
             return "redirect:/user/register?errorCode=" + errorCode;
         }
+    }
 
+    @GetMapping("/admin")
+    public String adminPage() {
+        return "/admin/index";
+    }
+
+    @GetMapping("/manager")
+    public String managerPage() {
+        return "/manager/index";
+    }
+
+
+    @GetMapping("/login/successfully")
+    public String successLoginPage(@AuthenticationPrincipal SpringUser springUser) {
+        if (springUser.getUser().getRole() == UserRole.ADMIN) {
+            return "redirect:/admin";
+        } else if (springUser.getUser().getRole() == UserRole.MANAGER) {
+            return "redirect:/manager";
+        }
+        return "redirect:/";
+    }
+
+
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/user/login";
     }
 }
