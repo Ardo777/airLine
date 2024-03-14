@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User save(User user, MultipartFile multipartFile) throws IOException {
         Optional<User> byEmail = userRepository.findByEmail(user.getEmail());
-        if (byEmail.isPresent() & !byEmail.get().isActive()){
+        if (byEmail.isPresent() && !byEmail.get().isActive()){
             userRepository.deleteById(byEmail.get().getId());
             validation(user,multipartFile);
             userRepository.save(user);
@@ -42,7 +42,6 @@ public class UserServiceImpl implements UserService {
             userRepository.save(user);
             return user;
         }
-
     }
 
     private void validation(User user, MultipartFile multipartFile) throws IOException {
