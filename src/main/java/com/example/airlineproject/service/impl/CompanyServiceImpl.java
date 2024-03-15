@@ -1,6 +1,7 @@
 package com.example.airlineproject.service.impl;
 
 import com.example.airlineproject.entity.Company;
+import com.example.airlineproject.entity.User;
 import com.example.airlineproject.repository.CompanyRepository;
 import com.example.airlineproject.service.CompanyService;
 import lombok.RequiredArgsConstructor;
@@ -20,9 +21,7 @@ public class CompanyServiceImpl implements CompanyService {
     @Value("${picture.upload.directory}")
     private String uploadDirectory;
 
-
-    @Override
-    public Company save(Company company, MultipartFile multipartFile) throws IOException {
+    private void saveFile(MultipartFile multipartFile, Company company) throws IOException {
         if (multipartFile != null && !multipartFile.isEmpty()) {
             String picName = System.currentTimeMillis() + "_" + multipartFile.getOriginalFilename();
             File picturesDir = new File(uploadDirectory);
@@ -34,15 +33,41 @@ public class CompanyServiceImpl implements CompanyService {
             multipartFile.transferTo(file);
             company.setPicName(picName);
         }
-        if (companyRepository.findByUser(company.getUser()).isPresent() || companyRepository.findByName(company.getName()).isPresent()) {
-            return null;
-        }
-        return companyRepository.save(company);
     }
 
     @Override
-    public Company byEmail(String email) {
+    public String save(Company company, MultipartFile multipartFile) throws IOException {
+        if (companyRepository.findByUser(company.getUser()).isPresent() || companyRepository.findByName(company.getName()).isPresent()) {
+            return String.format("this user %s %s already has his own company or this company name is already taken",
+                    company.getUser().getName(), company.getUser().getSurname());
+        }
+        saveFile(multipartFile, company);
+        companyRepository.save(company);
+        return null;
+    }
+
+    @Override
+    public String registerCompany(User user, String name, String email, MultipartFile multipartFile) throws IOException {
+        String msg = findByEmail(email);
+        if (msg != null) {
+            return msg;
+        }
+        Company company = Company.builder()
+                .user(user)
+                .name(name)
+                .email(email)
+                .build();
+        saveFile(multipartFile, company);
+        companyRepository.save(company);
+        return null;
+    }
+
+    @Override
+    public String findByEmail(String email) {
         Optional<Company> byEmail = companyRepository.findByEmail(email);
-        return byEmail.orElse(null);
+        if (byEmail.isPresent()) {
+            return "Company with this email " + email + " already  exist";
+        }
+        return null;
     }
 }

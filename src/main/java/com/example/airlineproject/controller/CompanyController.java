@@ -1,6 +1,5 @@
 package com.example.airlineproject.controller;
 
-import com.example.airlineproject.entity.Company;
 import com.example.airlineproject.entity.User;
 import com.example.airlineproject.security.SpringUser;
 import com.example.airlineproject.service.CompanyService;
@@ -29,7 +28,7 @@ public class CompanyController {
         }
         User user = springUser.getUser();
         if (user == null) {
-            return "/index";
+            return "index";
         }
         modelMap.addAttribute(user);
         return "addCompany";
@@ -38,20 +37,9 @@ public class CompanyController {
     @PostMapping("/company/register")
     public String companyRegister(@AuthenticationPrincipal SpringUser springUser, @RequestParam("name") String name, @RequestParam("email") String email,
                                   @RequestParam(required = false, value = "picName") MultipartFile multipartFile) throws IOException {
-        Company company = companyService.byEmail(email);
-        if (company != null) {
-            String emailMsg = "Company with this email " + email + " already  exist";
-            return "redirect:/company?emailMsg=" + emailMsg;
-        }
-        User user = springUser.getUser();
-        Company save = companyService.save(Company.builder()
-                .name(name)
-                .email(email)
-                .user(user)
-                .build(), multipartFile);
-        if (save == null) {
-            String emailMsg = "this user " + user.getName() + " " + user.getSurname() + " already has his own company or this company name is already taken";
-            return "redirect:/company?emailMsg=" + emailMsg;
+        String msg = companyService.registerCompany(springUser.getUser(), name, email, multipartFile);
+        if (msg != null) {
+            return "redirect:/company?emailMsg=" + msg;
         }
         return "redirect:/";
     }
