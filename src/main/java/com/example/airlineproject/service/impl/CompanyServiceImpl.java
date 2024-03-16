@@ -57,9 +57,7 @@ public class CompanyServiceImpl implements CompanyService {
                 .name(name)
                 .email(email)
                 .build();
-        saveFile(multipartFile, company);
-        companyRepository.save(company);
-        return null;
+        return save(company, multipartFile);
     }
 
     @Override
