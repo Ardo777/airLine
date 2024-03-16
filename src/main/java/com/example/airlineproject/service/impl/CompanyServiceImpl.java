@@ -37,9 +37,12 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public String save(Company company, MultipartFile multipartFile) throws IOException {
-        if (companyRepository.findByUser(company.getUser()).isPresent() || companyRepository.findByName(company.getName()).isPresent()) {
-            return String.format("this user %s %s already has his own company or this company name is already taken",
+        if (companyRepository.findByUser(company.getUser()).isPresent()) {
+            return String.format("The user %s %s already has a registered company",
                     company.getUser().getName(), company.getUser().getSurname());
+        }
+        if (companyRepository.findByName(company.getName()).isPresent()){
+            return String.format("A company with this %s name already exists",company.getName());
         }
         saveFile(multipartFile, company);
         companyRepository.save(company);
