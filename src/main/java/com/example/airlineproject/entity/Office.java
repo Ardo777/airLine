@@ -21,10 +21,8 @@ public class Office {
     private String city;
     private String phone;
     @DateTimeFormat(pattern = "HH:mm")
-    // here must be date validation
     private Date workStartTime;
     @DateTimeFormat(pattern = "HH:mm")
-    // here must be date validation
     private Date workEndTime;
     private String street;
     @ManyToOne

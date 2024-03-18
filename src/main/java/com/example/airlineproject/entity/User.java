@@ -23,7 +23,7 @@ public class User{
     private String name;
     @NotEmpty(message = "please write your surname, surname can't be empty")
     private String surname;
-    @UniqueEmail(message = "sds")
+    @UniqueEmail(message = "this user already exist")
     private String email;
     @Size(min = 6, message = "Password cannot be shorter than 6 characters")
     @NotEmpty(message = "please write your password, password can't be empty")
