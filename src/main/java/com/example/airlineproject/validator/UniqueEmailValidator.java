@@ -9,7 +9,6 @@ public class UniqueEmailValidator implements
         ConstraintValidator<UniqueEmail, String> {
     @Override
     public void initialize(UniqueEmail constraintAnnotation) {
-        ConstraintValidator.super.initialize(constraintAnnotation);
     }
     @Override
     public boolean isValid(String email, ConstraintValidatorContext constraintValidatorContext) {
