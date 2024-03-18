@@ -19,6 +19,7 @@ public class Flight {
     private int id;
     private String from;
     private String to;
+    // here must be date validation
     private Date scheduledTime;
     private Date estimatedTime;
     private Date arrivalTime;

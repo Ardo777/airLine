@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 
 @Data
@@ -23,6 +24,7 @@ public class Message {
     @ManyToOne
     @JoinColumn(name = "to_n")
     private User to;
+    @NotEmpty(message = "write something, message can't be empty")
     private String message;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date messageDate;
