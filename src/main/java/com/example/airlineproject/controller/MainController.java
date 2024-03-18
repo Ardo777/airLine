@@ -49,10 +49,6 @@ public class MainController {
         return "aboutUs";
     }
 
-    @GetMapping("/companies")
-    public String companiesPage() {
-        return "companies";
-    }
 
     @GetMapping("/addCompany")
     public String addCompanyPage() {

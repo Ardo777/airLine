@@ -42,7 +42,6 @@ public class UserServiceImpl implements UserService {
             userRepository.save(user);
             return user;
         }
-
     }
 
     private void validation(User user, MultipartFile multipartFile) throws IOException {
