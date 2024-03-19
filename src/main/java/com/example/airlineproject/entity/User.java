@@ -1,11 +1,12 @@
 package com.example.airlineproject.entity;
 
-import com.example.airlineproject.annotation.UniqueEmail;
 import com.example.airlineproject.entity.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
@@ -23,7 +24,8 @@ public class User{
     private String name;
     @NotEmpty(message = "please write your surname, surname can't be empty")
     private String surname;
-    @UniqueEmail(message = "this user already exist")
+    @Email(message = "account is not registered")
+    @NotEmpty(message = "please write your email, email can't be empty")
     private String email;
     @Size(min = 6, message = "Password cannot be shorter than 6 characters")
     @NotEmpty(message = "please write your password, password can't be empty")
