@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 
 @Data
@@ -20,6 +21,7 @@ public class Comment {
     private Company company;
     @ManyToOne
     private User user;
+    @NotEmpty(message = "write something, comment can't be empty")
     private String comment;
     private Date commentDate;
 

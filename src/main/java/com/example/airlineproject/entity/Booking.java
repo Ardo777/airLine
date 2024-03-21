@@ -21,7 +21,6 @@ public class Booking {
     private Ticket ticket;
     @ManyToOne
     private User user;
-    private String comment;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date bookingDate;
 

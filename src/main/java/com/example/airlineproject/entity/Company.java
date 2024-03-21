@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 @Data
@@ -18,8 +19,12 @@ public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    // here must be name  validation
+    @NotEmpty(message = "name can't be empty")
     private String name;
+    @NotEmpty(message = "email can't be empty")
     private String email;
+    @NotEmpty(message = "picture can't be empty")
     private String picName;
     private boolean isActive;
     @OneToOne
