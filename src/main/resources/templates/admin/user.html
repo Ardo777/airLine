@@ -1,30 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>INSPINIA | E-commerce product detail</title>
+    <title>FlyNow | User</title>
 
     <link href="/staticAdminManager/css/bootstrap.min.css" rel="stylesheet">
     <link href="/staticAdminManager/font-awesome/css/font-awesome.css" rel="stylesheet">
-
     <link href="/staticAdminManager/css/plugins/slick/slick.css" rel="stylesheet">
     <link href="/staticAdminManager/css/plugins/slick/slick-theme.css" rel="stylesheet">
-
     <link href="/staticAdminManager/css/animate.css" rel="stylesheet">
     <link href="/staticAdminManager/css/style.css" rel="stylesheet">
 
+    <style>
+        body {
+            margin-top: 20px;
+        }
 
+        section {
+            padding: 120px 0;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .text-primary {
+            color: #19aa8d !important;
+        }
+
+        .text-secondary {
+            color: #15395A !important;
+        }
+
+        .font-weight-600 {
+            font-weight: 600;
+        }
+
+        .display-26 {
+            font-size: 1.3rem;
+        }
+
+        .bg-secondary {
+            background: #15395A !important;
+        }
+
+        @media (min-width: 992px) {
+            .d-lg-inline-block {
+                display: inline-block !important;
+            }
+        }
+
+        .rounded {
+            border-radius: 0.25rem !important;
+            padding: 20px;
+        }
+        #image {
+            width: 100%; /* Ширина изображения равна ширине div */
+            height: auto; /* Автоматически определить высоту для поддержки соотношения сторон */
+        }
+        .image-imitations {
+            background-color: #f8f8f9;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
 
 <div id="wrapper">
     <!--header start-->
-    <th:block th:insert="~{/fragments/headerManager::header}"/>
+    <th:block th:insert="~{/fragments/headerAdmin::header}"/>
     <!--header end-->
     <div id="page-wrapper" class="gray-bg">
         <div class="row border-bottom">
@@ -147,55 +194,45 @@
 
                             <div class="row">
                                 <div class="col-md-5">
-
-
                                     <div class="product-images">
 
                                         <div>
-                                            <div class="image-imitation">
-                                                [IMAGE 1]
+                                            <div class="image-imitations">
+                                                <div th:if="${user.getPicName() != null}">
+                                                    <img id="image" alt="image" th:src="@{/getImage(picName=${user.picName})}"
+                                                         width="50"></div>
+                                                <p class="no_img" th:if="${user.getPicName() == null}"></p>
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
-                                <div class="col-md-7">
-
-                                    <h2 class="font-bold m-b-xs">
-                                        Desktop publishing software
-                                    </h2>
-                                    <small>Many desktop publishing packages and web page editors now.</small>
-                                    <div class="m-t-md">
-                                        <h2 class="product-main-price">$406,602 <small class="text-muted">Exclude
-                                            Tax</small></h2>
+                                <div class="col-lg-6 px-xl-10">
+                                    <div class="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded">
+                                        <h3 class="h2 text-white mb-0" th:text="${user.name +' ' + user.surname}"></h3>
+                                        <span class="text-primary" th:text="${user.role}"></span>
                                     </div>
-                                    <hr>
-
-                                    <h4>Product description</h4>
-
-                                    <div class="small text-muted">
-                                        It is a long established fact that a reader will be distracted by the readable
-                                        content of a page when looking at its layout. The point of using Lorem Ipsum is
-
-                                        <br/>
-                                        <br/>
-                                        There are many variations of passages of Lorem Ipsum available, but the majority
-                                        have suffered alteration in some form, by injected humour, or randomised words
-                                        which don't look even slightly believable.
-                                    </div>
-                                    <dl class="small m-t-md">
-                                        <dt>Description lists</dt>
-                                        <dd>A description list is perfect for defining terms.</dd>
-                                        <dt>Euismod</dt>
-                                        <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec
-                                            elit.
-                                        </dd>
-                                        <dd>Donec id elit non mi porta gravida at eget metus.</dd>
-                                        <dt>Malesuada porta</dt>
-                                        <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
-                                    </dl>
-                                    <hr>
+                                    <ul class="list-unstyled mb-1-9">
+                                        <li class="mb-2 mb-xl-3 display-28">
+                                            <span class="display-26 text-secondary me-2 font-weight-600">Id:</span>
+                                            <div th:text="${user.id}"></div>
+                                        </li>
+                                        <li class="mb-2 mb-xl-3 display-28">
+                                            <span class="display-26 text-secondary me-2 font-weight-600">Email:</span>
+                                            <div th:text="${user.email}"></div>
+                                        </li>
+                                        <li class="mb-2 mb-xl-3 display-28">
+                                            <span class="display-26 text-secondary me-2 font-weight-600">Role:</span>
+                                            <div th:text="${user.role}"></div>
+                                        </li>
+                                    </ul>
+                                    <ul class="social-icon-style1 list-unstyled mb-0 ps-0">
+                                        <li><a href="#!"><i class="ti-twitter-alt"></i></a></li>
+                                        <li><a href="#!"><i class="ti-facebook"></i></a></li>
+                                        <li><a href="#!"><i class="ti-pinterest"></i></a></li>
+                                        <li><a href="#!"><i class="ti-instagram"></i></a></li>
+                                    </ul>
                                 </div>
+
                             </div>
 
                         </div>
@@ -203,7 +240,6 @@
                             <span class="float-right">
                                 Full stock - <i class="fa fa-clock-o"></i> 14.04.2016 10:04 pm
                             </span>
-                            The generated Lorem Ipsum is therefore always free
                         </div>
                     </div>
 
@@ -215,7 +251,7 @@
                 10GB of <strong>250GB</strong> Free.
             </div>
             <div>
-                <strong>Copyright</strong> Example Company &copy; 2014-2018
+                <strong>Copyright</strong> Example Company &copy; 2014-2024
             </div>
         </div>
 

@@ -103,10 +103,6 @@ public class UserController {
         }
     }
 
-    @GetMapping("/admin")
-    public String adminPage() {
-        return "/admin/index";
-    }
 
     @GetMapping("/manager")
     public String managerPage() {
