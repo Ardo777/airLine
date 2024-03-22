@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Request</title>
+    <title>Company Request</title>
 
     <link href="/staticAdminManager/css/bootstrap.min.css" rel="stylesheet">
     <link href="/staticAdminManager/font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -16,6 +16,7 @@
 
     <link href="/staticAdminManager/css/animate.css" rel="stylesheet">
     <link href="/staticAdminManager/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 
@@ -29,7 +30,7 @@
         <div class="row border-bottom">
             <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
                 <div class="navbar-header">
-                    <a  href="/company/requests"><h2>Requests</h2></a>
+                    <a  href="/companies"><h2>Companies</h2></a>
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
 
@@ -137,35 +138,37 @@
                         <div class="ibox-content">
 
                             <div class="row">
-                                    <div class="table-responsive">
-                                        <table class="table table-striped">
-                                            <thead>
-                                            <tr>
-                                                <th style="width: 10%;">id</th>
-                                                <th style="width: 20%;">picture</th>
-                                                <th style="width: 20%;">name</th>
-                                                <th style="width: 20%;">email</th>
-                                                <th style="width: 20%;">user</th>
-                                                <th style="width: 10%;">is_active</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr th:each="company:${companies}">
-                                                <td th:text="${company.id}">  </td>
-                                                <td>
-                                                    <div th:if="${company.getPicName() != null}">
-                                                        <img alt="text" th:src="@{/getImage(picName=${company.picName})}" width="80"></div>
-                                                    <p class="no_img" th:if="${company.getPicName() == null}">picture is empty</p>
-                                                </td>
-                                                <td th:text="${company.name}">  </td>
-                                                <td th:text="${company.email}">  </td>
-                                                <td th:text="${company.user.email}">  </td>
-                                                <td th:text="${company.active}">  </td>
-                                                <td><a th:href="@{'/company/delete/' + ${company.id}}">delete</a></td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                <tr>
+                                                    <th style="width: 10%;">id</th>
+                                                    <th style="width: 20%;">picture</th>
+                                                    <th style="width: 20%;">name</th>
+                                                    <th style="width: 20%;">email</th>
+                                                    <th style="width: 20%;">user</th>
+                                                    <th style="width: 10%;">is_active</th>
+                                                    <th style="width: 10%;">accept request</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr th:each="company:${companies}">
+                                                    <td th:text="${company.id}">  </td>
+                                                    <td>
+                                                        <div th:if="${company.getPicName() != null}">
+                                                            <img alt="text" th:src="@{/getImage(picName=${company.picName})}" width="80"></div>
+                                                        <p class="no_img" th:if="${company.getPicName() == null}">picture is empty</p>
+                                                    </td>
+                                                    <td th:text="${company.name}"></td>
+                                                    <td th:text="${company.email}"></td>
+                                                    <td th:text="${company.user.email}"></td>
+                                                    <td th:text="${company.active}"></td>
+                                                    <td><a th:href="@{'/company/accept/' + ${company.id}}">accept</a></td>
+                                                    <td><i class="fa-solid fa-trash"><a th:href="@{'/company/delete/' + ${company.id}}">delete</a></i></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                 </div>
 
                             </div>
