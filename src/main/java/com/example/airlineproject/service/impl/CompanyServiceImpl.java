@@ -51,7 +51,7 @@ public class CompanyServiceImpl implements CompanyService {
             log.warn("Company registration failed: {}", errorMsg);
             return errorMsg;
         }
-        if (companyRepository.findByName(company.getName()).isPresent()){
+        if (companyRepository.findByName(company.getName()).isPresent()) {
             String errorMsg = String.format("A company with this %s name already exists", company.getName());
             log.warn("Company registration failed: {}", errorMsg);
             return errorMsg;
@@ -97,7 +97,7 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public List<Company> findByActive(boolean active) {
         List<Company> byActive = companyRepository.findByActive(active);
-        if (byActive == null || byActive.isEmpty()){
+        if (byActive == null || byActive.isEmpty()) {
             log.info("No companies found with active status: {}", active);
             return null;
         }

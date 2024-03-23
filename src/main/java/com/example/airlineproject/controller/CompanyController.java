@@ -62,8 +62,7 @@ public class CompanyController {
     @GetMapping("/companies")
     public String companies(ModelMap modelMap) {
         log.info("Request received for listing companies");
-        boolean active = true;
-        List<Company> byActive = companyService.findByActive(active);
+        List<Company> byActive = companyService.findByActive(true);
         if (byActive != null) {
             log.info("Found {} active companies", byActive.size());
             modelMap.put("companies", byActive);
@@ -76,8 +75,7 @@ public class CompanyController {
     @GetMapping("/company/requests")
     public String companyRequest(ModelMap modelMap) {
         log.info("Request received for listing company requests");
-        boolean active = false;
-        List<Company> byActive = companyService.findByActive(active);
+        List<Company> byActive = companyService.findByActive(false);
         if (byActive != null) {
             log.info("Found {} inactive companies", byActive.size());
             modelMap.put("companies", byActive);
