@@ -1,5 +1,7 @@
 package com.example.airlineproject.controller;
 
+import com.example.airlineproject.util.FileUtil;
+import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
@@ -13,10 +15,10 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 @Controller
+@RequiredArgsConstructor
 public class MainController {
 
-    @Value("${picture.upload.directory}")
-    private String uploadDirectory;
+    private final FileUtil fileUtil;
 
     @GetMapping("/")
     public String homePage() {
@@ -26,11 +28,7 @@ public class MainController {
     @GetMapping(value = "/getImage",
             produces = MediaType.IMAGE_JPEG_VALUE)
     public @ResponseBody byte[] getImage(@RequestParam("picName") String picName) throws IOException {
-        File file = new File(uploadDirectory, picName);
-        if (file.exists()) {
-            return IOUtils.toByteArray(new FileInputStream(file));
-        }
-        return null;
+       return fileUtil.getPicture(picName);
     }
 
 

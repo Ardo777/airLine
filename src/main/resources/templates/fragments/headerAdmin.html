@@ -20,8 +20,8 @@
                                     <img alt="image" class="rounded-circle"
                                          src="/staticAdminManager/img/profile_small.jpg"/>
                                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                        <span class="block m-t-xs font-bold">David Williams</span>
-                                        <span class="text-muted text-xs block">Art Director <b class="caret"></b></span>
+                                        <span class="block m-t-xs font-bold" th:text="${currentUser.name + ' ' + currentUser.surname}" ></span>
+                                        <span class="text-muted text-xs block">Tools <b class="caret"></b></span>
                                     </a>
                                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                                         <li><a class="dropdown-item" href="profile.html">Profile</a></li>
@@ -43,9 +43,9 @@
                             <span
                                     class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li class="active"><a href="companyManagment.html">Home</a></li>
-                            <li class="active"><a href="companyManagment.html">company application</a></li>
-                            <li class="active"><a href="companyManagment.html">Users</a></li>
+                            <li class="active"><a href="/admin">Home</a></li>
+                            <li class="active"><a href="companyManagment.html">Company Application</a></li>
+                            <li class="active"><a href="/admin/users">Users</a></li>
                             <li class="active"><a href="companyManagment.html">Companies</a></li>
                         </ul>
                 </ul>
