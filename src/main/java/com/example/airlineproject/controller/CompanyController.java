@@ -38,9 +38,7 @@ public class CompanyController {
             log.warn("User is not authenticated, redirecting to index page");
             return "index";
         }
-        log.info("User authenticated, adding user to model");
         modelMap.addAttribute(user);
-        log.info("Returning addCompany page");
         return "addCompany";
     }
 
@@ -74,7 +72,6 @@ public class CompanyController {
 
     @GetMapping("/company/requests")
     public String companyRequest(ModelMap modelMap) {
-        log.info("Request received for listing company requests");
         List<Company> byActive = companyService.findByActive(false);
         if (byActive != null) {
             log.info("Found {} inactive companies", byActive.size());
@@ -87,17 +84,13 @@ public class CompanyController {
 
     @GetMapping("/company/accept/{id}")
     public String accept(@PathVariable("id") int id) {
-        log.info("Accept request received for company with id: {}", id);
         companyService.accept(id);
-        log.info("Redirecting to /company/requests");
         return "redirect:/company/requests";
     }
 
     @GetMapping("/company/delete/{id}")
     public String delete(@PathVariable("id") int id) {
-        log.info("Delete request received for company with id: {}", id);
         companyService.delete(id);
-        log.info("Redirecting to /company/requests");
         return "redirect:/company/requests";
     }
 }
