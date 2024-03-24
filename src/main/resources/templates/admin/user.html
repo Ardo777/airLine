@@ -57,8 +57,12 @@
             padding: 20px;
         }
         #image {
-            width: 100%; /* Ширина изображения равна ширине div */
-            height: auto; /* Автоматически определить высоту для поддержки соотношения сторон */
+            width: 100%;
+            height: auto;
+        }
+        #images {
+            width: 100%;
+            height: auto;
         }
         .image-imitations {
             background-color: #f8f8f9;
@@ -200,8 +204,13 @@
                                             <div class="image-imitations">
                                                 <div th:if="${user.getPicName() != null}">
                                                     <img id="image" alt="image" th:src="@{/getImage(picName=${user.picName})}"
-                                                         width="50"></div>
-                                                <p class="no_img" th:if="${user.getPicName() == null}"></p>
+                                                         width="50">
+                                                </div>
+                                                <div th:if="${user.getPicName() == null}">
+
+                                                <img id="images" alt="text" src="/media/777user.jpg"
+                                                     width="50">
+                                            </div>
                                             </div>
                                         </div>
                                     </div>
