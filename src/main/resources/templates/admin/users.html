@@ -217,8 +217,13 @@
                                             <td>
                                                 <div th:if="${user.getPicName() != null}">
                                                     <img alt="text" th:src="@{/getImage(picName=${user.picName})}"
-                                                         width="50"></div>
-                                                <p class="no_img" th:if="${user.getPicName() == null}"></p>
+                                                         width="50">
+                                                </div>
+                                                <div th:if="${user.getPicName() == null}">
+
+                                                    <img alt="text" src="/media/777user.jpg"
+                                                         width="50">
+                                                </div>
                                             </td>
                                             <td th:text="${user.name}"></td>
                                             <td th:text="${user.surname}"></td>

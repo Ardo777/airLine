@@ -104,10 +104,7 @@ public class UserController {
     }
 
 
-    @GetMapping("/manager")
-    public String managerPage() {
-        return "/manager/index";
-    }
+
 
 
     @GetMapping("/login/successfully")
