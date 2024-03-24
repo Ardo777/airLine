@@ -4,8 +4,11 @@ import com.example.airlineproject.entity.User;
 import com.example.airlineproject.entity.enums.UserRole;
 import com.example.airlineproject.repository.UserRepository;
 import com.example.airlineproject.service.UserService;
+import com.example.airlineproject.util.FileUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,15 +29,17 @@ public class UserServiceImpl implements UserService {
 
     private final PasswordEncoder passwordEncoder;
 
+    private final FileUtil fileUtil;
+
     @Value("${picture.upload.directory}")
     private String uploadDirectory;
 
     @Override
     public User save(User user, MultipartFile multipartFile) throws IOException {
         Optional<User> byEmail = userRepository.findByEmail(user.getEmail());
-        if (byEmail.isPresent() && !byEmail.get().isActive()){
+        if (byEmail.isPresent() && !byEmail.get().isActive()) {
             userRepository.deleteById(byEmail.get().getId());
-            validation(user,multipartFile);
+            validation(user, multipartFile);
             userRepository.save(user);
             return user;
         } else {
@@ -54,7 +59,7 @@ public class UserServiceImpl implements UserService {
         user.setVerificationCode(uuid);
     }
 
-    private void addPicture(MultipartFile multipartFile,User user) throws IOException {
+    private void addPicture(MultipartFile multipartFile, User user) throws IOException {
         if (multipartFile != null && !multipartFile.isEmpty()) {
             String picName = System.currentTimeMillis() + "_" + multipartFile.getOriginalFilename();
             File picturesDir = new File(uploadDirectory);
@@ -77,12 +82,19 @@ public class UserServiceImpl implements UserService {
     public void deleteById(int id) {
         Optional<User> byId = findById(id);
         if (byId.isPresent()) {
+            User user = byId.get();
             userRepository.deleteById(id);
+            fileUtil.deletePicture(user.getPicName());
         }
     }
 
     @Override
     public Optional<User> findById(int id) {
         return userRepository.findById(id);
+    }
+
+    @Override
+    public Page<User> findAll(Pageable pageable) {
+        return userRepository.findAll(pageable);
     }
 }

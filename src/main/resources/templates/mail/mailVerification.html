@@ -113,6 +113,7 @@
     <p style="color: #333;">The verification code has been sent to your email and phone. </p><br>
     <p tyle="color: #333;">Please enter the six-digit codes.</p>
     <form action="/user/register/verification" method="post" id="verificationForm">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
         <input type="hidden" name="id" th:value="${user.id}" required>
         <input type="hidden" name="verificationCode" id="verificationCodeInput" required>
         <div id="verificationInputs">

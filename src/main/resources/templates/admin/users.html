@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html  lang="en" xmlns:th="http://www.thymeleaf.org" >
 
 <head>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>INSPINIA | Dashboard v.4</title>
+    <title>FlyNow | Users</title>
 
     <link href="/staticAdminManager/css/bootstrap.min.css" rel="stylesheet">
     <link href="/staticAdminManager/font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -17,9 +17,44 @@
     <link href="/staticAdminManager/css/animate.css" rel="stylesheet">
     <link href="/staticAdminManager/css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="../../static/staticAdminManager/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/media/favicon.png">
+    <style>
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
 
+        .pagination-item {
+            display: inline-block;
+            padding: 5px 12px;
+            margin: 0 2px;
+            border-radius: 0;
+            text-decoration: none;
+            color: #333;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+            width: 35px;
+            text-align: center;
+        }
+
+        .pagination-item:hover {
+            background-color: #f5f5f5;
+            color: #333;
+            border-color: #ccc;
+        }
+
+        .pagination-item.active {
+            background-color: #5c7a97;
+            color: #fff;
+            border-color: #5c7a97;
+        }
+    </style>
+    <th:block th:import="com.example.airlineproject.entity.enums.UserRole"/>
 </head>
-
 <body>
 <div id="wrapper">
     <th:block th:insert="~{/fragments/headerAdmin::header}"/>
@@ -28,17 +63,20 @@
         <div class="row border-bottom">
             <nav class="navbar navbar-static-top white-bg" role="navigation">
                 <div class="navbar-header">
-                    <form role="search" class="navbar-form-custom" action="../../../../../../../OneDrive/Рабочий%20стол/website/webapplayers.com/inspinia_admin-v2.9.4/search_results.html">
+                    <form role="search" class="navbar-form-custom"
+                          action="../../../../../../../OneDrive/Рабочий%20стол/website/webapplayers.com/inspinia_admin-v2.9.4/search_results.html">
                         <div class="form-group" style="display:flex; align-items: center; margin: 10px">
-                            <input type="text" placeholder="Search for something..." style="width:500px; padding-left:30px">
-                            <input type="submit" class="search-link" style="width: 200px; height: 30px; background: cornflowerblue" >
+                            <input type="text" placeholder="Search for something..."
+                                   style="width:500px; padding-left:30px">
+                            <input type="submit" class="search-link"
+                                   style="width: 200px; height: 30px; background: cornflowerblue">
 
                         </div>
                     </form>
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
                     <li>
-                        <span class="m-r-sm text-muted welcome-message">Welcome to INSPINIA+ Admin Theme.</span>
+                        <span class="m-r-sm text-muted welcome-message">Welcome to FlyNow Admin</span>
                     </li>
                     <li class="dropdown">
                         <ul class="dropdown-menu dropdown-messages">
@@ -151,206 +189,68 @@
                     <div class="col-lg-12">
                         <div class="ibox ">
                             <div class="ibox-title">
-                                <h5>Custom responsive table </h5>
-                                <div class="ibox-tools">
-                                    <a class="collapse-link">
-                                        <i class="fa fa-chevron-up"></i>
-                                    </a>
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                        <i class="fa fa-wrench"></i>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-user">
-                                        <li><a href="#" class="dropdown-item">Config option 1</a>
-                                        </li>
-                                        <li><a href="#" class="dropdown-item">Config option 2</a>
-                                        </li>
-                                    </ul>
-                                    <a class="close-link">
-                                        <i class="fa fa-times"></i>
-                                    </a>
-                                </div>
+                                <h5>All Users</h5>
                             </div>
                             <div class="table-responsive">
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
-
-                                        <th>#</th>
-                                        <th>Project</th>
+                                        <th>ID</th>
+                                        <th>Profile</th>
+                                        <th>Photo</th>
                                         <th>Name</th>
-                                        <th>Phone</th>
-                                        <th>Company</th>
-                                        <th>Completed</th>
-                                        <th>Task</th>
-                                        <th>Date</th>
-                                        <th>Action</th>
+                                        <th>Surname</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
+                                        <th>Delete</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Project <small>This is example of project</small></td>
-                                        <td>Patrick Smith</td>
-                                        <td>0800 051213</td>
-                                        <td>Inceptos Hymenaeos Ltd</td>
-                                        <td><span class="pie">0.52/1.561</span></td>
-                                        <td>20%</td>
-                                        <td>Jul 14, 2013</td>
-                                        <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
+                                    <tr th:each="user:${users}">
+                                        <div th:if="${user.role != T(com.example.airlineproject.entity.enums.UserRole).ADMIN}">
+                                            <td th:text="${user.id}"></td>
+                                            <td>
+                                                <a th:href="@{'/admin/user/' + ${user.getId()}}" class="delete-user">
+                                                    <i class="fa-solid fa-address-card"  style="color: #000000;"></i>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <div th:if="${user.getPicName() != null}">
+                                                    <img alt="text" th:src="@{/getImage(picName=${user.picName})}"
+                                                         width="50"></div>
+                                                <p class="no_img" th:if="${user.getPicName() == null}"></p>
+                                            </td>
+                                            <td th:text="${user.name}"></td>
+                                            <td th:text="${user.surname}"></td>
+                                            <td th:text="${user.email}"></td>
+                                            <td th:text="${user.role}"></td>
+                                            <td>
+                                                <a th:href="@{'/admin/delete/' + ${user.getId()}}" class="delete-user">
+                                                    <div class="pa">
+                                                    <i class="fa-solid fa-user-minus" style="color: #000000;"></i>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                        </div>
                                     </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Alpha project</td>
-                                        <td>Alice Jackson</td>
-                                        <td>0500 780909</td>
-                                        <td>Nec Euismod In Company</td>
-                                        <td><span class="pie">6,9</span></td>
-                                        <td>40%</td>
-                                        <td>Jul 16, 2013</td>
-                                        <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Betha project</td>
-                                        <td>John Smith</td>
-                                        <td>0800 1111</td>
-                                        <td>Erat Volutpat</td>
-                                        <td><span class="pie">3,1</span></td>
-                                        <td>75%</td>
-                                        <td>Jul 18, 2013</td>
-                                        <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Gamma project</td>
-                                        <td>Anna Jordan</td>
-                                        <td>(016977) 0648</td>
-                                        <td>Tellus Ltd</td>
-                                        <td><span class="pie">4,9</span></td>
-                                        <td>18%</td>
-                                        <td>Jul 22, 2013</td>
-                                        <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Alpha project</td>
-                                        <td>Alice Jackson</td>
-                                        <td>0500 780909</td>
-                                        <td>Nec Euismod In Company</td>
-                                        <td><span class="pie">6,9</span></td>
-                                        <td>40%</td>
-                                        <td>Jul 16, 2013</td>
-                                        <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Project <small>This is example of project</small></td>
-                                        <td>Patrick Smith</td>
-                                        <td>0800 051213</td>
-                                        <td>Inceptos Hymenaeos Ltd</td>
-                                        <td><span class="pie">0.52/1.561</span></td>
-                                        <td>20%</td>
-                                        <td>Jul 14, 2013</td>
-                                        <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Gamma project</td>
-                                        <td>Anna Jordan</td>
-                                        <td>(016977) 0648</td>
-                                        <td>Tellus Ltd</td>
-                                        <td><span class="pie">4,9</span></td>
-                                        <td>18%</td>
-                                        <td>Jul 22, 2013</td>
-                                        <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Project <small>This is example of project</small></td>
-                                        <td>Patrick Smith</td>
-                                        <td>0800 051213</td>
-                                        <td>Inceptos Hymenaeos Ltd</td>
-                                        <td><span class="pie">0.52/1.561</span></td>
-                                        <td>20%</td>
-                                        <td>Jul 14, 2013</td>
-                                        <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Alpha project</td>
-                                        <td>Alice Jackson</td>
-                                        <td>0500 780909</td>
-                                        <td>Nec Euismod In Company</td>
-                                        <td><span class="pie">6,9</span></td>
-                                        <td>40%</td>
-                                        <td>Jul 16, 2013</td>
-                                        <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Betha project</td>
-                                        <td>John Smith</td>
-                                        <td>0800 1111</td>
-                                        <td>Erat Volutpat</td>
-                                        <td><span class="pie">3,1</span></td>
-                                        <td>75%</td>
-                                        <td>Jul 18, 2013</td>
-                                        <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Gamma project</td>
-                                        <td>Anna Jordan</td>
-                                        <td>(016977) 0648</td>
-                                        <td>Tellus Ltd</td>
-                                        <td><span class="pie">4,9</span></td>
-                                        <td>18%</td>
-                                        <td>Jul 22, 2013</td>
-                                        <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Alpha project</td>
-                                        <td>Alice Jackson</td>
-                                        <td>0500 780909</td>
-                                        <td>Nec Euismod In Company</td>
-                                        <td><span class="pie">6,9</span></td>
-                                        <td>40%</td>
-                                        <td>Jul 16, 2013</td>
-                                        <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Project <small>This is example of project</small></td>
-                                        <td>Patrick Smith</td>
-                                        <td>0800 051213</td>
-                                        <td>Inceptos Hymenaeos Ltd</td>
-                                        <td><span class="pie">0.52/1.561</span></td>
-                                        <td>20%</td>
-                                        <td>Jul 14, 2013</td>
-                                        <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Gamma project</td>
-                                        <td>Anna Jordan</td>
-                                        <td>(016977) 0648</td>
-                                        <td>Tellus Ltd</td>
-                                        <td><span class="pie">4,9</span></td>
-                                        <td>18%</td>
-                                        <td>Jul 22, 2013</td>
-                                        <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                                    </tr>
+
+
                                     </tbody>
                                 </table>
                             </div>
-
                         </div>
                     </div>
                 </div>
 
             </div>
-
+            <div class="pagination-container">
+                <div th:if="${users.totalPages > 0}" class="btn btn-white" th:each="pageNumber : ${pageNumbers}">
+                    <a th:href="@{/admin/users(size=${users.size}, page=${pageNumber})}"
+                       th:text="${pageNumber}"
+                       th:classappend="${pageNumber == users.number + 1} ? 'active' : ''"
+                       class="pagination-item"></a>
+                </div>
+            </div>
 
         </div>
 
