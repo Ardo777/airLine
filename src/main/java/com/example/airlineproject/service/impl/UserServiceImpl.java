@@ -81,8 +81,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteById(int id) {
         Optional<User> byId = findById(id);
-        User user = byId.get();
         if (byId.isPresent()) {
+            User user = byId.get();
             userRepository.deleteById(id);
             fileUtil.deletePicture(user.getPicName());
         }
