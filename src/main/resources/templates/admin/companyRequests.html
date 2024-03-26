@@ -10,15 +10,46 @@
 
     <link href="/staticAdminManager/css/bootstrap.min.css" rel="stylesheet">
     <link href="/staticAdminManager/font-awesome/css/font-awesome.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="/staticAdminManager/css/plugins/slick/slick.css" rel="stylesheet">
     <link href="/staticAdminManager/css/plugins/slick/slick-theme.css" rel="stylesheet">
-
     <link href="/staticAdminManager/css/animate.css" rel="stylesheet">
     <link href="/staticAdminManager/css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 </head>
+<style>
+    .bigger-icon {
+        font-size: 24px;
+    }
+
+    .bigger-icon i {
+        font-size: 20px;
+    }
+    .container {
+        width: 100%;
+        height: 68px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .centered-button {
+        background-color: #2e4b64;
+        border: none;
+        color: white;
+        padding: 8px 14px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        border-radius: 4px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+    .centered-button:hover {
+
+        color: white ;
+    }
+</style>
 
 <body>
 
@@ -30,11 +61,12 @@
         <div class="row border-bottom">
             <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
                 <div class="navbar-header">
-                    <a  href="/companies"><h2>Companies</h2></a>
+                    <div class="container">
+                        <a href="/companies" class="centered-button">Companies</a>
+                    </div>
                 </div>
+
                 <ul class="nav navbar-top-links navbar-right">
-
-
                     <li class="dropdown">
                         <ul class="dropdown-menu dropdown-messages">
                             <li>
@@ -142,13 +174,13 @@
                                             <table class="table table-striped">
                                                 <thead>
                                                 <tr>
-                                                    <th style="width: 10%;">id</th>
-                                                    <th style="width: 20%;">picture</th>
-                                                    <th style="width: 20%;">name</th>
-                                                    <th style="width: 20%;">email</th>
-                                                    <th style="width: 20%;">user</th>
-                                                    <th style="width: 10%;">is_active</th>
-                                                    <th style="width: 10%;">accept request</th>
+                                                    <th style="width: 10%;">ID</th>
+                                                    <th style="width: 20%;">Picture</th>
+                                                    <th style="width: 20%;">Name</th>
+                                                    <th style="width: 20%;">Email</th>
+                                                    <th style="width: 20%;">User</th>
+                                                    <th style="width: 10%;">Active</th>
+                                                    <th style="width: 10%;">Request</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -163,8 +195,18 @@
                                                     <td th:text="${company.email}"></td>
                                                     <td th:text="${company.user.email}"></td>
                                                     <td th:text="${company.active}"></td>
-                                                    <td><a th:href="@{'/company/accept/' + ${company.id}}">accept</a></td>
-                                                    <td><i class="fa-solid fa-trash"><a th:href="@{'/company/delete/' + ${company.id}}">delete</a></i></td>
+                                                    <td>
+                                                        <a th:href="@{'/company/accept/' + ${company.id}}" >
+                                                            <div class="pa bigger-icon">
+                                                                <i class="fa-solid fa-circle-check" style="color: #000000;"></i>
+                                                            </div>
+                                                        </a>
+                                                        <a th:href="@{'/company/delete/' + ${company.id}}" >
+                                                            <div class="pa bigger-icon">
+                                                                <i class="fa-solid fa-circle-xmark" style="color: #000000;"></i>
+                                                            </div>
+                                                        </a>
+                                                    </td>
                                                 </tr>
                                                 </tbody>
                                             </table>

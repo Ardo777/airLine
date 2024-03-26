@@ -2,7 +2,7 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
-    <changeSet id="0002-init-db.xml" author="Ardo777">
+    <changeSet id="0002-add-columns-user-db.xml" author="Ardo777">
 
         <addColumn tableName="user">
             <column name="is_active" type="boolean">

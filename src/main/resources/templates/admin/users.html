@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  lang="en" xmlns:th="http://www.thymeleaf.org" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 
@@ -211,7 +211,7 @@
                                             <td th:text="${user.id}"></td>
                                             <td>
                                                 <a th:href="@{'/admin/user/' + ${user.getId()}}" class="delete-user">
-                                                    <i class="fa-solid fa-address-card"  style="color: #000000;"></i>
+                                                    <i class="fa-solid fa-address-card" style="color: #000000;"></i>
                                                 </a>
                                             </td>
                                             <td>
@@ -231,8 +231,8 @@
                                             <td th:text="${user.role}"></td>
                                             <td>
                                                 <a th:href="@{'/admin/delete/' + ${user.getId()}}" class="delete-user">
-                                                    <div class="pa">
-                                                    <i class="fa-solid fa-user-minus" style="color: #000000;"></i>
+                                                    <div>
+                                                        <i class="fa-solid fa-user-minus" style="color: #000000;"></i>
                                                     </div>
                                                 </a>
                                             </td>
