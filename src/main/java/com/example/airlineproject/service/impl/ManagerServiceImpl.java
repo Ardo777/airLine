@@ -14,7 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -63,20 +62,15 @@ public class ManagerServiceImpl implements ManagerService {
     }
 
     @Override
-    public Boolean planeExist(Plane plane, User user) {
-        log.info("Checking if plane exists: " + plane.getModel());
-
-        List<Plane> all = planeRepository.findAll();
-        for (Plane planeSave : all) {
-            if (plane.getModel().equals(planeSave.getModel()) &&
-                    plane.getMaxBaggage() == planeSave.getMaxBaggage() &&
-                    plane.getMaxPassengers() == planeSave.getMaxPassengers()) {
-                log.info("Plane exists: " + plane.getModel());
-                return true;
-            }
+    public Boolean isPlaneExist(Plane plane) {
+        boolean isPlaneExist = planeRepository.existsByModelAndMaxBaggageAndMaxPassengers(plane.getModel(), plane.getMaxBaggage(), plane.getMaxPassengers());
+        if (isPlaneExist) {
+            log.info("Plane exists: " + plane.getModel());
+            return true;
+        } else {
+            log.info("Plane does not exist: " + plane.getModel());
+            return false;
         }
-        log.info("Plane does not exist: " + plane.getModel());
-        return false;
     }
 
     @Override
@@ -86,20 +80,15 @@ public class ManagerServiceImpl implements ManagerService {
     }
 
     @Override
-    public Boolean officeExist(Office office, User user) {
-        log.info("Checking if office exists");
-
-        List<Office> all = officeRepository.findAll();
-        for (Office officeSave : all) {
-            if (office.getCountry().equals(officeSave.getCountry())
-                    &&office.getCity().equals(officeSave.getCity())
-                    &&office.getStreet().equals(officeSave.getStreet())) {
-                log.info("Office already exists");
-                return true;
-            }
+    public Boolean isOfficeExist(Office office) {
+        boolean isOfficeExist = officeRepository.existsByCountryAndCityAndStreet(office.getCountry(), office.getCity(), office.getStreet());
+        if (isOfficeExist) {
+            log.info("Office already exists");
+            return true;
+        } else {
+            log.info("Office does not exist ");
+            return false;
         }
-        log.info("Office does not exist ");
-        return false;
     }
 
 

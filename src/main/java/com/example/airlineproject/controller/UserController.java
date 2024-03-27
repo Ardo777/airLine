@@ -1,12 +1,9 @@
 package com.example.airlineproject.controller;
 
 import com.example.airlineproject.entity.User;
-
 import com.example.airlineproject.entity.enums.UserRole;
-import com.example.airlineproject.security.SpringUser;
-
 import com.example.airlineproject.repository.UserRepository;
-
+import com.example.airlineproject.security.SpringUser;
 import com.example.airlineproject.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -62,7 +59,6 @@ public class UserController {
     @PostMapping("/user/register")
     public String registration(@ModelAttribute User user,
                                @RequestParam("picture") MultipartFile multipartFile) throws IOException {
-        log.info("Registration attempt for user: " + user.getEmail());
 
         Optional<User> byEmail = userService.findByEmail(user.getEmail());
         if (byEmail.isPresent() && byEmail.get().isActive()) {
@@ -89,13 +85,12 @@ public class UserController {
 
     @GetMapping("/user/register/verification/{mail}")
     public String verificationPage(@PathVariable("mail") String mail, ModelMap modelMap) {
-        log.info("Rendering verification page for email: " + mail);
 
         Optional<User> userOptional = userService.findByEmail(mail);
         if (userOptional.isPresent()) {
             User user = userOptional.get();
             modelMap.addAttribute("user", user);
-        }else {
+        } else {
             log.warn("User with email " + mail + " not found.");
         }
         return "mail/mailVerification";
@@ -103,7 +98,6 @@ public class UserController {
 
     @PostMapping("/user/register/verification")
     public String verification(@RequestParam("id") int id, @RequestParam("verificationCode") String verificationCode) {
-        log.info("Verifying registration with ID: " + id);
 
         Optional<User> byId = userService.findById(id);
         User user = byId.get();
@@ -122,9 +116,6 @@ public class UserController {
     }
 
 
-
-
-
     @GetMapping("/login/successfully")
     public String successLoginPage(@AuthenticationPrincipal SpringUser springUser) {
         if (springUser.getUser().getRole() == UserRole.ADMIN) {
@@ -134,7 +125,6 @@ public class UserController {
         }
         return "redirect:/";
     }
-
 
 
     @GetMapping("/logout")

@@ -12,9 +12,9 @@ public interface ManagerService {
 
     Plane createPlane(String model, double maxBaggage, int maxPassengers, MultipartFile multipartFile);
 
-    Boolean planeExist(Plane plane, User user);
+    Boolean isPlaneExist(Plane plane);
 
     Office saveOffice(Office office,User user);
 
-    Boolean officeExist(Office office, User user);
+    Boolean isOfficeExist(Office office);
 }

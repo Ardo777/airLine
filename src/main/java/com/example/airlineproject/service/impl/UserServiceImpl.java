@@ -38,7 +38,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User save(User user, MultipartFile multipartFile) throws IOException {
-        log.info("Saving user: " + user.getEmail());
 
         Optional<User> byEmail = userRepository.findByEmail(user.getEmail());
         if (byEmail.isPresent() && !byEmail.get().isActive()) {
@@ -86,15 +85,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteById(int id) {
-        log.info("Deleting user with id: " + id);
 
         Optional<User> byId = findById(id);
         if (byId.isPresent()) {
             User user = byId.get();
             userRepository.deleteById(id);
             fileUtil.deletePicture(user.getPicName());
-            log.info("User deleted successfully: " + user.getEmail());
-        }else {
+            log.info("User with this id deleted successfully: " + id);
+        } else {
             log.warn("User with id " + id + " not found.");
         }
     }

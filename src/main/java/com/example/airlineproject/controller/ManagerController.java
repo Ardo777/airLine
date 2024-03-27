@@ -49,7 +49,6 @@ public class ManagerController {
             modelMap.put("officeErrorMsg", officeErrorMsg);
             log.error("Error message: {}", officeErrorMsg);
         }
-        log.debug("Exiting moreDetails method");
         return "/manager/moreDetails";
     }
 
@@ -65,37 +64,35 @@ public class ManagerController {
                               @RequestParam("maxPassengers") int maxPassengers,
                               @AuthenticationPrincipal SpringUser springUser,
                               @RequestParam("picture") MultipartFile multipartFile) throws IOException {
-        log.debug("Entering addAirPlane method");
 
         log.debug("Model: {}", model);
         log.debug("Max Baggage: {}", maxBaggage);
         log.debug("Max Passengers: {}", maxPassengers);
         log.debug("User: {}", springUser.getUsername());
         Plane plane = managerService.createPlane(model, maxBaggage, maxPassengers, multipartFile);
-        Boolean planeResponse = managerService.planeExist(plane, springUser.getUser());
+        Boolean isPlaneExist = managerService.isPlaneExist(plane);
         plane.setCompany(springUser.getUser().getCompany());
-        if (planeResponse) {
+        if (isPlaneExist) {
             String planeErrorMsg = "A plane with these parameters was previously added to your company";
             log.warn(planeErrorMsg);
             return "redirect:/manager/moreDetails?planeErrorMsg=" + planeErrorMsg;
         }
-            managerService.saveAirPlane(plane, multipartFile);
-            String planeSuccessMsg = "Airplane added successfully";
-            log.info(planeSuccessMsg);
-            return "redirect:/manager/moreDetails?planeSuccessMsg=" + planeSuccessMsg;
-        }
+        managerService.saveAirPlane(plane, multipartFile);
+        String planeSuccessMsg = "Airplane added successfully";
+        log.info(planeSuccessMsg);
+        return "redirect:/manager/moreDetails?planeSuccessMsg=" + planeSuccessMsg;
+    }
 
 
     @PostMapping("/addOffice")
     public String addOffice(@ModelAttribute Office office,
                             @AuthenticationPrincipal SpringUser springUser
     ) {
-        log.info("Received request to add office");
 
-        Boolean officeResponse = managerService.officeExist(office, springUser.getUser());
+        Boolean isOfficeExist = managerService.isOfficeExist(office);
         office.setCompany(springUser.getUser().getCompany());
-        if (officeResponse){
-            String officeErrorMsg="An office already exists at this address";
+        if (isOfficeExist) {
+            String officeErrorMsg = "An office already exists at this address";
             log.warn("Office already exists at this address");
             return "redirect:/manager/moreDetails?officeErrorMsg=" + officeErrorMsg;
         }

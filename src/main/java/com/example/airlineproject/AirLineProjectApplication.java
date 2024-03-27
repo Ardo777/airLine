@@ -14,9 +14,5 @@ public class AirLineProjectApplication {
         SpringApplication.run(AirLineProjectApplication.class, args);
     }
 
-    @Bean
-    public RestTemplate restTemplate() {
-        return new RestTemplate();
-    }
 
 }
