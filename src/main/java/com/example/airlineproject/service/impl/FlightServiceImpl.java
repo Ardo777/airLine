@@ -29,10 +29,10 @@ public class FlightServiceImpl implements FlightService {
     @Override
     public Flight save(FlightDto flightDto, SpringUser springUser, int planeId) {
         User user = springUser.getUser();
-        log.info("Received request to save flight for user: {}", user.getUsername());
+        log.info("Received request to save flight for user: {}", user.getEmail());
         Company company = companyService.findByUser(user);
         if (company != null) {
-            log.debug("Found company for user: {}", user.getUsername());
+            log.debug("Found company for user: {}", user.getEmail());
             Optional<Plane> byId = planeRepository.findById(planeId);
             if (byId.isPresent()) {
                 log.debug("Found plane with ID: {}", planeId);
