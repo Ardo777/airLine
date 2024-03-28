@@ -6,5 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PlaneRepository extends JpaRepository<Plane, Integer> {
+    boolean existsByModelAndMaxBaggageAndMaxPassengers(String model, double maxBaggage, int maxPassengers);
 
 }

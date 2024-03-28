@@ -6,6 +6,7 @@ import com.example.airlineproject.repository.UserRepository;
 import com.example.airlineproject.service.UserService;
 import com.example.airlineproject.util.FileUtil;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,6 +22,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
@@ -36,15 +38,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User save(User user, MultipartFile multipartFile) throws IOException {
+
         Optional<User> byEmail = userRepository.findByEmail(user.getEmail());
         if (byEmail.isPresent() && !byEmail.get().isActive()) {
             userRepository.deleteById(byEmail.get().getId());
             validation(user, multipartFile);
-            userRepository.save(user);
+            User save = userRepository.save(user);
+            log.info("User saved successfully: " + save.getEmail());
             return user;
         } else {
             validation(user, multipartFile);
-            userRepository.save(user);
+            User save = userRepository.save(user);
+            log.info("User saved successfully: " + save.getEmail());
             return user;
         }
     }
@@ -80,11 +85,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteById(int id) {
+
         Optional<User> byId = findById(id);
         if (byId.isPresent()) {
             User user = byId.get();
             userRepository.deleteById(id);
             fileUtil.deletePicture(user.getPicName());
+            log.info("User with this id deleted successfully: " + id);
+        } else {
+            log.warn("User with id " + id + " not found.");
         }
     }
 
