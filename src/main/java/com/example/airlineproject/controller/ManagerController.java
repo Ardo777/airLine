@@ -1,14 +1,22 @@
 package com.example.airlineproject.controller;
 
+
+import com.example.airlineproject.dto.FlightDto;
+import com.example.airlineproject.repository.PlaneRepository;
+import com.example.airlineproject.security.SpringUser;
+import com.example.airlineproject.service.FlightService;
 import com.example.airlineproject.entity.Office;
 import com.example.airlineproject.entity.Plane;
-import com.example.airlineproject.security.SpringUser;
 import com.example.airlineproject.service.ManagerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -19,14 +27,13 @@ import java.io.IOException;
 @RequestMapping("/manager")
 @Slf4j
 public class ManagerController {
-
     private final ManagerService managerService;
-
+    private final PlaneRepository planeRepository;
+    private final FlightService flightService;
     @GetMapping
     public String managerPage() {
         return "/manager/index";
     }
-
     @GetMapping("/moreDetails")
     public String moreDetails(@RequestParam(value = "planeSuccessMsg", required = false) String planeSuccessMsg,
                               @RequestParam(value = "planeErrorMsg", required = false) String planeErrorMsg,
@@ -51,6 +58,19 @@ public class ManagerController {
         }
         return "/manager/moreDetails";
     }
+
+
+    @GetMapping("/manager/addFlight")
+    public String addFlightPage(ModelMap modelMap) {
+        modelMap.addAttribute("planes", planeRepository.findAll());
+        log.info("List of planes sent to HTML");
+        return "manager/moreDetails";
+    }
+
+    @PostMapping("/manager/addFlight")
+    public String addFlight(@ModelAttribute FlightDto flightDto, @RequestParam("plane") int planeId, @AuthenticationPrincipal SpringUser springUser) {
+        flightService.save(flightDto, springUser, planeId);
+        return "redirect:/manager";
 
 
     @GetMapping("/addFlight")

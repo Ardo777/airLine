@@ -145,4 +145,12 @@ public class CompanyServiceImpl implements CompanyService {
         }
     }
 
+    @Override
+    public Company findByUser(User user) {
+        Optional<Company> byUser = companyRepository.findByUser(user);
+        return byUser.orElse(null);
+    }
 }
+
+
+
