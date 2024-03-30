@@ -2,7 +2,6 @@ package com.example.airlineproject.controller;
 
 import com.example.airlineproject.entity.User;
 import com.example.airlineproject.service.UserService;
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -34,7 +33,7 @@ public class AdminController {
     @GetMapping("/admin/users")
     public String usersPage(
             @RequestParam(value = "page", defaultValue = "1", required = false) int page,
-            @RequestParam(value = "size", defaultValue = "18", required = false) int size,
+            @RequestParam(value = "size", defaultValue = "15", required = false) int size,
             ModelMap modelMap) {
         log.info("Fetching users for page " + page + " with size " + size);
         Pageable pageable = PageRequest.of(page - 1, size);
@@ -52,7 +51,6 @@ public class AdminController {
     }
 
 
-
     @GetMapping("/admin/delete/{id}")
     public String deleteUser(@PathVariable("id") int id) {
         log.info("Deleting user with id: " + id);
@@ -66,13 +64,13 @@ public class AdminController {
         log.info("Fetching user profile for id: " + id);
 
         Optional<User> byId = userService.findById(id);
-       if (byId.isPresent()){
-           User user = byId.get();
-           modelMap.addAttribute("user", user);
-           log.info("User profile fetched successfully");
-       }else {
-           log.warn("User with id " + id + " not found.");
-       }
+        if (byId.isPresent()) {
+            User user = byId.get();
+            modelMap.addAttribute("user", user);
+            log.info("User profile fetched successfully");
+        } else {
+            log.warn("User with id " + id + " not found.");
+        }
 
         return "/admin/user";
     }
