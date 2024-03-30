@@ -1,6 +1,7 @@
 package com.example.airlineproject.service.impl;
 
 import com.example.airlineproject.entity.User;
+import com.example.airlineproject.service.MailService;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +13,7 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 @Service
 @RequiredArgsConstructor
-public class MailServiceImpl {
+public class MailServiceImpl implements MailService {
 
     private final JavaMailSender javaMailSender;
     private final TemplateEngine templateEngine;

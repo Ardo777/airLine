@@ -3,6 +3,7 @@ package com.example.airlineproject.service.impl;
 import com.example.airlineproject.entity.User;
 import com.example.airlineproject.entity.enums.UserRole;
 import com.example.airlineproject.repository.UserRepository;
+import com.example.airlineproject.service.MailService;
 import com.example.airlineproject.service.UserService;
 import com.example.airlineproject.util.FileUtil;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +15,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.util.Optional;
@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
-    private final MailServiceImpl mailService;
+    private final MailService mailService;
 
     private final PasswordEncoder passwordEncoder;
 
@@ -57,26 +57,14 @@ public class UserServiceImpl implements UserService {
     private void validation(User user, MultipartFile multipartFile) throws IOException {
         user.setRole(UserRole.USER);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        addPicture(multipartFile, user);
+        String picName = fileUtil.saveFile(multipartFile);
+        user.setPicName(picName);
         String lUUID = String.format("%040d", new BigInteger(UUID.randomUUID().toString().replace("-", ""), 16));
         String uuid = lUUID.substring(0, Math.min(lUUID.length(), 6));
         mailService.sendMail(user);
         user.setVerificationCode(uuid);
     }
 
-    private void addPicture(MultipartFile multipartFile, User user) throws IOException {
-        if (multipartFile != null && !multipartFile.isEmpty()) {
-            String picName = System.currentTimeMillis() + "_" + multipartFile.getOriginalFilename();
-            File picturesDir = new File(uploadDirectory);
-            if (!picturesDir.exists()) {
-                picturesDir.mkdirs();
-            }
-            String filePath = picturesDir.getAbsolutePath() + "/" + picName;
-            File file = new File(filePath);
-            multipartFile.transferTo(file);
-            user.setPicName(picName);
-        }
-    }
 
     @Override
     public Optional<User> findByEmail(String email) {

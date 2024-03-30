@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Data
@@ -24,8 +25,8 @@ public class User{
     private String name;
     @NotEmpty(message = "please write your surname, surname can't be empty")
     private String surname;
-    @Email(message = "account is not registered")
-    @NotEmpty(message = "please write your email, email can't be empty")
+    @Email(message = "Invalid email format")
+    @Pattern(regexp = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$", message = "Invalid email address")
     private String email;
     @Size(min = 6, message = "Password cannot be shorter than 6 characters")
     @NotEmpty(message = "please write your password, password can't be empty")
