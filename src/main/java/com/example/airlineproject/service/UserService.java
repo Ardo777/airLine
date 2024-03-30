@@ -18,4 +18,5 @@ public interface UserService {
     Optional<User> findById(int id);
 
     Page<User> findAll(Pageable pageable);
+    int getTotalUsersByActive(boolean isActive);
 }

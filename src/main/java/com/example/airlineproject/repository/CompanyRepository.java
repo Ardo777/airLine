@@ -20,4 +20,7 @@ public interface CompanyRepository extends JpaRepository<Company, Integer> {
     @Query("SELECT c FROM Company c WHERE c.isActive = :active")
     List<Company> findByActive(boolean active);
 
+    @Query("select count(*) from Company m where m.isActive = ?1")
+    int totalCompaniesByActive(boolean isActive);
+
 }

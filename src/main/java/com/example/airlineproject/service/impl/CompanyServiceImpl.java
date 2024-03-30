@@ -150,6 +150,11 @@ public class CompanyServiceImpl implements CompanyService {
         Optional<Company> byUser = companyRepository.findByUser(user);
         return byUser.orElse(null);
     }
+
+    @Override
+    public int getCompaniesCount(boolean isActive) {
+        return companyRepository.totalCompaniesByActive(isActive);
+    }
 }
 
 

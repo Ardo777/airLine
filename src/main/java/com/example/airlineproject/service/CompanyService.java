@@ -21,4 +21,5 @@ public interface CompanyService {
     void delete(int id);
 
     Company findByUser(User user);
+    int getCompaniesCount(boolean isActive);
 }

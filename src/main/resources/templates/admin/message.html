@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>INSPINIA | Widgets</title>
+
+    <link href="/staticAdminManager/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/staticAdminManager/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="/staticAdminManager/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="/staticAdminManager/css/animate.css" rel="stylesheet">
+    <link href="/staticAdminManager/css/style.css" rel="stylesheet">
+
+        <style>
+         .pagination-container {
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             margin-top: 20px;
+         }
+
+        .pagination-item {
+            display: inline-block;
+            padding: 5px 12px;
+            margin: 0 2px;
+            border-radius: 0;
+            text-decoration: none;
+            color: #333;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+            width: 35px;
+            text-align: center;
+        }
+
+        .pagination-item:hover {
+            background-color: #f5f5f5;
+            color: #333;
+            border-color: #ccc;
+        }
+
+        .pagination-item.active {
+            background-color: #5c7a97;
+            color: #fff;
+            border-color: #5c7a97;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="wrapper">
+    <!--header start-->
+    <th:block th:insert="~{/fragments/headerAdmin::header}"/>
+    <!--header end-->
+    <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i>
+                    </a>
+                    <form role="search" class="navbar-form-custom" action="search_results.html">
+                        <div class="form-group">
+                            <input type="text" placeholder="Search for something..." class="form-control"
+                                   name="top-search" id="top-search">
+                        </div>
+                    </form>
+                </div>
+                <ul class="nav navbar-top-links navbar-right">
+                    <li>
+                        <span class="m-r-sm text-muted welcome-message">Welcome to INSPINIA+ Admin Theme.</span>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                            <i class="fa fa-envelope"></i> <span class="label label-warning">16</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-messages">
+                            <li>
+                                <div class="dropdown-messages-box">
+                                    <a class="dropdown-item float-left" href="profile.html">
+                                        <img alt="image" class="rounded-circle" src="img/a7.jpg">
+                                    </a>
+                                    <div class="media-body">
+                                        <small class="float-right">46h ago</small>
+                                        <strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>.
+                                        <br>
+                                        <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="dropdown-divider"></li>
+                            <li>
+                                <div class="dropdown-messages-box">
+                                    <a class="dropdown-item float-left" href="profile.html">
+                                        <img alt="image" class="rounded-circle" src="img/a4.jpg">
+                                    </a>
+                                    <div class="media-body ">
+                                        <small class="float-right text-navy">5h ago</small>
+                                        <strong>Chris Johnatan Overtunk</strong> started following <strong>Monica
+                                        Smith</strong>. <br>
+                                        <small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="dropdown-divider"></li>
+                            <li>
+                                <div class="dropdown-messages-box">
+                                    <a class="dropdown-item float-left" href="profile.html">
+                                        <img alt="image" class="rounded-circle" src="img/profile.jpg">
+                                    </a>
+                                    <div class="media-body ">
+                                        <small class="float-right">23h ago</small>
+                                        <strong>Monica Smith</strong> love <strong>Kim Smith</strong>. <br>
+                                        <small class="text-muted">2 days ago at 2:30 am - 11.06.2014</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="dropdown-divider"></li>
+                            <li>
+                                <div class="text-center link-block">
+                                    <a href="mailbox.html" class="dropdown-item">
+                                        <i class="fa fa-envelope"></i> <strong>Read All Messages</strong>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                            <i class="fa fa-bell"></i> <span class="label label-primary">8</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-alerts">
+                            <li>
+                                <a href="mailbox.html" class="dropdown-item">
+                                    <div>
+                                        <i class="fa fa-envelope fa-fw"></i> You have 16 messages
+                                        <span class="float-right text-muted small">4 minutes ago</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="dropdown-divider"></li>
+                            <li>
+                                <a href="profile.html" class="dropdown-item">
+                                    <div>
+                                        <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                        <span class="float-right text-muted small">12 minutes ago</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="dropdown-divider"></li>
+                            <li>
+                                <a href="grid_options.html" class="dropdown-item">
+                                    <div>
+                                        <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                        <span class="float-right text-muted small">4 minutes ago</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="dropdown-divider"></li>
+                            <li>
+                                <div class="text-center link-block">
+                                    <a href="notifications.html" class="dropdown-item">
+                                        <strong>See All Alerts</strong>
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                    <li>
+                        <a href="login.html">
+                            <i class="fa fa-sign-out"></i> Log out
+                        </a>
+                    </li>
+                </ul>
+
+            </nav>
+        </div>
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row m-t-lg">
+                <div class="col-lg-12">
+                    <div class="ibox ">
+                        <div class="ibox-content">
+                            <div>
+                                <div class="chat-activity-list">
+                                    <div th:each="message:${messages}">
+                                        <div class="chat-element right" th:if="${message.from.id == currentUser.id}">
+                                            <a href="#" class="float-right">
+                                                <img alt="image" class="rounded-circle" src="img/a4.jpg">
+                                            </a>
+                                            <div class="media-body text-right ">
+                                                <strong th:text="${message.from.name}"></strong>
+                                                <p class="m-b-xs" th:text="${message.message}">
+                                                </p>
+                                                <small class="text-muted" th:text="${message.messageDate}"></small>
+                                            </div>
+                                        </div>
+                                        <div class="chat-element" th:if="${message.from.id != currentUser.id}">
+                                            <a href="#" class="float-left">
+                                                <img alt="image" class="rounded-circle" src="img/a2.jpg">
+                                            </a>
+                                            <div class="media-body ">
+                                                <strong th:text="${message.from.name}"></strong>
+                                                <p class="m-b-xs" th:text="${message.message}">
+                                                </p>
+                                                <small class="text-muted" th:text="${message.messageDate}"></small>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chat-form">
+                                <form role="form" action="/message/chat" method="post">
+                                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                                    <input type="hidden" name="to" th:value="${user.id}" />
+                                    <div class="form-group">
+                                        <input class="form-control" name="message" placeholder="Message" >
+                                    </div>
+                                    <div class="text-right">
+                                        <input type="submit" class="btn btn-sm btn-primary m-t-n-xs" value="Send message">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="float-right">
+                    10GB of <strong>250GB</strong> Free.
+                </div>
+                <div>
+                    <strong>Copyright</strong> Example Company &copy; 2014-2018
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Mainly scripts -->
+<script src="/staticAdminManager/js/jquery-3.1.1.min.js"></script>
+<script src="/staticAdminManager/js/popper.min.js"></script>
+<script src="/staticAdminManager/js/bootstrap.js"></script>
+<script src="/staticAdminManager/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="/staticAdminManager/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- jquery UI -->
+<script src="/staticAdminManager/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+<!-- Touch Punch - Touch Event Support for jQuery UI -->
+<script src="/staticAdminManager/js/plugins/touchpunch/jquery.ui.touch-punch.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="/staticAdminManager/js/inspinia.js"></script>
+<script src="/staticAdminManager/js/plugins/pace/pace.min.js"></script>
+
+<!-- iCheck -->
+<script src="/staticAdminManager/js/plugins/iCheck/icheck.min.js"></script>
+
+<!-- Jvectormap -->
+<script src="/staticAdminManager/js/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js"></script>
+<script src="/staticAdminManager/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+
+<!-- Flot -->
+<script src="/staticAdminManager/js/plugins/flot/jquery.flot.js"></script>
+<script src="/staticAdminManager/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+<script src="/staticAdminManager/js/plugins/flot/jquery.flot.resize.js"></script>
+<script>
+    $(document).ready(function () {
+
+        var data1 = [
+            {label: "Data 1", data: d1, color: '#17a084'},
+            {label: "Data 2", data: d2, color: '#127e68'}
+        ];
+        $.plot($("#flot-chart1"), data1, {
+            xaxis: {
+                tickDecimals: 0
+            },
+            series: {
+                lines: {
+                    show: true,
+                    fill: true,
+                    fillColor: {
+                        colors: [{
+                            opacity: 1
+                        }, {
+                            opacity: 1
+                        }]
+                    }
+                },
+                points: {
+                    width: 0.1,
+                    show: false
+                }
+            },
+            grid: {
+                show: false,
+                borderWidth: 0
+            },
+            legend: {
+                show: false
+            }
+        });
+
+        var data2 = [
+            {label: "Data 1", data: d1, color: '#19a0a1'}
+        ];
+        $.plot($("#flot-chart2"), data2, {
+            xaxis: {
+                tickDecimals: 0
+            },
+            series: {
+                lines: {
+                    show: true,
+                    fill: true,
+                    fillColor: {
+                        colors: [{
+                            opacity: 1
+                        }, {
+                            opacity: 1
+                        }]
+                    }
+                },
+                points: {
+                    width: 0.1,
+                    show: false
+                }
+            },
+            grid: {
+                show: false,
+                borderWidth: 0
+            },
+            legend: {
+                show: false
+            }
+        });
+
+        var data3 = [
+            {label: "Data 1", data: d1, color: '#fbbe7b'},
+            {label: "Data 2", data: d2, color: '#f8ac59'}
+        ];
+        $.plot($("#flot-chart3"), data3, {
+            xaxis: {
+                tickDecimals: 0
+            },
+            series: {
+                lines: {
+                    show: true,
+                    fill: true,
+                    fillColor: {
+                        colors: [{
+                            opacity: 1
+                        }, {
+                            opacity: 1
+                        }]
+                    }
+                },
+                points: {
+                    width: 0.1,
+                    show: false
+                }
+            },
+            grid: {
+                show: false,
+                borderWidth: 0
+            },
+            legend: {
+                show: false
+            }
+        });
+
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green'
+        });
+
+        $(".todo-list").sortable({
+            placeholder: "sort-highlight",
+            handle: ".handle",
+            forcePlaceholderSize: true,
+            zIndex: 999999
+        }).disableSelection();
+
+        var mapData = {
+            "US": 498,
+            "SA": 200,
+            "CA": 1300,
+            "DE": 220,
+            "FR": 540,
+            "CN": 120,
+            "AU": 760,
+            "BR": 550,
+            "IN": 200,
+            "GB": 120,
+            "RU": 2000
+        };
+
+        $('#world-map').vectorMap({
+            map: 'world_mill_en',
+            backgroundColor: "transparent",
+            regionStyle: {
+                initial: {
+                    fill: '#e4e4e4',
+                    "fill-opacity": 1,
+                    stroke: 'none',
+                    "stroke-width": 0,
+                    "stroke-opacity": 0
+                }
+            },
+            series: {
+                regions: [{
+                    values: mapData,
+                    scale: ["#1ab394", "#22d6b1"],
+                    normalizeFunction: 'polynomial'
+                }]
+            }
+        });
+    });
+</script>
+
+
+</body>
+
+</html>

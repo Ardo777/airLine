@@ -106,4 +106,8 @@ public class UserServiceImpl implements UserService {
     public Page<User> findAll(Pageable pageable) {
         return userRepository.findAll(pageable);
     }
+    @Override
+    public int getTotalUsersByActive(boolean isActive) {
+        return userRepository.totalUsersByActive(isActive);
+    }
 }

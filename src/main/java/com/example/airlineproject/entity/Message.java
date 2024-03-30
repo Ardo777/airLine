@@ -2,6 +2,7 @@ package com.example.airlineproject.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -13,6 +14,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 @Table(name = "message")
 public class Message {
     @Id
@@ -26,6 +28,7 @@ public class Message {
     private User to;
     @NotEmpty(message = "write something, message can't be empty")
     private String message;
+    private boolean seen;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date messageDate;
 }
