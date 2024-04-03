@@ -37,7 +37,7 @@ public class User{
     private String picName;
     @Transient
     private String confirmPassword;
-    @ManyToOne
+    @OneToOne
     private Company company;
 
 }
