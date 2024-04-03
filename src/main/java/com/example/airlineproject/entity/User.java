@@ -10,6 +10,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
@@ -40,5 +41,10 @@ public class User{
     private String confirmPassword;
     @ManyToOne
     private Company company;
+    private LocalDate dateBirthday;
 
+
+    public User(int i, String alice, String smith, String mail, String password, UserRole userRole, boolean b, String verificationCode, String picName, Object o, Object o1) {
+
+    }
 }
