@@ -121,10 +121,13 @@ public class ManagerController {
 
     @PostMapping("/addTeam")
     public String addFlight(@ModelAttribute TeamDto teamDto, @AuthenticationPrincipal SpringUser springUser) {
-        TeamMember save = teamService.save(teamDto, springUser);
-        if (save != null) {
+        log.info("Attempting to add team with data: {}", teamDto);
+        TeamMember savedTeamMember = teamService.save(teamDto, springUser);
+        if (savedTeamMember != null) {
+            log.info("Team member added successfully with ID: {}", savedTeamMember.getId());
             return "redirect:/manager";
+        } else {
+            return "redirect:/manager/moreDetails";
         }
-        return "redirect:/manager/moreDetails";
     }
 }

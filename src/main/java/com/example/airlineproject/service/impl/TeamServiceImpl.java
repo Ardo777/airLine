@@ -27,8 +27,14 @@ public class TeamServiceImpl implements TeamService {
             if (company != null) {
                 TeamMember teamMember = teamMapper.map(teamDto);
                 teamMember.setCompany(company);
-                return teamRepository.save(teamMember);
+                TeamMember savedTeamMember = teamRepository.save(teamMember);
+                log.info("Saved team member with ID: {}", savedTeamMember.getId());
+                return savedTeamMember;
+            } else {
+                log.warn("Company is null for user {}", user.getId());
             }
+        } else {
+            log.warn("User is null in SpringUser object");
         }
         return null;
     }
