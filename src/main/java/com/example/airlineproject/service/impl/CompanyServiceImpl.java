@@ -4,6 +4,7 @@ import com.example.airlineproject.entity.Company;
 import com.example.airlineproject.entity.User;
 import com.example.airlineproject.entity.enums.UserRole;
 import com.example.airlineproject.repository.CompanyRepository;
+import com.example.airlineproject.repository.UserRepository;
 import com.example.airlineproject.service.CompanyService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +22,7 @@ import java.util.Optional;
 @Slf4j
 public class CompanyServiceImpl implements CompanyService {
     private final CompanyRepository companyRepository;
+    private final UserRepository userRepository;
 
     @Value("${picture.upload.directory}")
     private String uploadDirectory;
@@ -114,6 +116,8 @@ public class CompanyServiceImpl implements CompanyService {
             company.setActive(true);
             company.getUser().setRole(UserRole.valueOf("MANAGER"));
             companyRepository.save(company);
+            company.getUser().setCompany(company);
+            userRepository.save(company.getUser());
             log.info("User role changed to MANAGER for company with ID {}", id);
         } else {
             log.warn("Company with ID {} not found", id);

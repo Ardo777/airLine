@@ -17,7 +17,7 @@ public interface CompanyRepository extends JpaRepository<Company, Integer> {
 
     Optional<Company> findByName(String name);
 
-    @Query("SELECT c FROM Company c WHERE c.isActive = :active")
+    @Query("SELECT c FROM Company c WHERE c.isActive = ?1")
     List<Company> findByActive(boolean active);
 
 }
