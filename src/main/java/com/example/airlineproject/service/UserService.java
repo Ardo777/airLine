@@ -13,9 +13,13 @@ public interface UserService {
 
     Optional<User> findByEmail(String email);
 
-    void deleteById(int id);
+    Page<User> findAll(Pageable pageable);
 
     Optional<User> findById(int id);
 
-    Page<User> findAll(Pageable pageable);
+    void deleteById(int id);
+
+    void verificationCodeSending(User user, String email);
+
+    boolean recoveryPassword(User user, String newPassword);
 }

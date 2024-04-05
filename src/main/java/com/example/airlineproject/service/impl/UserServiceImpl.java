@@ -94,4 +94,22 @@ public class UserServiceImpl implements UserService {
     public Page<User> findAll(Pageable pageable) {
         return userRepository.findAll(pageable);
     }
+
+    @Override
+    public void verificationCodeSending(User user, String email) {
+        String lUUID = String.format("%040d", new BigInteger(UUID.randomUUID().toString().replace("-", ""), 16));
+        String uuid = lUUID.substring(0, Math.min(lUUID.length(), 6));
+        user.setVerificationCode(uuid);
+        userRepository.save(user);
+        mailService.sendRecoveryMail(user);
+    }
+
+    @Override
+    public boolean recoveryPassword(User user, String newPassword) {
+        user.setPassword(passwordEncoder.encode(newPassword));
+        userRepository.save(user);
+        return true;
+    }
+
+
 }

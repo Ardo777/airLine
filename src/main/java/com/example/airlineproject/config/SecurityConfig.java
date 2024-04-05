@@ -6,11 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
-
-
-import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 
@@ -24,7 +20,7 @@ public class SecurityConfig {
         ).authorizeHttpRequests(authorize ->
                 authorize
                         .requestMatchers("/").permitAll()
-                        .requestMatchers("/user/register", "/user/login", "/user/register/verification/**").permitAll()
+                        .requestMatchers("/user/register", "/user/login/**", "/user/register/verification/**", "/user/login/successfully/**", "/user/codeVerification/**", "/user/forgetPassword/**", "/user/recovery/**").permitAll()
                         .requestMatchers("/admin/**").hasAnyAuthority(UserRole.ADMIN.name())
                         .requestMatchers("/manager/**").hasAnyAuthority(UserRole.MANAGER.name())
                         .requestMatchers(HttpMethod.GET, "/css/**", "/js/**",
@@ -34,10 +30,10 @@ public class SecurityConfig {
                         .authenticated()
         ).formLogin(form ->
                 form.loginPage("/user/login")
-                        .loginProcessingUrl("/login")
-                        .successForwardUrl("/login/successfully")
-                        .defaultSuccessUrl("/login/successfully", true)
-                        .failureUrl("/user/login?errorMessage=your username or password is incorrect")
+                        .loginProcessingUrl("/user/login")
+                        .successForwardUrl("/user/login/successfully")
+                        .defaultSuccessUrl("/user/login/successfully", true)
+                        .failureUrl("/user/login?errorMessage=Your username or password is incorrect")
         );
 
         return httpSecurity.build();
