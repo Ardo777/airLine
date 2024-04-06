@@ -142,7 +142,6 @@ public class UserController {
         Optional<User> byEmail = userService.findByEmail(email);
         if (byEmail.isEmpty()) {
             String emailMsg = "User with this email does not exist";
-            log.warn(emailMsg);
             return "redirect:/user/forgetPassword?emailMsg=" + emailMsg;
         }
         User user = byEmail.get();
