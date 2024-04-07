@@ -37,21 +37,20 @@ public class ManagerServiceImpl implements ManagerService {
     }
 
     @Override
-    public Plane createPlane(String model, double maxBaggage, int maxPassengers, MultipartFile multipartFile) {
+    public Plane createPlane(String model, double maxBaggage, int countBusiness,int countEconomy, MultipartFile multipartFile) {
         log.info("Creating plane with model: " + model);
 
-        Plane plane = Plane.builder()
+        return Plane.builder()
                 .model(model)
                 .maxBaggage(maxBaggage)
-                .maxPassengers(maxPassengers)
+                .countBusiness(countBusiness)
+                .countEconomy(countEconomy)
                 .build();
-
-        return plane;
     }
 
     @Override
-    public Boolean isPlaneExist(Plane plane) {
-        boolean isPlaneExist = planeRepository.existsByModelAndMaxBaggageAndMaxPassengers(plane.getModel(), plane.getMaxBaggage(), plane.getMaxPassengers());
+    public Boolean isPlaneExist(Plane plane,User user) {
+        boolean isPlaneExist = planeRepository.existsByModelAndMaxBaggageAndCountBusinessAndCountEconomyAndCompany(plane.getModel(),plane.getMaxBaggage(),plane.getCountBusiness(),plane.getCountEconomy(),user.getCompany());
         if (isPlaneExist) {
             log.info("Plane exists: " + plane.getModel());
             return true;

@@ -10,9 +10,9 @@ import java.io.IOException;
 public interface ManagerService {
     void saveAirPlane(Plane plane, MultipartFile multipartFile) throws IOException;
 
-    Plane createPlane(String model, double maxBaggage, int maxPassengers, MultipartFile multipartFile);
+    Plane createPlane(String model, double maxBaggage, int countBusiness,int countEconomy, MultipartFile multipartFile);
 
-    Boolean isPlaneExist(Plane plane);
+    Boolean isPlaneExist(Plane plane,User user);
 
     Office saveOffice(Office office,User user);
 

@@ -67,17 +67,20 @@
                     Sign In
                 </h4>
                 <div class="success-message" th:text="${successMsg}"></div>
-                <form class="form-box px-3" action="/login"  method="post">
-                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-                    <span th:if="${errorMessage != null}" th:text="${errorMessage}"style="color: red;"></span>
+                <form class="form-box px-3" action="/login" method="post">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                    <span th:if="${errorMessage != null}" th:text="${errorMessage}" style="color: red;"></span>
                     <div class="form-input">
                         Email: <input type="text" name="username" placeholder="Email Address" tabindex="10" required>
                     </div>
-                    <div class="form-input">
-                        Remember Me<input type="checkbox" name="remember-me" />
-                    </div>
+
                     <div class="form-input">
                         Password: <input type="password" name="password" placeholder="Password" required>
+                    </div>
+                    <div class="form-input">
+                        Remember Me <label>
+                        <input type="checkbox" name="remember-me"/>
+                    </label>
                     </div>
                     <div class="mb-3">
                         <button type="submit" class="btn btn-block text-uppercase">

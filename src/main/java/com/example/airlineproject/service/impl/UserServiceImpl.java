@@ -121,7 +121,7 @@ public class UserServiceImpl implements UserService {
         JPAQuery<User> query = new JPAQuery<>(entityManager);
         QUser qUser = QUser.user;
         JPAQueryBase<User, JPAQuery<User>> from = query.from(qUser);
-        List<User> fetch = new ArrayList<>();
+        List<User> fetch;
         if (StringUtils.isNotBlank(name) && StringUtils.isNotBlank(surname)) {
             from.where(qUser.name.contains(name).and(qUser.surname.contains(surname)));
             fetch = query.fetch();
