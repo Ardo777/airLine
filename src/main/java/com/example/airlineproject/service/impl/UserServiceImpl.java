@@ -1,12 +1,20 @@
 package com.example.airlineproject.service.impl;
 
+import com.example.airlineproject.dto.UserResponseDto;
+import com.example.airlineproject.entity.QUser;
 import com.example.airlineproject.entity.User;
 import com.example.airlineproject.entity.enums.UserRole;
+import com.example.airlineproject.mapper.UserMapper;
 import com.example.airlineproject.repository.UserRepository;
+import com.example.airlineproject.service.MailService;
 import com.example.airlineproject.service.UserService;
 import com.example.airlineproject.util.FileUtil;
+import com.querydsl.jpa.JPAQueryBase;
+import com.querydsl.jpa.impl.JPAQuery;
+import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,9 +22,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -27,11 +36,14 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
-    private final MailServiceImpl mailService;
+    private final MailService mailService;
 
     private final PasswordEncoder passwordEncoder;
+    private final UserMapper userMapper;
 
     private final FileUtil fileUtil;
+
+    private final EntityManager entityManager;
 
     @Value("${picture.upload.directory}")
     private String uploadDirectory;
@@ -46,37 +58,24 @@ public class UserServiceImpl implements UserService {
             User save = userRepository.save(user);
             log.info("User saved successfully: " + save.getEmail());
             return user;
-        } else {
-            validation(user, multipartFile);
-            User save = userRepository.save(user);
-            log.info("User saved successfully: " + save.getEmail());
-            return user;
         }
+        validation(user, multipartFile);
+        User save = userRepository.save(user);
+        log.info("User saved successfully: " + save.getEmail());
+        return user;
     }
 
     private void validation(User user, MultipartFile multipartFile) throws IOException {
         user.setRole(UserRole.USER);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        addPicture(multipartFile, user);
+        String picName = fileUtil.saveFile(multipartFile);
+        user.setPicName(picName);
         String lUUID = String.format("%040d", new BigInteger(UUID.randomUUID().toString().replace("-", ""), 16));
         String uuid = lUUID.substring(0, Math.min(lUUID.length(), 6));
         mailService.sendMail(user);
         user.setVerificationCode(uuid);
     }
 
-    private void addPicture(MultipartFile multipartFile, User user) throws IOException {
-        if (multipartFile != null && !multipartFile.isEmpty()) {
-            String picName = System.currentTimeMillis() + "_" + multipartFile.getOriginalFilename();
-            File picturesDir = new File(uploadDirectory);
-            if (!picturesDir.exists()) {
-                picturesDir.mkdirs();
-            }
-            String filePath = picturesDir.getAbsolutePath() + "/" + picName;
-            File file = new File(filePath);
-            multipartFile.transferTo(file);
-            user.setPicName(picName);
-        }
-    }
 
     @Override
     public Optional<User> findByEmail(String email) {
@@ -105,5 +104,38 @@ public class UserServiceImpl implements UserService {
     @Override
     public Page<User> findAll(Pageable pageable) {
         return userRepository.findAll(pageable);
+    }
+
+    @Override
+    public List<UserResponseDto> getAllByFilter(String keyword) {
+        String name = null;
+        String surname = null;
+        if (keyword.contains(" ")) {
+            String[] keywords = keyword.split("\\s+");
+            name = keywords[0];
+            surname = keywords[1];
+        }
+
+        log.debug("Filtering users by keyword: {}", keyword);
+
+        JPAQuery<User> query = new JPAQuery<>(entityManager);
+        QUser qUser = QUser.user;
+        JPAQueryBase<User, JPAQuery<User>> from = query.from(qUser);
+        List<User> fetch;
+        if (StringUtils.isNotBlank(name) && StringUtils.isNotBlank(surname)) {
+            from.where(qUser.name.contains(name).and(qUser.surname.contains(surname)));
+            fetch = query.fetch();
+        } else {
+            from.where(qUser.name.contains(keyword).or(qUser.surname.contains((keyword))));
+            fetch = query.fetch();
+        }
+        List<UserResponseDto> userFilterDtoList = new ArrayList<>();
+        for (User user : fetch) {
+            userFilterDtoList.add(userMapper.mapToDto(user));
+        }
+
+        log.debug("Filtered users count: {}", userFilterDtoList.size());
+
+        return userFilterDtoList;
     }
 }

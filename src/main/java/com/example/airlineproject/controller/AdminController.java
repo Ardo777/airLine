@@ -1,8 +1,8 @@
 package com.example.airlineproject.controller;
 
+import com.example.airlineproject.dto.UserResponseDto;
 import com.example.airlineproject.entity.User;
 import com.example.airlineproject.service.UserService;
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -10,9 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,19 +20,20 @@ import java.util.stream.IntStream;
 @Controller
 @RequiredArgsConstructor
 @Slf4j
+@RequestMapping("/admin")
 public class AdminController {
 
     private final UserService userService;
 
-    @GetMapping("/admin")
+    @GetMapping
     public String adminPage() {
         return "/admin/index";
     }
 
-    @GetMapping("/admin/users")
+    @GetMapping("/users")
     public String usersPage(
             @RequestParam(value = "page", defaultValue = "1", required = false) int page,
-            @RequestParam(value = "size", defaultValue = "18", required = false) int size,
+            @RequestParam(value = "size", defaultValue = "15", required = false) int size,
             ModelMap modelMap) {
         log.info("Fetching users for page " + page + " with size " + size);
         Pageable pageable = PageRequest.of(page - 1, size);
@@ -52,8 +51,7 @@ public class AdminController {
     }
 
 
-
-    @GetMapping("/admin/delete/{id}")
+    @GetMapping("/delete/{id}")
     public String deleteUser(@PathVariable("id") int id) {
         log.info("Deleting user with id: " + id);
         userService.deleteById(id);
@@ -61,20 +59,28 @@ public class AdminController {
         return "redirect:/admin/users";
     }
 
-    @GetMapping("/admin/user/{id}")
+    @GetMapping("/user/{id}")
     public String profileUser(@PathVariable("id") int id, ModelMap modelMap) {
         log.info("Fetching user profile for id: " + id);
 
         Optional<User> byId = userService.findById(id);
-       if (byId.isPresent()){
-           User user = byId.get();
-           modelMap.addAttribute("user", user);
-           log.info("User profile fetched successfully");
-       }else {
-           log.warn("User with id " + id + " not found.");
-       }
+        if (byId.isPresent()) {
+            User user = byId.get();
+            modelMap.addAttribute("user", user);
+            log.info("User profile fetched successfully");
+        } else {
+            log.warn("User with id " + id + " not found.");
+        }
 
         return "/admin/user";
+    }
+
+    @PostMapping("/filter")
+    public String getByFilter(@RequestParam("keyword") String keyword,
+                              ModelMap modelMap) {
+        List<UserResponseDto> users = userService.getAllByFilter(keyword);
+        modelMap.addAttribute("users", users);
+        return "/admin/users";
     }
 
 }

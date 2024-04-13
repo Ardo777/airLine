@@ -8,13 +8,16 @@ import com.example.airlineproject.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Optional;
 
 @Controller
@@ -23,6 +26,7 @@ import java.util.Optional;
 public class UserController {
     private final UserService userService;
     private final UserRepository userRepository;
+    private final PersistentTokenRepository persistentTokenRepository;
 
     @GetMapping("/user/register")
     private String registration(@RequestParam(value = "emailMsg", required = false) String emailMsg,
@@ -58,8 +62,9 @@ public class UserController {
 
     @PostMapping("/user/register")
     public String registration(@ModelAttribute User user,
+                               @RequestParam("birthday") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateBirthday,
                                @RequestParam("picture") MultipartFile multipartFile) throws IOException {
-
+        user.setDateBirthday(dateBirthday);
         Optional<User> byEmail = userService.findByEmail(user.getEmail());
         if (byEmail.isPresent() && byEmail.get().isActive()) {
             String emailMsg = "User with this email " + user.getEmail() + " already  exist";
@@ -128,7 +133,8 @@ public class UserController {
 
 
     @GetMapping("/logout")
-    public String logout(HttpSession session) {
+    public String logout(HttpSession session, @AuthenticationPrincipal SpringUser user) {
+        persistentTokenRepository.removeUserTokens(user.getUsername());
         session.invalidate();
         return "redirect:/user/login";
     }

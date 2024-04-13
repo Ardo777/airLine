@@ -118,6 +118,8 @@ public class CompanyServiceImpl implements CompanyService {
             company.setActive(true);
             company.getUser().setRole(UserRole.valueOf("MANAGER"));
             companyRepository.save(company);
+            company.getUser().setCompany(company);
+            userRepository.save(company.getUser());
             log.info("User role changed to MANAGER for company with ID {}", id);
         } else {
             log.warn("Company with ID {} not found", id);

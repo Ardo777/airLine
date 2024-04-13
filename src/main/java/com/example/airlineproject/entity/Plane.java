@@ -21,7 +21,9 @@ public class Plane {
     @ManyToOne
     private Company company;
     private double maxBaggage;
-    @Column(name = "max_Passengers")
-    private int maxPassengers;
+    @Column(name = "count_Economy")
+    private int countEconomy;
+    @Column(name = "count_Business")
+    private int countBusiness;
 
 }

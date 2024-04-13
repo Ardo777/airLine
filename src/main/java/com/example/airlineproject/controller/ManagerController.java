@@ -79,16 +79,18 @@ public class ManagerController {
     @PostMapping("/addAirPlane")
     public String addAirPlane(@RequestParam("model") String model,
                               @RequestParam("maxBaggage") double maxBaggage,
-                              @RequestParam("maxPassengers") int maxPassengers,
+                              @RequestParam("countBusiness") int countBusiness,
+                              @RequestParam("countEconomy") int countEconomy,
                               @AuthenticationPrincipal SpringUser springUser,
                               @RequestParam("picture") MultipartFile multipartFile) throws IOException {
 
         log.debug("Model: {}", model);
         log.debug("Max Baggage: {}", maxBaggage);
-        log.debug("Max Passengers: {}", maxPassengers);
+        log.debug("Count Business Places: {}", countBusiness);
+        log.debug("Count Economy Places: {}", countEconomy);
         log.debug("User: {}", springUser.getUsername());
-        Plane plane = managerService.createPlane(model, maxBaggage, maxPassengers, multipartFile);
-        Boolean isPlaneExist = managerService.isPlaneExist(plane);
+        Plane plane = managerService.createPlane(model, maxBaggage, countBusiness,countEconomy, multipartFile);
+        Boolean isPlaneExist = managerService.isPlaneExist(plane,springUser.getUser());
         plane.setCompany(springUser.getUser().getCompany());
         if (isPlaneExist) {
             String planeErrorMsg = "A plane with these parameters was previously added to your company";
