@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.List;
 
 public interface CompanyService {
-    String save(Company company, MultipartFile multipartFile) throws IOException;
+    String save(Company company, User user, MultipartFile multipartFile) throws IOException;
 
     String findByEmail(String email);
 

@@ -1,10 +1,12 @@
 package com.example.airlineproject.entity;
 
+import com.example.airlineproject.entity.enums.Profession;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import javax.validation.constraints.NotEmpty;
 
 @Data
 @AllArgsConstructor
@@ -19,8 +21,8 @@ public class TeamMember {
     private String name;
     @NotEmpty(message = "surname can't be empty")
     private String surname;
-    @NotEmpty(message = "profession can't be empty")
-    private String profession;
+    @Enumerated(EnumType.STRING)
+    private Profession profession;
     @ManyToOne
     private Company company;
 }

@@ -15,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 import org.springframework.security.web.authentication.RememberMeServices;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
@@ -44,7 +45,7 @@ public class SecurityConfig {
         ).authorizeHttpRequests(authorize ->
                 authorize
                         .requestMatchers("/").permitAll()
-                        .requestMatchers("/user/register", "/user/login", "/user/register/verification/**").permitAll()
+                        .requestMatchers("/user/register", "/user/login/**", "/user/register/verification/**", "/user/login/successfully/**", "/user/codeVerification/**", "/user/forgetPassword/**", "/user/recovery/**").permitAll()
                         .requestMatchers("/admin/**").hasAnyAuthority(UserRole.ADMIN.name())
                         .requestMatchers("/manager/**").hasAnyAuthority(UserRole.MANAGER.name())
                         .requestMatchers(HttpMethod.GET, "/css/**", "/js/**",
@@ -54,10 +55,10 @@ public class SecurityConfig {
                         .authenticated()
         ).formLogin(form ->
                 form.loginPage("/user/login")
-                        .loginProcessingUrl("/login")
-                        .successForwardUrl("/login/successfully")
-                        .defaultSuccessUrl("/login/successfully", true)
-                        .failureUrl("/user/login?errorMessage=your username or password is incorrect")
+                        .loginProcessingUrl("/user/login")
+                        .successForwardUrl("/user/login/successfully")
+                        .defaultSuccessUrl("/user/login/successfully", true)
+                        .failureUrl("/user/login?errorMessage=Your username or password is incorrect")
         ).rememberMe(remember->
                 remember.tokenRepository(persistentTokenRepository())
                         .rememberMeParameter("remember-me")

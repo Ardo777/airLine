@@ -46,7 +46,7 @@ public class CompanyServiceImpl implements CompanyService {
 
 
     @Override
-    public String save(Company company, MultipartFile multipartFile) throws IOException {
+    public String save(Company company,User user, MultipartFile multipartFile) throws IOException {
         if (companyRepository.findByUser(company.getUser()).isPresent()) {
             String errorMsg = String.format("The user %s %s already has a registered company",
                     company.getUser().getName(), company.getUser().getSurname());
@@ -59,7 +59,9 @@ public class CompanyServiceImpl implements CompanyService {
             return errorMsg;
         }
         saveFile(multipartFile, company);
+        user.setCompany(company);
         companyRepository.save(company);
+        userRepository.save(user);
         log.info("Company saved successfully: {}", company);
         return null;
     }
@@ -77,7 +79,7 @@ public class CompanyServiceImpl implements CompanyService {
                 .name(name)
                 .email(email)
                 .build();
-        String result = save(company, multipartFile);
+        String result = save(company,user, multipartFile);
         if (result == null) {
             log.info("Company registered successfully: {}", company);
         } else {

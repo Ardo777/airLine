@@ -15,11 +15,17 @@ public interface UserService {
 
     Optional<User> findByEmail(String email);
 
-    void deleteById(int id);
+    Page<User> findAll(Pageable pageable);
 
     Optional<User> findById(int id);
+    void deleteById(int id);
+
+    void verificationCodeSending(User user, String email);
+
+    boolean recoveryPassword(User user, String newPassword);
 
     Page<User> findAll(Pageable pageable);
 
     List<UserResponseDto> getAllByFilter(String keyword);
+
 }
