@@ -1,0 +1,15 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="0006-update-team-member-profession" author="HKarapetyan">
+       <dropColumn tableName="team_member">
+           <column name="profession"/>
+       </dropColumn>
+       <addColumn tableName="team_member">
+           <column name="profession" type="enum('PILOT', 'STEWARDESS', 'MECHANIC')">
+               <constraints nullable="false"/>
+           </column>
+       </addColumn>
+    </changeSet>
+</databaseChangeLog>

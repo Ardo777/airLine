@@ -1,11 +1,13 @@
 package com.example.airlineproject.repository;
 
+import com.example.airlineproject.entity.Company;
 import com.example.airlineproject.entity.Plane;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PlaneRepository extends JpaRepository<Plane, Integer> {
-    boolean existsByModelAndMaxBaggageAndMaxPassengers(String model, double maxBaggage, int maxPassengers);
+
+    boolean existsByModelAndMaxBaggageAndCountBusinessAndCountEconomyAndCompany(String model, double maxBaggage, int countBusiness, int countEconomy, Company company);
 
 }

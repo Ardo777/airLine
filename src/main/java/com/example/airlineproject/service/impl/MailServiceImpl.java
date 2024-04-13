@@ -5,6 +5,7 @@ import com.example.airlineproject.service.MailService;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
@@ -17,7 +18,7 @@ import org.thymeleaf.context.Context;
 public class MailServiceImpl implements MailService {
 
     private final JavaMailSender javaMailSender;
-    private final TemplateEngine templateEngine;
+    private final @Qualifier("emailTemplateEngine") TemplateEngine templateEngine;
 
 
     @Async
@@ -41,19 +42,27 @@ public class MailServiceImpl implements MailService {
         }
     }
 
+
     @Async
     public void sendRecoveryMail(User user) {
+
+    @Async
+    public void sendBirthdayMail(User user) {
+
 
         final Context ctx = new Context();
         ctx.setVariable("user", user);
 
+
         final String htmlContent = templateEngine.process("mail/recoveryPassword.html", ctx);
+
 
         final MimeMessage mimeMessage = javaMailSender.createMimeMessage();
 
         try {
             final MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, "UTF-8");
             message.setSubject("Recovery Password");
+
             message.setTo(user.getEmail());
             message.setText(htmlContent, true);
             javaMailSender.send(mimeMessage);
