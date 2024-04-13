@@ -235,15 +235,6 @@
                 </div>
 
             </div>
-            <div class="pagination-container">
-                <div th:if="${users.totalPages > 0}" class="btn btn-white" th:each="pageNumber : ${pageNumbers}">
-                    <a th:href="@{/admin/users(size=${users.size}, page=${pageNumber})}"
-                       th:text="${pageNumber}"
-                       th:classappend="${pageNumber == users.number + 1} ? 'active' : ''"
-                       class="pagination-item"></a>
-                </div>
-            </div>
-
         </div>
 
 
