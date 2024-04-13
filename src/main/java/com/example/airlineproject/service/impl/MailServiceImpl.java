@@ -41,6 +41,7 @@ public class MailServiceImpl implements MailService {
             throw new RuntimeException(e);
         }
     }
+
     @Async
     public void sendBirthdayMail(User user) {
 

@@ -1,18 +1,23 @@
 package com.example.airlineproject.controller;
 
 
+import com.example.airlineproject.dto.ChangeFlightDto;
 import com.example.airlineproject.dto.FlightDto;
+import com.example.airlineproject.entity.enums.Status;
 import com.example.airlineproject.repository.PlaneRepository;
 import com.example.airlineproject.security.SpringUser;
 import com.example.airlineproject.service.FlightService;
 import com.example.airlineproject.entity.Office;
 import com.example.airlineproject.entity.Plane;
 import com.example.airlineproject.service.ManagerService;
+import com.example.airlineproject.service.PlaneService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,10 +35,13 @@ public class ManagerController {
     private final ManagerService managerService;
     private final PlaneRepository planeRepository;
     private final FlightService flightService;
+    private final PlaneService planeService;
+
     @GetMapping
     public String managerPage() {
         return "/manager/index";
     }
+
     @GetMapping("/moreDetails")
     public String moreDetails(@RequestParam(value = "planeSuccessMsg", required = false) String planeSuccessMsg,
                               @RequestParam(value = "planeErrorMsg", required = false) String planeErrorMsg,
@@ -91,8 +99,8 @@ public class ManagerController {
         log.debug("Count Business Places: {}", countBusiness);
         log.debug("Count Economy Places: {}", countEconomy);
         log.debug("User: {}", springUser.getUsername());
-        Plane plane = managerService.createPlane(model, maxBaggage, countBusiness,countEconomy, multipartFile);
-        Boolean isPlaneExist = managerService.isPlaneExist(plane,springUser.getUser());
+        Plane plane = managerService.createPlane(model, maxBaggage, countBusiness, countEconomy, multipartFile);
+        Boolean isPlaneExist = managerService.isPlaneExist(plane, springUser.getUser());
         plane.setCompany(springUser.getUser().getCompany());
         if (isPlaneExist) {
             String planeErrorMsg = "A plane with these parameters was previously added to your company";
@@ -125,4 +133,31 @@ public class ManagerController {
 
     }
 
+    @GetMapping("/flights")
+    public String FlightPage(ModelMap modelMap, @AuthenticationPrincipal SpringUser springUser) {
+        //this service method will find all flights of the company and will put into model map
+        modelMap.addAttribute("flights", flightService.findExistingFlights(springUser.getUser().getCompany(), Status.ARRIVED));
+        return "manager/flights";
+    }
+
+
+    @GetMapping("/change/flight/{flightId}")
+    public String ChangeFlightPage(@PathVariable("flightId") int flightId, @AuthenticationPrincipal SpringUser springUser, ModelMap modelMap) {
+        //this service method will find something flight which chose manager for change the flight.
+        modelMap.addAttribute("flight", flightService.findCompanyFlight(flightId, springUser.getUser().getCompany()));
+        //this service method will find all plane of the company and put into model map because manager must choose plane for flight
+        modelMap.addAttribute("planes", planeService.allPlanesOfTheCompany(springUser.getUser().getCompany()));
+        return "manager/changeFlight";
+    }
+
+    @PostMapping("/change/flight")
+    public String ChangeFlight(@AuthenticationPrincipal SpringUser springUser,
+                               @RequestParam("plane") int planeId,
+                               @ModelAttribute("changeFlightDto") ChangeFlightDto changeFlightDto
+                               ) {
+        //this service method will change that flight.
+        //I send changeFlightDto and company each other because manager can enter into the <inspect> and change that flight id and receive another flight of other company
+        flightService.changeFLight(changeFlightDto, planeId, springUser.getUser().getCompany());
+        return "redirect:/manager/flights";
+    }
 }
