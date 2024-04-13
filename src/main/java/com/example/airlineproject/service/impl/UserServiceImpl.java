@@ -107,6 +107,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void verificationCodeSending(User user, String email) {
+        String lUUID = String.format("%040d", new BigInteger(UUID.randomUUID().toString().replace("-", ""), 16));
+        String uuid = lUUID.substring(0, Math.min(lUUID.length(), 6));
+        user.setVerificationCode(uuid);
+        userRepository.save(user);
+        mailService.sendRecoveryMail(user);
+    }
+
+    @Override
+    public boolean recoveryPassword(User user, String newPassword) {
+        user.setPassword(passwordEncoder.encode(newPassword));
+        userRepository.save(user);
+        return true;
+    }
+
     public List<UserResponseDto> getAllByFilter(String keyword) {
         String name = null;
         String surname = null;
@@ -138,4 +153,5 @@ public class UserServiceImpl implements UserService {
 
         return userFilterDtoList;
     }
+
 }

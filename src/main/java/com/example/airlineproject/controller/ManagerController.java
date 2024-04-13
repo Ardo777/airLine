@@ -31,6 +31,7 @@ public class ManagerController {
     private final FlightService flightService;
     private final TeamService teamService;
 
+
     @GetMapping
     public String managerPage() {
         return "/manager/index";
@@ -73,6 +74,11 @@ public class ManagerController {
     public String addFlight(@ModelAttribute FlightDto flightDto, @RequestParam("plane") int planeId, @AuthenticationPrincipal SpringUser springUser) {
         flightService.save(flightDto, springUser, planeId);
         return "redirect:/manager";
+    }
+
+    @GetMapping("/addFlight")
+    public String addFlight() {
+        return "/manager/flight";
     }
 
 
