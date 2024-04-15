@@ -17,4 +17,6 @@ public interface TeamService {
     TeamMember findById(int id);
 
     void changeTeamMember(int id, String name, String surname, Profession profession);
+
+    void deleteTeamMember(int id);
 }

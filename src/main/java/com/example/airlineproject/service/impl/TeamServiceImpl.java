@@ -68,4 +68,13 @@ public class TeamServiceImpl implements TeamService {
             log.warn("Failed to find team member with ID {}", id);
         }
     }
+
+    @Override
+    public void deleteTeamMember(int id) {
+        TeamMember byId = findById(id);
+        if (byId != null) {
+            byId.setActive(false);
+            teamRepository.save(byId);
+        }
+    }
 }

@@ -8,7 +8,6 @@ import com.example.airlineproject.entity.Plane;
 import com.example.airlineproject.entity.TeamMember;
 import com.example.airlineproject.entity.enums.Profession;
 import com.example.airlineproject.repository.PlaneRepository;
-import com.example.airlineproject.repository.TeamRepository;
 import com.example.airlineproject.security.SpringUser;
 import com.example.airlineproject.service.FlightService;
 import com.example.airlineproject.service.OfficeService;
@@ -36,7 +35,6 @@ public class ManagerController {
     private final PlaneRepository planeRepository;
     private final FlightService flightService;
     private final TeamService teamService;
-    private final TeamRepository teamRepository;
 
 
     @GetMapping
@@ -152,10 +150,7 @@ public class ManagerController {
 
     @GetMapping("/teamMembers/delete/{id}")
     public String deleteTeamMember(@PathVariable("id") int id) {
-        log.info("Deleting team member with id: " + id);
-        TeamMember byId = teamService.findById(id);
-        byId.setActive(false);
-        teamRepository.save(byId);
+        teamService.deleteTeamMember(id);
         log.info("Team Member deleted successfully,active is false");
         return "redirect:/manager/teamMembers";
     }
@@ -164,9 +159,11 @@ public class ManagerController {
     public String changeTeamMemberPage(@PathVariable("id") int id,
                                        ModelMap modelMap) {
         TeamMember teamMember = teamService.findById(id);
-        if (teamMember.isActive()) {
-            modelMap.addAttribute("teamMember", teamMember);
-            return "/manager/teamMemberChange";
+        if (teamMember != null) {
+            if (teamMember.isActive()) {
+                modelMap.addAttribute("teamMember", teamMember);
+                return "/manager/teamMemberChange";
+            }
         }
         return "/manager/teamMembers";
     }
@@ -202,7 +199,7 @@ public class ManagerController {
     ) {
         log.info("Changing office with ID {}, country {}, city {}, street {}, workStartTime {}, workEndTime {}, phone {}",
                 id, country, city, street, workStartTime, workEndTime, phone);
-        officeService.changeOffice(id, country, city, street,workStartTime,workEndTime,phone);
+        officeService.changeOffice(id, country, city, street, workStartTime, workEndTime, phone);
         return "redirect:/manager/index";
     }
 

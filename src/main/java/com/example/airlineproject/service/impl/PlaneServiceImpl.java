@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -42,6 +44,11 @@ public class PlaneServiceImpl implements PlaneService {
                 .countEconomy(countEconomy)
                 .countRow(countRow)
                 .build();
+    }
+
+    @Override
+    public List<Plane> getAllPlanes() {
+        return planeRepository.findAll();
     }
 
     @Override
