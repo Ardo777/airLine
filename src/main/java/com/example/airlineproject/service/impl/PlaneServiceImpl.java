@@ -2,18 +2,15 @@ package com.example.airlineproject.service.impl;
 
 import com.example.airlineproject.entity.Plane;
 import com.example.airlineproject.entity.User;
-import com.example.airlineproject.repository.OfficeRepository;
 import com.example.airlineproject.repository.PlaneRepository;
 import com.example.airlineproject.service.PlaneService;
 import com.example.airlineproject.util.FileUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.IOException;
-import java.util.List;
+
 
 @Service
 @RequiredArgsConstructor
@@ -46,10 +43,7 @@ public class PlaneServiceImpl implements PlaneService {
                 .build();
     }
 
-    @Override
-    public List<Plane> getAllPlanes() {
-        return planeRepository.findAll();
-    }
+
 
     @Override
     public Boolean isPlaneExist(Plane plane,User user) {
