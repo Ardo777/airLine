@@ -55,10 +55,17 @@ public class TeamServiceImpl implements TeamService {
 
     @Override
     public void changeTeamMember(int id, String name, String surname, Profession profession) {
-        TeamMember byId = findById(id);
-        byId.setName(name);
-        byId.setSurname(surname);
-        byId.setProfession(profession);
-        teamRepository.save(byId);
+        TeamMember teamMember = findById(id);
+        if (teamMember != null) {
+            log.info("Changing team member with ID {}", id);
+            log.info("Old values: name={}, surname={}, profession={}", teamMember.getName(), teamMember.getSurname(), teamMember.getProfession());
+            teamMember.setName(name);
+            teamMember.setSurname(surname);
+            teamMember.setProfession(profession);
+            teamRepository.save(teamMember);
+            log.info("New values: name={}, surname={}, profession={}", name, surname, profession);
+        } else {
+            log.warn("Failed to find team member with ID {}", id);
+        }
     }
 }

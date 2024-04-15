@@ -177,6 +177,8 @@ public class ManagerController {
                                    @RequestParam("surname") String surname,
                                    @RequestParam("profession") Profession profession
     ) {
+        log.info("Changing team member with ID {}, name {}, surname {}, profession {}", id, name, surname, profession);
+
         teamService.changeTeamMember(id, name, surname, profession);
         return "redirect:/manager/teamMembers";
     }
@@ -198,6 +200,8 @@ public class ManagerController {
                                @RequestParam("workEndTime") Date workEndTime,
                                @RequestParam("phone") String phone
     ) {
+        log.info("Changing office with ID {}, country {}, city {}, street {}, workStartTime {}, workEndTime {}, phone {}",
+                id, country, city, street, workStartTime, workEndTime, phone);
         officeService.changeOffice(id, country, city, street,workStartTime,workEndTime,phone);
         return "redirect:/manager/index";
     }

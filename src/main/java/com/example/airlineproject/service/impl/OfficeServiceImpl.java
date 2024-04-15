@@ -45,6 +45,9 @@ public class OfficeServiceImpl implements OfficeService {
         Optional<Office> byId = officeRepository.findById(id);
         if (byId.isPresent()) {
             Office office = byId.get();
+            log.info("Changing office with ID {}", id);
+            log.info("Old values: country={}, city={}, street={}, workStartTime={}, workEndTime={}, phone={}",
+                    office.getCountry(), office.getCity(), office.getStreet(), office.getWorkStartTime(), office.getWorkEndTime(), office.getPhone());
             office.setCountry(country);
             office.setCity(city);
             office.setStreet(street);
@@ -52,6 +55,8 @@ public class OfficeServiceImpl implements OfficeService {
             office.setWorkEndTime(workEndTime);
             office.setPhone(phone);
             officeRepository.save(office);
+            log.info("New values: country={}, city={}, street={}, workStartTime={}, workEndTime={}, phone={}",
+                    office.getCountry(), office.getCity(), office.getStreet(), office.getWorkStartTime(), office.getWorkEndTime(), office.getPhone());
         }
     }
 
