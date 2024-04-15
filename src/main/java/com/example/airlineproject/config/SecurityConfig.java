@@ -36,7 +36,7 @@ public class SecurityConfig {
                                 "/media/**", "/s/**", "/sass/**", "/staticAdminManager/**",
                                 "/up/**", "/css2").permitAll()
                         .anyRequest()
-                        .permitAll()
+                        .authenticated()
         ).formLogin(form ->
                 form.loginPage("/user/login")
                         .loginProcessingUrl("/user/login")
