@@ -2,6 +2,7 @@ package com.example.airlineproject.controller;
 
 import com.example.airlineproject.dto.UserResponseDto;
 import com.example.airlineproject.entity.User;
+import com.example.airlineproject.service.CompanyService;
 import com.example.airlineproject.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,9 +25,12 @@ import java.util.stream.IntStream;
 public class AdminController {
 
     private final UserService userService;
+    private final CompanyService companyService;
 
     @GetMapping
-    public String adminPage() {
+    public String adminPage(ModelMap modelMap) {
+        modelMap.addAttribute("usersCount", userService.getUsersCount());
+        modelMap.addAttribute("companiesCount", companyService.count());
         return "/admin/index";
     }
 

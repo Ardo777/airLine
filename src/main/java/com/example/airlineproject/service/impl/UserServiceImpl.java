@@ -154,4 +154,9 @@ public class UserServiceImpl implements UserService {
         return userFilterDtoList;
     }
 
+    @Override
+    public Long getUsersCount() {
+     return userRepository.count();
+    }
+
 }
