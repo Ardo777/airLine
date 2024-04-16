@@ -4,6 +4,7 @@ import com.example.airlineproject.dto.TeamDto;
 import com.example.airlineproject.entity.Company;
 import com.example.airlineproject.entity.TeamMember;
 import com.example.airlineproject.entity.User;
+import com.example.airlineproject.entity.enums.Profession;
 import com.example.airlineproject.mapper.TeamMapper;
 import com.example.airlineproject.repository.TeamRepository;
 import com.example.airlineproject.security.SpringUser;
@@ -11,6 +12,8 @@ import com.example.airlineproject.service.TeamService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -27,6 +30,7 @@ public class TeamServiceImpl implements TeamService {
             if (company != null) {
                 TeamMember teamMember = teamMapper.map(teamDto);
                 teamMember.setCompany(company);
+                teamMember.setActive(true);
                 TeamMember savedTeamMember = teamRepository.save(teamMember);
                 log.info("Saved team member with ID: {}", savedTeamMember.getId());
                 return savedTeamMember;
@@ -37,5 +41,40 @@ public class TeamServiceImpl implements TeamService {
             log.warn("User is null in SpringUser object");
         }
         return null;
+    }
+
+    @Override
+    public List<TeamMember> findTeamMemberByCompanyAndActive(Company company) {
+        return teamRepository.findTeamMemberByCompanyAndActive(company, true);
+    }
+
+    @Override
+    public TeamMember findById(int id) {
+        return teamRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public void changeTeamMember(int id, String name, String surname, Profession profession) {
+        TeamMember teamMember = findById(id);
+        if (teamMember != null) {
+            log.info("Changing team member with ID {}", id);
+            log.info("Old values: name={}, surname={}, profession={}", teamMember.getName(), teamMember.getSurname(), teamMember.getProfession());
+            teamMember.setName(name);
+            teamMember.setSurname(surname);
+            teamMember.setProfession(profession);
+            teamRepository.save(teamMember);
+            log.info("New values: name={}, surname={}, profession={}", name, surname, profession);
+        } else {
+            log.warn("Failed to find team member with ID {}", id);
+        }
+    }
+
+    @Override
+    public void deleteTeamMember(int id) {
+        TeamMember byId = findById(id);
+        if (byId != null) {
+            byId.setActive(false);
+            teamRepository.save(byId);
+        }
     }
 }

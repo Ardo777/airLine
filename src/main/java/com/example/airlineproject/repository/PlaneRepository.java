@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
+
 @Repository
 public interface PlaneRepository extends JpaRepository<Plane, Integer> {
     List<Plane> findAllByCompany(Company company);
@@ -17,4 +18,5 @@ public interface PlaneRepository extends JpaRepository<Plane, Integer> {
 
     boolean existsByModelAndMaxBaggageAndCountBusinessAndCountEconomyAndCompany(String model, double maxBaggage, int countBusiness, int countEconomy, Company company);
 
+  List<Plane> findAllByCompany(Company company);
 }

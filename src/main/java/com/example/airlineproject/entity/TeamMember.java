@@ -25,4 +25,6 @@ public class TeamMember {
     private Profession profession;
     @ManyToOne
     private Company company;
+    @Column(name = "is_active")
+    private boolean active;
 }

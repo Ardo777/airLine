@@ -175,7 +175,7 @@
         <div class="wrapper wrapper-content animated fadeInRight">
             <div class="row">
                 <div class="col-lg-7">
-                    <div class="ibox ">
+                    <div class="box">
                         <div class="ibox-title">
                             <div class="nameCenter">Add Your Office</div>
                             <div class="ibox-tools">
@@ -188,40 +188,41 @@
                         </div>
                         <div class="ibox-content">
                             <form role="form" action="/manager/addOffice" method="post" enctype="multipart/form-data">
-                                <div class="error" th:text="${officeErrorMsg}"></div>
-                                <div class="success-message" th:text="${officeSuccessMsg}"></div>
                                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                                <input type="hidden" name="id" th:value="${office.id}">
 
                                 <div class="row">
                                     <div class="col-sm-6 b-r">
 
                                         <div class="form-group"><label>Country</label> <input type="text" name="country"
+                                                                                              th:value="${office.country}"
                                                                                               placeholder="Country"
                                                                                               class="form-control">
                                         </div>
                                         <div class="form-group"><label>Street</label> <input type="text" name="street"
+                                                                                             th:value="${office.street}"
                                                                                              placeholder="Street"
                                                                                              class="form-control"></div>
                                         <div class="form-group">
                                             <label>Work start time</label>
                                             <div class="input-group clockpicker" data-autoclose="true">
-                                                <input type="time" name="workStartTime" class="form-control"
-                                                       value="00:00">
+                                                <input type="time" name="workStartTime" th:value="${office.workStartTime}" class="form-control">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group"><label>City</label> <input type="text" name="city"
+                                                                                           th:value="${office.city}"
                                                                                            placeholder="City"
                                                                                            class="form-control"></div>
                                         <div class="form-group"><label>Phone</label> <input type="text" name="phone"
+                                                                                            th:value="${office.phone}"
                                                                                             placeholder="Phone"
                                                                                             class="form-control"></div>
                                         <div class="form-group">
                                             <label>Work time end</label>
-                                            <div class="input-group clockpicker" data-autoclose="true">
-                                                <input type="time" name="workEndTime" class="form-control"
-                                                       value="00:00">
+                                            <div class="input-group clock picker" data-autoclose="true">
+                                                <input type="time" name="workEndTime" step="60" th:value="${office.workEndTime}" class="form-control">
                                             </div>
                                         </div>
                                         <div style="margin-top: 48px;margin-left: 321px;margin-block-end: -15px;">
@@ -235,227 +236,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-5">
-                    <div class="ibox ">
-                        <div class="ibox-title">
-                            <div class="nameCenter">
-                                Add Airplane
-                            </div>
-                            <div class="ibox-tools">
-                                <a class="collapse-link">
-                                    <i class="fa fa-chevron-up"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="ibox-content">
-                            <form action="/manager/addAirPlane" method="post" enctype="multipart/form-data">
-                                <div class="error" th:text="${planeErrorMsg}"></div>
-                                <div class="success-message" th:text="${planeSuccessMsg}"></div>
-                                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-                                <div class="form-group">
-                                    <label>Model</label>
-                                    <input type="text" name="model" placeholder="Model" class="form-control">
-                                </div>
-                                <div class="custom-file">
-                                    <input id="inputGroupFile01" name="picture" type="file" class="custom-file-input">
-                                    <label class="custom-file-label" for="inputGroupFile01">AirPlane Photo</label>
-                                </div>
-                                <div class="form-group">
-                                    <label>Maximum baggage of the plane</label>
-                                    <input type="number" name="maxBaggage" placeholder="Maximum baggage"
-                                           class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label>Count of business places</label>
-                                    <input type="number" name="countBusiness" placeholder="Business places"
-                                           class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label>Count of economy places</label>
-                                    <input type="number" name="countEconomy" placeholder="Maximum passengers"
-                                           class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label>Count Row</label>
-                                    <input type="number" name="countRow" placeholder="Count Row"
-                                           class="form-control">
-                                </div>
-                                <input class="btn btn-primary btn-sm" type="submit" value="Save">
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="ibox ">
-                        <div class="ibox-title">
-                            <div class="nameCenter">Add Team Member</div>
-                            <div class="ibox-tools">
-                                <a class="collapse-link">
-                                    <i class="fa fa-chevron-up"></i>
-                                </a>
-
-                                <ul class="dropdown-menu dropdown-user">
-                                    <li><a href="#" class="dropdown-item">Config option 1</a>
-                                    </li>
-                                    <li><a href="#" class="dropdown-item">Config option 2</a>
-                                    </li>
-                                </ul>
-
-                            </div>
-                        </div>
-                        <div class="ibox-content">
-                            <form role="form" class="form-inline" action="/manager/addTeam" method="post">
-                                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail2" class="sr-only">name</label>
-                                    <input type="text" name="name" placeholder="name" id="exampleInputEmail2"
-                                           class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword2" class="sr-only">surname</label>
-                                    <input type="text" name="surname" placeholder="surname" id="exampleInputPassword2"
-                                           class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <select name="profession" class="form-control" required>
-                                        <option value="" disabled selected hidden>Profession</option>
-                                        <option value="PILOT">PILOT</option>
-                                        <option value="STEWARDESS">STEWARDESS</option>
-                                        <option value="MECHANIC">MECHANIC</option>
-                                    </select>
-                                </div>
-                                <div class="form-check abc-checkbox form-check-inline m-l-md">
-                                </div>
-                                <input class="btn btn-white" type="submit" value="save">
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="ibox ">
-                        <div class="ibox-title">
-                            <div class="nameCenter">Add Flight</div>
-                            <div class="ibox-tools">
-                                <a class="collapse-link">
-                                    <i class="fa fa-chevron-up"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="ibox-content">
-                            <form action="/manager/addFlight" method="post">
-                                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-                                <div class="form-group  row"><label class="col-sm-2 col-form-label">from</label>
-                                    <div class="col-sm-10"><input type="text" name="from" class="form-control"
-                                                                  placeholder="from"></div>
-                                </div>
-                                <div class="hr-line-dashed"></div>
-                                <div class="form-group row"><label class="col-sm-2 col-form-label">to</label>
-                                    <div class="col-sm-10"><input type="text" name="to" class="form-control"
-                                                                  placeholder="to">
-                                    </div>
-                                </div>
-                                <div class="form-group row"><label class="col-sm-2 col-form-label">scheduled
-                                    time</label>
-                                    <div class="col-sm-10"><input type="datetime-local" class="form-control"
-                                                                  name="scheduledTime" placeholder="scheduled Time"
-                                                                  pattern="yyyy-MM-dd'T'HH:mm"
-                                    >
-                                    </div>
-                                </div>
-                                <div class="form-group row"><label class="col-sm-2 col-form-label">estimated
-                                    time</label>
-                                    <div class="col-sm-10"><input type="datetime-local" class="form-control"
-                                                                  name="estimatedTime" placeholder="estimated Time"
-                                                                  pattern="yyyy-MM-dd'T'HH:mm"
-                                    >
-                                    </div>
-                                </div>
-                                <div class="form-group row"><label class="col-sm-2 col-form-label">arrival time</label>
-                                    <div class="col-sm-10"><input type="datetime-local" class="form-control"
-                                                                  name="arrivalTime" placeholder="Arrival Time"
-                                                                  pattern="yyyy-MM-dd'T'HH:mm"
-                                    >
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Plane</label>
-                                    <div class="col-sm-10">
-                                        <select class="form-control" name="plane">
-                                            <option th:each="plane : ${planes}" th:value="${plane.id}"
-                                                    th:text="${plane.model}"></option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <!--here must be select tag for plane-->
-                                <div class="hr-line-dashed"></div>
-                                <div class="col-sm-4 col-sm-offset-2">
-                                    <button class="btn btn-primary btn-sm" type="submit">Save</button>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="hr-line-dashed"></div>
-                        <div class="form-group row"><label class="col-sm-2 col-form-label">to</label>
-                            <div class="col-sm-10"><input type="text" name="to" class="form-control" placeholder="to">
-                            </div>
-                        </div>
-                        <div class="form-group row"><label class="col-sm-2 col-form-label">scheduled
-                            time</label>
-                            <div class="col-sm-10"><input type="datetime-local" class="form-control"
-                                                          name="scheduledTime" placeholder="scheduled Time"
-                                                          pattern="yyyy-MM-dd'T'HH:mm"
-                            >
-                            </div>
-                        </div>
-                        <div class="form-group row"><label class="col-sm-2 col-form-label">estimated
-                            time</label>
-                            <div class="col-sm-10"><input type="datetime-local" class="form-control"
-                                                          name="estimatedTime" placeholder="estimated Time"
-                                                          pattern="yyyy-MM-dd'T'HH:mm"
-                            >
-                            </div>
-                        </div>
-                        <div class="form-group row"><label class="col-sm-2 col-form-label">arrival time</label>
-                            <div class="col-sm-10"><input type="datetime-local" class="form-control"
-                                                          name="arrivalTime" placeholder="Arrival Time"
-                                                          pattern="yyyy-MM-dd'T'HH:mm"
-                            >
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Plane</label>
-                            <div class="col-sm-10">
-                                <label>
-                                    <select class="form-control" name="plane">
-                                        <option th:each="plane : ${planes}" th:value="${plane.id}"
-                                                th:text="${plane.id}"></option>
-                                    </select>
-                                </label>
-                            </div>
-                        </div>
-                        <!--here must be select tag for plane-->
-                        <div class="hr-line-dashed"></div>
-                        <div class="col-sm-4 col-sm-offset-2">
-                            <input class="btn btn-primary btn-sm" type="submit">Save</input>
-                        </div>
-                        </form>
-                    </div>
-
-                </div>
             </div>
         </div>
     </div>
 </div>
-
-
-</div>
-</div>
-
-
 <!-- Mainly scripts -->
 <script src="/staticAdminManager/js/jquery-3.1.1.min.js"></script>
 <script src="/staticAdminManager/js/popper.min.js"></script>
