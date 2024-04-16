@@ -133,7 +133,7 @@
 
 
                     <li>
-                        <a href="/logout">
+                        <a href="/user/logout">
                             <i class="fa fa-sign-out"></i> Log out
                         </a>
                     </li>
@@ -177,20 +177,20 @@
                 <div class="col-lg-3">
                     <div class="ibox ">
                         <div class="ibox-title">
-                            <h5>users</h5>
+                            <h5>Users</h5>
                         </div>
                         <div class="ibox-content">
-                            <h1 class="no-margins">40 886,200</h1>
+                            <h1 th:text="${usersCount}" class="no-margins">40 886,200</h1>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="ibox ">
                         <div class="ibox-title">
-                            <h5>companies</h5>
+                            <h5>Companies</h5>
                         </div>
                         <div class="ibox-content">
-                            <h1 class="no-margins">275,800</h1>
+                            <h1 th:text="${companiesCount}" class="no-margins">275,800</h1>
                         </div>
                     </div>
                 </div>
