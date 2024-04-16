@@ -211,7 +211,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6 px-xl-10">
-                                    <form action="/manager/change" method="post">
+                                    <form action="/manager/teamMembers/change" method="post">
                                         <input type="hidden" name="id" th:value="${teamMember.id}">
                                         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
                                         <ul class="list-unstyled mb-1-9">
