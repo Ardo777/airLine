@@ -1,5 +1,7 @@
 package com.example.airlineproject.controller;
 
+import com.example.airlineproject.util.FileUtil;
+import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
@@ -14,7 +16,6 @@ import java.io.IOException;
 
 @Controller
 public class MainController {
-
     @Value("${picture.upload.directory}")
     private String uploadDirectory;
 

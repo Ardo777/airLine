@@ -24,7 +24,6 @@ public interface UserService {
 
     boolean recoveryPassword(User user, String newPassword);
 
-    Page<User> findAll(Pageable pageable);
 
     List<UserResponseDto> getAllByFilter(String keyword);
 

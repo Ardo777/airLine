@@ -2,6 +2,7 @@ package com.example.airlineproject.controller;
 
 
 import com.example.airlineproject.dto.FlightDto;
+import com.example.airlineproject.dto.PlaneRequestDto;
 import com.example.airlineproject.dto.TeamDto;
 import com.example.airlineproject.entity.Office;
 import com.example.airlineproject.entity.Plane;
@@ -10,6 +11,7 @@ import com.example.airlineproject.repository.PlaneRepository;
 import com.example.airlineproject.security.SpringUser;
 import com.example.airlineproject.service.FlightService;
 import com.example.airlineproject.service.ManagerService;
+import com.example.airlineproject.service.PlaneService;
 import com.example.airlineproject.service.TeamService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -30,7 +32,7 @@ public class ManagerController {
     private final PlaneRepository planeRepository;
     private final FlightService flightService;
     private final TeamService teamService;
-
+    private final PlaneService planeService;
 
     @GetMapping
     public String managerPage() {
@@ -76,11 +78,6 @@ public class ManagerController {
         return "redirect:/manager";
     }
 
-    @GetMapping("/addFlight")
-    public String addFlight() {
-        return "/manager/flight";
-    }
-
 
     @PostMapping("/addAirPlane")
     public String addAirPlane(@RequestParam("model") String model,
@@ -95,8 +92,8 @@ public class ManagerController {
         log.debug("Count Business Places: {}", countBusiness);
         log.debug("Count Economy Places: {}", countEconomy);
         log.debug("User: {}", springUser.getUsername());
-        Plane plane = managerService.createPlane(model, maxBaggage, countBusiness,countEconomy, multipartFile);
-        Boolean isPlaneExist = managerService.isPlaneExist(plane,springUser.getUser());
+        Plane plane = managerService.createPlane(model, maxBaggage, countBusiness, countEconomy, multipartFile);
+        Boolean isPlaneExist = managerService.isPlaneExist(plane, springUser.getUser());
         plane.setCompany(springUser.getUser().getCompany());
         if (isPlaneExist) {
             String planeErrorMsg = "A plane with these parameters was previously added to your company";
@@ -137,5 +134,27 @@ public class ManagerController {
         } else {
             return "redirect:/manager/moreDetails";
         }
+    }
+
+    @GetMapping("/planes")
+    public String companyPlanesPage(@AuthenticationPrincipal SpringUser springUser, ModelMap modelMap) {
+        modelMap.addAttribute("planes", planeService.getAllPlanesByCompany(springUser.getUser().getCompany()));
+        return "/manager/ownPlanes";
+    }
+
+    @GetMapping("/change/plane/{id}")
+    public String changePlane(@PathVariable("id") int id, @AuthenticationPrincipal SpringUser springUser, ModelMap modelMap) {
+        modelMap.addAttribute("plane", planeService.getPlane(id,springUser.getUser().getCompany()));
+        return "/manager/changePlane";
+    }
+    @PostMapping("/change/plane")
+    public String change(@ModelAttribute PlaneRequestDto planeRequestDto,@RequestParam("picture") MultipartFile multipartFile, @AuthenticationPrincipal SpringUser springUser) {
+        planeService.changePlane(planeRequestDto,multipartFile,springUser.getUser().getCompany());
+        return "redirect:/manager/plane/"+planeRequestDto.getId();
+    }
+    @GetMapping("/plane/{id}")
+    public String getPlanePage(@PathVariable("id") int id, @AuthenticationPrincipal SpringUser springUser, ModelMap modelMap) {
+        modelMap.addAttribute("plane", planeService.getPlane(id,springUser.getUser().getCompany()));
+        return "/manager/plane";
     }
 }

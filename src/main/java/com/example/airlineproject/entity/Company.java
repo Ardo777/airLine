@@ -27,4 +27,15 @@ public class Company {
     private boolean isActive;
     @OneToOne
     private User user;
+
+    @Override
+    public String toString() {
+        return "Company{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", picName='" + picName + '\'' +
+                ", isActive=" + isActive +
+                '}';
+    }
 }
