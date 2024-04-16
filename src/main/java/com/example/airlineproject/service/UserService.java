@@ -24,7 +24,8 @@ public interface UserService {
 
     boolean recoveryPassword(User user, String newPassword);
 
-
     List<UserResponseDto> getAllByFilter(String keyword);
+
+    Long getUsersCount();
 
 }

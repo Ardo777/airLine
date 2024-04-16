@@ -156,6 +156,11 @@ public class CompanyServiceImpl implements CompanyService {
         Optional<Company> byUser = companyRepository.findByUser(user);
         return byUser.orElse(null);
     }
+
+    @Override
+    public long count() {
+        return companyRepository.count();
+    }
 }
 
 

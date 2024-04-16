@@ -23,6 +23,8 @@ public class Plane {
     private double maxBaggage;
     @Column(name = "count_Economy")
     private int countEconomy;
+    @Column(name = "count_Row")
+    private int countRow;
     @Column(name = "count_Business")
     private int countBusiness;
 
