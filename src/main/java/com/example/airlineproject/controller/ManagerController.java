@@ -42,7 +42,7 @@ public class ManagerController {
                               @RequestParam(value = "planeErrorMsg", required = false) String planeErrorMsg,
                               @RequestParam(value = "officeSuccessMsg", required = false) String officeSuccessMsg,
                               @RequestParam(value = "officeErrorMsg", required = false) String officeErrorMsg,
-                              ModelMap modelMap) {
+                              @AuthenticationPrincipal SpringUser springUser, ModelMap modelMap) {
         if (planeSuccessMsg != null) {
             modelMap.put("planeSuccessMsg", planeSuccessMsg);
             log.info("Success message: {}", planeSuccessMsg);
@@ -59,26 +59,15 @@ public class ManagerController {
             modelMap.put("officeErrorMsg", officeErrorMsg);
             log.error("Error message: {}", officeErrorMsg);
         }
-        return "/manager/moreDetails";
-    }
-
-
-    @GetMapping("/addFlight")
-    public String addFlightPage(ModelMap modelMap) {
-        modelMap.addAttribute("planes", planeRepository.findAll());
+        modelMap.addAttribute("planes", planeRepository.findByCompany(springUser.getUser().getCompany()));
         log.info("List of planes sent to HTML");
-        return "manager/moreDetails";
+        return "/manager/moreDetails";
     }
 
     @PostMapping("/addFlight")
     public String addFlight(@ModelAttribute FlightDto flightDto, @RequestParam("plane") int planeId, @AuthenticationPrincipal SpringUser springUser) {
         flightService.save(flightDto, springUser, planeId);
-        return "redirect:/manager";
-    }
-
-    @GetMapping("/addFlight")
-    public String addFlight() {
-        return "/manager/flight";
+        return "redirect:/manager/moreDetails";
     }
 
 
@@ -95,8 +84,8 @@ public class ManagerController {
         log.debug("Count Business Places: {}", countBusiness);
         log.debug("Count Economy Places: {}", countEconomy);
         log.debug("User: {}", springUser.getUsername());
-        Plane plane = managerService.createPlane(model, maxBaggage, countBusiness,countEconomy, multipartFile);
-        Boolean isPlaneExist = managerService.isPlaneExist(plane,springUser.getUser());
+        Plane plane = managerService.createPlane(model, maxBaggage, countBusiness, countEconomy, multipartFile);
+        Boolean isPlaneExist = managerService.isPlaneExist(plane, springUser.getUser());
         plane.setCompany(springUser.getUser().getCompany());
         if (isPlaneExist) {
             String planeErrorMsg = "A plane with these parameters was previously added to your company";
@@ -108,6 +97,7 @@ public class ManagerController {
         log.info(planeSuccessMsg);
         return "redirect:/manager/moreDetails?planeSuccessMsg=" + planeSuccessMsg;
     }
+
 
 
     @PostMapping("/addOffice")

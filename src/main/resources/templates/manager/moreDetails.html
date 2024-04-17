@@ -324,7 +324,9 @@
                                 </div>
                                 <div class="form-check abc-checkbox form-check-inline m-l-md">
                                 </div>
-                                <input class="btn btn-white" type="submit" value="save">
+                                <div class="col-sm-4 col-sm-offset-2">
+                                    <button class="btn btn-primary btn-sm" type="submit">Save</button>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -350,9 +352,6 @@
                                 <div class="form-group  row"><label class="col-sm-2 col-form-label">from</label>
                                     <div class="col-sm-10"><input type="text" name="from" class="form-control"
                                                                   placeholder="from"></div>
-
-                                    <div class="col-sm-10"><input type="text" class="form-control" placeholder="from">
-                                    </div>
                                 </div>
                                 <div class="hr-line-dashed"></div>
                                 <div class="form-group row"><label class="col-sm-2 col-form-label">to</label>
@@ -388,66 +387,23 @@
                                     <div class="col-sm-10">
                                         <select class="form-control" name="plane">
                                             <option th:each="plane : ${planes}" th:value="${plane.id}"
-                                                    th:text="${plane.id}"></option>
+                                                    th:text="${plane.model}"></option>
                                         </select>
                                     </div>
                                 </div>
                                 <!--here must be select tag for plane-->
                                 <div class="hr-line-dashed"></div>
                                 <div class="col-sm-4 col-sm-offset-2">
-                                    <input class="btn btn-primary btn-sm" type="submit">Save</input>
+                                    <button class="btn btn-primary btn-sm" type="submit">Save</button>
                                 </div>
+                            </form>
                         </div>
-                        <div class="hr-line-dashed"></div>
-                        <div class="form-group row"><label class="col-sm-2 col-form-label">to</label>
-                            <div class="col-sm-10"><input type="text" name="to" class="form-control" placeholder="to">
-                            </div>
-                        </div>
-                        <div class="form-group row"><label class="col-sm-2 col-form-label">scheduled
-                            time</label>
-                            <div class="col-sm-10"><input type="datetime-local" class="form-control"
-                                                          name="scheduledTime" placeholder="scheduled Time"
-                                                          pattern="yyyy-MM-dd'T'HH:mm"
-                            >
-                            </div>
-                        </div>
-                        <div class="form-group row"><label class="col-sm-2 col-form-label">estimated
-                            time</label>
-                            <div class="col-sm-10"><input type="datetime-local" class="form-control"
-                                                          name="estimatedTime" placeholder="estimated Time"
-                                                          pattern="yyyy-MM-dd'T'HH:mm"
-                            >
-                            </div>
-                        </div>
-                        <div class="form-group row"><label class="col-sm-2 col-form-label">arrival time</label>
-                            <div class="col-sm-10"><input type="datetime-local" class="form-control"
-                                                          name="arrivalTime" placeholder="Arrival Time"
-                                                          pattern="yyyy-MM-dd'T'HH:mm"
-                            >
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Plane</label>
-                            <div class="col-sm-10">
-                                <select class="form-control" name="plane">
-                                    <option th:each="plane : ${planes}" th:value="${plane.id}"
-                                            th:text="${plane.id}"></option>
-                                </select>
-                            </div>
-                        </div>
-                        <!--here must be select tag for plane-->
-                        <div class="hr-line-dashed"></div>
-                        <div class="col-sm-4 col-sm-offset-2">
-                            <input class="btn btn-primary btn-sm" type="submit">Save</input>
-                        </div>
-                        </form>
-                    </div>
 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
 </div>

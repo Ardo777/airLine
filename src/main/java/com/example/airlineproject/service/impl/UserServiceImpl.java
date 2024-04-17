@@ -1,11 +1,13 @@
 package com.example.airlineproject.service.impl;
 
+import com.example.airlineproject.dto.ChangePasswordDto;
 import com.example.airlineproject.dto.UserResponseDto;
 import com.example.airlineproject.entity.QUser;
 import com.example.airlineproject.entity.User;
 import com.example.airlineproject.entity.enums.UserRole;
 import com.example.airlineproject.mapper.UserMapper;
 import com.example.airlineproject.repository.UserRepository;
+import com.example.airlineproject.security.SpringUser;
 import com.example.airlineproject.service.MailService;
 import com.example.airlineproject.service.UserService;
 import com.example.airlineproject.util.FileUtil;
@@ -154,4 +156,55 @@ public class UserServiceImpl implements UserService {
         return userFilterDtoList;
     }
 
+
+    @Override
+    public void update(User user, SpringUser springUserAuth, MultipartFile multipartFile) throws IOException {
+        if (user != null && springUserAuth != null && multipartFile != null && !multipartFile.isEmpty()) {
+            User springUser = springUserAuth.getUser();
+            String picName = fileUtil.saveFile(multipartFile);
+            if (picName != null && !picName.isEmpty()) {
+                springUser.setPicName(picName);
+            }
+            springUser.setName(user.getName());
+            springUser.setSurname(user.getSurname());
+            userRepository.save(springUser);
+            log.info("User profile updated successfully for user with ID: {}", springUser.getId());
+        } else {
+            log.error("Failed to update user profile: invalid input data");
+        }
+    }
+
+    @Override
+    public void changePassword(ChangePasswordDto changePasswordDto, SpringUser springUser) {
+        User user = springUser.getUser();
+        if (passwordEncoder.matches(changePasswordDto.getPassword(), user.getPassword())) {
+            if (changePasswordDto.getNewPassword().equals(changePasswordDto.getConfirmNewPassword())) {
+                user.setPassword(passwordEncoder.encode(changePasswordDto.getNewPassword()));
+                userRepository.save(user);
+                log.info("Password changed successfully for user with ID: {}", user.getId());
+            } else {
+                log.error("New password and confirm password do not match for user with ID: {}", user.getId());
+            }
+        } else {
+            log.error("Incorrect current password for user with ID: {}", user.getId());
+        }
+    }
+
+    @Override
+    public void updateEmail(SpringUser springUser, String email) {
+        if (springUser != null) {
+            User user = springUser.getUser();
+            user.setActive(false);
+            String lUUID = String.format("%040d", new BigInteger(UUID.randomUUID().toString().replace("-", ""), 16));
+            String uuid = lUUID.substring(0, Math.min(lUUID.length(), 6));
+            user.setVerificationCode(uuid);
+            log.info("Sending verification email to: {}", email);
+            mailService.sendMail(email, "your verification code");
+            log.info("Verification email sent successfully to: {}", email);
+            userRepository.save(user);
+            log.info("User updated and saved successfully");
+        } else {
+            log.warn("SpringUser is null. Cannot update email.");
+        }
+    }
 }
