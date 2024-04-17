@@ -156,7 +156,6 @@ public class UserServiceImpl implements UserService {
         return userFilterDtoList;
     }
 
-
     @Override
     public void update(User user, SpringUser springUserAuth, MultipartFile multipartFile) throws IOException {
         if (user != null && springUserAuth != null && multipartFile != null && !multipartFile.isEmpty()) {
@@ -207,4 +206,10 @@ public class UserServiceImpl implements UserService {
             log.warn("SpringUser is null. Cannot update email.");
         }
     }
+
+    @Override
+    public Long getUsersCount() {
+     return userRepository.count();
+    }
+
 }

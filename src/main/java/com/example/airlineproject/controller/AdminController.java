@@ -2,7 +2,9 @@ package com.example.airlineproject.controller;
 
 import com.example.airlineproject.dto.UserResponseDto;
 import com.example.airlineproject.entity.User;
+import com.example.airlineproject.service.CompanyService;
 import com.example.airlineproject.service.UserService;
+import com.example.airlineproject.util.GetCitiesAndCountries;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -24,9 +26,13 @@ import java.util.stream.IntStream;
 public class AdminController {
 
     private final UserService userService;
+    private final CompanyService companyService;
+    private final GetCitiesAndCountries getCitiesAndCountries;
 
     @GetMapping
-    public String adminPage() {
+    public String adminPage(ModelMap modelMap) {
+        modelMap.addAttribute("usersCount", userService.getUsersCount());
+        modelMap.addAttribute("companiesCount", companyService.count());
         return "/admin/index";
     }
 
@@ -83,4 +89,9 @@ public class AdminController {
         return "/admin/users";
     }
 
+    @GetMapping("/countriesAndCities")
+    public String countries() {
+        getCitiesAndCountries.getAllCountries();
+        return "/admin/index";
+    }
 }

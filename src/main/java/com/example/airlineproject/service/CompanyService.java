@@ -21,4 +21,6 @@ public interface CompanyService {
     void delete(int id);
 
     Company findByUser(User user);
+
+    long count();
 }
