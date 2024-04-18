@@ -26,6 +26,8 @@ public class Flight {
     private LocalDateTime scheduledTime;
     private LocalDateTime estimatedTime;
     private LocalDateTime arrivalTime;
+    private double economyPrice;
+    private double businessPrice;
     @Enumerated(EnumType.STRING)
     private Status status;
     @ManyToOne

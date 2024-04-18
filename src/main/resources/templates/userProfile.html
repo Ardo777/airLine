@@ -5,9 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
     <link rel="stylesheet" th:href="@{/css/userProfile.css}"/>
+    <style>
+        /* Стили для кнопки возврата на главную */
+        .home-link {
+            top: 30px;
+            left: 10px;
+            font-size: 20px;
+            color: #007bff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
+    <a class="home-link" href="/">⬅️</a>
     <div class="header">
         <h1>User Profile</h1>
         <div th:if="${user.getPicName() != null}">
@@ -63,7 +75,7 @@
                 <input type="text" th:value="${user.email}" id="newEmail" name="email"
                        data-current-email="${user.email}">
                 <a th:href="@{/user/emailUpdate/{newEmail}(newEmail=${user.email})}" id="changeEmailLink"
-                   style="display: none;">Change Email</a>
+                   style="display: none;">Send Verification Code</a>
             </div>
             <div class="form-group">
                 <label for="newEmail">Change Photo:</label>
@@ -103,13 +115,10 @@
         var passwordSection = document.querySelector('.password-section');
         passwordSection.style.display = passwordSection.style.display === 'none' ? 'block' : 'none';
     }
-
     function toggleDetailsForm() {
         var detailsSection = document.querySelector('.details-section');
         detailsSection.style.display = detailsSection.style.display === 'none' ? 'block' : 'none';
     }
-
-    // Функция для отображения/скрытия ссылки "Change Email"
     function toggleChangeEmailLink() {
         var emailInput = document.getElementById('newEmail');
         var changeEmailLink = document.getElementById('changeEmailLink');
@@ -122,8 +131,6 @@
             changeEmailLink.style.display = 'none';
         }
     }
-
-    // Вызываем функцию при изменении значения поля нового email
     document.getElementById('newEmail').addEventListener('input', toggleChangeEmailLink);
 </script>
 

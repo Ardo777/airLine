@@ -24,6 +24,7 @@ public class MailServiceImpl implements MailService {
     private final @Qualifier("emailTemplateEngine") TemplateEngine templateEngine;
 
 
+
     @Async
     public void sendMail(User user) {
 
