@@ -64,7 +64,7 @@ public class ManagerController {
             modelMap.put("officeErrorMsg", officeErrorMsg);
             log.error("Error message: {}", officeErrorMsg);
         }
-        modelMap.addAttribute("planes", planeRepository.findByCompany(springUser.getUser().getCompany()));
+        modelMap.addAttribute("planes", planeRepository.findAllByCompany(springUser.getUser().getCompany()));
         log.info("List of planes sent to HTML");
         return "/manager/moreDetails";
     }
