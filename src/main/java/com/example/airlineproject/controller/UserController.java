@@ -241,6 +241,7 @@ public class UserController {
             log.info("User profile page accessed successfully for user: {}", user.getEmail());
         } else {
             log.warn("No authenticated user found while accessing the user profile page.");
+            return "redirect:/user/login";
         }
         return "userProfile";
     }
@@ -256,7 +257,7 @@ public class UserController {
 
     @PostMapping("/changePassword")
     public String changePassword(@ModelAttribute ChangePasswordDto changePasswordDto, @AuthenticationPrincipal SpringUser springUser) {
-        userService.changePassword(changePasswordDto, springUser);
+        boolean result = userService.changePassword(changePasswordDto, springUser);
         log.info("Password changed successfully for user: {}", springUser.getUser().getEmail());
         return "redirect:/user/profile";
     }
@@ -271,21 +272,8 @@ public class UserController {
 
     @PostMapping("/emailUpdate")
     public String emailUpdate(@AuthenticationPrincipal SpringUser springUser, @RequestParam("email") String email, @RequestParam("verificationCode") String verificationCode) {
-        if (springUser != null) {
-            User user = springUser.getUser();
-            if (user.getVerificationCode().equals(verificationCode)) {
-                user.setEmail(email);
-                user.setActive(true);
-                userRepository.save(user);
-                log.info("Email updated successfully for user: {}", user.getEmail());
-                return "redirect:/user/profile";
-            } else {
-                log.warn("Invalid verification code provided for user: {}", user.getEmail());
-            }
-        } else {
-            log.error("No authenticated user found");
-        }
-        return "redirect:/";
+        userService.processEmailUpdate(springUser, email, verificationCode);
+        return "redirect:/user/profile";
     }
 
 

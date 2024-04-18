@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-04-16T16:03:57+0400",
+    date = "2024-04-18T19:54:21+0400",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.10 (Amazon.com Inc.)"
 )
 @Component
@@ -28,6 +28,8 @@ public class FlightMapperImpl implements FlightMapper {
         flight.scheduledTime( flightDto.getScheduledTime() );
         flight.estimatedTime( flightDto.getEstimatedTime() );
         flight.arrivalTime( flightDto.getArrivalTime() );
+        flight.economyPrice( flightDto.getEconomyPrice() );
+        flight.businessPrice( flightDto.getBusinessPrice() );
 
         flight.status( Status.ON_TIME );
 

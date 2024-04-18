@@ -29,10 +29,13 @@ public interface UserService {
 
     List<UserResponseDto> getAllByFilter(String keyword);
 
-    void update(User user, SpringUser springUser, MultipartFile multipartFile) throws IOException;
+    boolean update(User user, SpringUser springUser, MultipartFile multipartFile) throws IOException;
 
-    void changePassword(ChangePasswordDto changePasswordDto, SpringUser springUser);
+    boolean changePassword(ChangePasswordDto changePasswordDto, SpringUser springUser);
 
     void updateEmail(SpringUser springUser, String email);
+
+    void processEmailUpdate(SpringUser springUser, String email, String verificationCode);
+
     Long getUsersCount();
 }
