@@ -12,5 +12,5 @@ public interface PlaneRepository extends JpaRepository<Plane, Integer> {
 
     boolean existsByModelAndMaxBaggageAndCountBusinessAndCountEconomyAndCompany(String model, double maxBaggage, int countBusiness, int countEconomy, Company company);
 
-    List<Plane> findByCompany(Company company);
+  List<Plane> findAllByCompany(Company company);
 }

@@ -34,4 +34,5 @@ public interface UserService {
     void changePassword(ChangePasswordDto changePasswordDto, SpringUser springUser);
 
     void updateEmail(SpringUser springUser, String email);
+    Long getUsersCount();
 }
