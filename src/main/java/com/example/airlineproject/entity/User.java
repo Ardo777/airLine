@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -40,26 +41,9 @@ public class User {
     @Transient
     private String confirmPassword;
     @OneToOne
+    @ToString.Exclude
     private Company company;
     private LocalDate dateBirthday;
-
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", role=" + role +
-                ", isActive=" + isActive +
-                ", verificationCode='" + verificationCode + '\'' +
-                ", picName='" + picName + '\'' +
-                ", confirmPassword='" + confirmPassword + '\'' +
-                ", dateBirthday=" + dateBirthday +
-                '}';
-    }
 
     public User(int i, String alice, String smith, String mail, String password, UserRole userRole, boolean b, String verificationCode, String picName, Object o, Object o1) {
 
