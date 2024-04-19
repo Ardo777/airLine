@@ -14,6 +14,8 @@ import java.time.LocalDateTime;
 public class FlightDto {
     private String from;
     private String to;
+    private double economyPrice;
+    private double businessPrice;
     private LocalDateTime scheduledTime;
     private LocalDateTime estimatedTime;
     private LocalDateTime arrivalTime;

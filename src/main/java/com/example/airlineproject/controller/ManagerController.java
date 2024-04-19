@@ -64,13 +64,7 @@ public class ManagerController {
             modelMap.put("officeErrorMsg", officeErrorMsg);
             log.error("Error message: {}", officeErrorMsg);
         }
-        return "/manager/moreDetails";
-    }
-
-
-    @GetMapping("/addFlight")
-    public String addFlightPage(ModelMap modelMap) {
-        modelMap.addAttribute("planes", planeRepository.findAll());
+        modelMap.addAttribute("planes", planeRepository.findAllByCompany(springUser.getUser().getCompany()));
         log.info("List of planes sent to HTML");
         return "/manager/moreDetails";
     }
@@ -110,6 +104,7 @@ public class ManagerController {
         log.info(planeSuccessMsg);
         return "redirect:/manager/moreDetails?planeSuccessMsg=" + planeSuccessMsg;
     }
+
 
 
     @PostMapping("/addOffice")

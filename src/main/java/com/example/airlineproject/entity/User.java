@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -17,7 +18,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Entity
 @Table(name = "user")
-public class User{
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,9 +41,9 @@ public class User{
     @Transient
     private String confirmPassword;
     @OneToOne
+    @ToString.Exclude
     private Company company;
     private LocalDate dateBirthday;
-
 
     public User(int i, String alice, String smith, String mail, String password, UserRole userRole, boolean b, String verificationCode, String picName, Object o, Object o1) {
 

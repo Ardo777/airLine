@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" th:href="@{/css/userProfile.css}"/>
+    <style>
+        /* Стили для кнопки возврата на главную */
+        .home-link {
+            top: 30px;
+            left: 10px;
+            font-size: 20px;
+            color: #007bff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a class="home-link" href="/">⬅️</a>
+    <div class="header">
+        <h1>User Profile</h1>
+        <div th:if="${user.getPicName() != null}">
+            <img th:value="img" alt="photo" th:src="@{/getImage(picName=${user.picName})}" width="150">
+        </div>
+        <div th:if="${user.getPicName() == null}">
+            <div class="profile-picture">
+                <img id="images" alt="text" src="/media/777user.jpg" width="150">
+            </div>
+        </div>
+    </div>
+
+    <div class="profile-details">
+        <table>
+            <tr>
+                <th>ID</th>
+                <td th:text="${user.id}"></td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td th:text="${user.name}"></td>
+            </tr>
+            <tr>
+                <th>Surname</th>
+                <td th:text="${user.surname}"></td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td th:text="${user.email}"></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="button-container">
+        <button id="changeDetailsBtn" onclick="toggleDetailsForm()">Change Details</button>
+        <button id="changePasswordBtn" onclick="togglePasswordSection()">Change Password</button>
+    </div>
+
+    <div class="details-section">
+        <h3>Change Details</h3>
+        <form id="detailsForm" action="/user/update" method="post" enctype="multipart/form-data">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+            <div class="form-group">
+                <label for="newName">New Name:</label>
+                <input type="text" th:value="${user.name}" id="newName" name="name">
+            </div>
+            <div class="form-group">
+                <label for="newSurname">New Surname:</label>
+                <input type="text" th:value="${user.surname}" id="newSurname" name="surname">
+            </div>
+            <div class="form-group">
+                <label for="newEmail">New Email:</label>
+                <input type="text" th:value="${user.email}" id="newEmail" name="email"
+                       data-current-email="${user.email}">
+                <a th:href="@{/user/emailUpdate/{newEmail}(newEmail=${user.email})}" id="changeEmailLink"
+                   style="display: none;">Send Verification Code</a>
+            </div>
+            <div class="form-group">
+                <label for="newEmail">Change Photo:</label>
+                <input type="file" id="picture" name="picture">
+            </div>
+            <div class="button-container">
+                <button type="submit">Change</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="password-section">
+        <h3>Change Password</h3>
+        <form id="passwordForm" action="/user/changePassword" method="post">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+            <div class="form-group">
+                <label for="currentPassword">Current Password:</label>
+                <input type="password" id="currentPassword" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="newPassword">New Password:</label>
+                <input type="password" id="newPassword" name="newPassword" required>
+            </div>
+            <div class="form-group">
+                <label for="confirmNewPassword">Confirm your new password:</label>
+                <input type="password" id="confirmNewPassword" name="confirmNewPassword" required>
+            </div>
+            <div class="button-container">
+                <button type="submit">Change</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function togglePasswordSection() {
+        var passwordSection = document.querySelector('.password-section');
+        passwordSection.style.display = passwordSection.style.display === 'none' ? 'block' : 'none';
+    }
+    function toggleDetailsForm() {
+        var detailsSection = document.querySelector('.details-section');
+        detailsSection.style.display = detailsSection.style.display === 'none' ? 'block' : 'none';
+    }
+    function toggleChangeEmailLink() {
+        var emailInput = document.getElementById('newEmail');
+        var changeEmailLink = document.getElementById('changeEmailLink');
+        var currentEmail = emailInput.getAttribute('data-current-email');
+
+        if (emailInput.value !== currentEmail) {
+            changeEmailLink.style.display = 'inline';
+            changeEmailLink.href = '/user/emailUpdate/' + encodeURIComponent(emailInput.value);
+        } else {
+            changeEmailLink.style.display = 'none';
+        }
+    }
+    document.getElementById('newEmail').addEventListener('input', toggleChangeEmailLink);
+</script>
+
+</body>
+</html>
