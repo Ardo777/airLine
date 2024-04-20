@@ -1,11 +1,13 @@
 package com.example.airlineproject.service.impl;
 
+import com.example.airlineproject.dto.ChangePasswordDto;
 import com.example.airlineproject.dto.UserResponseDto;
 import com.example.airlineproject.entity.QUser;
 import com.example.airlineproject.entity.User;
 import com.example.airlineproject.entity.enums.UserRole;
 import com.example.airlineproject.mapper.UserMapper;
 import com.example.airlineproject.repository.UserRepository;
+import com.example.airlineproject.security.SpringUser;
 import com.example.airlineproject.service.MailService;
 import com.example.airlineproject.service.UserService;
 import com.example.airlineproject.util.FileUtil;
@@ -18,6 +20,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -155,8 +158,98 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Long getUsersCount() {
-     return userRepository.count();
+    public boolean update(User user, @AuthenticationPrincipal SpringUser springUserAuth, MultipartFile multipartFile) throws IOException {
+        if (isValidInput(user, springUserAuth)) {
+            User springUser = springUserAuth.getUser();
+            String picName = fileUtil.saveFile(multipartFile);
+            updateUserProfile(user, springUser, picName);
+            userRepository.save(springUser);
+            log.info("User profile updated successfully for user with ID: {}", springUser.getId());
+            return true;
+        } else {
+            log.error("Failed to update user profile: invalid input data");
+            return false;
+        }
     }
+
+
+    private void updateUserProfile(User user, User springUser, String picName) {
+        if (picName != null && !picName.isEmpty()) {
+            springUser.setPicName(picName);
+        }
+        if (user.getName() != null && !user.getName().isEmpty()) {
+            springUser.setName(user.getName());
+        }
+        if (user.getSurname() != null && !user.getSurname().isEmpty()) {
+            springUser.setSurname(user.getSurname());
+        }
+    }
+
+    private boolean isValidInput(User user, SpringUser springUserAuth) {
+        return user != null && springUserAuth != null;
+    }
+
+
+    @Override
+    public boolean changePassword(ChangePasswordDto changePasswordDto, SpringUser springUser) {
+        User user = springUser.getUser();
+        if (changePasswordDto.getNewPassword().equals(changePasswordDto.getConfirmNewPassword())) {
+            if (passwordEncoder.matches(changePasswordDto.getPassword(), user.getPassword())) {
+                user.setPassword(passwordEncoder.encode(changePasswordDto.getNewPassword()));
+                userRepository.save(user);
+                log.error("New password and confirm password do not match for user with ID: {}", user.getId());
+                return true;
+            } else {
+                log.info("Password changed successfully for user with ID: {}", user.getId());
+                return false;
+            }
+        } else {
+            log.error("Incorrect current password for user with ID: {}", user.getId());
+        }
+        return false;
+    }
+
+    @Override
+    public void updateEmail(SpringUser springUser, String email) {
+        if (springUser != null) {
+            User user = springUser.getUser();
+            user.setActive(false);
+            user.setVerificationCode(createVerificationCode());
+            log.info("Sending verification email to: {}", email);
+            mailService.sendMail(email, "your verification code");
+            log.info("Verification email sent successfully to: {}", email);
+            userRepository.save(user);
+            log.info("User updated and saved successfully");
+        } else {
+            log.warn("SpringUser is null. Cannot update email.");
+        }
+    }
+
+    private String createVerificationCode() {
+        String lUUID = String.format("%040d", new BigInteger(UUID.randomUUID().toString().replace("-", ""), 16));
+        return lUUID.substring(0, Math.min(lUUID.length(), 6));
+    }
+
+    public void processEmailUpdate(SpringUser springUser, String email, String verificationCode) {
+        if (springUser != null) {
+            User user = springUser.getUser();
+            if (user.getVerificationCode().equals(verificationCode)) {
+                user.setEmail(email);
+                user.setActive(true);
+                userRepository.save(user);
+                log.info("Email updated successfully for user: {}", user.getEmail());
+            } else {
+                log.warn("Invalid verification code provided for user: {}", user.getEmail());
+            }
+        } else {
+            log.error("No authenticated user found");
+        }
+    }
+
+    @Override
+    public Long getUsersCount() {
+        return userRepository.count();
+    }
+
 
 }
