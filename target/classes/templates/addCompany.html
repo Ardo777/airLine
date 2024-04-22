@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title> FlyNow | Add Your Company</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="/css/vendor/loginRegister.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/media/favicon.png">
+    <style>
+        .back-to-home {
+            position: relative;
+            top: 101px;
+            left: -395px;
+            text-decoration: none;
+            color: #333;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .back-to-home:hover {
+            background-color: #f0f0f0;
+        }
+
+        .home-icon {
+            width: 30px;
+            height: auto;
+        }
+
+        .error {
+            font-size: 17px;
+            color: red;
+            margin-top: -26px;
+            padding: 10px;
+            margin-left: -8px;
+        }
+    </style>
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="/css/vendor/font-awesome.css">
+    <link rel="stylesheet" href="/css/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/vendor/slick.css">
+    <link rel="stylesheet" href="/css/vendor/slick-theme.css">
+    <link rel="stylesheet" href="/css/vendor/datetime.css">
+    <link rel="stylesheet" href="/css/vendor/calendar/classic.css">
+    <link rel="stylesheet" href="/css/vendor/calendar/classic.date.css">
+    <link rel="stylesheet" href="/css/vendor/jquery.timepicker.min.css">
+    <link rel="stylesheet" href="/css/vendor/ui-autocomplete.css">
+    <link rel="stylesheet" href="/css/vendor/sal.css">
+    <link rel="stylesheet" href="/css/vendor/flightsList.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/vendor/picture.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <a href="/" class="back-to-home"><img src="/media/7777777777.png" class="home-icon"></a>
+</head>
+<body>
+<div class="container" style="margin: 108px">
+    <div class="row px-3">
+        <div class="col-lg-10 col-xl-9 card flex-row mx-auto px-0">
+            <div class="img-left d-none d-md-flex"></div>
+            <div class="card-body">
+                <h4 class="title text-center mt-4">
+                    Add Your Company
+                </h4>
+                <div class="error" th:text="${emailMsg}"></div>
+                <form class="form-box px-3" action="/company/register" method="post" enctype="multipart/form-data">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                    <div class="form-input">
+                        Company Name: <input type="text" name="name" placeholder="Name" tabindex="10" required>
+                    </div>
+                    <div class="form-input">
+                        Company Email: <input type="email" name="email" placeholder="Email Address" tabindex="10" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="file normal">
+                            <input type="file" id="thefile" name="picName" required>
+                            Company Logo
+                        </label>
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-block text-uppercase">
+                            Send Request
+                        </button>
+                    </div>
+                    <hr class="my-4">
+                    <div class="text-center mb-2">
+                        Thank you for choosing us.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--<div style="position: fixed; top: 212px; left: 388px;">-->
+<!--    <a href="/home">Back to Home</a>-->
+<!--</div>-->
+<!-- Jquery Js -->
+<script src="/js/vendor/jquery-3.6.3.min.js"></script>
+<script src="/js/vendor/calendar/popper.min.js"></script>
+<script src="/js/vendor/bootstrap.min.js"></script>
+<script src="/js/vendor/slick.min.js"></script>
+<script src="/js/vendor/jquery-appear.js"></script>
+<script src="/js/vendor/jquery-validator.js"></script>
+<script src="/js/vendor/aksVideoPlayer.js"></script>
+<script src="/js/vendor/tilt.jquery.js"></script>
+<script src="/js/vendor/calendar/picker.js"></script>
+<script src="/js/vendor/calendar/picker.date.js"></script>
+<script src="/js/vendor/autoComplete.js"></script>
+<script src="/js/vendor/jquery.timepicker.min.js"></script>
+<script src="/js/vendor/sal.js"></script>
+
+<!-- Site Scripts -->
+<script src="/js/date.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- Header Area Start -->
+<header>
+    <div th:fragment="header">
+        <nav class="main-menu">
+            <div class="container-fluid">
+                <div class="main-menu__block">
+                    <div class="main-menu__left">
+
+                        <div class="main-menu__logo">
+                            <a href="/">
+                                <img src="/media/logo.png" alt="FlyNow">
+                            </a>
+                        </div>
+
+                        <div class="main-menu__nav">
+                            <ul class="main-menu__list">
+                                <li><a href="/" class="active">Home</a></li>
+                                <li class="dropdown">
+                                    <a href="#scroll">Flight</a>
+                                </li>
+
+                                <li class="dropdown">
+                                    <a href="/hotel">Hotel</a>
+                                </li>
+
+                                <li class="dropdown">
+                                    <a href="/aboutUs">About Us</a>
+                                </li>
+
+                                <li class="dropdown">
+                                    <a href="/news">News</a>
+                                </li>
+
+                                <li class="dropdown">
+                                    <a  href="/company">Company</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="main-menu__right">
+                        <a href="#" class="main-menu__search search-toggler d-xl-flex d-none">
+                            <i class="fal fa-search"></i>
+                        </a>
+                        <div class="main-menu-signup__login d-xl-flex d-none">
+                            <a th:if="${currentUser == null}"  href="/user/login" class="main-menu__login">
+                                Login
+                            </a>
+                            <div class="center_slach d-xl-flex d-none">/</div>
+                            <a th:if="${currentUser == null}"  href="/user/register" class="main-menu__login">
+                                Signup
+                            </a>
+                            <a th:if="${currentUser != null}" href="/logout" class="main-menu__login">
+                                logout
+                            </a>
+                        </div>
+                        <a href="#" class="main-menu__toggler mobile-nav__toggler">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<!-- Header Area end -->
+<!-- Jquery Js -->
+<script src="/js/vendor/jquery-3.6.3.min.js"></script>
+<script src="/js/vendor/calendar/popper.min.js"></script>
+<script src="/js/vendor/bootstrap.min.js"></script>
+<script src="/js/vendor/slick.min.js"></script>
+<script src="/js/vendor/jquery-appear.js"></script>
+<script src="/js/vendor/jquery-validator.js"></script>
+<script src="/js/vendor/aksVideoPlayer.js"></script>
+<script src="/js/vendor/tilt.jquery.js"></script>
+<script src="/js/vendor/calendar/picker.js"></script>
+<script src="/js/vendor/calendar/picker.date.js"></script>
+<script src="/js/vendor/autoComplete.js"></script>
+<script src="/js/vendor/jquery.timepicker.min.js"></script>
+<script src="/js/vendor/sal.js"></script>
+
+<!-- Site Scripts -->
+<script src="/js/date.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>

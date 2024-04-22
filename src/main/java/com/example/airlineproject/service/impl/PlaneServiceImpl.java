@@ -1,4 +1,4 @@
-package com.example.airlineproject.service.impl;
+package com.example.airlineproject.service.impl;  
 
 import com.example.airlineproject.dto.PlaneDto;
 import com.example.airlineproject.dto.PlaneUpdateDto;
@@ -13,9 +13,14 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import com.example.airlineproject.dto.PlanesResponseDto;
+import com.example.airlineproject.entity.Company;
+import com.example.airlineproject.mapper.PlaneMapper;
+import java.util.List;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
+
 
 
 @Service
@@ -27,6 +32,14 @@ public class PlaneServiceImpl implements PlaneService {
     private final PlaneRepository planeRepository;
     private final FileUtil fileUtil;
     private final PlaneMapper planeMapper;
+
+
+
+   
+    @Override
+    public List<PlanesResponseDto> allPlanesOfTheCompany(Company company) {
+        return planeMapper.map(planeRepository.findAllByCompany(company));
+    }
 
     @Override
     public void saveAirPlane(Plane plane, MultipartFile multipartFile) throws IOException {
@@ -49,8 +62,6 @@ public class PlaneServiceImpl implements PlaneService {
                 .build();
     }
 
-
-
     @Override
     public Boolean isPlaneExist(Plane plane,User user) {
         boolean isPlaneExist = planeRepository.existsByModelAndMaxBaggageAndCountBusinessAndCountEconomyAndCompany(plane.getModel(),plane.getMaxBaggage(),plane.getCountBusiness(),plane.getCountEconomy(),user.getCompany());
@@ -61,6 +72,7 @@ public class PlaneServiceImpl implements PlaneService {
             log.info("Plane does not exist: " + plane.getModel());
             return false;
         }
+
     }
     @Override
     public List<PlaneDto> getAllPlanesByCompany(Company company) {
