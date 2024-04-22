@@ -61,6 +61,7 @@ public class MailServiceImpl implements MailService {
     }
 
 
+
     @Async
     public void sendRecoveryMail(User user) {
 

@@ -1,7 +1,9 @@
 package com.example.airlineproject.controller;
 
 
+import com.example.airlineproject.dto.ChangeFlightDto;
 import com.example.airlineproject.dto.FlightDto;
+import com.example.airlineproject.entity.enums.Status;
 import com.example.airlineproject.dto.TeamDto;
 import com.example.airlineproject.entity.Office;
 import com.example.airlineproject.entity.Plane;
@@ -10,6 +12,8 @@ import com.example.airlineproject.entity.enums.Profession;
 import com.example.airlineproject.repository.PlaneRepository;
 import com.example.airlineproject.security.SpringUser;
 import com.example.airlineproject.service.FlightService;
+import com.example.airlineproject.service.ManagerService;
+import jakarta.validation.Valid;
 import com.example.airlineproject.service.OfficeService;
 import com.example.airlineproject.service.PlaneService;
 import com.example.airlineproject.service.TeamService;
@@ -18,6 +22,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -34,8 +43,8 @@ public class ManagerController {
     private final PlaneService planeService;
     private final PlaneRepository planeRepository;
     private final FlightService flightService;
+    private final PlaneService planeService;
     private final TeamService teamService;
-
 
     @GetMapping
     public String managerPage() {
@@ -123,6 +132,34 @@ public class ManagerController {
     }
 
 
+    @GetMapping("/flights")
+    public String FlightPage(ModelMap modelMap, @AuthenticationPrincipal SpringUser springUser) {
+        //this service method will find all flights of the company and will put into model map
+        modelMap.addAttribute("flights", flightService.findExistingFlights(springUser.getUser().getCompany(), Status.ARRIVED));
+        return "manager/flights";
+    }
+
+
+    @GetMapping("/change/flight/{flightId}")
+    public String ChangeFlightPage(@PathVariable("flightId") int flightId, @AuthenticationPrincipal SpringUser springUser, ModelMap modelMap) {
+        //this service method will find something flight which chose manager for change the flight.
+        modelMap.addAttribute("flight", flightService.findCompanyFlight(flightId, springUser.getUser().getCompany()));
+        //this service method will find all plane of the company and put into model map because manager must choose plane for flight
+        modelMap.addAttribute("planes", planeService.allPlanesOfTheCompany(springUser.getUser().getCompany()));
+        return "manager/changeFlight";
+    }
+
+    @PostMapping("/change/flight")
+    public String ChangeFlight(@AuthenticationPrincipal SpringUser springUser,
+                               @RequestParam("plane") int planeId,
+                               @ModelAttribute("changeFlightDto") ChangeFlightDto changeFlightDto
+                               ) {
+        //this service method will change that flight.
+        //I send changeFlightDto and company together because manager can enter into the <inspect> and change that flight id and receive another flight of other company
+        flightService.changeFLight(changeFlightDto, planeId, springUser.getUser().getCompany());
+        return "redirect:/manager/flights";
+
+
     @PostMapping("/addTeam")
     public String addFlight(@ModelAttribute TeamDto teamDto, @AuthenticationPrincipal SpringUser springUser) {
         log.info("Attempting to add team with data: {}", teamDto);
@@ -133,6 +170,7 @@ public class ManagerController {
         } else {
             return "redirect:/manager/moreDetails";
         }
+
     }
 
 
