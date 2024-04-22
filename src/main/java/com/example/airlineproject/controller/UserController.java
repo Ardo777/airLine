@@ -1,5 +1,6 @@
 package com.example.airlineproject.controller;
 
+import com.example.airlineproject.dto.ChangePasswordDto;
 import com.example.airlineproject.entity.User;
 import com.example.airlineproject.entity.enums.UserRole;
 import com.example.airlineproject.repository.UserRepository;
@@ -231,4 +232,49 @@ public class UserController {
         }
         return "recovery";
     }
+
+    @GetMapping("/profile")
+    public String userProfilePage(@AuthenticationPrincipal SpringUser springUser, ModelMap modelMap) {
+        if (springUser != null) {
+            User user = springUser.getUser();
+            modelMap.addAttribute("user", user);
+            log.info("User profile page accessed successfully for user: {}", user.getEmail());
+        } else {
+            log.warn("No authenticated user found while accessing the user profile page.");
+            return "redirect:/user/login";
+        }
+        return "userProfile";
+    }
+
+
+    @PostMapping("/update")
+    public String userProfile(@ModelAttribute User user, @AuthenticationPrincipal SpringUser springUser, @RequestParam(value = "picture", required = false) MultipartFile multipartFile) throws IOException {
+        userService.update(user, springUser, multipartFile);
+        log.info("User profile updated successfully for user: {}", user.getEmail());
+        return "redirect:/";
+    }
+
+
+    @PostMapping("/changePassword")
+    public String changePassword(@ModelAttribute ChangePasswordDto changePasswordDto, @AuthenticationPrincipal SpringUser springUser) {
+        boolean result = userService.changePassword(changePasswordDto, springUser);
+        log.info("Password changed successfully for user: {}", springUser.getUser().getEmail());
+        return "redirect:/user/profile";
+    }
+
+    @GetMapping("/emailUpdate/{email}")
+    public String emailUpdatePage(@AuthenticationPrincipal SpringUser springUser, @PathVariable("email") String email, ModelMap modelMap) {
+        log.debug("Accessed emailUpdatePage method with email: {}", email);
+        userService.updateEmail(springUser, email);
+        modelMap.addAttribute("email", email);
+        return "userUpdateMail";
+    }
+
+    @PostMapping("/emailUpdate")
+    public String emailUpdate(@AuthenticationPrincipal SpringUser springUser, @RequestParam("email") String email, @RequestParam("verificationCode") String verificationCode) {
+        userService.processEmailUpdate(springUser, email, verificationCode);
+        return "redirect:/user/profile";
+    }
+
+
 }

@@ -41,22 +41,25 @@ public class FlightServiceImpl implements FlightService {
     public Flight save(FlightDto flightDto, SpringUser springUser, int planeId) {
         User user = springUser.getUser();
         log.info("Received request to save flight for user: {}", user.getEmail());
-        Company company = companyService.findByUser(user);
+        Company company = findCompanyByUser(user);
         if (company != null) {
-            log.debug("Found company for user: {}", user.getEmail());
-            Optional<Plane> byId = planeRepository.findById(planeId);
-            if (byId.isPresent()) {
-                log.debug("Found plane with ID: {}", planeId);
-                Plane plane = byId.get();
-                Flight flight = flightMapper.map(flightDto);
-                flight.setPlane(plane);
-                flight.setCompany(company);
-                log.info("Saving flight: {}", flight);
-                flightRepository.save(flight);
-                log.info("Flight saved successfully");
-                return flight;
+            Plane plane = findPlaneById(planeId);
+            if (plane != null) {
+                if (isValidPrices(flightDto)) {
+                    Flight flight = createFlight(flightDto, plane, company);
+                    if (flight != null) {
+                        log.info("Saving flight: {}", flight);
+                        flightRepository.save(flight);
+                        log.info("Flight saved successfully");
+                        return flight;
+                    }
+                } else {
+                    log.error("Invalid price entered for economy or business class");
+                    return null;
+                }
             } else {
                 log.error("Plane with ID {} not found", planeId);
+                return null;
             }
         } else {
             log.error("Company not found for user {}", user.getId());
@@ -110,6 +113,35 @@ public class FlightServiceImpl implements FlightService {
         log.debug("Saving modified flight");
         flightRepository.save(modifiedFlight);
     }
+
+    private Company findCompanyByUser(User user) {
+        log.debug("Searching for company for user: {}", user.getEmail());
+        return companyService.findByUser(user);
+    }
+
+    private Plane findPlaneById(int planeId) {
+        log.debug("Searching for plane with ID: {}", planeId);
+        Optional<Plane> optionalPlane = planeRepository.findById(planeId);
+        return optionalPlane.orElse(null);
+    }
+
+    private boolean isValidPrices(FlightDto flightDto) {
+        return isValidPrice(flightDto.getEconomyPrice()) && isValidPrice(flightDto.getBusinessPrice());
+    }
+
+    private boolean isValidPrice(Double price) {
+        return price != null && price > 0;
+    }
+
+    private Flight createFlight(FlightDto flightDto, Plane plane, Company company) {
+        Flight flight = flightMapper.map(flightDto);
+        flight.setPlane(plane);
+        flight.setCompany(company);
+        return flight;
+    }
+
+
+
 
     private Status getFlightStatusByTime(Flight modifiedFlight, Flight existingFlight) {
         if (modifiedFlight.getScheduledTime().isBefore(LocalDateTime.now())
