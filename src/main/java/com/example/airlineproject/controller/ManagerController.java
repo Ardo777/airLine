@@ -3,6 +3,7 @@ package com.example.airlineproject.controller;
 
 import com.example.airlineproject.dto.ChangeFlightDto;
 import com.example.airlineproject.dto.FlightDto;
+import com.example.airlineproject.dto.PlaneUpdateDto;
 import com.example.airlineproject.entity.enums.Status;
 import com.example.airlineproject.dto.TeamDto;
 import com.example.airlineproject.entity.Office;
@@ -236,4 +237,26 @@ public class ManagerController {
         return "redirect:/manager/index";
     }
 
+    @GetMapping("/planes")
+    public String PlanesOfTheCompany(@AuthenticationPrincipal SpringUser springUser, ModelMap modelMap) {
+        modelMap.addAttribute("planes", planeService.getAllPlanesByCompany(springUser.getUser().getCompany()));
+        return "/manager/ownPlanes";
+    }
+
+    @GetMapping("/update/plane/{id}")
+    public String planePageForUpdate(@PathVariable("id") int id, @AuthenticationPrincipal SpringUser springUser, ModelMap modelMap) {
+        modelMap.addAttribute("plane", planeService.getPlane(id,springUser.getUser().getCompany()));
+        return "/manager/updatePlane";
+    }
+
+    @PostMapping("/update/plane")
+    public String planeUpdate(@ModelAttribute PlaneUpdateDto planeUpdateDto, @RequestParam("picture") MultipartFile multipartFile, @AuthenticationPrincipal SpringUser springUser) {
+        planeService.updatePlane(planeUpdateDto,multipartFile,springUser.getUser().getCompany());
+        return "redirect:/manager/plane/"+planeUpdateDto.getId();
+    }
+    @GetMapping("/plane/{id}")
+    public String planePage(@PathVariable("id") int id, @AuthenticationPrincipal SpringUser springUser, ModelMap modelMap) {
+        modelMap.addAttribute("plane", planeService.getPlane(id,springUser.getUser().getCompany()));
+        return "/manager/plane";
+    }
 }
