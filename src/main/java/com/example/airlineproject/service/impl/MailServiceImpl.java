@@ -1,11 +1,15 @@
 package com.example.airlineproject.service.impl;
 
+import com.example.airlineproject.dto.UserRegisterDto;
 import com.example.airlineproject.entity.User;
 import com.example.airlineproject.service.MailService;
+import com.example.airlineproject.service.UserService;
+import com.example.airlineproject.util.FileUtil;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
@@ -21,11 +25,12 @@ public class MailServiceImpl implements MailService {
     private final @Qualifier("emailTemplateEngine") TemplateEngine templateEngine;
 
 
+    @Override
     @Async
-    public void sendMail(User user) {
+    public void sendMail(UserRegisterDto userRegisterDto) {
 
         final Context ctx = new Context();
-        ctx.setVariable("user", user);
+        ctx.setVariable("userRegisterDto", userRegisterDto);
 
         final String htmlContent = templateEngine.process("mail/welcome.html", ctx);
 
@@ -34,7 +39,7 @@ public class MailServiceImpl implements MailService {
         try {
             final MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, "UTF-8");
             message.setSubject("Welcome Fly Now  Social Network");
-            message.setTo(user.getEmail());
+            message.setTo(userRegisterDto.getEmail());
             message.setText(htmlContent, true);
             javaMailSender.send(mimeMessage);
         } catch (MessagingException e) {
@@ -42,22 +47,17 @@ public class MailServiceImpl implements MailService {
         }
     }
 
-
-
+    @Override
     @Async
-    public void sendRecoveryMail(User user) {
-
+    public void sendRecoveryMail(String email) {
         final Context ctx = new Context();
-        ctx.setVariable("user", user);
-
+        ctx.setVariable("email", email);
         final String htmlContent = templateEngine.process("mail/recoveryPassword.html", ctx);
-
         final MimeMessage mimeMessage = javaMailSender.createMimeMessage();
-
         try {
             final MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, "UTF-8");
             message.setSubject("Recovery Password");
-            message.setTo(user.getEmail());
+            message.setTo(email);
             message.setText(htmlContent, true);
             javaMailSender.send(mimeMessage);
         } catch (MessagingException e) {
@@ -65,23 +65,16 @@ public class MailServiceImpl implements MailService {
         }
     }
 
+    @Override
     @Async
     public void sendBirthdayMail(User user) {
-
-
         final Context ctx = new Context();
         ctx.setVariable("user", user);
-
-
-        final String htmlContent = templateEngine.process("mail/recoveryPassword.html", ctx);
-
-
+        final String htmlContent = templateEngine.process("mail/birthday.html", ctx);
         final MimeMessage mimeMessage = javaMailSender.createMimeMessage();
-
         try {
             final MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, "UTF-8");
-            message.setSubject("Recovery Password");
-
+            message.setSubject("Happy Birthday");
             message.setTo(user.getEmail());
             message.setText(htmlContent, true);
             javaMailSender.send(mimeMessage);

@@ -1,8 +1,10 @@
 package com.example.airlineproject.service.impl;
 
+import com.example.airlineproject.dto.OfficeChangeDto;
 import com.example.airlineproject.entity.Company;
 import com.example.airlineproject.entity.Office;
 import com.example.airlineproject.entity.User;
+import com.example.airlineproject.mapper.OfficeMapper;
 import com.example.airlineproject.repository.OfficeRepository;
 import com.example.airlineproject.service.OfficeService;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +18,11 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Slf4j
 public class OfficeServiceImpl implements OfficeService {
+
     private final OfficeRepository officeRepository;
+    private final OfficeMapper officeMapper;
+
+
     @Override
     public void saveOffice(Office office, User user) {
         office.setCompany(user.getCompany());
@@ -41,22 +47,18 @@ public class OfficeServiceImpl implements OfficeService {
     }
 
     @Override
-    public void changeOffice(int id, String country, String city, String street, Date workStartTime, Date workEndTime, String phone) {
-        Optional<Office> byId = officeRepository.findById(id);
+    public void changeOffice(OfficeChangeDto officeChangeDto) {
+        Optional<Office> byId = officeRepository.findById(officeChangeDto.getId());
         if (byId.isPresent()) {
             Office office = byId.get();
-            log.info("Changing office with ID {}", id);
+            log.info("Changing office with ID {}", officeChangeDto.getId());
             log.info("Old values: country={}, city={}, street={}, workStartTime={}, workEndTime={}, phone={}",
-                    office.getCountry(), office.getCity(), office.getStreet(), office.getWorkStartTime(), office.getWorkEndTime(), office.getPhone());
-            office.setCountry(country);
-            office.setCity(city);
-            office.setStreet(street);
-            office.setWorkStartTime(workStartTime);
-            office.setWorkEndTime(workEndTime);
-            office.setPhone(phone);
-            officeRepository.save(office);
+                    office.getCountry().getName(), office.getCity().getName(), office.getStreet(), office.getWorkStartTime(), office.getWorkEndTime(), office.getPhone());
+            Office office1 = officeMapper.mapToOffice(officeChangeDto);
+            office1.setCompany(office.getCompany());
+            officeRepository.save(office1);
             log.info("New values: country={}, city={}, street={}, workStartTime={}, workEndTime={}, phone={}",
-                    office.getCountry(), office.getCity(), office.getStreet(), office.getWorkStartTime(), office.getWorkEndTime(), office.getPhone());
+                    office.getCountry().getName(), office.getCity().getName(), office.getStreet(), office.getWorkStartTime(), office.getWorkEndTime(), office.getPhone());
         }
     }
 

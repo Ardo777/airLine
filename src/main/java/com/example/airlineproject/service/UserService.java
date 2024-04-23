@@ -1,5 +1,6 @@
 package com.example.airlineproject.service;
 
+import com.example.airlineproject.dto.UserRegisterDto;
 import com.example.airlineproject.dto.UserResponseDto;
 import com.example.airlineproject.entity.User;
 import org.springframework.data.domain.Page;
@@ -11,16 +12,15 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UserService {
-    User save(User user, MultipartFile multipartFile) throws IOException;
+    User save(UserRegisterDto userRegisterDto, MultipartFile multipartFile) throws IOException;
 
-    Optional<User> findByEmail(String email);
+    UserResponseDto findByEmail(String email);
 
     Page<User> findAll(Pageable pageable);
 
     Optional<User> findById(int id);
     void deleteById(int id);
 
-    void verificationCodeSending(User user, String email);
 
     boolean recoveryPassword(User user, String newPassword);
 

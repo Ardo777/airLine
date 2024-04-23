@@ -2,9 +2,8 @@ package com.example.airlineproject.entity;
 
 import com.example.airlineproject.entity.enums.UserRole;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -17,6 +16,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Entity
 @Table(name = "user")
+@Builder
 public class User{
 
     @Id
@@ -32,6 +32,7 @@ public class User{
     @Size(min = 6, message = "Password cannot be shorter than 6 characters")
     @NotEmpty(message = "please write your password, password can't be empty")
     private String password;
+    @Value("${user.defaultRole:USER}")
     @Enumerated(EnumType.STRING)
     private UserRole role;
     private boolean isActive;
@@ -40,11 +41,11 @@ public class User{
     @Transient
     private String confirmPassword;
     @OneToOne
+    @ToString.Exclude
     private Company company;
-    private LocalDate dateBirthday;
+    @Column(name = "date_Birthday")
+    private LocalDate birthday;
 
 
-    public User(int i, String alice, String smith, String mail, String password, UserRole userRole, boolean b, String verificationCode, String picName, Object o, Object o1) {
 
-    }
 }

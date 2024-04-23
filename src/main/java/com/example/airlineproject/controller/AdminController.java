@@ -4,7 +4,7 @@ import com.example.airlineproject.dto.UserResponseDto;
 import com.example.airlineproject.entity.User;
 import com.example.airlineproject.service.CompanyService;
 import com.example.airlineproject.service.UserService;
-import com.example.airlineproject.util.GetCitiesAndCountries;
+import com.example.airlineproject.util.CitiesAndCountries;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -27,7 +27,7 @@ public class AdminController {
 
     private final UserService userService;
     private final CompanyService companyService;
-    private final GetCitiesAndCountries getCitiesAndCountries;
+    private final CitiesAndCountries citiesAndCountries;
 
     @GetMapping
     public String adminPage(ModelMap modelMap) {
@@ -39,9 +39,9 @@ public class AdminController {
     @GetMapping("/users")
     public String usersPage(
             @RequestParam(value = "page", defaultValue = "1", required = false) int page,
-            @RequestParam(value = "size", defaultValue = "15", required = false) int size,
+            @RequestParam(value = "size", defaultValue = "11", required = false) int size,
             ModelMap modelMap) {
-        log.info("Fetching users for page " + page + " with size " + size);
+        log.info("Fetching users for page {} with size {}", page, size);
         Pageable pageable = PageRequest.of(page - 1, size);
         Page<User> usersPage = userService.findAll(pageable);
         modelMap.addAttribute("users", usersPage);
@@ -59,7 +59,7 @@ public class AdminController {
 
     @GetMapping("/delete/{id}")
     public String deleteUser(@PathVariable("id") int id) {
-        log.info("Deleting user with id: " + id);
+        log.info("Deleting user with id: {}", id);
         userService.deleteById(id);
         log.info("User deleted successfully");
         return "redirect:/admin/users";
@@ -67,7 +67,7 @@ public class AdminController {
 
     @GetMapping("/user/{id}")
     public String profileUser(@PathVariable("id") int id, ModelMap modelMap) {
-        log.info("Fetching user profile for id: " + id);
+        log.info("Fetching user profile for id: {}", id);
 
         Optional<User> byId = userService.findById(id);
         if (byId.isPresent()) {
@@ -75,23 +75,16 @@ public class AdminController {
             modelMap.addAttribute("user", user);
             log.info("User profile fetched successfully");
         } else {
-            log.warn("User with id " + id + " not found.");
+            log.warn("User with id {} not found.", id);
         }
 
         return "/admin/user";
     }
 
-    @PostMapping("/filter")
-    public String getByFilter(@RequestParam("keyword") String keyword,
-                              ModelMap modelMap) {
-        List<UserResponseDto> users = userService.getAllByFilter(keyword);
-        modelMap.addAttribute("users", users);
-        return "/admin/users";
-    }
 
     @GetMapping("/countriesAndCities")
     public String countries() {
-        getCitiesAndCountries.getAllCountries();
+        citiesAndCountries.getAllCountriesAndCities();
         return "/admin/index";
     }
 }
