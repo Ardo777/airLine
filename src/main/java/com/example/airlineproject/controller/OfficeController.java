@@ -41,23 +41,19 @@ public class OfficeController {
     }
 
 
-    @GetMapping("/office/change")
+    @GetMapping("/office/update")
     public String changeOfficePage(@AuthenticationPrincipal SpringUser springUser,
                                    ModelMap modelMap) {
         Office office = officeService.findByCompany(springUser.getUser().getCompany());
         modelMap.addAttribute("office", office);
         modelMap.addAttribute("countries", countryService.getAllCountries());
-        return "/manager/officeChange";
+        return "/manager/officeUpdate";
     }
 
-    @PostMapping("/office/change")
+    @PostMapping("/office/update")
     public String changeOffice(@ModelAttribute OfficeChangeDto officeChangeDto
                                ) {
-        log.info("Changing office with ID {}, country {}, city {}, street {}, workStartTime {}, workEndTime {}, phone {}",
-                officeChangeDto.getId(),officeChangeDto.getCountry().getName(),
-                officeChangeDto.getCity().getName(),officeChangeDto.getStreet(),
-                officeChangeDto.getWorkStartTime(),officeChangeDto.getWorkEndTime(),
-                officeChangeDto.getPhone());
+        log.info(officeChangeDto.toString());
         officeService.changeOffice(officeChangeDto);
         return "redirect:/manager/index";
     }

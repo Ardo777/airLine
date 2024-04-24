@@ -30,7 +30,6 @@ public class ManagerController {
     private final FlightService flightService;
     private final TeamService teamService;
     private final CountryService countryService;
-    private final CityService cityService;
 
 
     @GetMapping
@@ -92,11 +91,4 @@ public class ManagerController {
         }
     }
 
-    @GetMapping("/cities")
-    public String fetchCities(@RequestParam("countryId") int countryId, ModelMap modelMap) {
-        log.info("Fetching cities77777777777777");
-        //        modelMap.addAttribute("cities", cities);
-        //        log.info( modelMap.toString());
-          return "hello";
-    }
 }

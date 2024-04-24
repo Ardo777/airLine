@@ -40,7 +40,7 @@ public class TeamMemberController {
         if (teamMember != null) {
             if (teamMember.isActive()) {
                 modelMap.addAttribute("teamMember", teamMember);
-                return "/manager/teamMemberChange";
+                return "teamMemberUpdate";
             }
         }
         return "/manager/teamMembers";

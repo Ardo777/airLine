@@ -1,6 +1,5 @@
 package com.example.airlineproject.controller;
 
-import com.example.airlineproject.dto.UserResponseDto;
 import com.example.airlineproject.entity.User;
 import com.example.airlineproject.service.CompanyService;
 import com.example.airlineproject.service.UserService;
