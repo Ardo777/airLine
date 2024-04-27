@@ -3,7 +3,6 @@ package com.example.airlineproject.service;
 
 import com.example.airlineproject.dto.PlaneDto;
 import com.example.airlineproject.dto.PlaneUpdateDto;
-import com.example.airlineproject.dto.PlanesResponseDto;
 import com.example.airlineproject.entity.Company;
 import com.example.airlineproject.entity.Plane;
 import com.example.airlineproject.entity.User;
@@ -11,11 +10,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.io.IOException;
-import java.util.List;
 
 public interface PlaneService {
     
-    List<PlanesResponseDto> allPlanesOfTheCompany(Company company);
+    List<PlaneDto> allPlanesOfTheCompany(Company company);
   
     Boolean isPlaneExist(Plane plane, User user);
   

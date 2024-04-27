@@ -1,6 +1,7 @@
 package com.example.airlineproject.mapper;
 
-import com.example.airlineproject.dto.PlanesResponseDto;
+import com.example.airlineproject.dto.PlaneDto;
+import com.example.airlineproject.dto.PlaneUpdateDto;
 import com.example.airlineproject.entity.Plane;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,38 +10,60 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-04-12T21:55:25+0400",
+    date = "2024-04-27T13:47:10+0400",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.10 (Amazon.com Inc.)"
 )
 @Component
 public class PlaneMapperImpl implements PlaneMapper {
 
     @Override
-    public List<PlanesResponseDto> map(List<Plane> planes) {
+    public PlaneDto map(Plane plane) {
+        if ( plane == null ) {
+            return null;
+        }
+
+        PlaneDto.PlaneDtoBuilder planeDto = PlaneDto.builder();
+
+        planeDto.id( plane.getId() );
+        planeDto.model( plane.getModel() );
+        planeDto.planePic( plane.getPlanePic() );
+        planeDto.maxBaggage( plane.getMaxBaggage() );
+        planeDto.countEconomy( plane.getCountEconomy() );
+        planeDto.countBusiness( plane.getCountBusiness() );
+
+        return planeDto.build();
+    }
+
+    @Override
+    public List<PlaneDto> planeToPlaneDto(List<Plane> planes) {
         if ( planes == null ) {
             return null;
         }
 
-        List<PlanesResponseDto> list = new ArrayList<PlanesResponseDto>( planes.size() );
+        List<PlaneDto> list = new ArrayList<PlaneDto>( planes.size() );
         for ( Plane plane : planes ) {
-            list.add( planeToPlanesResponseDto( plane ) );
+            list.add( map( plane ) );
         }
 
         return list;
     }
 
-    protected PlanesResponseDto planeToPlanesResponseDto(Plane plane) {
-        if ( plane == null ) {
+    @Override
+    public Plane map(PlaneUpdateDto planeUpdateDto) {
+        if ( planeUpdateDto == null ) {
             return null;
         }
 
-        PlanesResponseDto.PlanesResponseDtoBuilder planesResponseDto = PlanesResponseDto.builder();
+        Plane.PlaneBuilder plane = Plane.builder();
 
-        planesResponseDto.id( plane.getId() );
-        planesResponseDto.model( plane.getModel() );
-        planesResponseDto.countEconomy( plane.getCountEconomy() );
-        planesResponseDto.countBusiness( plane.getCountBusiness() );
+        plane.id( planeUpdateDto.getId() );
+        plane.model( planeUpdateDto.getModel() );
+        plane.planePic( planeUpdateDto.getPlanePic() );
+        plane.company( planeUpdateDto.getCompany() );
+        plane.maxBaggage( planeUpdateDto.getMaxBaggage() );
+        plane.countEconomy( planeUpdateDto.getCountEconomy() );
+        plane.countBusiness( planeUpdateDto.getCountBusiness() );
 
-        return planesResponseDto.build();
+        return plane.build();
     }
 }

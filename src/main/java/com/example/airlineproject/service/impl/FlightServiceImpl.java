@@ -1,13 +1,7 @@
 package com.example.airlineproject.service.impl;
 
-import com.example.airlineproject.dto.ChangeFlightDto;
-import com.example.airlineproject.dto.FlightDto;
-import com.example.airlineproject.dto.FlightResponseDto;
-import com.example.airlineproject.dto.FlightsResponseDto;
-import com.example.airlineproject.entity.Company;
-import com.example.airlineproject.entity.Flight;
-import com.example.airlineproject.entity.Plane;
-import com.example.airlineproject.entity.User;
+import com.example.airlineproject.dto.*;
+import com.example.airlineproject.entity.*;
 import com.example.airlineproject.entity.enums.Status;
 import com.example.airlineproject.exception.FlightNotFoundException;
 import com.example.airlineproject.exception.FlightTimeException;
@@ -18,15 +12,16 @@ import com.example.airlineproject.repository.PlaneRepository;
 import com.example.airlineproject.security.SpringUser;
 import com.example.airlineproject.service.CompanyService;
 import com.example.airlineproject.service.FlightService;
+import com.querydsl.jpa.JPAQueryBase;
+import com.querydsl.jpa.impl.JPAQuery;
+import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.thymeleaf.util.StringUtils;
 
 import java.time.LocalDateTime;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -36,6 +31,7 @@ public class FlightServiceImpl implements FlightService {
     private final FlightRepository flightRepository;
     private final CompanyService companyService;
     private final PlaneRepository planeRepository;
+    private final EntityManager entityManager;
 
     @Override
     public Flight save(FlightDto flightDto, SpringUser springUser, int planeId) {
@@ -112,6 +108,35 @@ public class FlightServiceImpl implements FlightService {
         modifiedFlight.setStatus(getFlightStatusByTime(modifiedFlight, existingFlight.get()));
         log.debug("Saving modified flight");
         flightRepository.save(modifiedFlight);
+    }
+
+    @Override
+    public List<FlightDto> getAllFlightsByFilter(FlightFilterDto flightFilterDto) {
+        JPAQuery<Flight> query = new JPAQuery<>(entityManager);
+        QFlight qFlight = QFlight.flight;
+        JPAQueryBase from = query.from(qFlight);
+        if (flightFilterDto.getTo() != null && !flightFilterDto.getTo().isEmpty()){
+            from.where(qFlight.to.contains(flightFilterDto.getTo()));
+        }
+        if (flightFilterDto.getScheduledTime() != null && flightFilterDto.getScheduledTime().isAfter(LocalDateTime.now())){
+            from.where(qFlight.scheduledTime.eq(flightFilterDto.getScheduledTime()));
+        }
+        if (flightFilterDto.getFrom() != null && !flightFilterDto.getFrom().isEmpty()){
+            from.where(qFlight.from.contains(flightFilterDto.getFrom()));
+        }
+        if (flightFilterDto.getMinimumPrice() != null && flightFilterDto.getMaximumPrice() != null){
+            from.where(qFlight.businessPrice.between(flightFilterDto.getMinimumPrice(),flightFilterDto.getMaximumPrice()).or(qFlight.economyPrice.between(flightFilterDto.getMinimumPrice(),flightFilterDto.getMaximumPrice())));
+        } else if (flightFilterDto.getMinimumPrice() != null) {
+            from.where(qFlight.economyPrice.goe(flightFilterDto.getMinimumPrice()).or(qFlight.businessPrice.goe(flightFilterDto.getMinimumPrice())));
+        } else if (flightFilterDto.getMaximumPrice() != null) {
+            from.where(qFlight.economyPrice.loe(flightFilterDto.getMaximumPrice()).or(qFlight.businessPrice.loe(flightFilterDto.getMaximumPrice())));
+        }
+        return flightMapper.flightsToFlightDtoList(query.fetch());
+    }
+
+    @Override
+    public List<FlightDto> findExistingFlights() {
+        return flightMapper.flightsToFlightDtoList(flightRepository.findAllByStatusNot(Status.ARRIVED));
     }
 
     private Company findCompanyByUser(User user) {

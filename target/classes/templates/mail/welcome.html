@@ -11,6 +11,7 @@
             margin: 0;
             padding: 0;
         }
+
         .container {
             max-width: 600px;
             margin: 20px auto;
@@ -20,33 +21,39 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
+
         h1 {
             color: #007bff;
             margin-bottom: 20px;
         }
+
         p {
             font-size: 18px;
             line-height: 1.6;
             color: #444;
             margin-bottom: 10px;
         }
+
         .verification-code-container {
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 30px;
         }
+
         .verification-code {
             font-size: 28px;
             font-weight: bold;
             color: #007bff;
             margin-left: 0px;
         }
+
         .verification-icon {
             color: #007bff;
             margin-right: 10px;
             font-size: 24px;
         }
+
         .logo {
             max-width: 200px;
             display: block;
@@ -54,6 +61,7 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
+
         .button {
             display: inline-block;
             padding: 10px 20px;
@@ -63,13 +71,16 @@
             border-radius: 5px;
             transition: background-color 0.3s;
         }
+
         .button:hover {
-            background-color: #0056b3; /* Темно-синий цвет при наведении */
+            background-color: #0056b3;
         }
+
         .welcome-text {
             font-style: italic;
             margin-bottom: 20px;
         }
+
         .thank-you {
             font-weight: bold;
             margin-top: 30px;
@@ -85,7 +96,7 @@
     <p>We're delighted to have you join us. Please find your verification code below:</p>
     <div class="verification-code-container">
         <span class="verification-icon"><i class="fas fa-key"></i></span>
-        <span class="verification-code" th:text="${user.getVerificationCode()}">354354</span>
+        <span class="verification-code" th:text="${user.getVerificationCode()}"></span>
     </div>
     <p>Enjoy your journey with us!</p>
     <a href="http://localhost:8080/" class="button">Start Booking</a>

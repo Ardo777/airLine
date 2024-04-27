@@ -14,4 +14,6 @@ public interface FlightRepository extends JpaRepository<Flight, Integer> {
     List<Flight> findAllByCompanyAndStatusNot(Company company, Status status);
 
     Optional<Flight> findByIdAndCompany(int id, Company company);
+
+    List<Flight> findAllByStatusNot(Status status);
 }

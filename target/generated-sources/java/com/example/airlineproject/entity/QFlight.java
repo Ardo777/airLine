@@ -24,7 +24,11 @@ public class QFlight extends EntityPathBase<Flight> {
 
     public final DateTimePath<java.time.LocalDateTime> arrivalTime = createDateTime("arrivalTime", java.time.LocalDateTime.class);
 
+    public final NumberPath<Double> businessPrice = createNumber("businessPrice", Double.class);
+
     public final QCompany company;
+
+    public final NumberPath<Double> economyPrice = createNumber("economyPrice", Double.class);
 
     public final DateTimePath<java.time.LocalDateTime> estimatedTime = createDateTime("estimatedTime", java.time.LocalDateTime.class);
 

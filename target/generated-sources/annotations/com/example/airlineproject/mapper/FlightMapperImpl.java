@@ -10,14 +10,21 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
+    date = "2024-04-25T18:37:34+0400",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.10 (Amazon.com Inc.)"
 )
 @Component
 public class FlightMapperImpl implements FlightMapper {
+
+    @Autowired
+    private PlaneMapper planeMapper;
+    @Autowired
+    private CompanyMapper companyMapper;
 
     @Override
     public Flight map(FlightDto flightDto) {
@@ -62,6 +69,20 @@ public class FlightMapperImpl implements FlightMapper {
     }
 
     @Override
+    public List<FlightDto> flightsToFlightDtoList(List<Flight> flights) {
+        if ( flights == null ) {
+            return null;
+        }
+
+        List<FlightDto> list = new ArrayList<FlightDto>( flights.size() );
+        for ( Flight flight : flights ) {
+            list.add( flightToFlightDto( flight ) );
+        }
+
+        return list;
+    }
+
+    @Override
     public Flight map(ChangeFlightDto changeFlightDto) {
         if ( changeFlightDto == null ) {
             return null;
@@ -91,6 +112,26 @@ public class FlightMapperImpl implements FlightMapper {
         }
 
         return list;
+    }
+
+    protected FlightDto flightToFlightDto(Flight flight) {
+        if ( flight == null ) {
+            return null;
+        }
+
+        FlightDto.FlightDtoBuilder flightDto = FlightDto.builder();
+
+        flightDto.from( flight.getFrom() );
+        flightDto.to( flight.getTo() );
+        flightDto.economyPrice( flight.getEconomyPrice() );
+        flightDto.businessPrice( flight.getBusinessPrice() );
+        flightDto.scheduledTime( flight.getScheduledTime() );
+        flightDto.estimatedTime( flight.getEstimatedTime() );
+        flightDto.arrivalTime( flight.getArrivalTime() );
+        flightDto.company( companyMapper.companyToCompanyFewDto( flight.getCompany() ) );
+        flightDto.plane( planeMapper.map( flight.getPlane() ) );
+
+        return flightDto.build();
     }
 
     protected FlightsResponseDto flightToFlightsResponseDto(Flight flight) {
