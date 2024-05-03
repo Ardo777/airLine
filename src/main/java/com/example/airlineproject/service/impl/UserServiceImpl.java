@@ -193,6 +193,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean changePassword(ChangePasswordDto changePasswordDto, SpringUser springUser) {
         User user = springUser.getUser();
+        if (changePasswordDto.getNewPassword() == null || changePasswordDto.getConfirmNewPassword() == null) {
+            log.error("New password or confirm new password is null for user with ID: {}", user.getId());
+            return false;
+        }
         if (changePasswordDto.getNewPassword().equals(changePasswordDto.getConfirmNewPassword())) {
             if (passwordEncoder.matches(changePasswordDto.getPassword(), user.getPassword())) {
                 user.setPassword(passwordEncoder.encode(changePasswordDto.getNewPassword()));
@@ -205,8 +209,8 @@ public class UserServiceImpl implements UserService {
             }
         } else {
             log.error("Incorrect current password for user with ID: {}", user.getId());
+            return false;
         }
-        return false;
     }
 
     @Override
@@ -239,6 +243,7 @@ public class UserServiceImpl implements UserService {
                 userRepository.save(user);
                 log.info("Email updated successfully for user: {}", user.getEmail());
             } else {
+                user.setActive(false);
                 log.warn("Invalid verification code provided for user: {}", user.getEmail());
             }
         } else {
