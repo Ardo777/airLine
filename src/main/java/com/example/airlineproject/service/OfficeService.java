@@ -1,5 +1,6 @@
 package com.example.airlineproject.service;
 
+import com.example.airlineproject.dto.OfficeChangeDto;
 import com.example.airlineproject.entity.Company;
 import com.example.airlineproject.entity.Office;
 import com.example.airlineproject.entity.User;
@@ -15,6 +16,6 @@ public interface OfficeService {
 
     Office findByCompany(Company company);
 
-    void changeOffice(int id, String country, String city, String street, Date workStartTime, Date workEndTime, String phone);
+    void changeOffice(OfficeChangeDto officeChangeDto);
 
 }

@@ -6,20 +6,22 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 import java.time.LocalDate;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
-public class UserResponseDto {
-    private int id;
+public class UserRegisterDto {
+
     private String name;
     private String surname;
     private String email;
-    private UserRole role;
-    private String picName;
+    private String password;
+    private String confirmPassword;
     private String verificationCode;
-    private boolean isActive;
+    private String picName;
+    private UserRole userRole;
     private LocalDate birthday;
 }

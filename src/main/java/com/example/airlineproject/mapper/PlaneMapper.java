@@ -1,5 +1,6 @@
 package com.example.airlineproject.mapper;
 
+import com.example.airlineproject.dto.PlaneAddDto;
 import com.example.airlineproject.dto.PlaneDto;
 import com.example.airlineproject.dto.PlaneUpdateDto;
 import com.example.airlineproject.dto.FlightDto;
@@ -18,6 +19,7 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface PlaneMapper {
 
+    Plane mapToPlane(PlaneAddDto planeAddDto);
     List<PlaneDto> map(List<Plane> planes);
 
     PlaneDto map(Plane plane);
