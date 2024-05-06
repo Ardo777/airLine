@@ -1,24 +1,39 @@
 package com.example.airlineproject.controller;
 
 
+import com.example.airlineproject.dto.ChangeFlightDto;
 import com.example.airlineproject.dto.FlightDto;
+import com.example.airlineproject.dto.PlaneUpdateDto;
+import com.example.airlineproject.entity.enums.Status;
 import com.example.airlineproject.dto.TeamDto;
 import com.example.airlineproject.entity.City;
 import com.example.airlineproject.entity.TeamMember;
+import com.example.airlineproject.entity.enums.Profession;
 import com.example.airlineproject.repository.PlaneRepository;
 import com.example.airlineproject.security.SpringUser;
 import com.example.airlineproject.service.CityService;
 import com.example.airlineproject.service.CountryService;
 import com.example.airlineproject.service.FlightService;
+import com.example.airlineproject.service.ManagerService;
+import jakarta.validation.Valid;
+import com.example.airlineproject.service.OfficeService;
+import com.example.airlineproject.service.PlaneService;
 import com.example.airlineproject.service.TeamService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.List;
+import java.io.IOException;
+import java.util.Date;
 
 @Controller
 @RequiredArgsConstructor
@@ -28,9 +43,9 @@ public class ManagerController {
 
     private final PlaneRepository planeRepository;
     private final FlightService flightService;
+    private final PlaneService planeService;
     private final TeamService teamService;
     private final CountryService countryService;
-
 
     @GetMapping
     public String managerPage() {
@@ -67,7 +82,7 @@ public class ManagerController {
 
     @GetMapping("/addFlight")
     public String addFlightPage(ModelMap modelMap) {
-        modelMap.addAttribute("planes", planeRepository.findAll());
+        modelMap.addAttribute("planes", planeRepository.findAllByCompany(springUser.getUser().getCompany()));
         log.info("List of planes sent to HTML");
         return "/manager/moreDetails";
     }
@@ -89,6 +104,7 @@ public class ManagerController {
         } else {
             return "redirect:/manager/moreDetails";
         }
+
     }
 
 }

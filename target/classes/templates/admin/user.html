@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FlyNow | User</title>
+
+    <link href="/staticAdminManager/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/staticAdminManager/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="/staticAdminManager/css/plugins/slick/slick.css" rel="stylesheet">
+    <link href="/staticAdminManager/css/plugins/slick/slick-theme.css" rel="stylesheet">
+    <link href="/staticAdminManager/css/animate.css" rel="stylesheet">
+    <link href="/staticAdminManager/css/style.css" rel="stylesheet">
+
+    <style>
+        body {
+            margin-top: 20px;
+        }
+
+        section {
+            padding: 120px 0;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .text-primary {
+            color: #19aa8d !important;
+        }
+
+        .text-secondary {
+            color: #15395A !important;
+        }
+
+        .font-weight-600 {
+            font-weight: 600;
+        }
+
+        .display-26 {
+            font-size: 1.3rem;
+        }
+
+        .bg-secondary {
+            background: #15395A !important;
+        }
+
+        @media (min-width: 992px) {
+            .d-lg-inline-block {
+                display: inline-block !important;
+            }
+        }
+
+        .rounded {
+            border-radius: 0.25rem !important;
+            padding: 20px;
+        }
+        #image {
+            width: 100%;
+            height: auto;
+        }
+        #images {
+            width: 100%;
+            height: auto;
+        }
+        .image-imitations {
+            background-color: #f8f8f9;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="wrapper">
+    <!--header start-->
+    <th:block th:insert="~{/fragments/headerAdmin::header}"/>
+    <!--header end-->
+    <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+
+                </div>
+                <ul class="nav navbar-top-links navbar-right">
+
+                    <li class="dropdown">
+                        <ul class="dropdown-menu dropdown-messages">
+                            <li>
+                                <div class="dropdown-messages-box">
+                                    <a class="dropdown-item float-left" href="profile.html">
+                                        <img alt="image" class="rounded-circle" src="img/a7.jpg">
+                                    </a>
+                                    <div class="media-body">
+                                        <small class="float-right">46h ago</small>
+                                        <strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>.
+                                        <br>
+                                        <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="dropdown-divider"></li>
+                            <li>
+                                <div class="dropdown-messages-box">
+                                    <a class="dropdown-item float-left" href="profile.html">
+                                        <img alt="image" class="rounded-circle" src="img/a4.jpg">
+                                    </a>
+                                    <div class="media-body ">
+                                        <small class="float-right text-navy">5h ago</small>
+                                        <strong>Chris Johnatan Overtunk</strong> started following <strong>Monica
+                                        Smith</strong>. <br>
+                                        <small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="dropdown-divider"></li>
+                            <li>
+                                <div class="dropdown-messages-box">
+                                    <a class="dropdown-item float-left" href="profile.html">
+                                        <img alt="image" class="rounded-circle" src="img/profile.jpg">
+                                    </a>
+                                    <div class="media-body ">
+                                        <small class="float-right">23h ago</small>
+                                        <strong>Monica Smith</strong> love <strong>Kim Smith</strong>. <br>
+                                        <small class="text-muted">2 days ago at 2:30 am - 11.06.2014</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="dropdown-divider"></li>
+                            <li>
+                                <div class="text-center link-block">
+                                    <a href="mailbox.html" class="dropdown-item">
+                                        <i class="fa fa-envelope"></i> <strong>Read All Messages</strong>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <ul class="dropdown-menu dropdown-alerts">
+                            <li>
+                                <a href="mailbox.html" class="dropdown-item">
+                                    <div>
+                                        <i class="fa fa-envelope fa-fw"></i> You have 16 messages
+                                        <span class="float-right text-muted small">4 minutes ago</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="dropdown-divider"></li>
+                            <li>
+                                <a href="profile.html" class="dropdown-item">
+                                    <div>
+                                        <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                        <span class="float-right text-muted small">12 minutes ago</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="dropdown-divider"></li>
+                            <li>
+                                <a href="grid_options.html" class="dropdown-item">
+                                    <div>
+                                        <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                        <span class="float-right text-muted small">4 minutes ago</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="dropdown-divider"></li>
+                            <li>
+                                <div class="text-center link-block">
+                                    <a href="notifications.html" class="dropdown-item">
+                                        <strong>See All Alerts</strong>
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/logout">
+                            <i class="fa fa-sign-out"></i> Log out
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox product-detail">
+                        <div class="ibox-content">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="product-images">
+                                        <div>
+                                            <div class="image-imitations">
+                                                <div th:if="${user.getPicName() != null}">
+                                                    <img id="image" alt="image" th:src="@{/getImage(picName=${user.picName})}"
+                                                         width="50">
+                                                </div>
+                                                <div th:if="${user.getPicName() == null}">
+                                                <img id="images" alt="text" src="/media/777user.jpg"
+                                                     width="50">
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 px-xl-10">
+                                    <div class="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded">
+                                        <h3 class="h2 text-white mb-0" th:text="${user.name +' ' + user.surname}"></h3>
+                                        <span class="text-primary" th:text="${user.role}"></span>
+                                    </div>
+                                    <ul class="list-unstyled mb-1-9">
+                                        <li class="mb-2 mb-xl-3 display-28">
+                                            <span class="display-26 text-secondary me-2 font-weight-600">Id:</span>
+                                            <div th:text="${user.id}"></div>
+                                        </li>
+                                        <li class="mb-2 mb-xl-3 display-28">
+                                            <span class="display-26 text-secondary me-2 font-weight-600">Email:</span>
+                                            <div th:text="${user.email}"></div>
+                                        </li>
+                                        <li class="mb-2 mb-xl-3 display-28">
+                                            <span class="display-26 text-secondary me-2 font-weight-600">Role:</span>
+                                            <div th:text="${user.role}"></div>
+                                        </li>
+                                    </ul>
+                                    <ul class="social-icon-style1 list-unstyled mb-0 ps-0">
+                                        <li><a href="#!"><i class="ti-twitter-alt"></i></a></li>
+                                        <li><a href="#!"><i class="ti-facebook"></i></a></li>
+                                        <li><a href="#!"><i class="ti-pinterest"></i></a></li>
+                                        <li><a href="#!"><i class="ti-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ibox-footer">
+                            <span class="float-right">
+                                 FlyNow  AirLine <i class="fa-solid fa-plane-departure"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="float-right">
+                10GB of <strong>250GB</strong> Free.
+            </div>
+            <div>
+                <strong>Copyright</strong> Example Company &copy; 2014-2024
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Mainly scripts -->
+<script src="/staticAdminManager/js/jquery-3.1.1.min.js"></script>
+<script src="/staticAdminManager/js/popper.min.js"></script>
+<script src="/staticAdminManager/js/bootstrap.js"></script>
+<script src="/staticAdminManager/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="/staticAdminManager/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="/staticAdminManager/js/inspinia.js"></script>
+<script src="/staticAdminManager/js/plugins/pace/pace.min.js"></script>
+
+<!-- slick carousel-->
+<script src="/staticAdminManager/js/plugins/slick/slick.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+
+        $('.product-images').slick({
+            dots: true
+        });
+
+    });
+
+</script>
+
+</body>
+
+</html>

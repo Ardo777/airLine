@@ -8,8 +8,8 @@ import com.example.airlineproject.util.FileUtil;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
@@ -19,13 +19,13 @@ import org.thymeleaf.context.Context;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class MailServiceImpl implements MailService {
 
     private final JavaMailSender javaMailSender;
     private final @Qualifier("emailTemplateEngine") TemplateEngine templateEngine;
 
 
-    @Override
     @Async
     public void sendMail(UserRegisterDto userRegisterDto) {
 
@@ -47,7 +47,8 @@ public class MailServiceImpl implements MailService {
         }
     }
 
-    @Override
+
+
     @Async
     public void sendRecoveryMail(String email) {
         final Context ctx = new Context();
@@ -65,12 +66,15 @@ public class MailServiceImpl implements MailService {
         }
     }
 
-    @Override
     @Async
     public void sendBirthdayMail(User user) {
         final Context ctx = new Context();
         ctx.setVariable("user", user);
-        final String htmlContent = templateEngine.process("mail/birthday.html", ctx);
+
+
+        final String htmlContent = templateEngine.process("mail/recoveryPassword.html", ctx);
+
+
         final MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         try {
             final MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, "UTF-8");

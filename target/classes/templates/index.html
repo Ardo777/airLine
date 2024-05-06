@@ -1,0 +1,1020 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="FlyNow HTML5 Template">
+
+    <title>FlyNow | Flight and Book</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/media/favicon.png">
+
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="/css/vendor/font-awesome.css">
+    <link rel="stylesheet" href="/css/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/vendor/slick.css">
+    <link rel="stylesheet" href="/css/vendor/slick-theme.css">
+    <link rel="stylesheet" href="/css/vendor/datetime.css">
+    <link rel="stylesheet" href="/css/vendor/calendar/classic.css">
+    <link rel="stylesheet" href="/css/vendor/calendar/classic.date.css">
+    <link rel="stylesheet" href="/css/vendor/jquery.timepicker.min.css">
+    <link rel="stylesheet" href="/css/vendor/ui-autocomplete.css">
+    <link rel="stylesheet" href="/css/vendor/sal.css">
+    <link rel="stylesheet" href="/css/vendor/flightsList.css">
+    <link rel="stylesheet" href="/css/app.css">
+</head>
+
+<body class="">
+<!-- Preloader Start-->
+<th:block th:insert="~{/fragments/preloader::preloader}"/>
+<!-- Preloader End-->
+
+<!-- Main Wrapper Start -->
+<div id="main-wrapper" class="main-wrapper mr-4">
+
+    <!-- Header Area Start -->
+    <th:block th:insert="~{/fragments/header::header}"/>
+    <!-- Header Area End -->
+
+    <!-- Hero Banner start -->
+    <section class="hero-banner-1">
+        <div class="container-fluid">
+            <div class="content">
+                <div class="vector-image">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1414" height="319" viewbox="0 0 1414 319"
+                         fill="none">
+                        <path class="path"
+                              d="M-0.5 215C62.4302 220.095 287 228 373 143.5C444.974 72.7818 368.5 -3.73136 320.5 1.99997C269.5 8.08952 231.721 43.5 253.5 119C275.279 194.5 367 248.212 541.5 207.325C675.76 175.867 795.5 82.7122 913 76.7122C967.429 73.9328 1072.05 88.6813 1085 207.325C1100 344.712 882 340.212 922.5 207.325C964.415 69.7967 1354 151.5 1479 183.5"
+                              stroke="#ECECF2" stroke-width="6" stroke-linecap="round" stroke-dasharray="round"></path>
+                        <path class="dashed"
+                              d="M-0.5 215C62.4302 220.095 287 228 373 143.5C444.974 72.7818 368.5 -3.73136 320.5 1.99997C269.5 8.08952 231.721 43.5 253.5 119C275.279 194.5 367 248.212 541.5 207.325C675.76 175.867 795.5 82.7122 913 76.7122C967.429 73.9328 1072.05 88.6813 1085 207.325C1100 344.712 882 340.212 922.5 207.325C964.415 69.7967 1354 151.5 1479 183.5"
+                              stroke="#212627" stroke-width="6" stroke-linecap="round" stroke-dasharray="22 22"></path>
+                    </svg>
+                    <div class="location-image">
+                        <img src="/media/icons/location-blue.png" alt="">
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-5 col-sm-5">
+                        <div class="content-block">
+                            <h2 class="h-61 bold lightest-black mb-16"><span class="color-primary">Book</span> Your
+                                Dream
+                                <span class="color-primary">Flights</span> Now!
+                            </h2>
+                            <a href="#scroll" class="cus-btn ">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="col-xxl-9 col-xl-8 col-lg-8 col-md-7 col-sm-7">
+                        <div class="image flynow-tilt"
+                             data-tilt-options='{ "glare": false, "maxGlare": 0, "maxTilt": 3, "speed": 700, "scale": 1.02 }'>
+                            <img src="/media/banner/plane.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Banner End -->
+
+
+    <!-- Booking Area Start -->
+    <section class="booking mb-20">
+        <div class="container-fluid">
+            <div class="content" id="scroll">
+                <div class="card">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs" data-bs-tabs="tabs">
+                            <li class="nav-item">
+                                <a href="#flight" class="cus-btn primary active" aria-current="true"
+                                   data-bs-toggle="tab">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewbox="0 0 32 32"
+                                         fill="none">
+                                        <g clip-path="url(#clip0_502_1331)">
+                                            <path d="M31.6933 0.544584C30.6572 -0.491824 27.1402 1.34503 26.1041 2.38143L21.9545 6.53127H3.07887C2.63024 6.53127 2.24462 6.85011 2.16055 7.29104C2.07669 7.73189 2.31798 8.16995 2.73524 8.3348L15.2174 13.2677L7.5633 20.9216H0.323909C0.168651 20.9221 0.0346723 21.0323 0.00576263 21.1852C-0.023357 21.3385 0.060152 21.4901 0.20498 21.5471L6.29687 23.9548C6.33201 24.1078 6.38108 24.2574 6.44394 24.4038L6.17745 24.6709C5.79778 25.0503 5.79778 25.6651 6.17745 26.045C6.55664 26.4247 7.17263 26.4247 7.55182 26.045L7.81194 25.785C7.95935 25.8501 8.11132 25.9014 8.26623 25.9382L10.6144 31.9561C10.6709 32.1013 10.8229 32.1851 10.976 32.1568C11.0419 32.145 11.1002 32.1123 11.1451 32.0673C11.2044 32.0087 11.2399 31.9274 11.2399 31.8382V24.7512L19.0155 16.976L23.9019 29.4993C24.0654 29.9177 24.5037 30.1608 24.9452 30.0781C25.136 30.0421 25.3038 29.9498 25.4333 29.8212C25.6038 29.6499 25.7071 29.4151 25.7077 29.1591V10.284L29.8573 6.13423C30.893 5.09789 32.7293 1.58085 31.6933 0.544584Z"
+                                                  fill="#16191A"></path>
+                                        </g>
+                                        <defs>
+                                            <clippath id="clip0_502_1331">
+                                                <rect width="32" height="32" fill="white"></rect>
+                                            </clippath>
+                                        </defs>
+                                    </svg>
+                                    Flights
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="card-body tab-content">
+                        <div class="tab-pane active" id="flight">
+                            <div class="card">
+                                <div class="card-header">
+                                    <ul class="nav nav-tabs card-header-tabs " data-bs-tabs="tabs">
+                                        <li class="nav-item">
+                                            <a href="#stopover" class="cus-btn primary-light primary active"
+                                               aria-current="true" data-bs-toggle="tab">
+                                                Stopover
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="card-body tab-content">
+                                    <!-- StopOver tab Start -->
+                                    <div class="tab-pane active" id="stopover">
+                                        <form action="flight-listing.html" method="post">
+                                            <div class="custom-control mb-32">
+                                                <div class=" radio-button">
+                                                    <input type="radio" name="way" class="custom-control-input"
+                                                           id="way">
+                                                    <label class="custom-control-label" for="way">One way</label>
+                                                </div>
+                                                <div class=" radio-button">
+                                                    <input type="radio" name="way" class="custom-control-input"
+                                                           id="trip">
+                                                    <label class="custom-control-label" for="trip">Round-trip</label>
+                                                </div>
+                                                <div class="radio-button">
+                                                    <input type="radio" name="way" class="custom-control-input"
+                                                           id="city">
+                                                    <label class="custom-control-label" for="city">Multi-City</label>
+                                                </div>
+                                            </div>
+                                            <div class="booking-info mb-32">
+                                                <div class="d-xl-flex align-items-center gap-24 d-lg-block d-flex">
+                                                    <div class="custom-sel-input-block">
+                                                        <label for="flightFrom"
+                                                               class="h-16 color-medium-gray">From</label>
+                                                        <input type="text" class="sel-input auto-input" id="flightFrom"
+                                                               placeholder="From">
+                                                        <div class="slector-wrapper"></div>
+                                                    </div>
+                                                    <div class="arrows">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                             viewbox="0 0 24 24" fill="none">
+                                                            <g clip-path="url(#clip0_518_2277)">
+                                                                <path d="M23.6804 6.07409L18.2259 0.619583C17.7999 0.193537 17.1092 0.193537 16.6831 0.619583C16.2571 1.04563 16.2571 1.73628 16.6831 2.16233L20.2754 5.75464H1.09096C0.488472 5.75464 3.51626e-05 6.24307 3.51626e-05 6.84556C3.51626e-05 7.44804 0.488472 7.93648 1.09096 7.93648H20.2754L16.6832 11.5287C16.2571 11.9548 16.2571 12.6455 16.6832 13.0715C16.8961 13.2845 17.1753 13.391 17.4545 13.391C17.7337 13.391 18.0129 13.2845 18.2258 13.0714L23.6804 7.61688C24.1064 7.19084 24.1064 6.50013 23.6804 6.07409Z"
+                                                                      fill="#4D73FC"></path>
+                                                                <path d="M22.9091 16.6637H3.72462L7.31683 13.0714C7.74288 12.6453 7.74288 11.9547 7.31683 11.5286C6.89088 11.1026 6.20013 11.1026 5.77409 11.5286L0.319535 16.9831C-0.106512 17.4092 -0.106512 18.0998 0.319535 18.5259L5.77404 23.9804C5.98713 24.1935 6.26627 24.3 6.54546 24.3C6.82465 24.3 7.10388 24.1935 7.31679 23.9804C7.74283 23.5544 7.74283 22.8637 7.31679 22.4377L3.72457 18.8455H22.9091C23.5116 18.8455 24 18.357 24 17.7546C24 17.1521 23.5116 16.6637 22.9091 16.6637Z"
+                                                                      fill="#4D73FC"></path>
+                                                            </g>
+                                                            <defs>
+                                                                <clippath id="clip0_518_2277">
+                                                                    <rect width="24" height="24" fill="white"></rect>
+                                                                </clippath>
+                                                            </defs>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="custom-sel-input-block">
+                                                        <label for="flightTo" class="h-16 color-medium-gray">To</label>
+                                                        <input type="text" class="sel-input auto-input" id="flightTo"
+                                                               placeholder="To">
+                                                        <div class="slector-wrapper"></div>
+                                                    </div>
+                                                    <div class="vertical-line d-xl-block d-none"></div>
+                                                </div>
+                                                <div class="d-xl-flex align-items-center gap-24 d-lg-block ">
+                                                    <div class="input-date-picker">
+                                                        <label for="flightDep"
+                                                               class="h-16 color-medium-gray">Departing</label>
+                                                        <input type="text" class="sel-input date_from" id="flightDep"
+                                                               placeholder="Aug 18, 2023">
+                                                    </div>
+                                                    <div class="input-date-picker">
+                                                        <label for="flightTime"
+                                                               class="h-16 color-medium-gray">Returning</label>
+                                                        <input type="text" class="sel-input date_to" id="flightTime"
+                                                               placeholder="Aug 20, 2023">
+                                                    </div>
+                                                    <div class="custom-sel-input-block ">
+                                                        <div class="h-16 color-medium-gray mb-2">Passengers and Class
+                                                        </div>
+                                                        <div class="seat-booking color-black"><span
+                                                                class="total-pasenger">2</span> Passengers / <span
+                                                                class="pasenger-class">Business</span></div>
+
+                                                        <div class="passenger-area pessenger-box bg-white light-shadow br-5 p-24">
+                                                            <h4 class="color-black mb-32">Passenger</h4>
+                                                            <div class="passenger-box mb-24">
+                                                                <div class="row">
+                                                                    <div class="col-md-7 col-sm-6 col-6">
+                                                                        <div class="content-box">
+                                                                            <h5 class="lightest-black">Adult</h5>
+                                                                            <p class="color-medium-gray light"> Above 12
+                                                                                years.</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-5 col-sm-6 col-6">
+                                                                        <div class="quantity quantity-wrap">
+                                                                            <input class="decrement" type="button"
+                                                                                   value="-">
+                                                                            <input type="text" name="quantity" value="0"
+                                                                                   maxlength="2" size="1" id="adult"
+                                                                                   class="number">
+                                                                            <input class="increment" type="button"
+                                                                                   value="+">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="passenger-box mb-24">
+                                                                <div class="row">
+                                                                    <div class="col-md-7 col-sm-6 col-6">
+                                                                        <div class="content-box">
+                                                                            <h5 class="lightest-black">Child</h5>
+                                                                            <p class="color-medium-gray light"> 2-11
+                                                                                years on travel date.</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-5 col-sm-6 col-6">
+                                                                        <div class="quantity quantity-wrap">
+                                                                            <input class="decrement" type="button"
+                                                                                   value="-">
+                                                                            <input type="text" name="quantity" value="0"
+                                                                                   maxlength="2" size="1" id="child"
+                                                                                   class="number">
+                                                                            <input class="increment" type="button"
+                                                                                   value="+">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="passenger-box mb-32">
+                                                                <div class="row">
+                                                                    <div class="col-md-7 col-sm-6 col-6">
+                                                                        <div class="content-box">
+                                                                            <h5 class="lightest-black">Infant</h5>
+                                                                            <p class="color-medium-gray light"> Below 2
+                                                                                years.</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-5 col-sm-6 col-6">
+                                                                        <div class="quantity quantity-wrap">
+                                                                            <input class="decrement" type="button"
+                                                                                   value="-">
+                                                                            <input type="text" name="quantity" value="0"
+                                                                                   maxlength="2" size="1" id="infant"
+                                                                                   class="number">
+                                                                            <input class="increment" type="button"
+                                                                                   value="+">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <p class="color-medium-gray light mb-32">Please
+                                                                note: You can book for a maximum of nine
+                                                                passengers.</p>
+                                                            <h4 class="color-black mb-32">Travel Class</h4>
+                                                            <div class="radio-tile-group">
+                                                                <div class="input-container">
+                                                                    <input id="economy" class="radio-button"
+                                                                           type="radio" name="radio" value="Economy">
+                                                                    <div class="radio-tile">
+                                                                        <label for="economy" class="radio-tile-label">Economy</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="input-container">
+                                                                    <input id="business" class="radio-button"
+                                                                           type="radio" name="radio" value="Business">
+                                                                    <div class="radio-tile">
+                                                                        <label for="business" class="radio-tile-label">Business</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="input-container">
+                                                                    <input id="firstClass" class="radio-button"
+                                                                           type="radio" name="radio"
+                                                                           value="First Class">
+                                                                    <div class="radio-tile">
+                                                                        <label for="firstClass"
+                                                                               class="radio-tile-label">First
+                                                                            Class</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="input-container">
+                                                                    <input id="pre-eco" class="radio-button"
+                                                                           type="radio" name="radio"
+                                                                           value="Premium Economy">
+                                                                    <div class="radio-tile">
+                                                                        <label for="pre-eco" class="radio-tile-label">Premium
+                                                                            Economy</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row align-items-center">
+                                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 mb-xl-0 mb-24">
+                                                    <h5 class="color-medium-gray mb-24">When would you like stop in
+                                                        dubai during your journey?</h5>
+                                                    <div class="custom-control ">
+                                                        <div class=" radio-button">
+                                                            <input type="radio" name="flight"
+                                                                   class="custom-control-input" id="departure">
+                                                            <label class="custom-control-label" for="departure">Departure</label>
+                                                        </div>
+                                                        <div class=" radio-button">
+                                                            <input type="radio" name="flight"
+                                                                   class="custom-control-input" id="return">
+                                                            <label class="custom-control-label"
+                                                                   for="return">Return</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 mb-xl-0 mb-24">
+                                                    <h5 class="color-medium-gray mb-24">How many days would you
+                                                        like to stay in Dubai?</h5>
+                                                    <div class="quantity quantity-wrap">
+                                                        <input class="decrement" type="button" value="-">
+                                                        <input type="text" name="quantity" value="0" maxlength="2"
+                                                               size="1" id="adultQunatity" class="number">
+                                                        <input class="increment" type="button" value="+">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-9">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-sm-6">
+                                                            <button type="submit" class="cus-btn">Show
+                                                                Flight
+
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                     height="24" viewbox="0 0 32 32" fill="none">
+                                                                    <g clip-path="url(#clip0_502_1331)">
+                                                                        <path d="M31.6933 0.544584C30.6572 -0.491824 27.1402 1.34503 26.1041 2.38143L21.9545 6.53127H3.07887C2.63024 6.53127 2.24462 6.85011 2.16055 7.29104C2.07669 7.73189 2.31798 8.16995 2.73524 8.3348L15.2174 13.2677L7.5633 20.9216H0.323909C0.168651 20.9221 0.0346723 21.0323 0.00576263 21.1852C-0.023357 21.3385 0.060152 21.4901 0.20498 21.5471L6.29687 23.9548C6.33201 24.1078 6.38108 24.2574 6.44394 24.4038L6.17745 24.6709C5.79778 25.0503 5.79778 25.6651 6.17745 26.045C6.55664 26.4247 7.17263 26.4247 7.55182 26.045L7.81194 25.785C7.95935 25.8501 8.11132 25.9014 8.26623 25.9382L10.6144 31.9561C10.6709 32.1013 10.8229 32.1851 10.976 32.1568C11.0419 32.145 11.1002 32.1123 11.1451 32.0673C11.2044 32.0087 11.2399 31.9274 11.2399 31.8382V24.7512L19.0155 16.976L23.9019 29.4993C24.0654 29.9177 24.5037 30.1608 24.9452 30.0781C25.136 30.0421 25.3038 29.9498 25.4333 29.8212C25.6038 29.6499 25.7071 29.4151 25.7077 29.1591V10.284L29.8573 6.13423C30.893 5.09789 32.7293 1.58085 31.6933 0.544584Z"
+                                                                              fill="white"></path>
+                                                                    </g>
+                                                                    <defs>
+                                                                        <clippath id="clip0_502_1351">
+                                                                            <rect width="32" height="32"
+                                                                                  fill="black"></rect>
+                                                                        </clippath>
+                                                                    </defs>
+                                                                </svg>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <!-- StopOver tab End -->
+
+                                    <!-- Manage tab Start -->
+                                    <div class="tab-pane" id="manage">
+                                        <div class="booking-bar">
+                                            <ul class="nav nav-tabs " data-bs-tabs="tabs">
+                                                <li class="nav-item">
+                                                    <a href="#manageBooking" class="nav-link active" aria-current="true"
+                                                       data-bs-toggle="tab">
+                                                        Manage Booking
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#checkIn" class="nav-link " aria-current="false"
+                                                       data-bs-toggle="tab">
+                                                        Check in
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="card-body tab-content">
+                                            <div class="tab-pane active" id="manageBooking">
+                                                <form action="flight-booking.html" method="post">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-xl-10 col-lg-10 col-md-10">
+                                                            <div class="booking-info d-block">
+                                                                <div class="row">
+                                                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                                                        <div class="custom-sel-input-block v-2">
+                                                                            <input type="text" class="sel-input"
+                                                                                   name="reference" id="ref-name"
+                                                                                   placeholder="Booking Reference">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                                                        <div class="custom-sel-input-block m-0">
+                                                                            <input type="text" class="sel-input"
+                                                                                   name="name" id="last-name"
+                                                                                   placeholder="Last Name">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-2 col-lg-2 col-md-2 mt-md-0 mt-32">
+                                                            <button type="submit" class="cus-btn">Check Booking</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="tab-pane " id="checkIn">
+                                                <form action="flight-booking.html" method="post">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-xl-10 col-lg-10 col-md-10">
+                                                            <div class="booking-info d-block">
+                                                                <div class="row">
+                                                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                                                        <div class="custom-sel-input-block v-2 m-0">
+                                                                            <input type="text" class="sel-input"
+                                                                                   name="reference" id="refNname"
+                                                                                   placeholder="Booking Reference">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                                                        <div class="custom-sel-input-block m-0">
+                                                                            <input type="text" class="sel-input"
+                                                                                   name="name" id="lasName"
+                                                                                   placeholder="Last Name">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-2 col-lg-2 col-md-2 mt-md-0 mt-32">
+                                                            <button type="submit" class="cus-btn">Check Booking</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Manage tab End -->
+
+                                    <!-- Flight Status tab Start -->
+                                    <div class="tab-pane" id="status">
+                                        <div class="booking-bar">
+                                            <ul class="nav nav-tabs " data-bs-tabs="tabs">
+                                                <li class="nav-item">
+                                                    <a href="#byRoute" class="nav-link active" aria-current="true"
+                                                       data-bs-toggle="tab">
+                                                        By Route
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#flightNo" class="nav-link " aria-current="false"
+                                                       data-bs-toggle="tab">
+                                                        By flight Number
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="card-body tab-content">
+                                            <div class="tab-pane active" id="byRoute">
+                                                <form action="flight-listing.html" method="post">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-xl-10 col-lg-10">
+                                                            <div class="booking-info v-2 d-md-flex d-inline-block justify-content-between">
+
+                                                                <div class="custom-sel-input-block m-0">
+                                                                    <input type="text" class="sel-input auto-input"
+                                                                           id="flightDepart" placeholder="From">
+                                                                    <div class="slector-wrapper"></div>
+                                                                </div>
+                                                                <div class="custom-sel-input-block m-0 d-flex flex-row align-items-center">
+                                                                    <div class="vertical-line d-md-flex d-none"></div>
+                                                                    <input type="text" class="sel-input auto-input"
+                                                                           id="flightArrive" placeholder="To">
+                                                                    <div class="slector-wrapper"></div>
+                                                                </div>
+
+                                                                <div>
+                                                                    <div class="input-date-picker date-time m-0">
+                                                                        <input type="text" class="sel-input date_from"
+                                                                               id="flightTimeDate"
+                                                                               placeholder="Aug 20, 2023">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-2 col-lg-2 d-flex align-items-center mt-lg-0 mt-32">
+                                                            <button type="submit" class="cus-btn">Show Flight
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                     height="24" viewbox="0 0 32 32" fill="none">
+                                                                    <g clip-path="url(#clip0_502_1331)">
+                                                                        <path d="M31.6933 0.544584C30.6572 -0.491824 27.1402 1.34503 26.1041 2.38143L21.9545 6.53127H3.07887C2.63024 6.53127 2.24462 6.85011 2.16055 7.29104C2.07669 7.73189 2.31798 8.16995 2.73524 8.3348L15.2174 13.2677L7.5633 20.9216H0.323909C0.168651 20.9221 0.0346723 21.0323 0.00576263 21.1852C-0.023357 21.3385 0.060152 21.4901 0.20498 21.5471L6.29687 23.9548C6.33201 24.1078 6.38108 24.2574 6.44394 24.4038L6.17745 24.6709C5.79778 25.0503 5.79778 25.6651 6.17745 26.045C6.55664 26.4247 7.17263 26.4247 7.55182 26.045L7.81194 25.785C7.95935 25.8501 8.11132 25.9014 8.26623 25.9382L10.6144 31.9561C10.6709 32.1013 10.8229 32.1851 10.976 32.1568C11.0419 32.145 11.1002 32.1123 11.1451 32.0673C11.2044 32.0087 11.2399 31.9274 11.2399 31.8382V24.7512L19.0155 16.976L23.9019 29.4993C24.0654 29.9177 24.5037 30.1608 24.9452 30.0781C25.136 30.0421 25.3038 29.9498 25.4333 29.8212C25.6038 29.6499 25.7071 29.4151 25.7077 29.1591V10.284L29.8573 6.13423C30.893 5.09789 32.7293 1.58085 31.6933 0.544584Z"
+                                                                              fill="white"></path>
+                                                                    </g>
+                                                                    <defs>
+                                                                        <clippath id="clip0_502_1391">
+                                                                            <rect width="32" height="32"
+                                                                                  fill="black"></rect>
+                                                                        </clippath>
+                                                                    </defs>
+                                                                </svg>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="tab-pane" id="flightNo">
+                                                <form action="flight-listing.html" method="post">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-xl-10 col-lg-10">
+                                                            <div class="booking-info v-2 d-md-flex d-inline-block justify-content-between">
+
+                                                                <div class="custom-sel-input-block m-0">
+                                                                    <input type="text" class="sel-input auto-input"
+                                                                           id="flightDepat" placeholder="From">
+                                                                    <div class="slector-wrapper"></div>
+                                                                </div>
+                                                                <div class="custom-sel-input-block m-0 d-flex flex-row align-items-center">
+                                                                    <div class="vertical-line d-md-flex d-none"></div>
+                                                                    <input type="text" class="sel-input auto-input"
+                                                                           id="flightArive" placeholder="To">
+                                                                    <div class="slector-wrapper"></div>
+                                                                </div>
+
+                                                                <div>
+                                                                    <div class="input-date-picker date-time m-0">
+                                                                        <input type="text" class="sel-input date_from"
+                                                                               id="flightTieDate"
+                                                                               placeholder="Aug 20, 2023">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-2 col-lg-2 d-flex align-items-center mt-lg-0 mt-32">
+                                                            <button type="submit" class="cus-btn">Show Flight
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                     height="24" viewbox="0 0 32 32" fill="none">
+                                                                    <g clip-path="url(#clip0_502_1331)">
+                                                                        <path d="M31.6933 0.544584C30.6572 -0.491824 27.1402 1.34503 26.1041 2.38143L21.9545 6.53127H3.07887C2.63024 6.53127 2.24462 6.85011 2.16055 7.29104C2.07669 7.73189 2.31798 8.16995 2.73524 8.3348L15.2174 13.2677L7.5633 20.9216H0.323909C0.168651 20.9221 0.0346723 21.0323 0.00576263 21.1852C-0.023357 21.3385 0.060152 21.4901 0.20498 21.5471L6.29687 23.9548C6.33201 24.1078 6.38108 24.2574 6.44394 24.4038L6.17745 24.6709C5.79778 25.0503 5.79778 25.6651 6.17745 26.045C6.55664 26.4247 7.17263 26.4247 7.55182 26.045L7.81194 25.785C7.95935 25.8501 8.11132 25.9014 8.26623 25.9382L10.6144 31.9561C10.6709 32.1013 10.8229 32.1851 10.976 32.1568C11.0419 32.145 11.1002 32.1123 11.1451 32.0673C11.2044 32.0087 11.2399 31.9274 11.2399 31.8382V24.7512L19.0155 16.976L23.9019 29.4993C24.0654 29.9177 24.5037 30.1608 24.9452 30.0781C25.136 30.0421 25.3038 29.9498 25.4333 29.8212C25.6038 29.6499 25.7071 29.4151 25.7077 29.1591V10.284L29.8573 6.13423C30.893 5.09789 32.7293 1.58085 31.6933 0.544584Z"
+                                                                              fill="white"></path>
+                                                                    </g>
+                                                                    <defs>
+                                                                        <clippath id="clip0_502_1321">
+                                                                            <rect width="32" height="32"
+                                                                                  fill="black"></rect>
+                                                                        </clippath>
+                                                                    </defs>
+                                                                </svg>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Flight Status tab End -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Booking Area End -->
+
+    <!--Scroll 20 Flights Start -->
+
+    <div class="table-container">
+        <table>
+            <thead>
+            <tr>
+                <th>Авиакомпания</th>
+                <th>Откуда</th>
+                <th>Куда</th>
+                <th>Рейс</th>
+                <th>Время вылета</th>
+                <th>Плановое время прибытия</th>
+                <th>Фактическое время прибытия</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>WIZZ AIR</td>
+                <td>Рим</td>
+                <td>Фиумичино</td>
+                <td>W4 8335</td>
+                <td>05/03 03:05</td>
+                <td>05/03 03:13</td>
+                <td>05/03 03:13</td>
+            </tr>
+            <tr>
+                <td>LUFTHANSA AG</td>
+                <td>Франкфурт</td>
+                <td>Франкфурт</td>
+                <td>LH 1560</td>
+                <td>05/03 03:55</td>
+                <td>05/03 04:10</td>
+                <td>05/03 04:10</td>
+            </tr>
+            <tr>
+                <td>LUFTHANSA AG</td>
+                <td>Франкфурт</td>
+                <td>Франкфурт</td>
+                <td>LH 1560</td>
+                <td>05/03 03:55</td>
+                <td>05/03 04:10</td>
+                <td>05/03 04:10</td>
+            </tr>
+            <tr>
+                <td>LUFTHANSA AG</td>
+                <td>Франкфурт</td>
+                <td>Франкфурт</td>
+                <td>LH 1560</td>
+                <td>05/03 03:55</td>
+                <td>05/03 04:10</td>
+                <td>05/03 04:10</td>
+            </tr>
+            <tr>
+                <td>LUFTHANSA AG</td>
+                <td>Франкфурт</td>
+                <td>Франкфурт</td>
+                <td>LH 1560</td>
+                <td>05/03 03:55</td>
+                <td>05/03 04:10</td>
+                <td>05/03 04:10</td>
+            </tr>
+            <tr>
+                <td>LUFTHANSA AG</td>
+                <td>Франкфурт</td>
+                <td>Франкфурт</td>
+                <td>LH 1560</td>
+                <td>05/03 03:55</td>
+                <td>05/03 04:10</td>
+                <td>05/03 04:10</td>
+            </tr>
+            <tr>
+                <td>LUFTHANSA AG</td>
+                <td>Франкфурт</td>
+                <td>Франкфурт</td>
+                <td>LH 1560</td>
+                <td>05/03 03:55</td>
+                <td>05/03 04:10</td>
+                <td>05/03 04:10</td>
+            </tr>
+            <tr>
+                <td>LUFTHANSA AG</td>
+                <td>Франкфурт</td>
+                <td>Франкфурт</td>
+                <td>LH 1560</td>
+                <td>05/03 03:55</td>
+                <td>05/03 04:10</td>
+                <td>05/03 04:10</td>
+            </tr>
+            <tr>
+                <td>LUFTHANSA AG</td>
+                <td>Франкфурт</td>
+                <td>Франкфурт</td>
+                <td>LH 1560</td>
+                <td>05/03 03:55</td>
+                <td>05/03 04:10</td>
+                <td>05/03 04:10</td>
+            </tr>
+            <tr>
+                <td>LUFTHANSA AG</td>
+                <td>Франкфурт</td>
+                <td>Франкфурт</td>
+                <td>LH 1560</td>
+                <td>05/03 03:55</td>
+                <td>05/03 04:10</td>
+                <td>05/03 04:10</td>
+            </tr>
+            <tr>
+                <td>LUFTHANSA AG</td>
+                <td>Франкфурт</td>
+                <td>Франкфурт</td>
+                <td>LH 1560</td>
+                <td>05/03 03:55</td>
+                <td>05/03 04:10</td>
+                <td>05/03 04:10</td>
+            </tr>
+            <tr>
+                <td>LUFTHANSA AG</td>
+                <td>Франкфурт</td>
+                <td>Франкфурт</td>
+                <td>LH 1560</td>
+                <td>05/03 03:55</td>
+                <td>05/03 04:10</td>
+                <td>05/03 04:10</td>
+            </tr>
+            <tr>
+                <td>LUFTHANSA AG</td>
+                <td>Франкфурт</td>
+                <td>Франкфурт</td>
+                <td>LH 1560</td>
+                <td>05/03 03:55</td>
+                <td>05/03 04:10</td>
+                <td>05/03 04:10</td>
+            </tr>
+            <tr>
+                <td>LUFTHANSA AG</td>
+                <td>Франкфурт</td>
+                <td>Франкфурт</td>
+                <td>LH 1560</td>
+                <td>05/03 03:55</td>
+                <td>05/03 04:10</td>
+                <td>05/03 04:10</td>
+            </tr>
+            <!-- Добавьте остальные строки данных здесь -->
+            </tbody>
+        </table>
+    </div>
+    <!-- Scroll 20 Flights End -->
+
+    <!-- Benefits Start -->
+    <section class="benefit p-40" data-sal="slide-up" data-sal-duration="800" data-sal-delay="100"
+             data-sal-easing="ease-in-out">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-4 col-lg-6 col-md-6 mb-xl-0 mb-24">
+                    <div class="benefit-block bg-white">
+                        <div class="image-box">
+                            <img src="/media/vector/benefit-1.png" alt="">
+                        </div>
+                        <div class="text-box">
+                            <h4 class="lightest-black mb-8">We are Now Available</h4>
+                            <p class="color-medium-gray">Call +1 555 666 888 contact with us</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6 mb-lg-0 mb-24">
+                    <div class="benefit-block bg-white">
+                        <div class="image-box">
+                            <img src="/media/vector/benefit-2.png" alt="">
+                        </div>
+                        <div class="text-box">
+                            <h4 class="lightest-black mb-8">International Flight</h4>
+                            <p class="color-medium-gray">Call +1 555 666 888 contact with us</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6 ">
+                    <div class="benefit-block bg-white">
+                        <div class="image-box">
+                            <img src="/media/vector/benefit-3.png" alt="">
+                        </div>
+                        <div class="text-box">
+                            <h4 class="lightest-black mb-8">Check Refund</h4>
+                            <p class="color-medium-gray">Call +1 555 666 888 contact with us</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Benefits End -->
+
+
+    <!-- Travel us sec Start -->
+    <div class="travel-sec mb-40">
+        <div class="cloud-vector-block">
+            <img src="/media/vector/cloud-vector.png" alt="" class="cloud-vector">
+            <img src="/media/vector/vector-line.png" alt="" class="line-vector">
+        </div>
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-xl-3 col-lg-4 col-md-6" data-sal="slide-right" data-sal-duration="800"
+                     data-sal-delay="100" data-sal-easing="ease-in-out">
+                    <div class="left-content">
+                        <img src="/media/logo.png" alt="" class="mb-40">
+                        <p class="h-61 bold mb-16"><span class="review-block bg-lightest-gray"> TRAVEL</span>
+                            <span class="review-block bg-lightest-gray">All</span></p>
+                        <p class="h-61 bold mb-16"><span class="bg-lightest-gray"> OVER</span> <span
+                                class="bg-lightest-gray color-primary">The</span></p>
+                        <p class="h-61 bold mb-40"><span class="bg-lightest-gray color-primary"> WORLD</span>
+                        </p>
+                        <a href="flight-booking.html" class="cus-btn">Booking Now</a>
+                    </div>
+                </div>
+                <div class="offset-xl-1 col-xl-8 col-lg-8 col-md-10">
+                    <div class="right-images-block" data-sal="slide-up" data-sal-duration="800" data-sal-delay="100"
+                         data-sal-easing="ease-in-out">
+                        <img src="/media/vector/border-line.png" alt="" class="border-image">
+                        <div class="row">
+                            <div class="offset-xl-1 col-lg-3 col-md-3 col-3">
+                                <img src="/media/images/paris.png" alt="" class="side-image">
+                            </div>
+                            <div class="col-lg-5 col-md-5 col-5">
+                                <img src="/media/images/dubai.png" alt="" class="center-image">
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-3">
+                                <img src="/media/images/italy.png" alt="" class="side-image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Travel us sec End -->
+
+    <!-- Global Travel Start -->
+    <section class="global-travel-hotel p-40">
+        <div class="container-fluid">
+            <div class="d-flex justify-content-between mb-40 flex-md-nowrap flex-wrap">
+                <h3 class="fw-700 lightest-black mb-md-0 mb-3">Popular Global Travel Destinations</h3>
+                <a href="/companies" class="cus-btn ">Show More</a>
+            </div>
+            <div class="row">
+                <div class="col-xxl-6 col-lg-5" data-sal="slide-right" data-sal-duration="800" data-sal-delay="100"
+                     data-sal-easing="ease-in-out">
+                    <img src="/media/images/map.png" alt="">
+                </div>
+                <div class="col-xxl-6 col-lg-7">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6" data-sal="slide-left" data-sal-duration="800"
+                             data-sal-delay="100" data-sal-easing="ease-in-out">
+                            <div class="hotel-block bg-white p-24 light-shadow mb-24">
+                                <div class="image-box mb-24">
+                                    <a href="hotel-detail.html"><img src="/media/cities/image-1.png" alt=""></a>
+                                    <div class="price">
+                                        <h6>form <span class="color-sec">$350</span></h6>
+                                    </div>
+                                </div>
+                                <div class="content-box">
+                                    <h5 class="black mb-8"><a href="hotel-detail.html">Rome</a></h5>
+                                    <div class="d-flex gap-8 mb-24">
+                                        <div class="icon d-flex align-items-center gap-8">
+                                            <img src="/media/icons/location.png" alt="">
+                                            <h6 class="color-medium-gray">Italy - </h6>
+                                        </div>
+                                        <div class="icon d-flex align-items-center gap-8">
+                                            <img src="/media/icons/hotel.png" alt="">
+                                            <h6 class="color-medium-gray">Hotels </h6>
+                                        </div>
+                                    </div>
+                                    <a href="hotel-detail.html" class="cus-btn full-width">Discover</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="hotel-block bg-white p-24 light-shadow mb-24">
+                                <div class="image-box mb-24">
+                                    <a href="hotel-detail.html"><img src="/media/cities/image-2.png" alt=""></a>
+                                    <div class="price">
+                                        <h6>form <span class="color-sec">$260</span></h6>
+                                    </div>
+                                </div>
+                                <div class="content-box">
+                                    <h5 class="black mb-8"><a href="hotel-detail.html">Tokyo</a></h5>
+                                    <div class="d-flex gap-8 mb-24">
+                                        <div class="icon d-flex align-items-center gap-8">
+                                            <img src="/media/icons/location.png" alt="">
+                                            <h6 class="color-medium-gray">Japan - </h6>
+                                        </div>
+                                        <div class="icon d-flex align-items-center gap-8">
+                                            <img src="/media/icons/hotel.png" alt="">
+                                            <h6 class="color-medium-gray">Hotels </h6>
+                                        </div>
+                                    </div>
+                                    <a href="hotel-detail.html" class="cus-btn full-width">Discover</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="hotel-block bg-white p-24 light-shadow mb-24">
+                                <div class="image-box mb-24">
+                                    <a href="hotel-detail.html"><img src="/media/cities/image-3.png" alt=""></a>
+                                    <div class="price">
+                                        <h6>form <span class="color-sec">$290</span></h6>
+                                    </div>
+                                </div>
+                                <div class="content-box">
+                                    <h5 class="black mb-8"><a href="hotel-detail.html">Sydney</a></h5>
+                                    <div class="d-flex gap-8 mb-24">
+                                        <div class="icon d-flex align-items-center gap-8">
+                                            <img src="/media/icons/location.png" alt="">
+                                            <h6 class="color-medium-gray">Australia - </h6>
+                                        </div>
+                                        <div class="icon d-flex align-items-center gap-8">
+                                            <img src="/media/icons/hotel.png" alt="">
+                                            <h6 class="color-medium-gray">Hotels </h6>
+                                        </div>
+                                    </div>
+                                    <a href="hotel-detail.html" class="cus-btn full-width">Discover</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="hotel-block bg-white p-24 light-shadow mb-24">
+                                <div class="image-box mb-24">
+                                    <a href="hotel-detail.html"><img src="/media/cities/image-4.png" alt=""></a>
+                                    <div class="price">
+                                        <h6>form <span class="color-sec">$340</span></h6>
+                                    </div>
+                                </div>
+                                <div class="content-box">
+                                    <h5 class="black mb-8"><a href="hotel-detail.html">London</a></h5>
+                                    <div class="d-flex gap-8 mb-24">
+                                        <div class="icon d-flex align-items-center gap-8">
+                                            <img src="/media/icons/location.png" alt="">
+                                            <h6 class="color-medium-gray">United Kingdom (UK) - </h6>
+                                        </div>
+                                        <div class="icon d-flex align-items-center gap-8">
+                                            <img src="/media/icons/hotel.png" alt="">
+                                            <h6 class="color-medium-gray">Hotels </h6>
+                                        </div>
+                                    </div>
+                                    <a href="hotel-detail.html" class="cus-btn full-width">Discover</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Global Travel End -->
+
+    <!-- Achievement Section Start -->
+    <section class="achievement p-40">
+        <div class="container-fluid">
+            <div class="bg-white light-shadow br-20">
+                <div class="row align-items-center pad-64">
+                    <div class="col-xl-6 col-lg-12 mb-xl-0 mb-24" data-sal="slide-up" data-sal-duration="800"
+                         data-sal-delay="100" data-sal-easing="ease-in-out">
+                        <h5 class="color-primary mb-16">Achievement</h5>
+                        <h3 class="h-36 bold mb-8">Your Destination Awaits, Book Now</h3>
+                        <p class="dark-gray mb-24">Lorem ipsum dolor sit amet consectetur. Sed leo sit semper sed
+                            facilisis ultrices urna eu. <br> In tellus interdum vel ac massa interdum viverra elementum
+                            auctor.</p>
+                        <div class="counter-section mb-24">
+                            <div class="row">
+                                <div class="col-sm-6 mb-sm-0 mb-24">
+                                    <div class="counter-count bg-lightest-gray">
+                                        <div>
+                                            <span class="count h-36 bold color-primary">12870</span>
+                                            <span class="h-36 bold color-primary">+</span>
+                                            <h5 class="title white">Happy Customers</h5>
+                                        </div>
+                                        <img src="/media/icons/user.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="counter-count bg-lightest-gray">
+                                        <div>
+                                            <span class="count h-36 bold color-primary">100</span>
+                                            <span class="h-36 bold color-primary">%</span>
+                                            <h5 class="title white">Client Satisfied</h5>
+                                        </div>
+                                        <img src="/media/icons/user-2.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-12" data-sal="slide-down" data-sal-duration="800" data-sal-delay="100"
+                         data-sal-easing="ease-in-out">
+                        <img src="/media/images/achievement-image.png" alt=""
+                             class="achievement-image light-shadow br-20">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Achievement Section End -->
+
+
+    <!-- Footer Start -->
+    <th:block th:insert="~{/fragments/footer::footer}"/>
+    <!-- Footer Area End  -->
+
+
+    <!-- modal-popup area Start  -->
+    <div class="search-popup">
+        <div class="search-popup__overlay search-toggler"></div>
+        <div class="search-popup__content">
+            <form role="search" method="get" class="search-popup__form" action="indexTwo.html">
+                <input type="text" id="search" placeholder="Search Here...">
+                <button type="submit"><i class="fal fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+    <!-- search-popup end-->
+</div>
+
+
+<!-- Mobile Menu Start -->
+<th:block th:insert="~{/fragments/mobileMenu::mobileMenu}"/>
+<!-- Mobile Menu End -->
+
+<!-- Jquery Js -->
+<script src="/js/vendor/jquery-3.6.3.min.js"></script>
+<script src="/js/vendor/calendar/popper.min.js"></script>
+<script src="/js/vendor/bootstrap.min.js"></script>
+<script src="/js/vendor/slick.min.js"></script>
+<script src="/js/vendor/jquery-appear.js"></script>
+<script src="/js/vendor/jquery-validator.js"></script>
+<script src="/js/vendor/aksVideoPlayer.js"></script>
+<script src="/js/vendor/tilt.jquery.js"></script>
+<script src="/js/vendor/calendar/picker.js"></script>
+<script src="/js/vendor/calendar/picker.date.js"></script>
+<script src="/js/vendor/autoComplete.js"></script>
+<script src="/js/vendor/jquery.timepicker.min.js"></script>
+<script src="/js/vendor/sal.js"></script>
+
+<!-- Site Scripts -->
+<script src="/js/date.js"></script>
+<script src="/js/app.js"></script>
+</body>
+
+</html>

@@ -8,10 +8,10 @@ public interface MailService {
 
     void sendMail(UserRegisterDto userRegisterDto);
 
+    void sendMail(String subject, String text);
 
     void sendRecoveryMail(String email);
 
     void sendBirthdayMail(User user);
-
 
 }
