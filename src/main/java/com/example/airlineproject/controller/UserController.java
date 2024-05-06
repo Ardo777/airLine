@@ -238,14 +238,20 @@ public class UserController {
     public String userProfilePage(@AuthenticationPrincipal SpringUser springUser, ModelMap modelMap) {
         if (springUser != null) {
             User user = springUser.getUser();
-            modelMap.addAttribute("user", user);
-            log.info("User profile page accessed successfully for user: {}", user.getEmail());
+            if (user != null) {
+                modelMap.addAttribute("user", user);
+                log.info("User profile page accessed successfully for user: {}", user.getEmail());
+                return "userProfile";
+            } else {
+                log.warn("No user details found for authenticated user.");
+                return "redirect:/user/login";
+            }
         } else {
             log.warn("No authenticated user found while accessing the user profile page.");
             return "redirect:/user/login";
         }
-        return "userProfile";
     }
+
 
 
     @PostMapping("/update")
@@ -265,16 +271,20 @@ public class UserController {
 
     @GetMapping("/emailUpdate/{email}")
     public String emailUpdatePage(@AuthenticationPrincipal SpringUser springUser, @PathVariable("email") String email, ModelMap modelMap) {
-        log.debug("Accessed emailUpdatePage method with email: {}", email);
-        userService.updateEmail(springUser, email);
-        modelMap.addAttribute("email", email);
-        return "userUpdateMail";
+        if (springUser.getUser() != null) {
+            log.debug("Accessed emailUpdatePage method with email: {}", email);
+            userService.updateEmail(springUser, email);
+            modelMap.addAttribute("email", email);
+            return "userUpdateMail";
+        }else return "redirect:/user/login";
     }
 
     @PostMapping("/emailUpdate")
     public String emailUpdate(@AuthenticationPrincipal SpringUser springUser, @RequestParam("email") String email, @RequestParam("verificationCode") String verificationCode) {
-        userService.processEmailUpdate(springUser, email, verificationCode);
-        return "redirect:/user/profile";
+        if (springUser.getUser() != null) {
+            userService.processEmailUpdate(springUser, email, verificationCode);
+            return "redirect:/user/profile";
+        }else return "redirect:/user/login";
     }
 
 

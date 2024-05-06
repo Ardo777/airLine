@@ -1,6 +1,5 @@
 package com.example.airlineproject.service.impl;
 
-import com.example.airlineproject.entity.Company;
 import com.example.airlineproject.entity.User;
 import com.example.airlineproject.entity.enums.UserRole;
 import com.example.airlineproject.repository.UserRepository;
