@@ -1,6 +1,7 @@
 package com.example.airlineproject.entity;
 
 import com.example.airlineproject.entity.enums.UserRole;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Value;

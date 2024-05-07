@@ -8,7 +8,7 @@ public interface MailService {
 
     void sendMail(UserRegisterDto userRegisterDto);
 
-    void sendMail(String subject, String text);
+    void sendMail(User user);
 
     void sendRecoveryMail(String email);
 

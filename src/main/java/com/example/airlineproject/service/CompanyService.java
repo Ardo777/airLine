@@ -2,12 +2,15 @@ package com.example.airlineproject.service;
 
 import com.example.airlineproject.entity.Company;
 import com.example.airlineproject.entity.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
 
 public interface CompanyService {
+
     String save(Company company, User user, MultipartFile multipartFile) throws IOException;
 
     String findByEmail(String email);
@@ -23,4 +26,16 @@ public interface CompanyService {
     Company findByUser(User user);
 
     long count();
+
+    Boolean starRatingSave(int companyId, int rating, User user);
+
+    Boolean markExistByUserAndCompany(User user, Company company);
+
+    Page<Company> findAllByRating(Pageable pageable);
+
+    List<Company> getAllCompaniesByFilter(String keyword);
+
+    Company findById(int id);
+
+
 }

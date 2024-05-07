@@ -1,0 +1,254 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="FlyNow HTML5 Template">
+
+    <title>FlyNow | Travling And Tours Template</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/media/favicon.png">
+
+    <!-- All CSS files -->
+    <link href="/staticAdminManager/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/vendor/font-awesome.css">
+    <link rel="stylesheet" href="/css/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/vendor/slick.css">
+    <link rel="stylesheet" href="/css/vendor/slick-theme.css">
+    <link rel="stylesheet" href="/sass/helpers/_search-popup.scss">
+    <link rel="stylesheet" href="/css/vendor/aksVideoPlayer.css">
+    <link rel="stylesheet" href="/css/vendor/datetime.css">
+    <link rel="stylesheet" href="/css/vendor/calendar/classic.css">
+    <link rel="stylesheet" href="/css/vendor/calendar/classic.date.css">
+    <link rel="stylesheet" href="/css/vendor/jquery.timepicker.min.css">
+    <link rel="stylesheet" href="/css/vendor/ui-autocomplete.css">
+    <link rel="stylesheet" href="/css/vendor/ionrangeslider.css">
+    <link rel="stylesheet" href="/css/vendor/sal.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/pagination.css">
+    <link rel="stylesheet" href="/css/starRating.css">
+</head>
+
+<body class="o-scroll" id="js-scroll">
+<!-- Preloader Start-->
+<th:block th:insert="~{/fragments/preloader::preloader}"/>
+<!-- Preloader End-->
+
+<div id="main-wrapper" class="main-wrapper overflow-hidden">
+
+    <!-- Header Area Start -->
+    <th:block th:insert="~{/fragments/header::header}"/>
+    <!-- Header Area End -->
+    <form role="search" class="navbar-form-custom" action="/allCompanies/search" method="post">
+        <div class="form-group" style="display:flex; align-items: center; margin: 10px">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+            <label>
+                <input required  type="text" placeholder="Search Users" name="keyword"
+                       style="width:500px; padding-left:30px">
+            </label>
+            <input type="submit" class="search-link" value="Search"
+                   style="width: 200px; height: 30px; background: cornflowerblue">
+        </div>
+    </form>
+    <!-- Title-Banner Start -->
+    <div class="title-banner">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="banner-area v-2">
+                    <img src="/media/banner/vacation.png" alt="" class="left-image">
+                    <div class="content-box text-alignment">
+                        <h1 class="fw-700 lightest-black">Companies</h1>
+                        <span>
+                            <div style="color: green; font-size: 17px; margin-top: 30px;" th:text="${successMsg}"/>
+                            <div style="color: red; font-size: 17px; margin-top: 30px;" th:text="${errorMsg}"/>
+                        </span>
+                    </div>
+
+                    <img src="/media/banner/plane-2.png" alt="" class="right-image">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Title-Banner End -->
+
+    <!-- Main Content Start -->
+    <div class="page-content m-0">
+        <!-- Booking Area Start -->
+        <section class="booking mb-60">
+            <div class="container-fluid">
+                <div class="content">
+                    <div th:each="company:${companies}" class="hotel-block bg-white p-24 light-shadow mb-24"
+                         style="width: 280px; height: 500px">
+                        <a th:href="@{/company/{companyId}(companyId=${company.id})}">
+                            <div class="image-box mb-24">
+                                <img style="margin: -16px" th:src="@{/getImage(picName=${company.picName})}"
+                                     alt="">
+                            </div>
+                        </a>
+                        <div class="content-box">
+                            <h5 th:text="${company.name}" class="black mb-8"></h5>
+                            <div th:text="${company.rating}" class="price"></div>
+                            <div class="rating-widget-overlay">
+                                <div class="rating-widget">
+                                    <button class="close-rating">
+                                        <img width="30" src="/media/icons8-close-50.png" alt="Закрыть">
+                                    </button>
+                                    <form action="/rating" method="post">
+                                        <input type="hidden" th:name="${_csrf.parameterName}"
+                                               th:value="${_csrf.token}"/>
+                                        <label>
+                                            <input hidden="hidden" type="text" th:value="${company.id}"
+                                                   name="companyId">
+                                        </label>
+                                        <div class="rate" style="text-align: center;">
+                                            <input style="margin: 6px; margin-left: 51px" type="radio" id="star5"
+                                                   name="rating" value="5"/>
+                                            <label for="star5" title="5 star">5 stars</label>
+                                            <input style="margin: 6px; margin-left: 36px" type="radio" id="star4"
+                                                   name="rating" value="4"/>
+                                            <label for="star4" title="4 star">4 stars</label>
+                                            <input style="margin: 6px; margin-left: 21px" type="radio" id="star3"
+                                                   name="rating" value="3"/>
+                                            <label for="star3" title="3 star">3 stars</label>
+                                            <input style="margin: 6px; margin-left: 6px" type="radio" id="star2"
+                                                   name="rating" value="2"/>
+                                            <label for="star2" title="2 star">2 stars</label>
+                                            <input style="margin: 6px; margin-left: -9px" type="radio" id="star1"
+                                                   name="rating" value="1"/>
+                                            <label for="star1" title="1 star">1 star</label>
+                                            <div style="margin-left: 110%">
+                                                <input class="soft-background"
+                                                       style="width: 50px;height: 26px; font-size: 13px; margin-top: 10px;"
+                                                       value="Send" type="submit">
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div class="success-message"></div>
+                                </div>
+                            </div>
+                            <br>
+                            <div th:if="${!company.office.isEmpty()}">
+                                <div class="icon d-flex align-items-center gap-8">
+                                    <img src="/media/icons/location.png" alt="">
+                                    <h6
+                                            th:text="${company.office[0].country}" class="color-medium-gray">Italy
+                                        - </h6>
+                                </div>
+                                <div class="icon d-flex align-items-center gap-8">
+                                    <img src="/media/icons/hotel.png" alt="">
+                                    <h6 th:text="${company.office[0].city}"
+                                        class="color-medium-gray">Hotels </h6>
+                                </div>
+                                <div class="icon d-flex align-items-center gap-8">
+                                    <img src="/media/icons8-manager-50.png" style="width: 26px">
+                                    <h6 th:text="${company.user.name+' '+company.user.surname}"
+                                        class="color-medium-gray">Hotels </h6>
+                                </div>
+                                <br>
+                            </div>
+                            <!--                            <div style="margin-top: 96px">-->
+                            <button class="open-rating cus-btn full-width test">Rate</button>
+                            <!--                            </div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Booking Area End -->
+        <!-- Flight Listing Start -->
+        <section class="flight-listing-page mb-60">
+            <div class="container-fluid"></div>
+        </section>
+        <!-- Flight Listing End -->
+    </div>
+    <!-- Main Content End -->
+
+    <!--    Pagination Start   -->
+    <div class="pagination-container">
+        <div th:if="${companies.totalPages > 0}" class="btn btn-white" th:each="pageNumber : ${pageNumbers}">
+            <a th:href="@{/allCompanies(size=${companies.size}, page=${pageNumber})}"
+               th:text="${pageNumber}"
+               th:classappend="${pageNumber == companies.number + 1} ? 'active' : ''"
+               class="pagination-item"></a>
+        </div>
+    </div>
+    <!--    Pagination End   -->
+    <!-- Footer Start -->
+    <th:block th:insert="~{/fragments/footer::footer}"/>
+    <!-- Footer Area End  -->
+</div>
+<!-- Mobile Menu Start -->
+<th:block th:insert="~{/fragments/mobileMenu::mobileMenu}"/>
+<!-- Mobile Menu End -->
+<script>
+
+   // $(document).ready(function () {
+   //     $("#keyword").on("input", function () {
+   //         search();
+   //     });
+   // });
+   //
+   //
+   // function search() {
+   //     var keyword = $("#keyword").val();
+   //     $.ajax({
+   //         type: "GET",
+   //         url: "/allCompanies/filter",
+   //         data: {keyword: keyword},
+   //         dataType: "json",
+   //         success: function (allCompaniesByFilter) {
+   //             $(".content").empty();
+   //
+   //             $.each(allCompaniesByFilter, function (index, company) {
+   //                 var htmlCompany = '<div class="hotel-block bg-white p-24 light-shadow mb-24" style="width: 280px; height: 500px;">' +
+   //                     '<a href="/company/' + company.id + '">' +
+   //                     '<div class="image-box mb-24">' +
+   //                     '<img style="margin: -16px" src="/getImage?picName=' + company.picName + '" alt="">' +
+   //                     '</div>' +
+   //                     '</a>' +
+   //                     '<div class="content-box">' +
+   //                     '<h5 class="black mb-8">' + company.name + '</h5>' +
+   //                     '<div class="price">' + company.rating + '</div>' +
+   //                     '</div>' +
+   //                     '</div>';
+   //                 $(".content").append(htmlCompany);
+   //             });
+   //
+   //         },
+   //         error: function () {
+   //             console.error("Error");
+   //         }
+   //     });
+   //
+   // }
+
+</script>
+<!-- Jquery Js -->
+<script src="/js/vendor/jquery-3.6.3.min.js"></script>
+<script src="/js/vendor/calendar/popper.min.js"></script>
+<script src="/js/vendor/bootstrap.min.js"></script>
+<script src="/js/vendor/slick.min.js"></script>
+<script src="/js/vendor/jquery-appear.js"></script>
+<script src="/js/vendor/jquery-validator.js"></script>
+<script src="/js/vendor/aksVideoPlayer.js"></script>
+<script src="/js/vendor/tilt.jquery.js"></script>
+<script src="/js/vendor/calendar/picker.js"></script>
+<script src="/js/vendor/calendar/picker.date.js"></script>
+<script src="/js/vendor/autoComplete.js"></script>
+<script src="/js/vendor/jquery.timepicker.min.js"></script>
+<script src="/js/vendor/ionrangeslider.js"></script>
+<script src="/js/vendor/sal.js"></script>
+
+<!-- Site Scripts -->
+<script src="/js/date.js"></script>
+<script src="/js/starAndRateCompany.js"></script>
+<script src="/js/app.js"></script>
+</body>
+
+</html>

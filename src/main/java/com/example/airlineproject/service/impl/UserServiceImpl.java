@@ -212,9 +212,9 @@ public class UserServiceImpl implements UserService {
         if (springUser != null) {
             User user = springUser.getUser();
             user.setActive(false);
-            user.setVerificationCode(createVerificationCode());
+            user.setVerificationCode(fileUtil.createVerificationCode());
             log.info("Sending verification email to: {}", email);
-            mailService.sendMail(email, "your verification code");
+            mailService.sendMail(springUser.getUser());
             log.info("Verification email sent successfully to: {}", email);
             userRepository.save(user);
             log.info("User updated and saved successfully");
@@ -223,10 +223,6 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    private String createVerificationCode() {
-        String lUUID = String.format("%040d", new BigInteger(UUID.randomUUID().toString().replace("-", ""), 16));
-        return lUUID.substring(0, Math.min(lUUID.length(), 6));
-    }
 
     public void processEmailUpdate(SpringUser springUser, String email, String verificationCode) {
         if (springUser != null) {

@@ -3,11 +3,10 @@ package com.example.airlineproject.service.impl;
 import com.example.airlineproject.dto.UserRegisterDto;
 import com.example.airlineproject.entity.User;
 import com.example.airlineproject.service.MailService;
-import com.example.airlineproject.service.UserService;
-import com.example.airlineproject.util.FileUtil;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Primary;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -20,6 +19,7 @@ import org.thymeleaf.context.Context;
 @Service
 @RequiredArgsConstructor
 @Slf4j
+@Primary
 public class MailServiceImpl implements MailService {
 
     private final JavaMailSender javaMailSender;
@@ -32,6 +32,19 @@ public class MailServiceImpl implements MailService {
         final Context ctx = new Context();
         ctx.setVariable("userRegisterDto", userRegisterDto);
 
+        mailSending(ctx, userRegisterDto.getEmail());
+    }
+
+    @Override
+    public void sendMail(User user) {
+
+        final Context ctx = new Context();
+        ctx.setVariable("user", user);
+
+        mailSending(ctx, user.getEmail());
+    }
+
+    private void mailSending(Context ctx, String email) {
         final String htmlContent = templateEngine.process("mail/welcome.html", ctx);
 
         final MimeMessage mimeMessage = javaMailSender.createMimeMessage();
@@ -39,14 +52,13 @@ public class MailServiceImpl implements MailService {
         try {
             final MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, "UTF-8");
             message.setSubject("Welcome Fly Now  Social Network");
-            message.setTo(userRegisterDto.getEmail());
+            message.setTo(email);
             message.setText(htmlContent, true);
             javaMailSender.send(mimeMessage);
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
     }
-
 
 
     @Async

@@ -71,11 +71,7 @@ public class PlaneServiceImpl implements PlaneService {
         }
 
     }
-    @Override
-    public List<PlaneDto> getAllPlanesByCompany(Company company) {
-        log.info("Retrieving all planes for company: {}", company.getName());
-        return planeMapper.map(planeRepository.findAllByCompany(company));
-    }
+
 
     @Override
     public PlaneDto getPlane(int planeId, Company company) {

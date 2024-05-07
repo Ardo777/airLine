@@ -112,7 +112,7 @@ class UserServiceImplTest {
         userServiceImpl.updateEmail(springUser, email);
         assertFalse(user.isActive());
         assertNotNull(user.getVerificationCode());
-        verify(mailService, times(1)).sendMail(eq(email), anyString());
+        verify(mailService, times(1)).sendMail(user);
         verify(userRepository, times(1)).save(user);
     }
 
