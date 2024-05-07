@@ -13,5 +13,7 @@ import java.util.Optional;
 public interface FlightRepository extends JpaRepository<Flight, Integer> {
     List<Flight> findAllByCompanyAndStatusNot(Company company, Status status);
 
+    List<Flight> findAllByStatusNot(Status status);
+
     Optional<Flight> findByIdAndCompany(int id, Company company);
 }

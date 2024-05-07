@@ -1,14 +1,14 @@
 package com.example.airlineproject.service.impl;
 
+import com.example.airlineproject.dto.UserRegisterDto;
 import com.example.airlineproject.entity.User;
 import com.example.airlineproject.service.MailService;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Primary;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Primary;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
@@ -26,13 +26,25 @@ public class MailServiceImpl implements MailService {
     private final @Qualifier("emailTemplateEngine") TemplateEngine templateEngine;
 
 
-
     @Async
+    public void sendMail(UserRegisterDto userRegisterDto) {
+
+        final Context ctx = new Context();
+        ctx.setVariable("userRegisterDto", userRegisterDto);
+
+        mailSending(ctx, userRegisterDto.getEmail());
+    }
+
+    @Override
     public void sendMail(User user) {
 
         final Context ctx = new Context();
         ctx.setVariable("user", user);
 
+        mailSending(ctx, user.getEmail());
+    }
+
+    private void mailSending(Context ctx, String email) {
         final String htmlContent = templateEngine.process("mail/welcome.html", ctx);
 
         final MimeMessage mimeMessage = javaMailSender.createMimeMessage();
@@ -40,7 +52,7 @@ public class MailServiceImpl implements MailService {
         try {
             final MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, "UTF-8");
             message.setSubject("Welcome Fly Now  Social Network");
-            message.setTo(user.getEmail());
+            message.setTo(email);
             message.setText(htmlContent, true);
             javaMailSender.send(mimeMessage);
         } catch (MessagingException e) {
@@ -48,36 +60,17 @@ public class MailServiceImpl implements MailService {
         }
     }
 
-    @Async
-    public void sendMail(String email, String messageContent) {
-        try {
-            final SimpleMailMessage mailMessage = new SimpleMailMessage();
-            mailMessage.setSubject("Welcome Fly Now Social Network");
-            mailMessage.setTo(email);
-            mailMessage.setText(messageContent);
-            javaMailSender.send(mailMessage);
-            log.info("Mail sent successfully to: {}", email);
-        } catch (Exception e) {
-            log.error("Failed to send mail to {}: {}", email, e.getMessage());
-        }
-    }
-
-
 
     @Async
-    public void sendRecoveryMail(User user) {
-
+    public void sendRecoveryMail(String email) {
         final Context ctx = new Context();
-        ctx.setVariable("user", user);
-
+        ctx.setVariable("email", email);
         final String htmlContent = templateEngine.process("mail/recoveryPassword.html", ctx);
-
         final MimeMessage mimeMessage = javaMailSender.createMimeMessage();
-
         try {
             final MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, "UTF-8");
             message.setSubject("Recovery Password");
-            message.setTo(user.getEmail());
+            message.setTo(email);
             message.setText(htmlContent, true);
             javaMailSender.send(mimeMessage);
         } catch (MessagingException e) {
@@ -87,8 +80,6 @@ public class MailServiceImpl implements MailService {
 
     @Async
     public void sendBirthdayMail(User user) {
-
-
         final Context ctx = new Context();
         ctx.setVariable("user", user);
 
@@ -97,11 +88,9 @@ public class MailServiceImpl implements MailService {
 
 
         final MimeMessage mimeMessage = javaMailSender.createMimeMessage();
-
         try {
             final MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, "UTF-8");
-            message.setSubject("Recovery Password");
-
+            message.setSubject("Happy Birthday");
             message.setTo(user.getEmail());
             message.setText(htmlContent, true);
             javaMailSender.send(mimeMessage);

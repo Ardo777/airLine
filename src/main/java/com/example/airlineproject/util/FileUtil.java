@@ -9,6 +9,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.math.BigInteger;
+import java.util.UUID;
 
 @Component
 @Slf4j
@@ -20,13 +22,16 @@ public class FileUtil {
     public byte[] getPicture(String picName) throws IOException {
         File file = new File(uploadDirectory, picName);
         if (file.exists()) {
-            return IOUtils.toByteArray(new FileInputStream(file));
+            byte[] byteArray = IOUtils.toByteArray(new FileInputStream(file));
+            if (byteArray.length==0) {
+                return null;
+            }
+            return byteArray;
         }
         return null;
     }
 
     public void deletePicture(String picName) {
-
         File filePath = new File(uploadDirectory + File.separator + picName);
         if (filePath.exists()) {
             filePath.delete();
@@ -46,6 +51,12 @@ public class FileUtil {
             return picName;
         }
         return null;
+    }
+
+
+    public String createVerificationCode() {
+        String lUUID = String.format("%040d", new BigInteger(UUID.randomUUID().toString().replace("-", ""), 16));
+        return lUUID.substring(0, Math.min(lUUID.length(), 6));
     }
 
 }

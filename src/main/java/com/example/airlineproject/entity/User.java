@@ -3,6 +3,8 @@ package com.example.airlineproject.entity;
 import com.example.airlineproject.entity.enums.UserRole;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.*;
+import org.springframework.beans.factory.annotation.Value;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
@@ -19,7 +21,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Entity
 @Table(name = "user")
-public class User {
+@Builder
+public class User{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,6 +37,7 @@ public class User {
     @Size(min = 6, message = "Password cannot be shorter than 6 characters")
     @NotEmpty(message = "please write your password, password can't be empty")
     private String password;
+    @Value("${user.defaultRole:USER}")
     @Enumerated(EnumType.STRING)
     private UserRole role;
     private boolean isActive;
@@ -44,9 +48,8 @@ public class User {
     @OneToOne
     @ToString.Exclude
     private Company company;
-    private LocalDate dateBirthday;
+    @Column(name = "date_Birthday")
+    private LocalDate birthday;
 
-    public User(int i, String alice, String smith, String mail, String password, UserRole userRole, boolean b, String verificationCode, String picName, Object o, Object o1) {
 
-    }
 }
