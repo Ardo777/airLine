@@ -6,12 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="FlyNow HTML5 Template">
-
     <title>FlyNow | Company</title>
-
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="/media/favicon.png">
-
     <!-- All CSS files -->
     <link href="/staticAdminManager/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/vendor/font-awesome.css">
@@ -31,7 +28,47 @@
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/pagination.css">
     <link rel="stylesheet" href="/css/starRating.css">
-   <link rel="stylesheet"  href="/css/company.css">
+
+    <style>
+
+        .office {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+        }
+
+        .office img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+
+        .office h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .office p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .icon-img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .office-info {
+            margin-top: 50px;
+        }
+    </style>
 </head>
 
 <body class="o-scroll" id="js-scroll">
@@ -40,7 +77,6 @@
 <!-- Preloader End-->
 
 <div id="main-wrapper" class="main-wrapper overflow-hidden">
-
     <!-- Header Area Start -->
     <th:block th:insert="~{/fragments/header::header}"/>
     <!-- Header Area End -->
@@ -52,12 +88,10 @@
                 <div class="banner-area v-2">
                     <img src="/media/banner/vacation.png" alt="" class="left-image">
                     <div class="content-box text-alignment">
-                        <h1 th:text="${company.name}" class="fw-700 lightest-black">Companies</h1>
-                        <h5 class="fw-700 lightest-black">Information</h5>
-                        <span>
-                            <div style="color: green; font-size: 17px; margin-top: 30px;" th:text="${successMsg}"/>
-                            <div style="color: red; font-size: 17px; margin-top: 30px;" th:text="${errorMsg}"/>
-                        </span>
+                        <a th:href="@{/company/{companyId}(companyId=${company.id})}"><h1 th:text="${company.name}"
+                                                                                          class="fw-700 lightest-black">
+                            Companies</h1></a>
+                        <h5 class="fw-700 lightest-black">Offices</h5>
                     </div>
                     <img src="/media/banner/plane-2.png" alt="" class="right-image">
                 </div>
@@ -68,71 +102,44 @@
 
     <!-- Main Content Start -->
     <div class="page-content m-0">
-        <!-- Booking Area Start -->
         <section class="booking mb-60">
             <div class="container-fluid">
                 <div class="content">
-                    <!-- Company Information -->
-                    <div class="company-info">
-                        <img th:src="@{/getImage(picName=${company.picName})}" alt="Company Logo">
-                        <div class="company-details">
-                            <div style="width: 284px;height: auto; text-align: justify; margin-top: -220px  ">
-                                <strong> Name:<h2 th:text="${company.name}"></h2></strong>
-                                <strong> ID: <p th:text="${company.id}"></p></strong>
-                                <strong> Manager: <p th:text="${company.user.name + ' ' + company.user.surname}"></p>
-                                </strong>
+                    <div class="office-info">
+                        <div class="row" th:each="office : ${offices}">
+                            <div class="col-md-6">
+                                <div class="office">
+                                    <img style="width: 222px" src="/media/icons/hotel-lg.png" alt="Plane">
+                                    <div>
+                                        <p><img class="icon-img" src="/media/icons8-country-50.png"
+                                                alt="model">Country:<strong>
+                                            <span th:text="${office.country}">Модель: Boeing 747</span></strong></p>
+                                        <p><img class="icon-img" src="/media/icons8-city-buildings-50.png" alt="bussiness">
+                                            City:<strong><span
+                                                    th:text="${office.city}">Бизнес-класс: 30 мест</span></strong></p>
+                                        <p><img class="icon-img" src="/media/icons8-street-50.png" alt="seats"> Street:
+                                            <strong><span
+                                                    th:text="${office.street}">Эконом-класс: 420 мест</span></strong>
+                                        </p>
+                                        <p><img class="icon-img" src="/media/icons8-phone-50.png" alt="seats"> Phone:
+                                            <strong><span
+                                                    th:text="${office.phone}">Эконом-класс: 420 мест</span></strong></p>
+                                        <p><img class="icon-img" src="/media/icons8-open-50.png" alt="seats"> Open Time:
+                                            <strong><span
+                                                    th:text="${office.workStartTime}">Эконом-класс: 420 мест</span></strong>
+                                        </p>
+                                        <p><img class="icon-img" src="/media/icons8-closed-50.png" alt="seats"> Closed
+                                            Time:
+                                            <strong><span th:text="${office.workEndTime}">Эконом-класс: 420 мест</span></strong>
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="quick-links">
-                        <ul>
-                            <li><a th:href="@{/company/{companyId}/planes(companyId=${company.id})}">
-                                <img src="/media/icons8-plane-100.png" alt="Planes"> Planes</a></li>
-                            <li><a th:href="@{/company/{companyId}/offices(companyId=${company.id})}"><img
-                                    src="/media/pngegg.png" alt="Offices"> Offices</a></li>
-                            <li><a th:href="@{/company/{companyId}/members(companyId=${company.id})}"><img
-                                    src="/media/icons8-management-100.png" alt="Team Members"> Team
-                                Members</a></li>
-                            <li><a th:href="@{/company/{companyId}/flights(companyId=${company.id})}"><img
-                                    src="/media/icons8-flights-100.png" alt="Flights">
-                                Flights</a></li>
-                        </ul>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- Booking Area End -->
-        <!-- Comments Section -->
-        <h2>Comments</h2>
-        <!-- Form to submit comments -->
-        <form id="comment-form" action="/addComment" method="post">
-            <div style="width: 95%;margin: 19px">
-                <input name="companyId" hidden="hidden" th:value="${company.id}">
-                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-                <textarea required style="width:100%;" name="comment" placeholder="Write your comment here"></textarea></div>
-            <div style="margin-left: 90%">
-                <button id="commentClick" style="width: 9%" class="open-rating cus-btn full-width test" type="submit">Submit</button>
-            </div>
-        </form>
-        <div th:each="comment : ${comments}" class="comments">
-            <div class="comment">
-                <!-- User Avatar -->
-                <img th:src="@{/getImage(picName=${comment.user.picName})}" class="user-avatar" alt="User Avatar">
-
-                <!-- Comment Content -->
-                <div class="comment-content">
-                    <strong> <span th:text="${comment.user.name + ' ' + comment.user.surname}">John Doe</span></strong>
-                    <p class="comment-info"></p>
-                    <!-- User Nickname -->
-                    <p th:text="${comment.comment}">This is a comment.</p>
-                    <!-- Publication Date -->
-                    <span class="publication-date" th:text="${comment.commentDate}">on May 1, 2024</span>
-
-                </div>
-            </div>
-            <!-- More comments will be dynamically loaded here -->
-        </div>
-
     </div>
     <!-- Main Content End -->
 
@@ -143,8 +150,8 @@
 <!-- Mobile Menu Start -->
 <th:block th:insert="~{/fragments/mobileMenu::mobileMenu}"/>
 <!-- Mobile Menu End -->
-<script>
-</script>
+
+
 <!-- Jquery Js -->
 <script src="/js/vendor/jquery-3.6.3.min.js"></script>
 <script src="/js/vendor/calendar/popper.min.js"></script>
@@ -160,7 +167,6 @@
 <script src="/js/vendor/jquery.timepicker.min.js"></script>
 <script src="/js/vendor/ionrangeslider.js"></script>
 <script src="/js/vendor/sal.js"></script>
-
 <!-- Site Scripts -->
 <script src="/js/date.js"></script>
 <script src="/js/starAndRateCompany.js"></script>

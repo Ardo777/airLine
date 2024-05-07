@@ -12,13 +12,9 @@ import java.util.Optional;
 public interface PlaneRepository extends JpaRepository<Plane, Integer> {
     List<Plane> findAllByCompany(Company company);
 
-
     Optional<Plane> findByIdAndCompany(int id, Company company);
 
     boolean existsByModelAndMaxBaggageAndCountBusinessAndCountEconomyAndCompany(String model, double maxBaggage, int countBusiness, int countEconomy, Company company);
 
-  List<Plane> findAllByCompany(Company company);
-
-    Optional<Plane> findByIdAndCompany(int id, Company company);
 
 }

@@ -38,14 +38,10 @@ import java.util.UUID;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-
     private final MailService mailService;
-
     private final PasswordEncoder passwordEncoder;
     private final UserMapper userMapper;
-
     private final FileUtil fileUtil;
-
     private final EntityManager entityManager;
 
     @Value("${picture.upload.directory}")

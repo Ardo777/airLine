@@ -22,8 +22,6 @@ public interface PlaneService {
     void saveAirPlane(Plane plane, MultipartFile multipartFile) throws IOException;
     
     Plane createPlane(String model, double maxBaggage, int countBusiness,int countEconomy,int countRow, MultipartFile multipartFile);
- 
-    List<PlaneDto> getAllPlanesByCompany(Company company);
 
     PlaneDto getPlane(int planeId, Company company);
 

@@ -1,11 +1,11 @@
 package com.example.airlineproject.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.util.List;
 
 
 @Data
@@ -27,4 +27,13 @@ public class Company {
     private boolean isActive;
     @OneToOne
     private User user;
+    private int rating;
+    @OneToMany(mappedBy = "company")
+    private List<Office> office;
+    @OneToMany(mappedBy = "company")
+    private List<TeamMember> teamMembers;
+    @OneToMany(mappedBy = "company")
+    private List<Plane> planes;
+    @OneToMany(mappedBy = "company")
+    private List<Flight> flights;
 }

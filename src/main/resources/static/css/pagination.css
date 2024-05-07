@@ -1,0 +1,32 @@
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pagination-item {
+    border-radius: 10px;
+    display: inline-block;
+    padding: 5px 12px;
+    margin: 0 2px;
+    text-decoration: none;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    width: 35px;
+    text-align: center;
+}
+
+.pagination-item:hover {
+    background-color: #f5f5f5;
+    color: #333;
+    border-color: #ccc;
+}
+
+.pagination-item.active {
+    background-color: blue;
+    color: #fff;
+    border-color: #5c7a97;
+}
