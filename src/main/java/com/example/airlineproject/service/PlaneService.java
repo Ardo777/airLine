@@ -23,7 +23,7 @@ public interface PlaneService {
 
     PlaneAddDto createPlane(PlaneAddDto planeAddDto, MultipartFile multipartFile);
 
-    List<PlaneDto> getAllPlanesByCompany(Company company);
+//    List<PlaneDto> getAllPlanesByCompany(Company company);
 
     PlaneDto getPlane(int planeId, Company company);
 
