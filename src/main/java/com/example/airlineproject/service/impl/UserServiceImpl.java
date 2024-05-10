@@ -2,6 +2,7 @@ package com.example.airlineproject.service.impl;
 
 import com.example.airlineproject.dto.ChangePasswordDto;
 import com.example.airlineproject.dto.UserResponseDto;
+import com.example.airlineproject.entity.Company;
 import com.example.airlineproject.entity.QUser;
 import com.example.airlineproject.entity.User;
 import com.example.airlineproject.entity.enums.UserRole;
@@ -254,6 +255,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public Long getUsersCount() {
         return userRepository.count();
+    }
+
+    @Override
+    public User findRandomAdmin() {
+        return userRepository.findRandomUserByRole(UserRole.ADMIN).orElse(null);
+    }
+
+    @Override
+    public List<User> findAllByCompany(Company company) {
+        return userRepository.findAllByCompany(company);
     }
 
 

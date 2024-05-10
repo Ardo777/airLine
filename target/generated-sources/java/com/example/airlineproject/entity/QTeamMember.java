@@ -22,13 +22,15 @@ public class QTeamMember extends EntityPathBase<TeamMember> {
 
     public static final QTeamMember teamMember = new QTeamMember("teamMember");
 
+    public final BooleanPath active = createBoolean("active");
+
     public final QCompany company;
 
     public final NumberPath<Integer> id = createNumber("id", Integer.class);
 
     public final StringPath name = createString("name");
 
-    public final StringPath profession = createString("profession");
+    public final EnumPath<com.example.airlineproject.entity.enums.Profession> profession = createEnum("profession", com.example.airlineproject.entity.enums.Profession.class);
 
     public final StringPath surname = createString("surname");
 

@@ -43,6 +43,9 @@
                                 <li class="dropdown">
                                     <a href="/company">Company</a>
                                 </li>
+                                <li class="dropdown">
+                                    <a href="/company">Company</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -62,6 +65,9 @@
                             </a>
                             <a th:if="${currentUser != null}" href="/user/logout" class="main-menu__login">
                                 logout
+                            </a>
+                            <a th:if="${currentUser != null}" href="/messages" class="main-menu__login">
+                                Chat
                             </a>
                         </div>
 

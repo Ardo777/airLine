@@ -161,6 +161,11 @@ public class CompanyServiceImpl implements CompanyService {
     public long count() {
         return companyRepository.count();
     }
+
+    @Override
+    public Company findById(int companyId) {
+        return companyRepository.findById(companyId).orElseThrow(RuntimeException::new);
+    }
 }
 
 

@@ -37,7 +37,7 @@ public class PlaneServiceImpl implements PlaneService {
 
    
     @Override
-    public List<PlanesResponseDto> allPlanesOfTheCompany(Company company) {
+    public List<PlaneDto> allPlanesOfTheCompany(Company company) {
         return planeMapper.map(planeRepository.findAllByCompany(company));
     }
 

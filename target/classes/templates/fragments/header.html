@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="/staticAdminManager/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css"
+          rel="stylesheet">
 </head>
 <body>
 <!-- Header Area Start -->
@@ -39,30 +41,36 @@
                                 </li>
 
                                 <li class="dropdown">
-                                    <a  href="/company">Company</a>
+                                    <a href="/company">Company</a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="/company">Company</a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <div class="main-menu__right">
-                        <a href="#" class="main-menu__search search-toggler d-xl-flex d-none">
-                            <i class="fal fa-search"></i>
-                        </a>
+
                         <div class="main-menu-signup__login d-xl-flex d-none">
-                            <a th:if="${currentUser == null}"  href="/user/login" class="main-menu__login">
+                            <a th:if="${currentUser == null}" href="/user/login" class="main-menu__login">
                                 Login
                             </a>
+                            <a th:if="${currentUser != null}" href="/user/profile"> <img
+                                    src="https://e7.pngegg.com/pngimages/426/859/png-clipart-computer-icons-user-membership-black-area.png"
+                                    alt="User Icon" width="40">
+                            </a>
                             <div class="center_slach d-xl-flex d-none">/</div>
-                            <a th:if="${currentUser == null}"  href="/user/register" class="main-menu__login">
+                            <a th:if="${currentUser == null}" href="/user/register" class="main-menu__login">
                                 Signup
                             </a>
-                            <a th:if="${currentUser != null}" href="/logout" class="main-menu__login">
+                            <a th:if="${currentUser != null}" href="/user/logout" class="main-menu__login">
                                 logout
                             </a>
+                            <a th:if="${currentUser != null}" href="/messages" class="main-menu__login">
+                                Chat
+                            </a>
                         </div>
-                        <a href="#" class="main-menu__toggler mobile-nav__toggler">
-                            <i class="fa fa-bars"></i>
-                        </a>
+
                     </div>
                 </div>
             </div>

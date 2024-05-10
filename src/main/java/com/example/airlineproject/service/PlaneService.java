@@ -15,7 +15,7 @@ import java.util.List;
 
 public interface PlaneService {
     
-    List<PlanesResponseDto> allPlanesOfTheCompany(Company company);
+    List<PlaneDto> allPlanesOfTheCompany(Company company);
   
     Boolean isPlaneExist(Plane plane, User user);
   

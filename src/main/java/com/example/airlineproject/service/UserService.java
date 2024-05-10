@@ -2,6 +2,7 @@ package com.example.airlineproject.service;
 
 import com.example.airlineproject.dto.ChangePasswordDto;
 import com.example.airlineproject.dto.UserResponseDto;
+import com.example.airlineproject.entity.Company;
 import com.example.airlineproject.entity.User;
 import com.example.airlineproject.security.SpringUser;
 import org.springframework.data.domain.Page;
@@ -37,5 +38,10 @@ public interface UserService {
 
     void processEmailUpdate(SpringUser springUser, String email, String verificationCode);
 
+
     Long getUsersCount();
+
+    User findRandomAdmin();
+
+    List<User> findAllByCompany(Company company);
 }

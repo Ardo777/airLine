@@ -1,15 +1,20 @@
 package com.example.airlineproject.controller;
 
 import com.example.airlineproject.dto.ChangePasswordDto;
+import com.example.airlineproject.entity.ChatRoom;
 import com.example.airlineproject.entity.User;
 import com.example.airlineproject.entity.enums.UserRole;
+import com.example.airlineproject.entity.UserDto;
+import com.example.airlineproject.repository.ChatRoomRepository;
 import com.example.airlineproject.repository.UserRepository;
 import com.example.airlineproject.security.SpringUser;
+import com.example.airlineproject.service.ChatRoomService;
 import com.example.airlineproject.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.stereotype.Controller;
@@ -19,6 +24,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -28,6 +35,8 @@ import java.util.Optional;
 public class UserController {
     private final UserService userService;
     private final UserRepository userRepository;
+    private final ChatRoomRepository chatRoomRepository;
+    private final ChatRoomService chatRoomService;
     private final PersistentTokenRepository persistentTokenRepository;
 
     @GetMapping("/register")
@@ -112,6 +121,12 @@ public class UserController {
             if (user.getVerificationCode().equals(verificationCode)) {
                 user.setActive(true);
                 userRepository.save(user);
+                //ChatRoom-with-webSocket-VS start
+                //in this case ChatRoom will create for communication with user and random Admin
+                User randomAdmin = userService.findRandomAdmin();
+                String chatId = chatRoomService.createChatId(user.getEmail(), randomAdmin.getEmail());
+                log.info("ChatRoom already crated with {}", chatId);
+                //ChatRoom-with-webSocket-VS end
                 String successMsg = "Verification was successful!";
                 log.info(successMsg);
                 return "redirect:/user/login?successMsg=" + successMsg;
@@ -252,7 +267,6 @@ public class UserController {
     }
 
 
-
     @PostMapping("/update")
     public String userProfile(@ModelAttribute User user, @AuthenticationPrincipal SpringUser springUser, @RequestParam(value = "picture", required = false) MultipartFile multipartFile) throws IOException {
         userService.update(user, springUser, multipartFile);
@@ -275,7 +289,7 @@ public class UserController {
             userService.updateEmail(springUser, email);
             modelMap.addAttribute("email", email);
             return "userUpdateMail";
-        }else return "redirect:/user/login";
+        } else return "redirect:/user/login";
     }
 
     @PostMapping("/emailUpdate")
@@ -283,8 +297,19 @@ public class UserController {
         if (springUser.getUser() != null) {
             userService.processEmailUpdate(springUser, email, verificationCode);
             return "redirect:/user/profile";
-        }else return "redirect:/user/login";
+        } else return "redirect:/user/login";
     }
 
-
+    @GetMapping("/users")
+    public ResponseEntity<List<UserDto>> findConnectedUsers(@AuthenticationPrincipal SpringUser springUser) {
+        List<ChatRoom> byRecipientId = chatRoomRepository.findByRecipientId(springUser.getUser().getEmail());
+        List<UserDto> users = new ArrayList<>();
+        for (ChatRoom chatRoom : byRecipientId) {
+            String senderId = chatRoom.getSenderId();
+            users.add(UserDto.builder()
+                    .nickName(senderId)
+                    .build());
+        }
+        return ResponseEntity.ok(users);
+    }
 }

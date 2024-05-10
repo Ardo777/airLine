@@ -28,6 +28,8 @@ public class QPlane extends EntityPathBase<Plane> {
 
     public final NumberPath<Integer> countEconomy = createNumber("countEconomy", Integer.class);
 
+    public final NumberPath<Integer> countRow = createNumber("countRow", Integer.class);
+
     public final NumberPath<Integer> id = createNumber("id", Integer.class);
 
     public final NumberPath<Double> maxBaggage = createNumber("maxBaggage", Double.class);

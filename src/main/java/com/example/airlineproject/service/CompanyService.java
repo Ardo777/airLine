@@ -23,4 +23,6 @@ public interface CompanyService {
     Company findByUser(User user);
 
     long count();
+
+    Company findById(int companyId);
 }

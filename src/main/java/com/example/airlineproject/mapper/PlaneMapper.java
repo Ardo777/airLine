@@ -24,6 +24,5 @@ public interface PlaneMapper {
 
     Plane map(PlaneUpdateDto planeUpdateDto);
 
-    List<PlanesResponseDto> map(List<Plane> planes);
 
 }
