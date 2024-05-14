@@ -1,28 +1,44 @@
 package com.example.airlineproject.service.impl;
 
 import com.example.airlineproject.entity.Company;
+import com.example.airlineproject.entity.QCompany;
+import com.example.airlineproject.entity.StarRating;
 import com.example.airlineproject.entity.User;
 import com.example.airlineproject.entity.enums.UserRole;
 import com.example.airlineproject.repository.CompanyRepository;
+import com.example.airlineproject.repository.StarRatingRepository;
 import com.example.airlineproject.repository.UserRepository;
 import com.example.airlineproject.service.CompanyService;
+import com.querydsl.jpa.JPAQueryBase;
+import com.querydsl.jpa.impl.JPAQuery;
+import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 @Slf4j
+
 public class CompanyServiceImpl implements CompanyService {
+
     private final CompanyRepository companyRepository;
     private final UserRepository userRepository;
+    private final StarRatingRepository starRatingRepository;
+    private final EntityManager entityManager;
 
     @Value("${picture.upload.directory}")
     private String uploadDirectory;
@@ -46,7 +62,7 @@ public class CompanyServiceImpl implements CompanyService {
 
 
     @Override
-    public String save(Company company,User user, MultipartFile multipartFile) throws IOException {
+    public String save(Company company, User user, MultipartFile multipartFile) throws IOException {
         if (companyRepository.findByUser(company.getUser()).isPresent()) {
             String errorMsg = String.format("The user %s %s already has a registered company",
                     company.getUser().getName(), company.getUser().getSurname());
@@ -79,7 +95,7 @@ public class CompanyServiceImpl implements CompanyService {
                 .name(name)
                 .email(email)
                 .build();
-        String result = save(company,user, multipartFile);
+        String result = save(company, user, multipartFile);
         if (result == null) {
             log.info("Company registered successfully: {}", company);
         } else {
@@ -162,9 +178,63 @@ public class CompanyServiceImpl implements CompanyService {
         return companyRepository.count();
     }
 
+
     @Override
-    public Company findById(int companyId) {
-        return companyRepository.findById(companyId).orElseThrow(RuntimeException::new);
+    public Boolean starRatingSave(int companyId, int rating, User user) {
+        Optional<Company> byId = companyRepository.findById(companyId);
+        if (byId.isPresent()) {
+            Company company = byId.get();
+            if (markExistByUserAndCompany(user, company)) {
+                return false;
+            }
+            StarRating starRating1 = StarRating.builder()
+                    .rating(rating)
+                    .user(user)
+                    .company(company)
+                    .build();
+            starRatingRepository.save(starRating1);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public Boolean markExistByUserAndCompany(User user, Company company) {
+
+        return starRatingRepository.existsByUserAndCompany(user, company);
+
+    }
+
+    @Override
+    public Page<Company> findAllByRating(Pageable pageable) {
+        Sort sort = Sort.by(Sort.Direction.ASC, "rating");
+        pageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), sort);
+        Page<Company> allByOrderByRatingDesc = companyRepository.findAll(pageable);
+        for (Company company : allByOrderByRatingDesc) {
+            Integer averageRatingByCompanyId = starRatingRepository.getAverageRatingByCompanyId(company.getId());
+            company.setRating(Objects.requireNonNullElse(averageRatingByCompanyId, 0));
+        }
+        return allByOrderByRatingDesc;
+    }
+
+    @Override
+    public List<Company> getAllCompaniesByFilter(String keyword) {
+        JPAQuery<Company> query = new JPAQuery<>(entityManager);
+        QCompany qCompany = QCompany.company;
+        JPAQueryBase<Company, JPAQuery<Company>> from = query.from(qCompany);
+        List<Company> fetch;
+        if (StringUtils.isNotBlank(keyword)){
+            from.where(qCompany.name.contains(keyword));
+        }
+        fetch=query.fetch();
+        return fetch;
+    }
+
+
+    @Override
+    public Company findById(int id) {
+        Optional<Company> byId = companyRepository.findById(id);
+        return byId.orElse(null);
     }
 }
 

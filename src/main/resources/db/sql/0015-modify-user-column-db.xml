@@ -1,0 +1,10 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet id="0015-modify-role-column-inUser-db.xml" author="Ardo777">
+        <dropColumn tableName="user" columnName="role"/>
+        <addColumn tableName="user">
+            <column name="role" defaultValue="USER" type="enum('USER', 'ADMIN', 'MANAGER')"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

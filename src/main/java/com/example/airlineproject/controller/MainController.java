@@ -43,9 +43,17 @@ public class MainController {
         return "aboutUs";
     }
 
-
     @GetMapping("/addCompany")
     public String addCompanyPage() {
         return "addCompany";
+    }
+
+    @GetMapping("/flightWW")
+    public String addCompanyPaage() {
+        return "flight-booking";
+
+    }@GetMapping("/flightLiss")
+    public String addCompanyePage() {
+        return "flight-listing";
     }
 }

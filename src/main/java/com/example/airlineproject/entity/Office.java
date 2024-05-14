@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -17,8 +18,10 @@ public class Office {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String country;
-    private String city;
+    @OneToOne
+    private Country country;
+    @OneToOne
+    private City city;
     private String phone;
     @DateTimeFormat(pattern = "HH:mm")
     private Date workStartTime;
@@ -26,5 +29,6 @@ public class Office {
     private Date workEndTime;
     private String street;
     @ManyToOne
+    @ToString.Exclude
     private Company company;
 }

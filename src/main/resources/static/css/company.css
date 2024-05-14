@@ -1,0 +1,186 @@
+.booking {
+    background-color: #f9f9f9;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.company-info {
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.company-info img {
+    max-width: 80%;
+    width: 500px;
+    margin-right: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+}
+
+.company-details {
+    align-items: center;
+}
+
+.company-details p {
+    font-size: 20px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.company-details p strong {
+    color: #333;
+}
+
+.quick-links ul {
+    list-style: none;
+    padding: 0px;
+    margin: 12px;
+}
+
+.quick-links li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.quick-links li:last-child {
+    margin-right: 0;
+}
+
+.quick-links a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 18px;
+    border-radius: 10px;
+    padding: 10px 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+}
+
+.quick-links a:hover {
+    color: #007bff;
+    background-color: #f0f0f0;
+    border-color: #007bff;
+}
+
+.quick-links img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.quick-links {
+    margin-left: 572px;
+    margin-top: -17%;
+}
+
+.comments-section {
+    margin-top: 60px;
+    width: 100%; /* Set width to 100% to expand to full screen */
+    padding: 20px; /* Add padding for better readability */
+}
+
+.comments-section h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.comments-section form {
+    margin-bottom: 20px;
+}
+
+.comments-section textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+}
+
+.comments-section button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.comments-section button:hover {
+    background-color: #0056b3;
+}
+
+.comments {
+    width: 100%;
+}
+
+
+.comment p {
+    margin: 0;
+}
+
+.comment-info {
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.comment {
+    margin: 33px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    float: left;
+}
+
+.comment-content {
+    overflow: hidden;
+}
+
+.comment-info {
+    font-size: 0.9em;
+    color: #888;
+    margin-top: 5px;
+}
+
+.publication-date {
+    margin-left: 119px;
+    font-size: 13px;
+}
+
+@media (max-width: 768px) {
+    .company-info {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .company-info img {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .quick-links {
+        margin: 0 auto;
+    }
+
+    .comments-section textarea {
+        width: calc(100% - 40px);
+    }
+}

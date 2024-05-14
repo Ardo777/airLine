@@ -164,7 +164,7 @@
 
 
                     <li>
-                        <a href="/logout">
+                        <a href="/user/logout">
                             <i class="fa fa-sign-out"></i> Log out
                         </a>
                     </li>
@@ -194,32 +194,39 @@
 
                                 <div class="row">
                                     <div class="col-sm-6 b-r">
-
-                                        <div class="form-group"><label>Country</label> <input type="text" name="country"
-                                                                                              placeholder="Country"
-                                                                                              class="form-control">
+                                        <div class="form-group">
+                                            <label for="countrySelect">Country</label>
+                                            <select onchange="getCities()" class="form-control" id="countrySelect"
+                                                    name="country">
+                                                <option th:each="country : ${countries}" th:value="${country.id}"
+                                                        th:text="${country.name}"></option>
+                                            </select>
                                         </div>
-                                        <div class="form-group"><label>Street</label> <input type="text" name="street"
-                                                                                             placeholder="Street"
-                                                                                             class="form-control"></div>
+                                        <div class="form-group">
+                                            <label>Street</label>
+                                            <input type="text" name="street" placeholder="Street" class="form-control">
+                                        </div>
                                         <div class="form-group">
                                             <label>Work start time</label>
-                                            <div class="input-group clockpicker" data-autoclose="true">
+                                            <div class="input-group clock picker" data-autoclose="true">
                                                 <input type="time" name="workStartTime" class="form-control"
                                                        value="00:00">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
-                                        <div class="form-group"><label>City</label> <input type="text" name="city"
-                                                                                           placeholder="City"
-                                                                                           class="form-control"></div>
-                                        <div class="form-group"><label>Phone</label> <input type="text" name="phone"
-                                                                                            placeholder="Phone"
-                                                                                            class="form-control"></div>
+                                        <div class="form-group" id="citiesContainer" >
+                                            <label for="citySelect">City</label>
+                                            <select name="city" id="citySelect" class="form-control">
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Phone</label>
+                                            <input type="text" name="phone" placeholder="Phone" class="form-control">
+                                        </div>
                                         <div class="form-group">
                                             <label>Work time end</label>
-                                            <div class="input-group clockpicker" data-autoclose="true">
+                                            <div class="input-group clock picker" data-autoclose="true">
                                                 <input type="time" name="workEndTime" class="form-control"
                                                        value="00:00">
                                             </div>
@@ -328,9 +335,7 @@
                                 </div>
                                 <div class="form-check abc-checkbox form-check-inline m-l-md">
                                 </div>
-                                <div class="col-sm-4 col-sm-offset-2">
-                                    <button class="btn btn-primary btn-sm" type="submit">Save</button>
-                                </div>
+                                <input class="btn btn-white" type="submit" value="save">
                             </form>
                         </div>
                     </div>
@@ -416,50 +421,7 @@
                             </form>
                         </div>
                         <div class="hr-line-dashed"></div>
-                        <div class="form-group row"><label class="col-sm-2 col-form-label">to</label>
-                            <div class="col-sm-10"><input type="text" name="to" class="form-control" placeholder="to">
-                            </div>
-                        </div>
-                        <div class="form-group row"><label class="col-sm-2 col-form-label">scheduled
-                            time</label>
-                            <div class="col-sm-10"><input type="datetime-local" class="form-control"
-                                                          name="scheduledTime" placeholder="scheduled Time"
-                                                          pattern="yyyy-MM-dd'T'HH:mm"
-                            >
-                            </div>
-                        </div>
-                        <div class="form-group row"><label class="col-sm-2 col-form-label">estimated
-                            time</label>
-                            <div class="col-sm-10"><input type="datetime-local" class="form-control"
-                                                          name="estimatedTime" placeholder="estimated Time"
-                                                          pattern="yyyy-MM-dd'T'HH:mm"
-                            >
-                            </div>
-                        </div>
-                        <div class="form-group row"><label class="col-sm-2 col-form-label">arrival time</label>
-                            <div class="col-sm-10"><input type="datetime-local" class="form-control"
-                                                          name="arrivalTime" placeholder="Arrival Time"
-                                                          pattern="yyyy-MM-dd'T'HH:mm"
-                            >
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Plane</label>
-                            <div class="col-sm-10">
-                                <label>
-                                    <select class="form-control" name="plane">
-                                        <option th:each="plane : ${planes}" th:value="${plane.id}"
-                                                th:text="${plane.id}"></option>
-                                    </select>
-                                </label>
-                            </div>
-                        </div>
-                        <!--here must be select tag for plane-->
-                        <div class="hr-line-dashed"></div>
-                        <div class="col-sm-4 col-sm-offset-2">
-                            <input class="btn btn-primary btn-sm" type="submit">Save</input>
-                        </div>
-                        </form>
+
                     </div>
 
                     </div>
@@ -796,6 +758,27 @@
     });
 
 
+    function getCities() {
+        var countryId = $("#countrySelect").val();
+        $.ajax({
+            type: "GET",
+            url: "/cities",
+            data: {countryId: countryId},
+            dataType: "json",
+            success: function (cities) {
+                console.log(cities);
+                $("#citySelect").empty();
+                $.each(cities, function (index, city) {
+                    $("#citySelect").append('<option value="' + city.id + '">' + city.name + '</option>');
+                });
+                $("#citiesContainer").append(citySelect);
+            }
+        });
+
+    }
+
+
+
 </script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -828,7 +811,7 @@
         });
     });
 </script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 
 </html>

@@ -1,9 +1,0 @@
-<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
-    <changeSet id="0003-add-column-company-db" author="hkarapetyan">
-        <addColumn tableName="company">
-            <column name="is_active" type="boolean" defaultValue="false"/>
-        </addColumn>
-    </changeSet>
-</databaseChangeLog>

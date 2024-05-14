@@ -16,9 +16,13 @@
                     <header th:fragment="header">
                         <div>
                             <li class="nav-header">
-                                <div class="dropdown profile-element">
+                                <div th:if="${currentUser.getPicName() != null}">
+                                    <img id="image" alt="image" width="100px" th:src="@{/getImage(picName=${currentUser.picName})}">
+                                </div>
+                                <div th:if="${currentUser.getPicName() == null}">
                                     <img alt="image" class="rounded-circle"
                                          src="/staticAdminManager/img/profile_small.jpg"/>
+                                </div>
                                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                         <span class="block m-t-xs font-bold" th:text="${currentUser.name + ' ' + currentUser.surname}" ></span>
                                     </a>

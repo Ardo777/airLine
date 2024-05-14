@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,4 +19,7 @@ public class UserResponseDto {
     private String email;
     private UserRole role;
     private String picName;
+    private String verificationCode;
+    private boolean isActive;
+    private LocalDate birthday;
 }

@@ -23,9 +23,9 @@ spring:
       ddl-auto: none
   liquibase:
     change-log: classpath*:db/change-log.xml
-
-
 picture:
   upload:
     directory: ./pictures
 
+api:
+  url: https://countriesnow.space/api/v0.1/countries/population/cities
