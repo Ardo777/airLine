@@ -43,8 +43,7 @@ public class ChatController {
 
     @GetMapping("/messages/{senderId}/{recipientId}")
     public ResponseEntity<List<ChatMessage>> findChatMessages(@PathVariable String senderId,
-                                                              @PathVariable String recipientId,
-                                                              @AuthenticationPrincipal SpringUser springUser) {
+                                                              @PathVariable String recipientId) {
         return ResponseEntity
                 .ok(chatMessageService.findChatMessages(senderId, recipientId));
     }
@@ -55,7 +54,8 @@ public class ChatController {
         return "chatMessage";
     }
 
-    @GetMapping("/messages/{companyId}")
+    @GetMapping("/messages/{" +
+            "companyId}")
     public String createChatWithCompany(@PathVariable("companyId") int companyId,
                                         @AuthenticationPrincipal SpringUser springUser,
                                         ModelMap modelMap

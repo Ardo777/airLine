@@ -4,6 +4,7 @@ package com.example.airlineproject.service;
 import com.example.airlineproject.entity.ChatRoom;
 import com.example.airlineproject.entity.User;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface ChatRoomService {
@@ -14,4 +15,5 @@ public interface ChatRoomService {
     ChatRoom getChatRoom(int companyId, User currentUser);
 
 
+    List<ChatRoom> findByRecipientId(String email);
 }

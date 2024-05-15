@@ -41,7 +41,6 @@ public class UserController {
     private final MailService mailService;
     private final FileUtil fileUtil;
     private final UserRepository userRepository;
-    private final ChatRoomRepository chatRoomRepository;
     private final ChatRoomService chatRoomService;
     private final PersistentTokenRepository persistentTokenRepository;
 
@@ -144,12 +143,7 @@ public class UserController {
 
 
     @GetMapping("/login/successfully")
-    public String successLoginPage(@AuthenticationPrincipal SpringUser springUser) {
-        if (springUser.getUser().getRole() == UserRole.ADMIN) {
-            return "redirect:/admin";
-        } else if (springUser.getUser().getRole() == UserRole.MANAGER) {
-            return "redirect:/manager";
-        }
+    public String successLoginPage() {
         return "redirect:/";
     }
 
@@ -304,7 +298,7 @@ public class UserController {
 
     @GetMapping("/users")
     public ResponseEntity<List<UserDto>> findConnectedUsers(@AuthenticationPrincipal SpringUser springUser) {
-        List<ChatRoom> byRecipientId = chatRoomRepository.findByRecipientId(springUser.getUser().getEmail());
+        List<ChatRoom> byRecipientId = chatRoomService.findByRecipientId(springUser.getUser().getEmail());
         List<UserDto> users = new ArrayList<>();
         for (ChatRoom chatRoom : byRecipientId) {
             String senderId = chatRoom.getSenderId();

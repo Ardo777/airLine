@@ -86,4 +86,9 @@ public class ChatRoomServiceImpl implements ChatRoomService {
         return chatRoom;
     }
 
+    @Override
+    public List<ChatRoom> findByRecipientId(String email) {
+        return chatRoomRepository.findByRecipientId(email);
+    }
+
 }

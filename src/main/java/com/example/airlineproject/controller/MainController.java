@@ -1,8 +1,11 @@
 package com.example.airlineproject.controller;
 
+import com.example.airlineproject.entity.enums.UserRole;
+import com.example.airlineproject.security.SpringUser;
 import com.example.airlineproject.util.FileUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,7 +20,14 @@ public class MainController {
     private final FileUtil fileUtil;
 
     @GetMapping("/")
-    public String homePage() {
+    public String homePage(@AuthenticationPrincipal SpringUser springUser) {
+        if (springUser.getUser() != null){
+            if (springUser.getUser().getRole() == UserRole.ADMIN){
+                return "/admin/index";
+            } else if (springUser.getUser().getRole() == UserRole.MANAGER) {
+                return "/manager/index";
+            }
+        }
         return "index";
     }
 
