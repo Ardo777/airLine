@@ -23,5 +23,9 @@ public interface CompanyRepository extends JpaRepository<Company, Integer> {
     @Query("SELECT c FROM Company c WHERE c.isActive = ?1")
     List<Company> findByActive(boolean active);
 
+    @Query(value = "SELECT * FROM company  WHERE is_active = true", nativeQuery = true)
+    Page<Company> findAllActiveCompanies(Pageable pageable);
+
+
 
 }

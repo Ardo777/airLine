@@ -126,7 +126,7 @@
                     <!-- User Nickname -->
                     <p th:text="${comment.comment}">This is a comment.</p>
                     <!-- Publication Date -->
-                    <span class="publication-date" th:text="${comment.commentDate}">on May 1, 2024</span>
+                    <span class="publication-date"   th:text="${#dates.format(comment.commentDate, 'dd:HH:mm')}" >on May 1, 2024</span>
 
                 </div>
             </div>
