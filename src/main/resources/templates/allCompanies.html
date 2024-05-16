@@ -137,12 +137,12 @@
                                 <div class="icon d-flex align-items-center gap-8">
                                     <img src="/media/icons/location.png" alt="">
                                     <h6
-                                            th:text="${company.office[0].country}" class="color-medium-gray">Italy
+                                            th:text="${company.office[0].country.name}" class="color-medium-gray">Italy
                                         - </h6>
                                 </div>
                                 <div class="icon d-flex align-items-center gap-8">
                                     <img src="/media/icons/hotel.png" alt="">
-                                    <h6 th:text="${company.office[0].city}"
+                                    <h6 th:text="${company.office[0].city.name}"
                                         class="color-medium-gray">Hotels </h6>
                                 </div>
                                 <div class="icon d-flex align-items-center gap-8">

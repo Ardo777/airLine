@@ -209,7 +209,7 @@ public class CompanyServiceImpl implements CompanyService {
     public Page<Company> findAllByRating(Pageable pageable) {
         Sort sort = Sort.by(Sort.Direction.ASC, "rating");
         pageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), sort);
-        Page<Company> allByOrderByRatingDesc = companyRepository.findAll(pageable);
+        Page<Company> allByOrderByRatingDesc = companyRepository.findAllActiveCompanies(pageable);
         for (Company company : allByOrderByRatingDesc) {
             Integer averageRatingByCompanyId = starRatingRepository.getAverageRatingByCompanyId(company.getId());
             company.setRating(Objects.requireNonNullElse(averageRatingByCompanyId, 0));

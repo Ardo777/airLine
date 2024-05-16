@@ -79,19 +79,19 @@
                                 </div>
                                 <div class="flight-detail">
                                     <div class="flight-departure">
-                                        <h5 th:text="${flight.scheduledTime}" class="color-black">12:00</h5>
+                                        <h5 th:text="${#temporals.format(flight.scheduledTime, 'HH:mm')}" class="color-black">12:00</h5>
                                         <h5 th:text="${flight.from}" class="dark-gray text-end">DUB</h5>
                                     </div>
                                     <div class="d-inline-flex align-items-center gap-8">
                                         <span class="">To</span>
                                         <div class="from-to text-center">
-                                            <h5 th:text="${flight.arrivalTime}" class="dark-gray">0h 50m</h5>
+                                            <h5 style="margin-left: 55px"  th:text="${#temporals.format(flight.arrivalTime, 'HH:mm')}" class="dark-gray">0h 50m</h5>
                                             <img src="/media/icons/route-plan.png" alt="">
                                         </div>
                                         <span class="">From</span>
                                     </div>
                                     <div class="flight-departure">
-                                        <h5 th:text="${flight.estimatedTime}" class="color-black">12:50</h5>
+                                        <h5 th:text="${#temporals.format(flight.estimatedTime, 'HH:mm')}" class="color-black">12:50</h5>
                                         <h5 th:text="${flight.to}" class="dark-gray">SHJ</h5>
                                     </div>
                                 </div>
@@ -109,7 +109,7 @@
                             </div>
                             <hr class="bg-light-gray mt-24 mb-24">
                             <div class="d-flex justify-content-between align-items-center">
-                                <h5  class="color-black">Monday 14 August</h5>
+                                <h5  th:text="${#temporals.format(flight.estimatedTime,  'EEEE,dd')}"  class="color-black">Monday 14 August</h5>
                             </div>
                         </div>
                     </div>

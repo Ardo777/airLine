@@ -1,18 +1,13 @@
 package com.example.airlineproject.entity;
 
 import com.example.airlineproject.entity.enums.UserRole;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.*;
-import org.springframework.beans.factory.annotation.Value;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.time.LocalDate;
 
@@ -52,4 +47,6 @@ public class User{
     private LocalDate birthday;
 
 
+    public User(String alice, String smith, String mail, String somepassword, boolean b) {
+    }
 }
