@@ -576,141 +576,33 @@
         <table>
             <thead>
             <tr>
-                <th>Авиакомпания</th>
-                <th>Откуда</th>
-                <th>Куда</th>
-                <th>Рейс</th>
-                <th>Время вылета</th>
-                <th>Плановое время прибытия</th>
-                <th>Фактическое время прибытия</th>
+                <th>Id</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Company</th>
+                <th>Scheduled Time</th>
+                <th>Estimated Time</th>
+                <th>Arrival Time</th>
+                <th>Price</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>WIZZ AIR</td>
-                <td>Рим</td>
-                <td>Фиумичино</td>
-                <td>W4 8335</td>
-                <td>05/03 03:05</td>
-                <td>05/03 03:13</td>
-                <td>05/03 03:13</td>
-            </tr>
-            <tr>
-                <td>LUFTHANSA AG</td>
-                <td>Франкфурт</td>
-                <td>Франкфурт</td>
-                <td>LH 1560</td>
-                <td>05/03 03:55</td>
-                <td>05/03 04:10</td>
-                <td>05/03 04:10</td>
-            </tr>
-            <tr>
-                <td>LUFTHANSA AG</td>
-                <td>Франкфурт</td>
-                <td>Франкфурт</td>
-                <td>LH 1560</td>
-                <td>05/03 03:55</td>
-                <td>05/03 04:10</td>
-                <td>05/03 04:10</td>
-            </tr>
-            <tr>
-                <td>LUFTHANSA AG</td>
-                <td>Франкфурт</td>
-                <td>Франкфурт</td>
-                <td>LH 1560</td>
-                <td>05/03 03:55</td>
-                <td>05/03 04:10</td>
-                <td>05/03 04:10</td>
-            </tr>
-            <tr>
-                <td>LUFTHANSA AG</td>
-                <td>Франкфурт</td>
-                <td>Франкфурт</td>
-                <td>LH 1560</td>
-                <td>05/03 03:55</td>
-                <td>05/03 04:10</td>
-                <td>05/03 04:10</td>
-            </tr>
-            <tr>
-                <td>LUFTHANSA AG</td>
-                <td>Франкфурт</td>
-                <td>Франкфурт</td>
-                <td>LH 1560</td>
-                <td>05/03 03:55</td>
-                <td>05/03 04:10</td>
-                <td>05/03 04:10</td>
-            </tr>
-            <tr>
-                <td>LUFTHANSA AG</td>
-                <td>Франкфурт</td>
-                <td>Франкфурт</td>
-                <td>LH 1560</td>
-                <td>05/03 03:55</td>
-                <td>05/03 04:10</td>
-                <td>05/03 04:10</td>
-            </tr>
-            <tr>
-                <td>LUFTHANSA AG</td>
-                <td>Франкфурт</td>
-                <td>Франкфурт</td>
-                <td>LH 1560</td>
-                <td>05/03 03:55</td>
-                <td>05/03 04:10</td>
-                <td>05/03 04:10</td>
-            </tr>
-            <tr>
-                <td>LUFTHANSA AG</td>
-                <td>Франкфурт</td>
-                <td>Франкфурт</td>
-                <td>LH 1560</td>
-                <td>05/03 03:55</td>
-                <td>05/03 04:10</td>
-                <td>05/03 04:10</td>
-            </tr>
-            <tr>
-                <td>LUFTHANSA AG</td>
-                <td>Франкфурт</td>
-                <td>Франкфурт</td>
-                <td>LH 1560</td>
-                <td>05/03 03:55</td>
-                <td>05/03 04:10</td>
-                <td>05/03 04:10</td>
-            </tr>
-            <tr>
-                <td>LUFTHANSA AG</td>
-                <td>Франкфурт</td>
-                <td>Франкфурт</td>
-                <td>LH 1560</td>
-                <td>05/03 03:55</td>
-                <td>05/03 04:10</td>
-                <td>05/03 04:10</td>
-            </tr>
-            <tr>
-                <td>LUFTHANSA AG</td>
-                <td>Франкфурт</td>
-                <td>Франкфурт</td>
-                <td>LH 1560</td>
-                <td>05/03 03:55</td>
-                <td>05/03 04:10</td>
-                <td>05/03 04:10</td>
-            </tr>
-            <tr>
-                <td>LUFTHANSA AG</td>
-                <td>Франкфурт</td>
-                <td>Франкфурт</td>
-                <td>LH 1560</td>
-                <td>05/03 03:55</td>
-                <td>05/03 04:10</td>
-                <td>05/03 04:10</td>
-            </tr>
-            <tr>
-                <td>LUFTHANSA AG</td>
-                <td>Франкфурт</td>
-                <td>Франкфурт</td>
-                <td>LH 1560</td>
-                <td>05/03 03:55</td>
-                <td>05/03 04:10</td>
-                <td>05/03 04:10</td>
+            <tr class="clickable" th:onclick="|window.location.href='@{/flight/booking/}' + ${flight.id};|"
+                th:each="flight : ${flightsList}">
+                <td th:text="${flight.id}">ZAIRIAN</td>
+                <td th:text="${flight.from}">Рим</td>
+                <td th:text="${flight.to}">Фиумичино</td>
+                <td th:text="${flight.company.name}">W4 8335</td>
+                <td th:text="${flight.scheduledTime.format(T(java.time.format.DateTimeFormatter).ofPattern('MM/dd HH:mm'))}">
+                    Запланированное время
+                </td>
+                <td th:text="${flight.estimatedTime.format(T(java.time.format.DateTimeFormatter).ofPattern('MM/dd HH:mm'))}">
+                    Запланированное время
+                </td>
+                <td th:text="${flight.arrivalTime.format(T(java.time.format.DateTimeFormatter).ofPattern(' HH:mm'))}">
+                    Запланированное время
+                </td>
+                <td th:text="${flight.economyPrice + '-' + flight.businessPrice}"></td>
             </tr>
             <!-- Добавьте остальные строки данных здесь -->
             </tbody>
