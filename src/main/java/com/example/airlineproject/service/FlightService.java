@@ -1,9 +1,6 @@
 package com.example.airlineproject.service;
 
-import com.example.airlineproject.dto.ChangeFlightDto;
-import com.example.airlineproject.dto.FlightDto;
-import com.example.airlineproject.dto.FlightResponseDto;
-import com.example.airlineproject.dto.FlightsResponseDto;
+import com.example.airlineproject.dto.*;
 import com.example.airlineproject.entity.Company;
 import com.example.airlineproject.entity.Flight;
 import com.example.airlineproject.entity.User;
@@ -21,4 +18,6 @@ public interface FlightService {
     FlightResponseDto findCompanyFlight(int flight,Company company);
 
     void changeFLight(ChangeFlightDto changeFlightDto, int planeId, Company company);
+
+    List<FlightsListResponseDto> findFirst10Flights();
 }
