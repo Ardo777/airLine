@@ -15,8 +15,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import com.example.airlineproject.dto.PlanesResponseDto;
-import com.example.airlineproject.entity.Company;
+
 
 import java.io.IOException;
 import java.util.Optional;

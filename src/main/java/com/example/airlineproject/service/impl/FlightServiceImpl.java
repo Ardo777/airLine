@@ -118,10 +118,6 @@ public class FlightServiceImpl implements FlightService {
     public List<FlightsListResponseDto> findFirst10Flights() {
         List<Flight> flightsList = flightRepository.findClosestToCurrentTime(LocalDateTime.now());
         List<FlightsListResponseDto> flightsListResponseDto = flightMapper.mapToFlightsListResponseDto(flightsList);
-        log.info(String.valueOf(flightsListResponseDto.get(2).getBusinessPrice()));
-        if (flightsList.isEmpty()) {
-            throw new FlightNotFoundException("No flights available.");
-        }
         log.info("First 10 flights already taken");
         return flightsListResponseDto;
     }

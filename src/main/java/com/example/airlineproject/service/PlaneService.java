@@ -4,7 +4,6 @@ import com.example.airlineproject.dto.PlaneAddDto;
 
 import com.example.airlineproject.dto.PlaneDto;
 import com.example.airlineproject.dto.PlaneUpdateDto;
-import com.example.airlineproject.dto.PlanesResponseDto;
 import com.example.airlineproject.entity.Company;
 import com.example.airlineproject.entity.Plane;
 import com.example.airlineproject.entity.User;

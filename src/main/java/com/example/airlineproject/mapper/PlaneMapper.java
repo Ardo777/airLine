@@ -3,7 +3,6 @@ package com.example.airlineproject.mapper;
 import com.example.airlineproject.dto.PlaneAddDto;
 import com.example.airlineproject.dto.PlaneDto;
 import com.example.airlineproject.dto.PlaneUpdateDto;
-import com.example.airlineproject.dto.PlanesResponseDto;
 import com.example.airlineproject.entity.Plane;
 import org.mapstruct.Mapper;
 
