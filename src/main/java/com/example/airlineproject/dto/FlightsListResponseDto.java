@@ -1,7 +1,8 @@
 package com.example.airlineproject.dto;
 
 import com.example.airlineproject.entity.Company;
-import com.example.airlineproject.entity.Flight;
+import com.example.airlineproject.entity.Plane;
+import com.example.airlineproject.entity.enums.Status;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,14 +14,17 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class FlightDto {
+public class FlightsListResponseDto {
+
+    private int id;
     private String from;
     private String to;
-    private double economyPrice;
-    private double businessPrice;
     private LocalDateTime scheduledTime;
     private LocalDateTime estimatedTime;
     private LocalDateTime arrivalTime;
-    private CompanyFewDetailsDto company;
-    private PlaneDto plane;
+    private double economyPrice;
+    private double businessPrice;
+    private Status status;
+    private Plane plane;
+    private Company company;
 }

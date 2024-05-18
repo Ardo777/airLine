@@ -15,11 +15,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import com.example.airlineproject.dto.PlanesResponseDto;
-import com.example.airlineproject.entity.Company;
+
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Optional;
 
 
@@ -92,8 +90,7 @@ public class PlaneServiceImpl implements PlaneService {
         if (plane.isEmpty()){
             log.error("Plane with ID {} not found for company: {}", planeUpdateDto.getId(), company.getName());
             throw new RuntimeException();
-        }
-        try {
+        }try {
             String picName = fileUtil.saveFile(multipartFile);
             if (picName != null){
                 planeUpdateDto.setPlanePic(picName);
