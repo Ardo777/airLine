@@ -61,16 +61,10 @@
         <div class="row border-bottom">
             <nav class="navbar navbar-static-top white-bg" role="navigation">
                 <div class="navbar-header">
-                    <form role="search" class="navbar-form-custom"
-                          action="/admin/filter" method="post">
                         <div class="form-group" style="display:flex; align-items: center; margin: 10px">
-                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-                            <input type="text" placeholder="Search Users" name="keyword"
-                                   style="width:500px; padding-left:30px">
-                            <input type="submit" class="search-link" value="Search"
-                                   style="width: 200px; height: 30px; background: cornflowerblue">
+                            <input oninput="search()" type="text" placeholder="Search Users" name="keyword"
+                                   style="width:500px; padding-left:30px;border: 2px solid; margin: 8px" id="keyword">
                         </div>
-                    </form>
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
                     <li>
@@ -643,13 +637,71 @@
 
                 </div>
             </div>
-
         </div>
-
-
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $("#keyword").on("input", function() {
+            search();
+        });
+    });
+    function search() {
+        var keyword = $("#keyword").val();
+        $.ajax({
+            type: "GET",
+            url: "/filter",
+            data: { keyword: keyword },
+            dataType: "json",
+            success: function (users) {
+                $("#userTable tbody").empty();
+                $.each(users, function (index, user) {
+                    var row = '<tr>' +
+                        '<td>' + user.id + '</td>' +
+                        '<td>' +
+                        '<a href="/admin/user/' + user.id + '" class="user-details">' +
+                        '<div>' +
+                        '<i class="fa-solid fa-address-card" style="color: #000000;"></i>' +
+                        '</div>' +
+                        '</a>' +
+                        '</td>';
 
+                    if (user.picName !=null) {
+                        row += '<td>' +
+                            '<img src="/getImage?picName=' + user.picName + '" width="50" alt="user">' +
+                            '</td>';
+                    } else {
+                        row += '<td>' +
+                            '<img src="/media/777user.jpg" width="50" alt="user">' +
+                            '</td>';
+                    }
+
+                    row += '<td>' + user.name + '</td>' +
+                        '<td>' + user.surname + '</td>' +
+                        '<td>' + user.email + '</td>' +
+                        '<td>' + user.role + '</td>' +
+                        '<td>' +
+                        '<a href="/admin/delete/' + user.id + '" class="delete-user">' +
+                        '<div>' +
+                        '<i class="fa-solid fa-user-minus" style="color: #000000;"></i>' +
+                        '</div>' +
+                        '</a>' +
+                        '</td>' +
+                        '</tr>';
+
+
+                    $("#userTable tbody").append(row);
+                });
+
+            },
+            error: function () {
+                console.error("Error");
+            }
+        });
+
+    }
+
+</script>
 <!-- Mainly scripts -->
 <script src="/staticAdminManager/js/jquery-3.1.1.min.js"></script>
 <script src="/staticAdminManager/js/popper.min.js"></script>

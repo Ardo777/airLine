@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 
 @Data
 @AllArgsConstructor
@@ -27,4 +29,13 @@ public class Company {
     private boolean isActive;
     @OneToOne
     private User user;
+    private int rating;
+    @OneToMany(mappedBy = "company")
+    private List<Office> office;
+    @OneToMany(mappedBy = "company")
+    private List<TeamMember> teamMembers;
+    @OneToMany(mappedBy = "company")
+    private List<Plane> planes;
+    @OneToMany(mappedBy = "company")
+    private List<Flight> flights;
 }

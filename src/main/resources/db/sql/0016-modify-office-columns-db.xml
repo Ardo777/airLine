@@ -1,0 +1,29 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet id="0016-modify-office-columns-db.xml" author="Ardo777">
+        <dropColumn tableName="office" columnName="country"/>
+        <dropColumn tableName="office" columnName="city"/>
+        <addColumn tableName="office">
+            <column name="country_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_office_country_id_country"/>
+            </column>
+            <column name="city_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_office_city_id_city"/>
+
+            </column>
+        </addColumn>
+        <addForeignKeyConstraint baseTableName="office"
+                                 baseColumnNames="country_id"
+                                 constraintName="fk_office_country"
+                                 referencedTableName="country"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="office"
+                                 baseColumnNames="city_id"
+                                 constraintName="fk_office_city"
+                                 referencedTableName="city"
+                                 referencedColumnNames="id"/>
+
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="FlyNow HTML5 Template">
+    <title>FlyNow | Company</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/media/favicon.png">
+    <!-- All CSS files -->
+    <link href="/staticAdminManager/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/vendor/font-awesome.css">
+    <link rel="stylesheet" href="/css/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/vendor/slick.css">
+    <link rel="stylesheet" href="/css/vendor/slick-theme.css">
+    <link rel="stylesheet" href="/sass/helpers/_search-popup.scss">
+    <link rel="stylesheet" href="/css/vendor/aksVideoPlayer.css">
+    <link rel="stylesheet" href="/css/vendor/datetime.css">
+    <link rel="stylesheet" href="/css/vendor/calendar/classic.css">
+    <link rel="stylesheet" href="/css/vendor/calendar/classic.date.css">
+    <link rel="stylesheet" href="/css/vendor/jquery.timepicker.min.css">
+    <link rel="stylesheet" href="/css/vendor/ui-autocomplete.css">
+    <link rel="stylesheet" href="/css/vendor/ionrangeslider.css">
+    <link rel="stylesheet" href="/css/vendor/sal.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/pagination.css">
+    <link rel="stylesheet" href="/css/starRating.css">
+
+    <style>
+        .team-list {
+            list-style-type: none;
+        }
+
+
+        .team-member {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-member img {
+            max-width: 100px;
+            height: auto;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+
+        .member-info h2 {
+            font-size: 24px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .member-info p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 0;
+        }
+
+        .member-info .info {
+            font-size: 14px;
+            color: #888;
+        }
+    </style>
+</head>
+
+<body class="o-scroll" id="js-scroll">
+<!-- Preloader Start-->
+<th:block th:insert="~{/fragments/preloader::preloader}"/>
+<!-- Preloader End-->
+
+<div id="main-wrapper" class="main-wrapper overflow-hidden">
+    <!-- Header Area Start -->
+    <th:block th:insert="~{/fragments/header::header}"/>
+    <!-- Header Area End -->
+
+    <!-- Title-Banner Start -->
+    <div class="title-banner">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="banner-area v-2">
+                    <img src="/media/banner/vacation.png" alt="" class="left-image">
+                    <div class="content-box text-alignment">
+                        <a th:href="@{/company/{companyId}(companyId=${company.id})}"><h1 th:text="${company.name}"
+                                                                                          class="fw-700 lightest-black">
+                            Companies</h1></a>
+                        <h5 class="fw-700 lightest-black">Team Members</h5>
+                    </div>
+                    <img src="/media/banner/plane-2.png" alt="" class="right-image">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Title-Banner End -->
+
+    <!-- Main Content Start -->
+    <div class="page-content m-0">
+        <section class="booking mb-60">
+            <div class="container-fluid" style="margin-top: -240px">
+                <div class="content">
+                    <div class="container">
+                        <!-- Team Members Section Start -->
+                        <section class="team-members">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <ul th:each="member : ${teamMembers}" class="team-list">
+                                        <!-- Loop through team members -->
+                                        <li>
+                                            <div class="team-member">
+                                                <!-- Display photo -->
+                                                <!-- <img style="width: 222px" th:src="@{/getImage(picName=${member.picName})}" alt="TeamMember">-->
+                                                <img src="/media/777user.jpg" alt="MemberPhoto">
+                                                <!-- Display name, surname, and profession -->
+                                                <div class="member-info">
+                                                    <h2 th:text="${member.name + ' ' + member.surname}">John Doe</h2>
+                                                    <p th:text="${member.profession}" class="info">Developer</p>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- Team Members Section End -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Booking Area Start -->
+        <!--        <section class="booking mb-60">-->
+        <!--            <div class="container-fluid">-->
+        <!--                <div class="content">-->
+        <!--                    &lt;!&ndash; Airplane Info Start &ndash;&gt;-->
+        <!--                    <div class="airplane-info">-->
+        <!--                        <div class="row" th:each="member : ${teamMembers}">-->
+        <!--                            &lt;!&ndash; Airplane  &ndash;&gt;-->
+        <!--                            <div class="col-md-6">-->
+        <!--                                <div class="airplane">-->
+
+        <!--&lt;!&ndash;                                    <img style="width: 222px" th:src="@{/getImage(picName=${member.picName})}" alt="Plane">&ndash;&gt;-->
+        <!--                                   <img style="width: 222px" src="/media/logo.png" alt="member photo">-->
+        <!--                                    <div>-->
+        <!--                                        <p><strong> <span th:text="${member.name + ' ' + member.surname}"></span></strong></p>-->
+        <!--                                        <p> Profession:<strong><span th:text="${member.profession}"></span></strong></p>-->
+        <!--                                    </div>-->
+        <!--                                </div>-->
+        <!--                            </div>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                    &lt;!&ndash; Airplane Info End &ndash;&gt;-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </section>-->
+        <!-- Booking Area End -->
+    </div>
+    <!-- Main Content End -->
+
+    <!-- Footer Start -->
+    <th:block th:insert="~{/fragments/footer::footer}"/>
+    <!-- Footer Area End  -->
+</div>
+<!-- Mobile Menu Start -->
+<th:block th:insert="~{/fragments/mobileMenu::mobileMenu}"/>
+<!-- Mobile Menu End -->
+
+
+<!-- Jquery Js -->
+<script src="/js/vendor/jquery-3.6.3.min.js"></script>
+<script src="/js/vendor/calendar/popper.min.js"></script>
+<script src="/js/vendor/bootstrap.min.js"></script>
+<script src="/js/vendor/slick.min.js"></script>
+<script src="/js/vendor/jquery-appear.js"></script>
+<script src="/js/vendor/jquery-validator.js"></script>
+<script src="/js/vendor/aksVideoPlayer.js"></script>
+<script src="/js/vendor/tilt.jquery.js"></script>
+<script src="/js/vendor/calendar/picker.js"></script>
+<script src="/js/vendor/calendar/picker.date.js"></script>
+<script src="/js/vendor/autoComplete.js"></script>
+<script src="/js/vendor/jquery.timepicker.min.js"></script>
+<script src="/js/vendor/ionrangeslider.js"></script>
+<script src="/js/vendor/sal.js"></script>
+<!-- Site Scripts -->
+<script src="/js/date.js"></script>
+<script src="/js/starAndRateCompany.js"></script>
+<script src="/js/app.js"></script>
+</body>
+
+</html>

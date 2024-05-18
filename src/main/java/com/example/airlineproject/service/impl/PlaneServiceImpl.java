@@ -1,5 +1,6 @@
-package com.example.airlineproject.service.impl;  
+package com.example.airlineproject.service.impl;
 
+import com.example.airlineproject.dto.PlaneAddDto;
 import com.example.airlineproject.dto.PlaneDto;
 import com.example.airlineproject.dto.PlaneUpdateDto;
 import com.example.airlineproject.entity.Company;
@@ -7,14 +8,16 @@ import com.example.airlineproject.entity.Plane;
 import com.example.airlineproject.entity.User;
 import com.example.airlineproject.mapper.PlaneMapper;
 import com.example.airlineproject.repository.PlaneRepository;
+import com.example.airlineproject.security.SpringUser;
 import com.example.airlineproject.service.PlaneService;
 import com.example.airlineproject.util.FileUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import com.example.airlineproject.dto.PlanesResponseDto;
+import com.example.airlineproject.entity.Company;
 
-import java.util.List;
 import java.io.IOException;
 import java.util.Optional;
 
@@ -31,51 +34,43 @@ public class PlaneServiceImpl implements PlaneService {
     private final PlaneMapper planeMapper;
 
 
-
-   
     @Override
-    public List<PlaneDto> allPlanesOfTheCompany(Company company) {
-        return planeMapper.planeToPlaneDto(planeRepository.findAllByCompany(company));
-    }
-
-    @Override
-    public void saveAirPlane(Plane plane, MultipartFile multipartFile) throws IOException {
+    public void saveAirPlane(PlaneAddDto planeAddDto, MultipartFile multipartFile, SpringUser springUser) throws IOException {
+        Plane plane = planeMapper.mapToPlane(planeAddDto);
         String picName = fileUtil.saveFile(multipartFile);
+        plane.setCompany(springUser.getUser().getCompany());
         plane.setPlanePic(picName);
         planeRepository.save(plane);
-        log.info("Plane saved: " + plane.getModel());
+        log.info("Plane saved: {}", plane.getModel());
     }
 
     @Override
-    public Plane createPlane(String model, double maxBaggage, int countBusiness,int countEconomy,int countRow, MultipartFile multipartFile) {
-        log.info("Creating plane with model: " + model);
+    public PlaneAddDto createPlane(PlaneAddDto planeAddDto, MultipartFile multipartFile) {
+        log.info("Creating plane with model: {}", planeAddDto.getModel());
 
-        return Plane.builder()
-                .model(model)
-                .maxBaggage(maxBaggage)
-                .countBusiness(countBusiness)
-                .countEconomy(countEconomy)
-                .countRow(countRow)
+        return PlaneAddDto.builder()
+                .model(planeAddDto.getModel())
+                .maxBaggage(planeAddDto.getMaxBaggage())
+                .countBusiness(planeAddDto.getCountBusiness())
+                .countEconomy(planeAddDto.getCountEconomy())
+                .countRow(planeAddDto.getCountRow())
                 .build();
     }
 
+
     @Override
-    public Boolean isPlaneExist(Plane plane,User user) {
-        boolean isPlaneExist = planeRepository.existsByModelAndMaxBaggageAndCountBusinessAndCountEconomyAndCompany(plane.getModel(),plane.getMaxBaggage(),plane.getCountBusiness(),plane.getCountEconomy(),user.getCompany());
+    public Boolean isPlaneExist(PlaneAddDto planeAddDto, User user) {
+        boolean isPlaneExist = planeRepository.existsByModelAndMaxBaggageAndCountBusinessAndCountEconomyAndCompany(planeAddDto.getModel(), planeAddDto.getMaxBaggage(), planeAddDto.getCountBusiness(), planeAddDto.getCountEconomy(), user.getCompany());
         if (isPlaneExist) {
-            log.info("Plane exists: " + plane.getModel());
+            log.info("Plane exists: {}", planeAddDto.getModel());
             return true;
         } else {
-            log.info("Plane does not exist: " + plane.getModel());
+            log.info("Plane does not exist: {}", planeAddDto.getModel());
             return false;
         }
 
     }
-    @Override
-    public List<PlaneDto> getAllPlanesByCompany(Company company) {
-        log.info("Retrieving all planes for company: {}", company.getName());
-        return planeMapper.planeToPlaneDto(planeRepository.findAllByCompany(company));
-    }
+
 
     @Override
     public PlaneDto getPlane(int planeId, Company company) {

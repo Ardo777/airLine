@@ -18,6 +18,8 @@ public interface FlightService {
 
     void changeFLight(ChangeFlightDto changeFlightDto, int planeId, Company company);
 
+    List<FlightsListResponseDto> findFirst10Flights();
+
     List<FlightDto> getAllFlightsByFilter(FlightFilterDto flightFilterDto);
 
     List<FlightDto> findExistingFlights();

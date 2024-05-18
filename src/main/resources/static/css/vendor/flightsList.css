@@ -1,78 +1,16 @@
-/*body {*/
-/*    font-family: Arial, sans-serif;*/
-/*    background-color: #f0f0f0; !* Цвет фона страницы *!*/
-/*    margin: 0; !* Убираем отступы по умолчанию *!*/
-/*    padding: 0; !* Убираем внутренние отступы по умолчанию *!*/
-/*}*/
-
-/*.table-container {*/
-/*    width: 90%;*/
-/*    max-height: 500px;*/
-/*    margin: 60px auto;*/
-/*    overflow-y: auto;*/
-/*    position: relative;*/
-/*}*/
-
-/*.table-container thead {*/
-/*    position: fixed;*/
-/*    top: 120px;*/
-/*    background-color: #3498db;*/
-/*    color: white;*/
-/*    font-weight: bold;*/
-/*    width: 90%;*/
-/*    z-index: 3;*/
-/*}*/
-/*table {*/
-/*    width: 100%;*/
-/*    border-collapse: collapse;*/
-/*    border-radius: 8px;*/
-/*    overflow: hidden; !* Обрезаем границы таблицы для красоты *!*/
-
-/*}*/
-/* Стилизация полосы прокрутки для браузеров на основе Chromium */
-.table-container::-webkit-scrollbar {
-    width: 12px; /* Ширина скроллбара */
-}
-
-.table-container::-webkit-scrollbar-track {
-    color: whitesmoke /* Цвет фона скроллбара */
-}
-
-.table-container::-webkit-scrollbar-thumb {
-    background-color: rgba(77, 115, 252, 0.1); /* Цвет полосы прокрутки */
-    border-radius: 6px; /* Закругляем углы полосы прокрутки */
-}
-
-
-
-/*th, td {*/
-/*    border: 1px solid #ddd;*/
-/*    padding: 10px;*/
-/*    text-align: left;*/
-/*    white-space: nowrap; !* Предотвращаем перенос текста *!*/
-/*}*/
-
-/*th {*/
-/*    background-color: #3498db; !* Цвет фона заголовков *!*/
-/*    color: white; !* Цвет текста заголовков *!*/
-/*    font-weight: bold;*/
-/*    min-width: 100px;*/
-
-/*}*/
-
-
-
-
 tr:hover {
     background-color: #BCB7B7;
-    cursor: grab;
-
 }
+
+tr.clickable {
+    cursor: pointer;
+}
+
 .table-container {
-    overflow-x: auto;
     width: 90%;
     max-height: 500px;
     margin: 60px auto;
+    overflow: hidden;
     background-color: rgba(77, 115, 252, 0.1);
     border-radius: 20px;
 }
@@ -80,6 +18,7 @@ tr:hover {
 table {
     width: 100%;
     border-collapse: collapse;
+    border-radius: 20px;
 }
 
 th, td {
@@ -95,14 +34,37 @@ thead {
 }
 
 tbody {
-   max-height: 500px ;/* Задайте максимальную высоту для таблицы по вашему желанию */
+   max-height: 500px ;
     width:90%;
     overflow-y:auto;
 }
 th{
     background-color: #4d73fc;
     max-height: 100px;
+
 }
+.table-container {
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+
+td {
+    border-bottom: 1px solid #ddd;
+}
+
 
 
 

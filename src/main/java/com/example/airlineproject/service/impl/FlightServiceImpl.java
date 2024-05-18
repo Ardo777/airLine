@@ -1,6 +1,11 @@
 package com.example.airlineproject.service.impl;
 
 import com.example.airlineproject.dto.*;
+import com.example.airlineproject.entity.Company;
+import com.example.airlineproject.entity.Flight;
+import com.example.airlineproject.entity.Plane;
+import com.example.airlineproject.entity.User;
+import com.example.airlineproject.dto.*;
 import com.example.airlineproject.entity.*;
 import com.example.airlineproject.entity.enums.Status;
 import com.example.airlineproject.exception.FlightNotFoundException;
@@ -91,7 +96,7 @@ public class FlightServiceImpl implements FlightService {
         Optional<Flight> existingFlight = flightRepository.findByIdAndCompany(changeFlightDto.getId(), company);
         if (existingFlight.isEmpty()) {
             // when manager change flight id from inspect then findByIdAndCompany method will find existing flight by id and company
-           //when this method <findByIdAndCompany> doesn't find that flight with id and company So, this flight either does not exist, or it belongs to another company that has an id of the flight
+            //when this method <findByIdAndCompany> doesn't find that flight with id and company So, this flight either does not exist, or it belongs to another company that has an id of the flight
             log.error("Flight not found with ID {} and  company {}", changeFlightDto.getId(), company);
             throw new FlightNotFoundException();
         }
@@ -109,6 +114,18 @@ public class FlightServiceImpl implements FlightService {
         log.debug("Saving modified flight");
         flightRepository.save(modifiedFlight);
     }
+
+    public List<FlightsListResponseDto> findFirst10Flights() {
+        List<Flight> flightsList = flightRepository.findClosestToCurrentTime(LocalDateTime.now());
+        List<FlightsListResponseDto> flightsListResponseDto = flightMapper.mapToFlightsListResponseDto(flightsList);
+        log.info(String.valueOf(flightsListResponseDto.get(2).getBusinessPrice()));
+        if (flightsList.isEmpty()) {
+            throw new FlightNotFoundException("No flights available.");
+        }
+        log.info("First 10 flights already taken");
+        return flightsListResponseDto;
+    }
+
 
     @Override
     public List<FlightDto> getAllFlightsByFilter(FlightFilterDto flightFilterDto) {
@@ -164,8 +181,6 @@ public class FlightServiceImpl implements FlightService {
         flight.setCompany(company);
         return flight;
     }
-
-
 
 
     private Status getFlightStatusByTime(Flight modifiedFlight, Flight existingFlight) {

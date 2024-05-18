@@ -17,10 +17,18 @@
                         <div>
                             <li class="nav-header">
                                 <div class="dropdown profile-element">
-                                    <img alt="image" class="rounded-circle"
-                                         src="/staticAdminManager/img/profile_small.jpg"/>
+                                    <div th:if="${currentUser.getPicName() != null}">
+                                        <img id="image" alt="image" width="100px"
+                                             th:src="@{/getImage(picName=${currentUser.picName})}">
+                                    </div>
+                                    <div th:if="${currentUser.getPicName() == null}">
+                                        <img alt="image" class="rounded-circle"
+                                             src="/staticAdminManager/img/profile_small.jpg"/>
+                                    </div>
+
                                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                        <span class="block m-t-xs font-bold"  th:text="${currentUser.name + ' ' + currentUser.surname}" ></span>
+                                        <span class="block m-t-xs font-bold"
+                                              th:text="${currentUser.name + ' ' + currentUser.surname}"></span>
                                     </a>
                                 </div>
                                 <div class="logo-element">
@@ -36,11 +44,11 @@
                                     class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li class="active"><a href="/manager">Home</a></li>
-                            <li class="active"><a href="/manager/teamMembers">Team Members</a></li>
                             <li class="active"><a href="/manager/moreDetails">More Details</a></li>
+                            <li class="active"><a href="/manager/teamMembers">Team Members</a></li>
+                            <li class="active"><a href="/manager/offices"> Offices</a></li>
                             <li class="active"><a href="/manager/flights">Flights</a></li>
-                            <li class="active"><a href="/manager/office/change"> Office Change</a></li>
-                            <li class="active"><a href="/manager/planes">The planes of my Company</a></li>
+                            <li class="active"><a href="/manager/planes">Planes</a></li>
                         </ul>
                 </ul>
             </div>

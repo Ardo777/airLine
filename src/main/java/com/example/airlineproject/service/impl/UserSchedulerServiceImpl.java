@@ -22,5 +22,10 @@ public class UserSchedulerServiceImpl  {
         users.forEach(mailService::sendBirthdayMail);
     }
 
+    @Scheduled(fixedRate = 60000)
+    public void deletingDeactivatedUsers() {
+
+    }
+
 
 }

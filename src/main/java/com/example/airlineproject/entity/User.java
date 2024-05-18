@@ -6,10 +6,8 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.time.LocalDate;
 
@@ -18,7 +16,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Entity
 @Table(name = "user")
-public class User {
+@Builder
+public class User{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,6 +32,7 @@ public class User {
     @Size(min = 6, message = "Password cannot be shorter than 6 characters")
     @NotEmpty(message = "please write your password, password can't be empty")
     private String password;
+    @Value("${user.defaultRole:USER}")
     @Enumerated(EnumType.STRING)
     private UserRole role;
     private boolean isActive;
@@ -43,9 +43,10 @@ public class User {
     @OneToOne
     @ToString.Exclude
     private Company company;
-    private LocalDate dateBirthday;
+    @Column(name = "date_Birthday")
+    private LocalDate birthday;
 
-    public User(int i, String alice, String smith, String mail, String password, UserRole userRole, boolean b, String verificationCode, String picName, Object o, Object o1) {
 
+    public User(String alice, String smith, String mail, String somepassword, boolean b) {
     }
 }

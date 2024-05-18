@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="FlyNow HTML5 Template">
+    <title>FlyNow | Company</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/media/favicon.png">
+    <!-- All CSS files -->
+    <link href="/staticAdminManager/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/vendor/font-awesome.css">
+    <link rel="stylesheet" href="/css/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/vendor/slick.css">
+    <link rel="stylesheet" href="/css/vendor/slick-theme.css">
+    <link rel="stylesheet" href="/sass/helpers/_search-popup.scss">
+    <link rel="stylesheet" href="/css/vendor/aksVideoPlayer.css">
+    <link rel="stylesheet" href="/css/vendor/datetime.css">
+    <link rel="stylesheet" href="/css/vendor/calendar/classic.css">
+    <link rel="stylesheet" href="/css/vendor/calendar/classic.date.css">
+    <link rel="stylesheet" href="/css/vendor/jquery.timepicker.min.css">
+    <link rel="stylesheet" href="/css/vendor/ui-autocomplete.css">
+    <link rel="stylesheet" href="/css/vendor/ionrangeslider.css">
+    <link rel="stylesheet" href="/css/vendor/sal.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/pagination.css">
+    <link rel="stylesheet" href="/css/starRating.css">
+    <style>
+
+    </style>
+</head>
+
+<body class="o-scroll" id="js-scroll">
+<!-- Preloader Start-->
+<th:block th:insert="~{/fragments/preloader::preloader}"/>
+<!-- Preloader End-->
+
+<div id="main-wrapper" class="main-wrapper overflow-hidden">
+    <!-- Header Area Start -->
+    <th:block th:insert="~{/fragments/header::header}"/>
+    <!-- Header Area End -->
+
+    <!-- Title-Banner Start -->
+    <div class="title-banner">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="banner-area v-2">
+                    <img src="/media/banner/vacation.png" alt="" class="left-image">
+                    <div class="content-box text-alignment">
+                        <h1 th:text="${company.name}" class="fw-700 lightest-black">Companies</h1>
+                        <h5 class="fw-700 lightest-black">Planes</h5>
+                    </div>
+                    <img src="/media/banner/plane-2.png" alt="" class="right-image">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Title-Banner End -->
+
+    <!-- Main Content Start -->
+    <div class="page-content m-0">
+        <!-- Booking Area Start -->
+        <section class="booking mb-60">
+            <div class="container-fluid">
+                <div th:each="flight : ${flights}" class="content">
+                    <div class="flight-listing-page">
+                        <div class="flight-block bg-white light-shadow p-24 br-10 mb-16" data-sal="slide-up"
+                             data-sal-duration="800" data-sal-delay="100" data-sal-easing="ease-in-out">
+                            <div class="flight-area">
+                                <div class="airline-name">
+                                    <img style="width: 87px" th:src="@{/getImage(picName=${flight.company.picName})}" alt="">
+                                    <div>
+                                        <h5 th:text="${flight.company.name}" class="lightest-black mb-8">Feel Dubai Airline</h5>
+                                        <h6 th:text="${flight.plane.model}" class="dark-gray">Boeing 777-90</h6>
+                                    </div>
+                                </div>
+                                <div class="flight-detail">
+                                    <div class="flight-departure">
+                                        <h5 th:text="${#temporals.format(flight.scheduledTime, 'HH:mm')}" class="color-black">12:00</h5>
+                                        <h5 th:text="${flight.from}" class="dark-gray text-end">DUB</h5>
+                                    </div>
+                                    <div class="d-inline-flex align-items-center gap-8">
+                                        <span class="">To</span>
+                                        <div class="from-to text-center">
+                                            <h5 style="margin-left: 55px"  th:text="${#temporals.format(flight.arrivalTime, 'HH:mm')}" class="dark-gray">0h 50m</h5>
+                                            <img src="/media/icons/route-plan.png" alt="">
+                                        </div>
+                                        <span class="">From</span>
+                                    </div>
+                                    <div class="flight-departure">
+                                        <h5 th:text="${#temporals.format(flight.estimatedTime, 'HH:mm')}" class="color-black">12:50</h5>
+                                        <h5 th:text="${flight.to}" class="dark-gray">SHJ</h5>
+                                    </div>
+                                </div>
+                                <div class="flight-button">
+                                    <div class="amount">
+                                        <h5 th:text="${flight.economyPrice}" class="color-black">$240</h5>
+                                        <h6 class="dark-gray text-end">Economy Price</h6>
+                                    </div>
+                                    <div class="amount">
+                                        <h5 th:text="${flight.businessPrice}" class="color-black">$240</h5>
+                                        <h6 class="dark-gray text-end">Business Price</h6>
+                                    </div>
+                                    <a th:href="@{/flight/booking/{id}(id=${flight.id})}" class="cus-btn btn-sec">Book Now</a>
+                                </div>
+                            </div>
+                            <hr class="bg-light-gray mt-24 mb-24">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5  th:text="${#temporals.format(flight.estimatedTime,  'EEEE,dd')}"  class="color-black">Monday 14 August</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Booking Area End -->
+        <!-- Flight Listing Start -->
+        <section class="flight-listing-page mb-60">
+            <div class="container-fluid"></div>
+        </section>
+        <!-- Flight Listing End -->
+    </div>
+    <!-- Main Content End -->
+
+    <!-- Footer Start -->
+    <th:block th:insert="~{/fragments/footer::footer}"/>
+    <!-- Footer Area End  -->
+</div>
+<!-- Mobile Menu Start -->
+<th:block th:insert="~{/fragments/mobileMenu::mobileMenu}"/>
+<!-- Mobile Menu End -->
+<script>
+    // Your scripts here
+</script>
+<!-- Jquery Js -->
+<script src="/js/vendor/jquery-3.6.3.min.js"></script>
+<script src="/js/vendor/calendar/popper.min.js"></script>
+<script src="/js/vendor/bootstrap.min.js"></script>
+<script src="/js/vendor/slick.min.js"></script>
+<script src="/js/vendor/jquery-appear.js"></script>
+<script src="/js/vendor/jquery-validator.js"></script>
+<script src="/js/vendor/aksVideoPlayer.js"></script>
+<script src="/js/vendor/tilt.jquery.js"></script>
+<script src="/js/vendor/calendar/picker.js"></script>
+<script src="/js/vendor/calendar/picker.date.js"></script>
+<script src="/js/vendor/autoComplete.js"></script>
+<script src="/js/vendor/jquery.timepicker.min.js"></script>
+<script src="/js/vendor/ionrangeslider.js"></script>
+<script src="/js/vendor/sal.js"></script>
+<!-- Site Scripts -->
+<script src="/js/date.js"></script>
+<script src="/js/starAndRateCompany.js"></script>
+<script src="/js/app.js"></script>
+</body>
+
+</html>
+
+
+<div class="flight-block bg-white light-shadow p-24 br-10 mb-16" data-sal="slide-up"
+     data-sal-duration="800" data-sal-delay="100" data-sal-easing="ease-in-out">
+    <div class="flight-area">
+        <div class="airline-name">
+            <img src="assets/media/flight_icon/icon-1.png" alt="">
+            <div>
+                <h5 class="lightest-black mb-8">Feel Dubai Airline</h5>
+                <h6 class="dark-gray">Boeing 777-90</h6>
+            </div>
+        </div>
+        <div class="flight-detail">
+            <div class="flight-departure">
+                <h5 class="color-black">12:00</h5>
+                <h5 class="dark-gray text-end">DUB</h5>
+            </div>
+            <div class="d-inline-flex align-items-center gap-8">
+                <span class="">To</span>
+                <div class="from-to text-center">
+                    <h5 class="dark-gray">0h 50m</h5>
+                    <img src="assets/media/icons/route-plan.png" alt="">
+                    <h6 class="color-black">1 Stop</h6>
+                </div>
+                <span class="">From</span>
+            </div>
+            <div class="flight-departure">
+                <h5 class="color-black">12:50</h5>
+                <h5 class="dark-gray">SHJ</h5>
+            </div>
+        </div>
+        <div class="flight-button">
+            <div class="amount">
+                <h5 class="color-black">$240</h5>
+                <h6 class="dark-gray text-end">Price</h6>
+            </div>
+            <a href="flight-booking.html" class="cus-btn btn-sec">Book Now</a>
+        </div>
+    </div>
+    <hr class="bg-light-gray mt-24 mb-24">
+    <div class="d-flex justify-content-between align-items-center">
+        <h5 class="color-black">Monday 14 August</h5>
+        <div>
+            <a href="#" class="accordion-button color-primary h5 collapsed"
+               data-bs-toggle="collapse" data-bs-target="#flightDetail" aria-expanded="true"> <i
+                    class="fal fa-chevron-down color-primary "></i>&nbsp;Flight Detail</a>
+        </div>
+    </div>
+</div>

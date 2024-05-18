@@ -22,10 +22,42 @@ class UserSchedulerServiceImplTest {
 
         UserSchedulerServiceImpl userSchedulerService = new UserSchedulerServiceImpl(userRepository, mailService);
 
-        User user1 = new User(1, "John", "Doe", "john@example.com", "password", UserRole.USER, true, "verificationCode", "picName", null, null);
-        User user2 = new User(2, "Alice", "Smith", "alice@example.com", "password", UserRole.USER, true, "verificationCode", "picName", null, null);
-        User user3 = new User(3, "Bob", "Brown", "bob@example.com", "password", UserRole.USER, true, "verificationCode", "picName", null, null);
-        user2.setDateBirthday(LocalDate.now());
+        User user1 = User.builder()
+                .id(1)
+                .name("John")
+                .surname("Doe")
+                .email("john@example.com")
+                .password("password")
+                .role(UserRole.USER)
+                .isActive(true)
+                .verificationCode("verificationCode")
+                .picName("picName")
+                .build();
+
+        User user2 = User.builder()
+                .id(2)
+                .name("Alice")
+                .surname("Smith")
+                .email("alice@example.com")
+                .password("password")
+                .role(UserRole.USER)
+                .isActive(true)
+                .verificationCode("verificationCode")
+                .picName("picName")
+                .build();
+
+        User user3 = User.builder()
+                .id(3)
+                .name("Bob")
+                .surname("Brown")
+                .email("bob@example.com")
+                .password("password")
+                .role(UserRole.USER)
+                .isActive(true)
+                .verificationCode("verificationCode")
+                .picName("picName")
+                .build();
+        user2.setBirthday(LocalDate.now());
         List<User> users = Arrays.asList(user1, user2, user3);
 
 

@@ -1,9 +1,6 @@
 package com.example.airlineproject.mapper;
 
-import com.example.airlineproject.dto.ChangeFlightDto;
-import com.example.airlineproject.dto.FlightDto;
-import com.example.airlineproject.dto.FlightResponseDto;
-import com.example.airlineproject.dto.FlightsResponseDto;
+import com.example.airlineproject.dto.*;
 import com.example.airlineproject.entity.Flight;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -21,6 +18,9 @@ public interface FlightMapper {
     FlightResponseDto map(Flight flight);
     List<FlightDto> flightsToFlightDtoList(List<Flight> flights);
     Flight map(ChangeFlightDto changeFlightDto);
+
     List<FlightsResponseDto> map(List<Flight> flights);
+
+    List<FlightsListResponseDto> mapToFlightsListResponseDto(List<Flight> flights);
 
 }
