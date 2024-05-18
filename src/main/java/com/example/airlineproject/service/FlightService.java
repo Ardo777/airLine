@@ -3,7 +3,6 @@ package com.example.airlineproject.service;
 import com.example.airlineproject.dto.*;
 import com.example.airlineproject.entity.Company;
 import com.example.airlineproject.entity.Flight;
-import com.example.airlineproject.entity.User;
 import com.example.airlineproject.entity.enums.Status;
 import com.example.airlineproject.security.SpringUser;
 
@@ -20,4 +19,8 @@ public interface FlightService {
     void changeFLight(ChangeFlightDto changeFlightDto, int planeId, Company company);
 
     List<FlightsListResponseDto> findFirst10Flights();
+
+    List<FlightDto> getAllFlightsByFilter(FlightFilterDto flightFilterDto);
+
+    List<FlightDto> findExistingFlights();
 }

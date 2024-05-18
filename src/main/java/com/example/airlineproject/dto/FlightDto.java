@@ -1,5 +1,7 @@
 package com.example.airlineproject.dto;
 
+import com.example.airlineproject.entity.Company;
+import com.example.airlineproject.entity.Flight;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,4 +21,6 @@ public class FlightDto {
     private LocalDateTime scheduledTime;
     private LocalDateTime estimatedTime;
     private LocalDateTime arrivalTime;
+    private CompanyFewDetailsDto company;
+    private PlaneDto plane;
 }

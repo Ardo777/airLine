@@ -21,15 +21,15 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-
-
         httpSecurity.csrf(csrf ->
                 csrf
                         .csrfTokenRepository(new HttpSessionCsrfTokenRepository())
         ).authorizeHttpRequests(authorize ->
                 authorize
-                        .requestMatchers("/").permitAll()
-                        .requestMatchers("/user/register", "/user/login/**", "/user/register/verification/**", "/user/login/successfully/**", "/user/codeVerification/**", "/user/forgetPassword/**", "/user/recovery/**").permitAll()
+                        .requestMatchers("/","/user/register", "/user/login/**",
+                                "/user/register/verification/**", "/user/login/successfully/**",
+                                "/user/codeVerification/**", "/user/forgetPassword/**",
+                                "/user/recovery/**", "/flight/list","/flight/list/filter").permitAll()
                         .requestMatchers("/admin/**").hasAnyAuthority(UserRole.ADMIN.name())
                         .requestMatchers("/manager/**").hasAnyAuthority(UserRole.MANAGER.name())
                         .requestMatchers(HttpMethod.GET, "/css/**", "/js/**",

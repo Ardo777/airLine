@@ -8,7 +8,7 @@ import org.mapstruct.Mapping;
 import java.time.LocalDate;
 import java.util.List;
 
-@Mapper(componentModel = "spring", imports = LocalDate.class)
+@Mapper(componentModel = "spring", imports = LocalDate.class, uses = {PlaneMapper.class,CompanyMapper.class})
 public interface FlightMapper {
 
     @Mapping(target = "status", constant = "ON_TIME")
@@ -16,7 +16,7 @@ public interface FlightMapper {
     @Mapping(target = "company", ignore = true)
     Flight map(FlightDto flightDto);
     FlightResponseDto map(Flight flight);
-
+    List<FlightDto> flightsToFlightDtoList(List<Flight> flights);
     Flight map(ChangeFlightDto changeFlightDto);
 
     List<FlightsResponseDto> map(List<Flight> flights);

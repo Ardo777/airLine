@@ -1,12 +1,10 @@
 package com.example.airlineproject.repository;
 
-import com.example.airlineproject.dto.FlightsListResponseDto;
 import com.example.airlineproject.entity.Company;
 import com.example.airlineproject.entity.Flight;
 import com.example.airlineproject.entity.enums.Status;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;

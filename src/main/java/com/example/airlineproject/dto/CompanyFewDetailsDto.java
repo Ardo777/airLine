@@ -9,9 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class PlanesResponseDto {
+public class CompanyFewDetailsDto {
     private int id;
-    private String model;
-    private int countEconomy;
-    private int countBusiness;
+    private String name;
+    private String picName;
 }

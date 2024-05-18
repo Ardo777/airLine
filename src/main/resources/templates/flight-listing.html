@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -32,107 +32,18 @@
 </head>
 
 <body class="o-scroll" id="js-scroll">
-<!-- Preloader-->
-<div id="preloader">
-    <div class="loader">
-        <div class="wait"> Veuillez patienter svp</div>
-        <div class="plane">
-            <img src="../../up/19/34/4820.gif" class="plane-img" alt="">
-        </div>
-        <div class="earth-wrapper">
-            <div class="earth"></div>
-        </div>
-    </div>
-    <!-- <dotlottie-player src="https://lottie.host/cd993b04-33dd-4600-a4b6-62897a52f071/6gZOhSlbtF.json" background="#b5c5ff" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player> -->
-</div>
+<!-- Preloader Start-->
+<th:block th:insert="~{/fragments/preloader::preloader}"/>
+<!-- Preloader End-->
+<!-- <dotlottie-player src="https://lottie.host/cd993b04-33dd-4600-a4b6-62897a52f071/6gZOhSlbtF.json" background="#b5c5ff" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player> -->
 <!-- Back To Top Start -->
 <a href="#main-wrapper" id="backto-top" class="back-to-top"><i class="fas fa-angle-up"></i></a>
 <!-- Main Wrapper Start -->
 <div id="main-wrapper" class="main-wrapper overflow-hidden">
 
     <!-- Header Area Start -->
-    <header>
-        <nav class="main-menu">
-            <div class="container-fluid">
-                <div class="main-menu__block">
-                    <div class="main-menu__left">
-
-                        <div class="main-menu__logo">
-                            <a href="indexTwo.html">
-                                <img src="assets/media/logo.png" alt="FlyNow">
-                            </a>
-                        </div>
-
-                        <div class="main-menu__nav">
-                            <ul class="main-menu__list">
-                                <li><a href="indexTwo.html">Home</a></li>
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="active">Flight</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="flight-listing.html" class="active">Flight Listing</a></li>
-                                        <li><a href="flight-booking.html">Flight Booking</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);">Car</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="car-listing.html">Car Listing</a></li>
-                                        <li><a href="car-booking.html">Car Booking</a></li>
-                                        <li><a href="car-detail.html">Car Detail</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);">Hotel</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="hotel-listing.html">Hotel Listing</a></li>
-                                        <li><a href="hotel.html">Hotel Booking</a></li>
-                                        <li><a href="hotel-detail.html">Hotel Detail</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="tour-packages.html">Tour Package</a></li>
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);">Pages</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="aboutUs.html">About</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
-                                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                                        <li><a href="register.html">Login</a></li>
-                                        <li><a href="login.html">Signup</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);">News</a>
-                                    <ul>
-
-                                        <li><a href="news.html">News Listing</a></li>
-                                        <li><a href="news.html">News Detail</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="main-menu__right">
-                        <a href="#" class="main-menu__search search-toggler d-xl-flex d-none">
-                            <i class="fal fa-search"></i>
-                        </a>
-                        <div class="main-menu-signup__login d-xl-flex d-none">
-                            <a href="register.html" class="main-menu__login">
-                                Login
-                            </a>
-                            <div class="center_slach d-xl-flex d-none">/</div>
-                            <a href="login.html" class="main-menu__login">
-                                Signup
-                            </a>
-                        </div>
-                        <a href="#" class="main-menu__toggler mobile-nav__toggler">
-                            <i class="fa fa-bars"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <!-- Header Area end -->
+    <th:block th:insert="~{/fragments/header::header}"/>
+    <!-- Header Area End -->
 
 
     <!-- Title-Banner Start -->
@@ -140,7 +51,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="banner-area v-2">
-                    <img src="assets/media/banner/vacation.png" alt="" class="left-image">
+                    <img src="/iassets/media/banner/vacation.png" alt="" class="left-image">
                     <div class="content-box text-alignment">
                         <h1 class="fw-700 lightest-black">Flight Listing</h1>
                     </div>
@@ -168,51 +79,19 @@
                                         Flight
                                     </a>
                                 </li>
-                                <li class="nav-item flight-sec">
-                                    <a href="#stopover" class="cus-btn primary-light primary" aria-current="false"
-                                       data-bs-toggle="tab">
-                                        Stopover
-                                    </a>
-                                </li>
-                                <li class="nav-item flight-sec">
-                                    <a href="#manage" class="cus-btn primary-light primary" aria-current="false"
-                                       data-bs-toggle="tab">
-                                        Manage Booking
-                                    </a>
-                                </li>
-                                <li class="nav-item flight-sec">
-                                    <a href="#status" class="cus-btn primary-light primary" aria-current="false"
-                                       data-bs-toggle="tab">
-                                        Flight Status
-                                    </a>
-                                </li>
                             </ul>
                         </div>
                         <div class="card-body tab-content">
 
                             <!-- Flight tab Start -->
                             <div class="tab-pane active" id="flight">
-                                <form action="flight-listing.html" method="post">
-                                    <div class="custom-control mb-32">
-                                        <div class=" radio-button">
-                                            <input type="radio" name="way" class="custom-control-input" id="one">
-                                            <label class="custom-control-label" for="one">One way</label>
-                                        </div>
-                                        <div class=" radio-button">
-                                            <input type="radio" name="way" class="custom-control-input" id="round">
-                                            <label class="custom-control-label" for="round">Round-trip</label>
-                                        </div>
-                                        <div class="radio-button">
-                                            <input type="radio" name="way" class="custom-control-input" id="multi">
-                                            <label class="custom-control-label" for="multi">Multi-City</label>
-                                        </div>
-                                    </div>
+                                <form action="/flight/list/filter" method="get">
                                     <div class="booking-info mb-32" data-sal="slide-left" data-sal-duration="800"
                                          data-sal-delay="100" data-sal-easing="ease-in-out">
                                         <div class="d-xl-flex align-items-center gap-24 d-lg-block d-flex">
                                             <div class="custom-sel-input-block">
                                                 <label for="depFrom" class="h-16 color-medium-gray">From</label>
-                                                <input type="text" class="sel-input auto-input" id="depFrom"
+                                                <input type="text" name="from" class="sel-input auto-input" id="depFrom"
                                                        placeholder="From">
                                                 <div class="slector-wrapper"></div>
                                             </div>
@@ -233,8 +112,8 @@
                                                 </svg>
                                             </div>
                                             <div class="custom-sel-input-block">
-                                                <label for="arrivalTo" class="h-16 color-medium-gray">To</label>
-                                                <input type="text" class="sel-input auto-input" id="arrivalTo"
+                                                <label for="to" class="h-16 color-medium-gray">To</label>
+                                                <input type="text" name="to" class="sel-input auto-input" id="To"
                                                        placeholder="To">
                                                 <div class="slector-wrapper"></div>
                                             </div>
@@ -242,138 +121,39 @@
                                         </div>
                                         <div class="d-xl-flex align-items-center gap-24 d-lg-block ">
                                             <div class="input-date-picker">
-                                                <label for="dep" class="h-16 color-medium-gray">Departing</label>
-                                                <input type="text" class="sel-input date_from" id="dep"
+                                                <label for="dep" class="h-16 color-medium-gray">Scheduled Time</label>
+                                                <input type="text" name="scheduledTime" class="sel-input date_from" id="dep"
                                                        placeholder="Aug 18, 2023">
                                             </div>
-                                            <div class="input-date-picker">
-                                                <label for="arrival" class="h-16 color-medium-gray">Returning</label>
-                                                <input type="text" class="sel-input date_to" id="arrival"
-                                                       placeholder="Aug 20, 2023">
+                                        </div>
+                                    </div>
+                                    <div class="booking-info mb-32" data-sal="slide-left" data-sal-duration="800"
+                                         data-sal-delay="100" data-sal-easing="ease-in-out">
+                                        <div class="d-xl-flex align-items-center gap-24 d-lg-block d-flex">
+                                            <div class="custom-sel-input-block">
+                                                <label for="depFrom" class="h-16 color-medium-gray">Minimum price of the
+                                                    flight</label>
+                                                <input type="number" name="minimumPrice" class="sel-input auto-input"
+                                                       id="minPrice"
+                                                       placeholder="Min Price">
+                                                <div class="slector-wrapper"></div>
                                             </div>
                                             <div class="custom-sel-input-block">
-                                                <div class="h-16 color-medium-gray">Passengers and Class</div>
-                                                <div class="seat-booking color-black"><span
-                                                        class="total-pasenger">2</span> Passengers /
-                                                    <span class="pasenger-class">Business</span>
-                                                </div>
-
-                                                <div class="passenger-area pessenger-box bg-white light-shadow br-5 p-24">
-                                                    <h4 class="color-black mb-32">Passenger</h4>
-                                                    <div class="passenger-box mb-24">
-                                                        <div class="row">
-                                                            <div class="col-md-7 col-sm-6 col-6">
-                                                                <div class="content-box">
-                                                                    <h5 class="lightest-black">Adult</h5>
-                                                                    <p class="color-medium-gray light"> Above 12
-                                                                        years.</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-5 col-sm-6 col-6">
-                                                                <div class="quantity quantity-wrap">
-                                                                    <input class="decrement" type="button" value="-">
-                                                                    <input type="text" name="quantity" value="0"
-                                                                           maxlength="2" size="1" id="adult"
-                                                                           class="number">
-                                                                    <input class="increment" type="button" value="+">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="passenger-box mb-24">
-                                                        <div class="row">
-                                                            <div class="col-md-7 col-sm-6 col-6">
-                                                                <div class="content-box">
-                                                                    <h5 class="lightest-black">Child</h5>
-                                                                    <p class="color-medium-gray light"> 2-11 years on
-                                                                        travel date.</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-5 col-sm-6 col-6">
-                                                                <div class="quantity quantity-wrap">
-                                                                    <input class="decrement" type="button" value="-">
-                                                                    <input type="text" name="quantity" value="0"
-                                                                           maxlength="2" size="1" id="child"
-                                                                           class="number">
-                                                                    <input class="increment" type="button" value="+">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="passenger-box mb-32">
-                                                        <div class="row">
-                                                            <div class="col-md-7 col-sm-6 col-6">
-                                                                <div class="content-box">
-                                                                    <h5 class="lightest-black">Infant</h5>
-                                                                    <p class="color-medium-gray light"> Below 2
-                                                                        years.</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-5 col-sm-6 col-6">
-                                                                <div class="quantity quantity-wrap">
-                                                                    <input class="decrement" type="button" value="-">
-                                                                    <input type="text" name="quantity" value="0"
-                                                                           maxlength="2" size="1" id="infant"
-                                                                           class="number">
-                                                                    <input class="increment" type="button" value="+">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <p class="color-medium-gray light mb-32">Please
-                                                        note: You can book for a maximum of nine
-                                                        passengers.</p>
-                                                    <h4 class="color-black mb-32">Travel Class</h4>
-                                                    <div class="radio-tile-group">
-                                                        <div class="input-container">
-                                                            <input id="economy" class="radio-button" type="radio"
-                                                                   name="radio" value="Economy">
-                                                            <div class="radio-tile">
-                                                                <label for="economy"
-                                                                       class="radio-tile-label">Economy</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="input-container">
-                                                            <input id="business" class="radio-button" type="radio"
-                                                                   name="radio" value="Business">
-                                                            <div class="radio-tile">
-                                                                <label for="business"
-                                                                       class="radio-tile-label">Business</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="input-container">
-                                                            <input id="firstClass" class="radio-button" type="radio"
-                                                                   name="radio" value="First Class">
-                                                            <div class="radio-tile">
-                                                                <label for="firstClass" class="radio-tile-label">First
-                                                                    Class</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="input-container">
-                                                            <input id="pre-eco" class="radio-button" type="radio"
-                                                                   name="radio" value="Premium Economy">
-                                                            <div class="radio-tile">
-                                                                <label for="pre-eco" class="radio-tile-label">Premium
-                                                                    Economy</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <label for="maxPrice" class="h-16 color-medium-gray">Maximum price of
+                                                    the flight</label>
+                                                <input type="number" name="maximumPrice" class="sel-input auto-input"
+                                                       id="maxPrice"
+                                                       placeholder="Max Price">
+                                                <div class="slector-wrapper"></div>
                                             </div>
+
+
+                                            <div class="vertical-line d-xl-block d-none"></div>
                                         </div>
                                     </div>
                                     <div class="row d-flex justify-content-end">
                                         <div class="col-xl-4 col-lg-6 col-md-6 col-sm-9">
                                             <div class="row align-items-center ">
-                                                <div class="col-sm-6">
-                                                    <div class="booking-info promo-code mb-sm-0 mb-16">
-                                                        <div class="custom-sel-input-block m-0">
-                                                            <input type="text" class="sel-input p-0" id="promoCode"
-                                                                   placeholder="Enter Promo Code">
-                                                            <div class="slector-wrapper"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                                 <div class="col-sm-6 d-flex justify-content-end">
                                                     <button type="submit" class="cus-btn">Show
                                                         Flight
@@ -545,7 +325,7 @@
                                                         </div>
                                                         <div class="input-container">
                                                             <input id="businessradio" class="radio-button" type="radio"
-                                                                   name="radio" value="Business">
+                                                                   name="rad io" value="Business">
                                                             <div class="radio-tile">
                                                                 <label for="businessradio" class="radio-tile-label">Business</label>
                                                             </div>
@@ -824,702 +604,57 @@
         <section class="flight-listing-page mb-60">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-4 mb-xl-0 mb-32">
-                        <div class="sidebar bg-white br-10 light-shadow">
-                            <div class="sidebar-title">
-                                <h4 class="lightest-black">Filter Search</h4>
-                            </div>
-                            <div class="filter-block p-24 box-1" data-sal="slide-left" data-sal-duration="800"
-                                 data-sal-delay="100" data-sal-easing="ease-in-out">
-                                <div class="title mb-32" data-count="1">
-                                    <h4 class="color-black">Cabin </h4>
-                                    <i class="fal fa-chevron-up color-primary"></i>
-                                </div>
-                                <div class="content-block mb-32">
-                                    <div class="radio-tile-group sidebar">
-                                        <div class="input-container">
-                                            <input id="economyClas" class="radio-button" type="radio" name="radio"
-                                                   value="Economy">
-                                            <div class="radio-tile sidebar-radio">
-                                                <label for="economyClas" class="radio-tile-label sidebar-label">Economy
-                                                    Class</label>
-                                            </div>
-                                        </div>
-                                        <div class="input-container">
-                                            <input id="businessCl" class="radio-button" type="radio" name="radio"
-                                                   value="Business">
-                                            <div class="radio-tile sidebar-radio">
-                                                <label for="businessCl" class="radio-tile-label sidebar-label">Business
-                                                    Class</label>
-                                            </div>
-                                        </div>
-                                        <div class="input-container">
-                                            <input id="firstClas" class="radio-button" type="radio" name="radio"
-                                                   value="First Class">
-                                            <div class="radio-tile sidebar-radio">
-                                                <label for="firstClas" class="radio-tile-label sidebar-label">First
-                                                    Class</label>
-                                            </div>
-                                        </div>
-                                        <div class="input-container">
-                                            <input id="preEco" class="radio-button" type="radio" name="radio"
-                                                   value="Premium Economy">
-                                            <div class="radio-tile sidebar-radio">
-                                                <label for="preEco" class="radio-tile-label sidebar-label">Premium
-                                                    Economy</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr class="bg-sec-gray mb-8">
-                            </div>
-                            <div class="filter-block plr-24 box-2" data-sal="slide-right" data-sal-duration="800"
-                                 data-sal-delay="100" data-sal-easing="ease-in-out">
-                                <div class="title mb-32" data-count="2">
-                                    <h4 class="color-black">Price Range </h4>
-                                    <i class="fal fa-chevron-up color-primary"></i>
-                                </div>
-                                <div class="content-block">
-                                    <div class="slider-track mb-32">
-                                        <div class="d-flex justify-content-between mb-4p">
-                                            <h5>$100</h5>
-                                            <h5>$3000</h5>
-                                        </div>
-                                        <input type="text" class="js-slider form-control" value="0">
-                                    </div>
-                                </div>
-                                <hr class="bg-sec-gray mb-32">
-                            </div>
-                            <div class="filter-block plr-24 box-3" data-sal="slide-left" data-sal-duration="800"
-                                 data-sal-delay="100" data-sal-easing="ease-in-out">
-                                <div class="title mb-32" data-count="3">
-                                    <h4 class="color-black fw-500">Airlines</h4>
-                                    <i class="fal fa-chevron-up color-primary"></i>
-                                </div>
-                                <div class="content-block">
-                                    <div class="custom-control mb-32">
-                                        <div class="d-flex justify-content-between align-items-center mb-24">
-                                            <div class="radio-button">
-                                                <input type="radio" name="airline" class="custom-control-input"
-                                                       id="emirates">
-                                                <label class="custom-control-label lightest-black" for="emirates">Emirates
-                                                    Airline</label>
-                                            </div>
-                                            <h5 class="light-black">(02)</h5>
-                                        </div>
-                                        <div class="d-flex justify-content-between align-items-center mb-24">
-                                            <div class="radio-button">
-                                                <input type="radio" name="airline" class="custom-control-input"
-                                                       id="qatar">
-                                                <label class="custom-control-label lightest-black" for="qatar">Qatar
-                                                    Airways</label>
-                                            </div>
-                                            <h5 class="light-black">(04)</h5>
-                                        </div>
-                                        <div class="d-flex justify-content-between align-items-center mb-24">
-                                            <div class="radio-button">
-                                                <input type="radio" name="airline" class="custom-control-input"
-                                                       id="arabian">
-                                                <label class="custom-control-label lightest-black" for="arabian">Saudi
-                                                    Arabian Airlines</label>
-                                            </div>
-                                            <h5 class="light-black">(06)</h5>
-                                        </div>
-                                        <div class="d-flex justify-content-between align-items-center mb-24">
-                                            <div class="radio-button">
-                                                <input type="radio" name="airline" class="custom-control-input"
-                                                       id="asian">
-                                                <label class="custom-control-label lightest-black" for="asian">Air
-                                                    Asia</label>
-                                            </div>
-                                            <h5 class="light-black">(08)</h5>
-                                        </div>
-                                        <div class="filter-block-2 box-6">
-                                            <div class="title justify-content-start load-more-btn h5 mb-24 color-primary"
-                                                 data-count="6"> Show all airlines&nbsp;&nbsp;<i
-                                                    class="fas fa-caret-down"></i></div>
-                                            <div class="content-block">
-                                                <div class="d-flex justify-content-between align-items-center mb-24">
-                                                    <div class="radio-button">
-                                                        <input type="radio" name="airline" class="custom-control-input"
-                                                               id="saudi">
-                                                        <label class="custom-control-label lightest-black" for="saudi">Saudi
-                                                            Arabian Airlines</label>
-                                                    </div>
-                                                    <h5 class="light-black">(06)</h5>
-                                                </div>
-                                                <div class="d-flex justify-content-between align-items-center mb-24">
-                                                    <div class="radio-button">
-                                                        <input type="radio" name="airline" class="custom-control-input"
-                                                               id="air_asia">
-                                                        <label class="custom-control-label lightest-black"
-                                                               for="air_asia">Air Asia</label>
-                                                    </div>
-                                                    <h5 class="light-black">(08)</h5>
-                                                </div>
-                                                <div class="d-flex justify-content-between align-items-center mb-24">
-                                                    <div class="radio-button">
-                                                        <input type="radio" name="airline" class="custom-control-input"
-                                                               id="pia-air">
-                                                        <label class="custom-control-label lightest-black"
-                                                               for="pia-air">Pakistan International Airline</label>
-                                                    </div>
-                                                    <h5 class="light-black">(10)</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <hr class="bg-sec-gray mb-32">
-                            </div>
-                            <div class="filter-block plr-24 border-0 box-4" data-sal="slide-right"
+                    <div class="col-xl-12 col-lg-12">
+                        <div th:each="flight:${flights}">
+                            <div class="flight-block bg-white light-shadow p-24 br-10 mb-16" data-sal="slide-up"
                                  data-sal-duration="800" data-sal-delay="100" data-sal-easing="ease-in-out">
-                                <div class="title mb-32" data-count="4">
-                                    <h4 class="color-black">Stops</h4>
-                                    <i class="fal fa-chevron-up color-primary"></i>
-                                </div>
-                                <div class="content-block mb-32">
-                                    <div class="content-block">
-                                        <div class="radio-tile-group sidebar mb-24">
-                                            <div class="input-container">
-                                                <input id="any" class="radio-button" type="radio" name="radio"
-                                                       value="any">
-                                                <div class="radio-tile sidebar-radio">
-                                                    <label for="any" class="radio-tile-label sidebar-label">Any</label>
-                                                </div>
-                                            </div>
-                                            <div class="input-container">
-                                                <input id="non-stop" class="radio-button" type="radio" name="radio"
-                                                       value="non-stop">
-                                                <div class="radio-tile sidebar-radio">
-                                                    <label for="non-stop" class="radio-tile-label sidebar-label">Non-Stop</label>
-                                                </div>
-                                            </div>
-                                            <div class="input-container">
-                                                <input id="stop_1" class="radio-button" type="radio" name="radio"
-                                                       value="stop_1">
-                                                <div class="radio-tile sidebar-radio">
-                                                    <label for="stop_1" class="radio-tile-label sidebar-label">1
-                                                        Stop</label>
-                                                </div>
-                                            </div>
-                                            <div class="input-container">
-                                                <input id="stop_2" class="radio-button" type="radio" name="radio"
-                                                       value="stop_2">
-                                                <div class="radio-tile sidebar-radio">
-                                                    <label for="stop_2" class="radio-tile-label sidebar-label">2
-                                                        Stop</label>
-                                                </div>
-                                            </div>
+                                <div class="flight-area">
+                                    <div class="airline-name">
+                                        <img th:src="@{/getImage(picName=${flight.company.picName})}" alt="">
+                                        <div>
+                                                                                    <h5 class="lightest-black mb-8" th:text="${flight.company.name}"></h5>
+                                                                                    <h6 class="dark-gray" th:text="${flight.plane.model}"></h6>
                                         </div>
                                     </div>
-                                    <div class="filter-checkbox">
-                                        <input type="checkbox" id="night">
-                                        <label for="night" class="allow_over">Allow overnight stopovers</label>
-                                    </div>
-                                </div>
-                                <hr class="bg-sec-gray mb-32">
-                            </div>
-                            <div class="filter-block plr-24 box-5" data-sal="slide-left" data-sal-duration="800"
-                                 data-sal-delay="100" data-sal-easing="ease-in-out">
-                                <div class="title mb-16 pb-4" data-count="5">
-                                    <h4 class="color-black">Departure </h4>
-                                    <i class="fal fa-chevron-up color-primary"></i>
-                                </div>
-                                <div class="content-block">
-                                    <div class="radio-tile-group sidebar pb-24">
-                                        <div class="input-container">
-                                            <input id="e-morning" class="radio-button" type="radio" name="clock-time"
-                                                   value="e-morning">
-                                            <div class="radio-tile sidebar-departure-radio">
-                                                <i class="fal fa-clock"></i>
-                                                <label for="e-morning" class="radio-tile-label departure-radio">Early
-                                                    Morning</label>
-                                                <h6>4:00am - 5:59am</h6>
+                                    <div class="flight-detail">
+                                        <div class="flight-departure">
+                                            <h5 class="color-black" th:text="${flight.scheduledTime}"></h5>
+                                            <h5 class="dark-gray text-end" th:text="${flight.from}"></h5>
+                                        </div>
+                                        <div class="d-inline-flex align-items-center gap-8">
+                                            <span class="">From</span>
+                                            <div class="from-to text-center">
+                                                <h5 class="dark-gray">0h 50m</h5>
+                                                <img src="assets/media/icons/route-plan.png" alt="">
                                             </div>
+                                            <span class="">To</span>
                                         </div>
-                                        <div class="input-container">
-                                            <input id="morning" class="radio-button" type="radio" name="clock-time"
-                                                   value="morning">
-                                            <div class="radio-tile sidebar-departure-radio">
-                                                <i class="fal fa-clock"></i>
-                                                <label for="morning"
-                                                       class="radio-tile-label departure-radio">Morning</label>
-                                                <h6>6:00am - 11:59pm</h6>
-                                            </div>
-                                        </div>
-                                        <div class="input-container">
-                                            <input id="afternoon" class="radio-button" type="radio" name="clock-time"
-                                                   value="after-noon">
-                                            <div class="radio-tile sidebar-departure-radio">
-                                                <i class="fal fa-clock"></i>
-                                                <label for="afternoon" class="radio-tile-label departure-radio">Afternoon</label>
-                                                <h6>12:00pm - 4:59pm</h6>
-                                            </div>
-                                        </div>
-                                        <div class="input-container">
-                                            <input id="evening" class="radio-button" type="radio" name="clock-time"
-                                                   value="evening">
-                                            <div class="radio-tile sidebar-departure-radio">
-                                                <i class="fal fa-clock"></i>
-                                                <label for="evening"
-                                                       class="radio-tile-label departure-radio">Evening</label>
-                                                <h6>5:00pm - 7:59pm</h6>
-                                            </div>
+                                        <div class="flight-departure">
+                                            <h5 class="color-black" th:text="${flight.arrivalTime}"></h5>
+                                            <h5 class="dark-gray" th:text="${flight.to}"></h5>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-8 col-lg-8">
-                        <div class="flight-block bg-white light-shadow p-24 br-10 mb-16" data-sal="slide-up"
-                             data-sal-duration="800" data-sal-delay="100" data-sal-easing="ease-in-out">
-                            <div class="flight-area">
-                                <div class="airline-name">
-                                    <img src="assets/media/flight_icon/icon-1.png" alt="">
-                                    <div>
-                                        <h5 class="lightest-black mb-8">Feel Dubai Airline</h5>
-                                        <h6 class="dark-gray">Boeing 777-90</h6>
-                                    </div>
-                                </div>
-                                <div class="flight-detail">
-                                    <div class="flight-departure">
-                                        <h5 class="color-black">12:00</h5>
-                                        <h5 class="dark-gray text-end">DUB</h5>
-                                    </div>
-                                    <div class="d-inline-flex align-items-center gap-8">
-                                        <span class="">To</span>
-                                        <div class="from-to text-center">
-                                            <h5 class="dark-gray">0h 50m</h5>
-                                            <img src="assets/media/icons/route-plan.png" alt="">
-                                            <h6 class="color-black">1 Stop</h6>
-                                        </div>
-                                        <span class="">From</span>
-                                    </div>
-                                    <div class="flight-departure">
-                                        <h5 class="color-black">12:50</h5>
-                                        <h5 class="dark-gray">SHJ</h5>
-                                    </div>
-                                </div>
-                                <div class="flight-button">
-                                    <div class="amount">
-                                        <h5 class="color-black">$240</h5>
-                                        <h6 class="dark-gray text-end">Price</h6>
-                                    </div>
-                                    <a href="flight-booking.html" class="cus-btn btn-sec">Book Now</a>
-                                </div>
-                            </div>
-                            <hr class="bg-light-gray mt-24 mb-24">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h5 class="color-black">Monday 14 August</h5>
-                                <div>
-                                    <a href="#" class="accordion-button color-primary h5 collapsed"
-                                       data-bs-toggle="collapse" data-bs-target="#flightDetail" aria-expanded="true"> <i
-                                            class="fal fa-chevron-down color-primary "></i>&nbsp;Flight Detail</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="flightDetail" class="accordion-collapse collapse mb-32"
-                             data-bs-parent="#accordionExample">
-                            <div class="row bg-white br-10 light-shadow p-24 m-0 align-items-center">
-                                <div class="col-lg-3 col-sm-4">
-                                    <div class="time-detail">
-                                        <h6 class="flight-date mb-32"> 14 August, 2023</h6>
-                                        <h6 class="color-black mb-8">Monday, Aug 14 - 12:00</h6>
-                                        <h6 class="dark-gray mb-16">0h 50m</h6>
-                                        <h6 class="dark-gray">Monday, Aug 14 - 12:50</h6>
-                                    </div>
-                                </div>
-                                <div class="col-lg-9 col-sm-8">
-                                    <div class="detail-block">
-                                        <div class="d-sm-flex d-block align-items-center gap-24">
-                                            <img src="assets/media/flight_icon/icon-1.png" alt="">
-                                            <div class="content">
-                                                <h6 class="dark-gray">Tpm Line</h6>
-                                                <h6 class="dark-gray">Operated by Feel Dubai Airlines</h6>
-                                                <h6 class="dark-gray">Economy | Flight FK234 | Aircraft BOEING
-                                                    777-90</h6>
-                                                <h6 class="dark-gray">Adult(s): 25KG luggage free</h6>
-                                            </div>
-                                        </div>
+                                    <div class="flight-button">
+                                        <div class="amount">
 
+                                            <h4 class="color-black">Economy Class</h4>
+                                            <h5 class="color-black" th:text="${flight.economyPrice}"></h5>
+                                            <h4 class="color-black">Business Class</h4>
+                                            <h5 class="color-black" th:text="${flight.businessPrice}"></h5>
+                                            <h6 class="dark-gray text-end">Price</h6>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="flight-block bg-white light-shadow p-24 br-10 mb-16" data-sal="slide-down"
-                             data-sal-duration="800" data-sal-delay="100" data-sal-easing="ease-in-out">
-                            <div class="flight-area">
-                                <div class="airline-name">
-                                    <img src="assets/media/flight_icon/icon-2.png" alt="">
+                                <hr class="bg-light-gray mt-24 mb-24">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="color-black">Monday 14 August</h5>
                                     <div>
-                                        <h5 class="lightest-black mb-8">United Dubai Airlines</h5>
-                                        <h6 class="dark-gray">Boeing 777-90</h6>
-                                    </div>
-                                </div>
-                                <div class="flight-detail">
-                                    <div class="flight-departure">
-                                        <h5 class="color-black">12:00</h5>
-                                        <h5 class="dark-gray text-end">DUB</h5>
-                                    </div>
-                                    <div class="d-inline-flex align-items-center gap-8">
-                                        <span class="">To</span>
-                                        <div class="from-to text-center">
-                                            <h5 class="dark-gray">0h 50m</h5>
-                                            <img src="assets/media/icons/route-plan.png" alt="">
-                                            <h6 class="color-black">1 Stop</h6>
-                                        </div>
-                                        <span class="">From</span>
-                                    </div>
-                                    <div class="flight-departure">
-                                        <h5 class="color-black">12:50</h5>
-                                        <h5 class="dark-gray">SHJ</h5>
-                                    </div>
-                                </div>
-                                <div class="flight-button">
-                                    <div class="amount">
-                                        <h5 class="color-black">$240</h5>
-                                        <h6 class="dark-gray text-end">Price</h6>
-                                    </div>
-                                    <a href="flight-booking.html" class="cus-btn btn-sec">Book Now</a>
-                                </div>
-                            </div>
-                            <hr class="bg-light-gray mt-24 mb-24">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h5 class="color-black">Monday 14 August</h5>
-                                <div>
-                                    <a href="#" class="accordion-button color-primary h5 collapsed"
-                                       data-bs-toggle="collapse" data-bs-target="#unitedDubai" aria-expanded="true"> <i
-                                            class="fal fa-chevron-down color-primary "></i>&nbsp;Flight Detail</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="unitedDubai" class="accordion-collapse collapse mb-32"
-                             data-bs-parent="#accordionExample">
-                            <div class="row bg-white br-10 light-shadow p-24 m-0 align-items-center">
-                                <div class="col-lg-3 col-sm-4">
-                                    <div class="time-detail">
-                                        <h6 class="flight-date mb-32"> 14 August, 2023</h6>
-                                        <h6 class="color-black mb-8">Monday, Aug 14 - 12:00</h6>
-                                        <h6 class="dark-gray mb-16">0h 50m</h6>
-                                        <h6 class="dark-gray">Monday, Aug 14 - 12:50</h6>
-                                    </div>
-                                </div>
-                                <div class="col-lg-9 col-sm-8">
-                                    <div class="detail-block">
-                                        <div class="d-sm-flex d-block align-items-center gap-24">
-                                            <img src="assets/media/flight_icon/icon-2.png" alt="">
-                                            <div class="content">
-                                                <h6 class="dark-gray">Tpm Line</h6>
-                                                <h6 class="dark-gray">Operated by Feel Dubai Airlines</h6>
-                                                <h6 class="dark-gray">Economy | Flight FK234 | Aircraft BOEING
-                                                    777-90</h6>
-                                                <h6 class="dark-gray">Adult(s): 25KG luggage free</h6>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flight-block bg-white light-shadow p-24 br-10 mb-16" data-sal="slide-up"
-                             data-sal-duration="800" data-sal-delay="100" data-sal-easing="ease-in-out">
-                            <div class="flight-area">
-                                <div class="airline-name">
-                                    <img src="assets/media/flight_icon/icon-1.png" alt="">
-                                    <div>
-                                        <h5 class="lightest-black mb-8">Feel Dubai Airline</h5>
-                                        <h6 class="dark-gray">Boeing 777-90</h6>
-                                    </div>
-                                </div>
-                                <div class="flight-detail">
-                                    <div class="flight-departure">
-                                        <h5 class="color-black">12:00</h5>
-                                        <h5 class="dark-gray text-end">DUB</h5>
-                                    </div>
-                                    <div class="d-inline-flex align-items-center gap-8">
-                                        <span class="">To</span>
-                                        <div class="from-to text-center">
-                                            <h5 class="dark-gray">0h 50m</h5>
-                                            <img src="assets/media/icons/route-plan.png" alt="">
-                                            <h6 class="color-black">1 Stop</h6>
-                                        </div>
-                                        <span class="">From</span>
-                                    </div>
-                                    <div class="flight-departure">
-                                        <h5 class="color-black">12:50</h5>
-                                        <h5 class="dark-gray">SHJ</h5>
-                                    </div>
-                                </div>
-                                <div class="flight-button">
-                                    <div class="amount">
-                                        <h5 class="color-black">$240</h5>
-                                        <h6 class="dark-gray text-end">Price</h6>
-                                    </div>
-                                    <a href="flight-booking.html" class="cus-btn btn-sec">Book Now</a>
-                                </div>
-                            </div>
-                            <hr class="bg-light-gray mt-24 mb-24">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h5 class="color-black">Monday 14 August</h5>
-                                <div>
-                                    <a href="#" class="accordion-button color-primary h5 collapsed"
-                                       data-bs-toggle="collapse" data-bs-target="#feelDubai" aria-expanded="true"> <i
-                                            class="fal fa-chevron-down color-primary "></i>&nbsp;Flight Detail</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="feelDubai" class="accordion-collapse collapse mb-32"
-                             data-bs-parent="#accordionExample">
-                            <div class="row bg-white br-10 light-shadow p-24 m-0 align-items-center">
-                                <div class="col-lg-3 col-sm-4">
-                                    <div class="time-detail">
-                                        <h6 class="flight-date mb-32"> 14 August, 2023</h6>
-                                        <h6 class="color-black mb-8">Monday, Aug 14 - 12:00</h6>
-                                        <h6 class="dark-gray mb-16">0h 50m</h6>
-                                        <h6 class="dark-gray">Monday, Aug 14 - 12:50</h6>
-                                    </div>
-                                </div>
-                                <div class="col-lg-9 col-sm-8">
-                                    <div class="detail-block">
-                                        <div class="d-sm-flex d-block align-items-center gap-24">
-                                            <img src="assets/media/flight_icon/icon-1.png" alt="">
-                                            <div class="content">
-                                                <h6 class="dark-gray">Tpm Line</h6>
-                                                <h6 class="dark-gray">Operated by Feel Dubai Airlines</h6>
-                                                <h6 class="dark-gray">Economy | Flight FK234 | Aircraft BOEING
-                                                    777-90</h6>
-                                                <h6 class="dark-gray">Adult(s): 25KG luggage free</h6>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flight-block bg-white light-shadow p-24 br-10 mb-16" data-sal="slide-down"
-                             data-sal-duration="800" data-sal-delay="100" data-sal-easing="ease-in-out">
-                            <div class="flight-area">
-                                <div class="airline-name">
-                                    <img src="assets/media/flight_icon/icon-2.png" alt="">
-                                    <div>
-                                        <h5 class="lightest-black mb-8">United Dubai Airline</h5>
-                                        <h6 class="dark-gray">Boeing 777-90</h6>
-                                    </div>
-                                </div>
-                                <div class="flight-detail">
-                                    <div class="flight-departure">
-                                        <h5 class="color-black">12:00</h5>
-                                        <h5 class="dark-gray text-end">DUB</h5>
-                                    </div>
-                                    <div class="d-inline-flex align-items-center gap-8">
-                                        <span class="">To</span>
-                                        <div class="from-to text-center">
-                                            <h5 class="dark-gray">0h 50m</h5>
-                                            <img src="assets/media/icons/route-plan.png" alt="">
-                                            <h6 class="color-black">1 Stop</h6>
-                                        </div>
-                                        <span class="">From</span>
-                                    </div>
-                                    <div class="flight-departure">
-                                        <h5 class="color-black">12:50</h5>
-                                        <h5 class="dark-gray">SHJ</h5>
-                                    </div>
-                                </div>
-                                <div class="flight-button">
-                                    <div class="amount">
-                                        <h5 class="color-black">$240</h5>
-                                        <h6 class="dark-gray text-end">Price</h6>
-                                    </div>
-                                    <a href="flight-booking.html" class="cus-btn btn-sec">Book Now</a>
-                                </div>
-                            </div>
-                            <hr class="bg-light-gray mt-24 mb-24">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h5 class="color-black">Monday 14 August</h5>
-                                <div>
-                                    <a href="#" class="accordion-button color-primary collapsed h5"
-                                       data-bs-toggle="collapse" data-bs-target="#dubaiAirlines" aria-expanded="true">
-                                        <i class="fal fa-chevron-down color-primary "></i>&nbsp;Flight Detail</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="dubaiAirlines" class="accordion-collapse collapse mb-32"
-                             data-bs-parent="#accordionExample">
-                            <div class="row bg-white br-10 light-shadow p-24 m-0 align-items-center">
-                                <div class="col-lg-3 col-sm-4">
-                                    <div class="time-detail">
-                                        <h6 class="flight-date mb-32"> 14 August, 2023</h6>
-                                        <h6 class="color-black mb-8">Monday, Aug 14 - 12:00</h6>
-                                        <h6 class="dark-gray mb-16">0h 50m</h6>
-                                        <h6 class="dark-gray">Monday, Aug 14 - 12:50</h6>
-                                    </div>
-                                </div>
-                                <div class="col-lg-9 col-sm-8">
-                                    <div class="detail-block">
-                                        <div class="d-sm-flex d-block align-items-center gap-24">
-                                            <img src="assets/media/flight_icon/icon-2.png" alt="">
-                                            <div class="content">
-                                                <h6 class="dark-gray">Tpm Line</h6>
-                                                <h6 class="dark-gray">Operated by Feel Dubai Airlines</h6>
-                                                <h6 class="dark-gray">Economy | Flight FK234 | Aircraft BOEING
-                                                    777-90</h6>
-                                                <h6 class="dark-gray">Adult(s): 25KG luggage free</h6>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flight-block bg-white light-shadow p-24 br-10 mb-16" data-sal="slide-up"
-                             data-sal-duration="800" data-sal-delay="100" data-sal-easing="ease-in-out">
-                            <div class="flight-area">
-                                <div class="airline-name">
-                                    <img src="assets/media/flight_icon/icon-1.png" alt="">
-                                    <div>
-                                        <h5 class="lightest-black mb-8">Feel Dubai Airline</h5>
-                                        <h6 class="dark-gray">Boeing 777-90</h6>
-                                    </div>
-                                </div>
-                                <div class="flight-detail">
-                                    <div class="flight-departure">
-                                        <h5 class="color-black">12:00</h5>
-                                        <h5 class="dark-gray text-end">DUB</h5>
-                                    </div>
-                                    <div class="d-inline-flex align-items-center gap-8">
-                                        <span class="">To</span>
-                                        <div class="from-to text-center">
-                                            <h5 class="dark-gray">0h 50m</h5>
-                                            <img src="assets/media/icons/route-plan.png" alt="">
-                                            <h6 class="color-black">1 Stop</h6>
-                                        </div>
-                                        <span class="">From</span>
-                                    </div>
-                                    <div class="flight-departure">
-                                        <h5 class="color-black">12:50</h5>
-                                        <h5 class="dark-gray">SHJ</h5>
-                                    </div>
-                                </div>
-                                <div class="flight-button">
-                                    <div class="amount">
-                                        <h5 class="color-black">$240</h5>
-                                        <h6 class="dark-gray text-end">Price</h6>
-                                    </div>
-                                    <a href="flight-booking.html" class="cus-btn btn-sec">Book Now</a>
-                                </div>
-                            </div>
-                            <hr class="bg-light-gray mt-24 mb-24">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h5 class="color-black">Monday 14 August</h5>
-                                <div>
-                                    <a href="#" class="accordion-button color-primary collapsed h5"
-                                       data-bs-toggle="collapse" data-bs-target="#unitedAirline" aria-expanded="true">
-                                        <i class="fal fa-chevron-down color-primary "></i>&nbsp;Flight Detail</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="unitedAirline" class="accordion-collapse collapse mb-32"
-                             data-bs-parent="#accordionExample">
-                            <div class="row bg-white br-10 light-shadow p-24 m-0 align-items-center">
-                                <div class="col-lg-3 col-sm-4">
-                                    <div class="time-detail">
-                                        <h6 class="flight-date mb-32"> 14 August, 2023</h6>
-                                        <h6 class="color-black mb-8">Monday, Aug 14 - 12:00</h6>
-                                        <h6 class="dark-gray mb-16">0h 50m</h6>
-                                        <h6 class="dark-gray">Monday, Aug 14 - 12:50</h6>
-                                    </div>
-                                </div>
-                                <div class="col-lg-9 col-sm-8">
-                                    <div class="detail-block">
-                                        <div class="d-sm-flex d-block align-items-center gap-24">
-                                            <img src="assets/media/flight_icon/icon-1.png" alt="">
-                                            <div class="content">
-                                                <h6 class="dark-gray">Tpm Line</h6>
-                                                <h6 class="dark-gray">Operated by Feel Dubai Airlines</h6>
-                                                <h6 class="dark-gray">Economy | Flight FK234 | Aircraft BOEING
-                                                    777-90</h6>
-                                                <h6 class="dark-gray">Adult(s): 25KG luggage free</h6>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flight-block bg-white light-shadow  p-24 br-10 mb-16" data-sal="slide-down"
-                             data-sal-duration="800" data-sal-delay="100" data-sal-easing="ease-in-out">
-                            <div class="flight-area">
-                                <div class="airline-name">
-                                    <img src="assets/media/flight_icon/icon-2.png" alt="">
-                                    <div>
-                                        <h5 class="lightest-black mb-8">United Dubai Airline</h5>
-                                        <h6 class="dark-gray">Boeing 777-90</h6>
-                                    </div>
-                                </div>
-                                <div class="flight-detail">
-                                    <div class="flight-departure">
-                                        <h5 class="color-black">12:00</h5>
-                                        <h5 class="dark-gray text-end">DUB</h5>
-                                    </div>
-                                    <div class="d-inline-flex align-items-center gap-8">
-                                        <span class="">To</span>
-                                        <div class="from-to text-center">
-                                            <h5 class="dark-gray">0h 50m</h5>
-                                            <img src="assets/media/icons/route-plan.png" alt="">
-                                            <h6 class="color-black">1 Stop</h6>
-                                        </div>
-                                        <span class="">From</span>
-                                    </div>
-                                    <div class="flight-departure">
-                                        <h5 class="color-black">12:50</h5>
-                                        <h5 class="dark-gray">SHJ</h5>
-                                    </div>
-                                </div>
-                                <div class="flight-button">
-                                    <div class="amount">
-                                        <h5 class="color-black">$240</h5>
-                                        <h6 class="dark-gray text-end">Price</h6>
-                                    </div>
-                                    <a href="flight-booking.html" class="cus-btn btn-sec">Book Now</a>
-                                </div>
-                            </div>
-                            <hr class="bg-light-gray mt-24 mb-24">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h5 class="color-black">Monday 14 August</h5>
-                                <div>
-                                    <a href="#" class="accordion-button color-primary collapsed h5"
-                                       data-bs-toggle="collapse" data-bs-target="#feelAirline" aria-expanded="true"> <i
-                                            class="fal fa-chevron-down color-primary "></i>&nbsp;Flight Detail</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="feelAirline" class="accordion-collapse collapse mb-32"
-                             data-bs-parent="#accordionExample">
-                            <div class="row bg-white br-10 light-shadow p-24 m-0 align-items-center">
-                                <div class="col-lg-3 col-sm-4">
-                                    <div class="time-detail">
-                                        <h6 class="flight-date mb-32"> 14 August, 2023</h6>
-                                        <h6 class="color-black mb-8">Monday, Aug 14 - 12:00</h6>
-                                        <h6 class="dark-gray mb-16">0h 50m</h6>
-                                        <h6 class="dark-gray">Monday, Aug 14 - 12:50</h6>
-                                    </div>
-                                </div>
-                                <div class="col-lg-9 col-sm-8">
-                                    <div class="detail-block">
-                                        <div class="d-sm-flex d-block align-items-center gap-24">
-                                            <img src="assets/media/flight_icon/icon-2.png" alt="">
-                                            <div class="content">
-                                                <h6 class="dark-gray">Tpm Line</h6>
-                                                <h6 class="dark-gray">Operated by Feel Dubai Airlines</h6>
-                                                <h6 class="dark-gray">Economy | Flight FK234 | Aircraft BOEING
-                                                    777-90</h6>
-                                                <h6 class="dark-gray">Adult(s): 25KG luggage free</h6>
-                                            </div>
-                                        </div>
-
+                                        <a href="flight-booking.html" class="cus-btn btn-sec accordion-button" style="color: blue">Book Now</a>
+<!--                                        a-->
+<!--                                        <a href="#" class=""-->
+<!--                                           data-bs-toggle="collapse" data-bs-target="#flightDetail"-->
+<!--                                           aria-expanded="true"> <i-->
+<!--                                                class="fal fa-chevron-down color-primary "></i>&nbsp;Flight Detail</a>-->
                                     </div>
                                 </div>
                             </div>
@@ -1530,7 +665,8 @@
                                 <li><a href="" class="h6 fw-600 mb-0">2</a></li>
                                 <li><a href="" class="h6 fw-600 mb-0">3</a></li>
                                 <li><a href="" class="h6 fw-600 mb-0">4</a></li>
-                                <li class="arrow"><a href="" class="h4 fw-600 mb-0"><i class="far fa-chevron-right"></i></a>
+                                <li class="arrow"><a href="" class="h4 fw-600 mb-0"><i
+                                        class="far fa-chevron-right"></i></a>
                                 </li>
                             </ul>
                         </div>
