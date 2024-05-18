@@ -1,10 +1,16 @@
 package com.example.airlineproject.controller;
 
+import com.example.airlineproject.entity.enums.UserRole;
+import com.example.airlineproject.security.SpringUser;
 import com.example.airlineproject.dto.FlightsListResponseDto;
 import com.example.airlineproject.service.FlightService;
+import com.example.airlineproject.entity.enums.UserRole;
+import com.example.airlineproject.security.SpringUser;
 import com.example.airlineproject.util.FileUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,9 +28,16 @@ public class MainController {
     private final FlightService flightService; ;
 
     @GetMapping("/")
-    public String homePage(ModelMap modelMap) {
+    public String homePage(ModelMap modelMap, @AuthenticationPrincipal SpringUser springUser) {
         List<FlightsListResponseDto> flightsList = flightService.findFirst10Flights();
         modelMap.addAttribute("flightsList", flightsList);
+        if (springUser.getUser() != null){
+            if (springUser.getUser().getRole() == UserRole.ADMIN){
+                return "/admin/index";
+            } else if (springUser.getUser().getRole() == UserRole.MANAGER) {
+                return "/manager/index";
+            }
+        }
         return "index";
     }
 

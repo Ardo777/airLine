@@ -3,10 +3,14 @@ package com.example.airlineproject.controller;
 import com.example.airlineproject.dto.UserRegisterDto;
 import com.example.airlineproject.dto.UserResponseDto;
 import com.example.airlineproject.dto.ChangePasswordDto;
+import com.example.airlineproject.entity.ChatRoom;
 import com.example.airlineproject.entity.User;
 import com.example.airlineproject.entity.enums.UserRole;
+import com.example.airlineproject.entity.UserDto;
+import com.example.airlineproject.repository.ChatRoomRepository;
 import com.example.airlineproject.repository.UserRepository;
 import com.example.airlineproject.security.SpringUser;
+import com.example.airlineproject.service.ChatRoomService;
 import com.example.airlineproject.service.MailService;
 import com.example.airlineproject.service.UserService;
 import com.example.airlineproject.util.FileUtil;
@@ -14,6 +18,7 @@ import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.stereotype.Controller;
@@ -23,6 +28,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -34,6 +41,7 @@ public class UserController {
     private final MailService mailService;
     private final FileUtil fileUtil;
     private final UserRepository userRepository;
+    private final ChatRoomService chatRoomService;
     private final PersistentTokenRepository persistentTokenRepository;
 
     @GetMapping("/register")
@@ -114,6 +122,12 @@ public class UserController {
             if (user.getVerificationCode().equals(verificationCode)) {
                 user.setActive(true);
                 userRepository.save(user);
+                //ChatRoom-with-webSocket-VS start
+                //in this case ChatRoom will create for communication with user and random Admin
+                User randomAdmin = userService.findRandomAdmin();
+                String chatId = chatRoomService.createChatId(user.getEmail(), randomAdmin.getEmail());
+                log.info("ChatRoom already crated with {}", chatId);
+                //ChatRoom-with-webSocket-VS end
                 String successMsg = "Verification was successful!";
                 log.info(successMsg);
                 return "redirect:/user/login?successMsg=" + successMsg;
@@ -129,12 +143,7 @@ public class UserController {
 
 
     @GetMapping("/login/successfully")
-    public String successLoginPage(@AuthenticationPrincipal SpringUser springUser) {
-        if (springUser.getUser().getRole() == UserRole.ADMIN) {
-            return "redirect:/admin";
-        } else if (springUser.getUser().getRole() == UserRole.MANAGER) {
-            return "redirect:/manager";
-        }
+    public String successLoginPage() {
         return "redirect:/";
     }
 
@@ -287,5 +296,16 @@ public class UserController {
         }else return "redirect:/user/login";
     }
 
-
+    @GetMapping("/users")
+    public ResponseEntity<List<UserDto>> findConnectedUsers(@AuthenticationPrincipal SpringUser springUser) {
+        List<ChatRoom> byRecipientId = chatRoomService.findByRecipientId(springUser.getUser().getEmail());
+        List<UserDto> users = new ArrayList<>();
+        for (ChatRoom chatRoom : byRecipientId) {
+            String senderId = chatRoom.getSenderId();
+            users.add(UserDto.builder()
+                    .nickName(senderId)
+                    .build());
+        }
+        return ResponseEntity.ok(users);
+    }
 }

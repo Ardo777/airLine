@@ -5,14 +5,11 @@ import com.example.airlineproject.dto.PlaneAddDto;
 import com.example.airlineproject.dto.PlaneDto;
 import com.example.airlineproject.dto.PlaneUpdateDto;
 import com.example.airlineproject.entity.Company;
-import com.example.airlineproject.entity.Plane;
 import com.example.airlineproject.entity.User;
 import com.example.airlineproject.security.SpringUser;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.List;
 import java.io.IOException;
-import java.util.List;
 
 public interface PlaneService {
 

@@ -1,6 +1,8 @@
 package com.example.airlineproject.repository;
 
+import com.example.airlineproject.entity.Company;
 import com.example.airlineproject.entity.User;
+import com.example.airlineproject.entity.enums.UserRole;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -17,5 +19,10 @@ public interface UserRepository extends JpaRepository<User,Integer> {
 
     long count();
 
-//    List<User> findByActiveFalse();
+    Optional<User> findRandomUserByRole(UserRole role);
+
+    User findRandomUserByCompany(Company company);
+
+    List<User> findAllByCompany(Company company);
+
 }

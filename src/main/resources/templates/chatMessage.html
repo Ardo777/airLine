@@ -1,38 +1,32 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/chatMessage.css">
+    <link href="/staticAdminManager/font-awesome/css/font-awesome.css" rel="stylesheet">
     <title>Chat Application</title>
 </head>
 <body>
 
-<h2>One to One Chat | Spring boot & Websocket | By Alibou</h2>
 
 <div class="user-form" id="username-page">
-    <h2>Enter Chatroom</h2>
     <form id="usernameForm">
-        <label for="nickname">Nickname:</label>
-        <input type="text" id="nickname" name="nickname" required>
-
-        <label for="fullname">Real Name:</label>
-        <input type="text" id="fullname" name="realname" required>
-
-        <button type="submit">Enter Chatroom</button>
+        <input type="hidden" id="nickname" th:value="${currentUser.email}" name="nickname" required>
+        <input type="hidden" id="selectedUser" th:value="${selectedUser}" name="nickname" required>
     </form>
 </div>
 
 <div class="chat-container hidden" id="chat-page">
     <div class="users-list">
         <div class="users-list-container">
-            <h2>Online Users</h2>
+            <h2>My Chats</h2>
             <ul id="connectedUsers">
             </ul>
         </div>
         <div>
             <p id="connected-user-fullname"></p>
-            <a class="logout" href="javascript:void(0)" id="logout">Logout</a>
+            <a class="logout" href="/" id="logout">Back</a>
         </div>
     </div>
 
