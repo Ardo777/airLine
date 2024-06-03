@@ -1,18 +1,16 @@
 package com.example.airlineproject.controller;
 
-import com.example.airlineproject.dto.UserRegisterDto;
-import com.example.airlineproject.dto.UserResponseDto;
-import com.example.airlineproject.dto.ChangePasswordDto;
+import com.example.airlineproject.dto.*;
 import com.example.airlineproject.entity.ChatRoom;
 import com.example.airlineproject.entity.User;
 import com.example.airlineproject.entity.enums.UserRole;
 import com.example.airlineproject.entity.UserDto;
+import com.example.airlineproject.mapper.CompanyMapper;
+import com.example.airlineproject.mapper.FlightMapper;
 import com.example.airlineproject.repository.ChatRoomRepository;
 import com.example.airlineproject.repository.UserRepository;
 import com.example.airlineproject.security.SpringUser;
-import com.example.airlineproject.service.ChatRoomService;
-import com.example.airlineproject.service.MailService;
-import com.example.airlineproject.service.UserService;
+import com.example.airlineproject.service.*;
 import com.example.airlineproject.util.FileUtil;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -43,6 +41,10 @@ public class UserController {
     private final UserRepository userRepository;
     private final ChatRoomService chatRoomService;
     private final PersistentTokenRepository persistentTokenRepository;
+    private final SubscribeService subscribeService;
+    private final FlightService flightService;
+    private final FlightMapper flightMapper;
+    private final CompanyMapper companyMapper;
 
     @GetMapping("/register")
     private String registration(@RequestParam(value = "emailMsg", required = false) String emailMsg,
@@ -143,7 +145,15 @@ public class UserController {
 
 
     @GetMapping("/login/successfully")
-    public String successLoginPage() {
+    public String successLoginPage(@AuthenticationPrincipal SpringUser springUser) {
+
+        if (springUser.getUser() != null){
+            if (springUser.getUser().getRole() == UserRole.ADMIN){
+                return "/admin/index";
+            } else if (springUser.getUser().getRole() == UserRole.MANAGER) {
+                return "/manager/index";
+            }
+        }
         return "redirect:/";
     }
 
@@ -307,5 +317,20 @@ public class UserController {
                     .build());
         }
         return ResponseEntity.ok(users);
+    }
+
+
+    @GetMapping("/subscribe/{companyId}")
+    public String subscribe(@PathVariable("companyId") int companyId,@AuthenticationPrincipal SpringUser user,ModelMap modelMap){
+        userService.subscribeToCompany(companyId,user.getUser());
+        return "redirect:/user/news";
+    }
+
+    @GetMapping("/news")
+    public String subscribe(@AuthenticationPrincipal SpringUser user,ModelMap modelMap){
+        List<CompanyFewDetailsDto> companiesByUserFromSubscribe = subscribeService.findCompaniesByUserFromSubscribe(user.getUser());
+        modelMap.addAttribute("subscriptions", companiesByUserFromSubscribe);
+        modelMap.addAttribute("flights", flightService.flightsOfSubscriptions(companyMapper.CompanyFewDetailsDtoListToCompany(companiesByUserFromSubscribe)));
+        return "news";
     }
 }

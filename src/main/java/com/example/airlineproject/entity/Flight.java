@@ -35,4 +35,18 @@ public class Flight {
     @ManyToOne
     private Company company;
 
+    @Override
+    public String toString() {
+        return "Flight{" +
+                "status=" + status +
+                ", businessPrice=" + businessPrice +
+                ", economyPrice=" + economyPrice +
+                ", arrivalTime=" + arrivalTime +
+                ", estimatedTime=" + estimatedTime +
+                ", scheduledTime=" + scheduledTime +
+                ", to='" + to + '\'' +
+                ", from='" + from + '\'' +
+                ", id=" + id +
+                '}';
+    }
 }

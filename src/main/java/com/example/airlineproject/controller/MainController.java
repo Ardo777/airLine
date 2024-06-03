@@ -31,13 +31,6 @@ public class MainController {
     public String homePage(ModelMap modelMap, @AuthenticationPrincipal SpringUser springUser) {
         List<FlightsListResponseDto> flightsList = flightService.findFirst10Flights();
         modelMap.addAttribute("flightsList", flightsList);
-        if (springUser.getUser() != null){
-            if (springUser.getUser().getRole() == UserRole.ADMIN){
-                return "/admin/index";
-            } else if (springUser.getUser().getRole() == UserRole.MANAGER) {
-                return "/manager/index";
-            }
-        }
         return "index";
     }
 

@@ -36,6 +36,22 @@ public class Company {
     private List<TeamMember> teamMembers;
     @OneToMany(mappedBy = "company")
     private List<Plane> planes;
+
+    @Override
+    public String toString() {
+        return "Company{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", picName='" + picName + '\'' +
+                ", isActive=" + isActive +
+                ", user=" + user +
+                ", rating=" + rating +
+                ", office=" + office +
+                ", flights=" + flights +
+                '}';
+    }
+
     @OneToMany(mappedBy = "company")
     private List<Flight> flights;
 }

@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 public interface CompanyService {
 
@@ -36,6 +37,8 @@ public interface CompanyService {
     List<Company> getAllCompaniesByFilter(String keyword);
 
     Company findById(int id);
+
+
 
 
 }

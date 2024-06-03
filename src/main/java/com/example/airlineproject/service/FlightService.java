@@ -23,4 +23,6 @@ public interface FlightService {
     List<FlightDto> getAllFlightsByFilter(FlightFilterDto flightFilterDto);
 
     List<FlightDto> findExistingFlights();
+
+    List<FlightResponseDto>  flightsOfSubscriptions(List<Company> companies);
 }

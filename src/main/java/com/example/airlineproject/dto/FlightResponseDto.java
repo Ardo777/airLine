@@ -14,13 +14,13 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 public class FlightResponseDto {
-    private int id;
     private String from;
     private String to;
     private LocalDateTime scheduledTime;
     private LocalDateTime estimatedTime;
     private LocalDateTime arrivalTime;
     private Status status;
-    private Plane plane;
     private Company company;
+    private double economyPrice;
+    private double businessPrice;
 }
