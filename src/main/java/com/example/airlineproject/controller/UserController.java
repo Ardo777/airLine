@@ -1,8 +1,8 @@
 package com.example.airlineproject.controller;
 
+import com.example.airlineproject.dto.ChangePasswordDto;
 import com.example.airlineproject.dto.UserRegisterDto;
 import com.example.airlineproject.dto.UserResponseDto;
-import com.example.airlineproject.dto.ChangePasswordDto;
 import com.example.airlineproject.entity.User;
 import com.example.airlineproject.entity.enums.UserRole;
 import com.example.airlineproject.repository.UserRepository;
@@ -13,7 +13,6 @@ import com.example.airlineproject.util.FileUtil;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.stereotype.Controller;
@@ -22,7 +21,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.Optional;
 
 @Controller
@@ -253,7 +251,6 @@ public class UserController {
     }
 
 
-
     @PostMapping("/update")
     public String userProfile(@ModelAttribute User user, @AuthenticationPrincipal SpringUser springUser, @RequestParam(value = "picture", required = false) MultipartFile multipartFile) throws IOException {
         userService.update(user, springUser, multipartFile);
@@ -276,7 +273,7 @@ public class UserController {
             userService.updateEmail(springUser, email);
             modelMap.addAttribute("email", email);
             return "userUpdateMail";
-        }else return "redirect:/user/login";
+        } else return "redirect:/user/login";
     }
 
     @PostMapping("/emailUpdate")
@@ -284,7 +281,69 @@ public class UserController {
         if (springUser.getUser() != null) {
             userService.processEmailUpdate(springUser, email, verificationCode);
             return "redirect:/user/profile";
-        }else return "redirect:/user/login";
+        } else return "redirect:/user/login";
+    }
+
+    @GetMapping("/delete")
+    public String deleteUserPage() {
+        return "validPassword";
+    }
+
+    @PostMapping("/delete")
+    public String deleteUser(@AuthenticationPrincipal SpringUser springUser, @RequestParam("password") String password) {
+        boolean delete = userService.delete(springUser, password);
+        if (delete) {
+            return "redirect:/user/logout";
+        }
+        return "redirect:/user/profile";
+    }
+
+
+    @GetMapping("/account/restore")
+    public String restoreAccountPage() {
+        log.info("Navigated to /account/restore page");
+        return "accountRestore";
+    }
+
+    @PostMapping("/account/restore")
+    public String verificationSuccessfully(@RequestParam("verificationCode") String verificationCode, @RequestParam("email") String email) {
+        log.info("POST request to /account/restore with email: {} and verificationCode: {}", email, verificationCode);
+        if (verificationCode != null && !verificationCode.isEmpty()) {
+            boolean restored = userService.restoreUser(email, verificationCode);
+            if (restored) {
+                return "redirect:/user/login";
+            }
+            log.warn("Verification failed for email: {}", email);
+        }
+        return "redirect:/user/login";
+    }
+
+
+    @PostMapping("/verificationRestore")
+    public String verificationRestore(@RequestParam("email") String email, ModelMap modelMap) {
+        log.info("POST request to /verificationRestore with email: {}", email);
+        if (email != null && !email.isEmpty()) {
+            try {
+                userService.verify(email);
+                log.info("Verification initiated for email: {}", email);
+                modelMap.addAttribute("email", email);
+                String redirectUrl = "redirect:/user/userVerificationPage?email=" + email;
+                log.info("Redirecting to: {}", redirectUrl);
+                return redirectUrl;
+            } catch (Exception e) {
+                log.error("Error during verification process for email: {}", email, e);
+                return "redirect:/user/login";
+            }
+        }
+        log.warn("Email parameter is null or empty");
+        return "redirect:/user/login";
+    }
+
+    @GetMapping("/userVerificationPage")
+    public String userVerificationPage(@RequestParam("email") String email, ModelMap modelMap) {
+        log.info("Navigated to /userVerificationPage with email: {}", email);
+        modelMap.addAttribute("email", email);
+        return "mail/userVerification";
     }
 
 

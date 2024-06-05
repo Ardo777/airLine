@@ -60,12 +60,9 @@ class UserSchedulerServiceImplTest {
         user2.setBirthday(LocalDate.now());
         List<User> users = Arrays.asList(user1, user2, user3);
 
-
         when(userRepository.findUsersByBirthdayToday()).thenReturn(Arrays.asList(user2));
 
-
-         userSchedulerService.sendBirthdayGreetings();
-
+        userSchedulerService.sendBirthdayGreetings();
 
         verify(mailService, times(1)).sendBirthdayMail(user2);
         verify(mailService, never()).sendBirthdayMail(user1);

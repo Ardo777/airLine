@@ -29,7 +29,10 @@ public class SecurityConfig {
         ).authorizeHttpRequests(authorize ->
                 authorize
                         .requestMatchers("/").permitAll()
-                        .requestMatchers("/user/register", "/user/login/**", "/user/register/verification/**", "/user/login/successfully/**", "/user/codeVerification/**", "/user/forgetPassword/**", "/user/recovery/**").permitAll()
+                        .requestMatchers("/user/register", "/user/login/**", "/user/register/verification/**",
+                                "/user/login/successfully/**", "/user/codeVerification/**", "/user/forgetPassword/**",
+                                "/user/recovery/**", "/user/account/restore", "/user/verificationRestore",
+                                "/user/userVerificationPage").permitAll()
                         .requestMatchers("/admin/**").hasAnyAuthority(UserRole.ADMIN.name())
                         .requestMatchers("/manager/**").hasAnyAuthority(UserRole.MANAGER.name())
                         .requestMatchers(HttpMethod.GET, "/css/**", "/js/**",

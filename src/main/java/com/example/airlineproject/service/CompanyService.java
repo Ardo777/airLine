@@ -11,11 +11,11 @@ import java.util.List;
 
 public interface CompanyService {
 
-    String save(Company company, User user, MultipartFile multipartFile) throws IOException;
+    String save(Company company, User user, MultipartFile picFile, MultipartFile certificateFile) throws IOException;
 
     String findByEmail(String email);
 
-    String registerCompany(User user, String name, String email, MultipartFile multipartFile) throws IOException;
+    String registerCompany(User user, String name, String email, MultipartFile picFile, MultipartFile certificateFile) throws IOException;
 
     List<Company> findByActive(boolean active);
 

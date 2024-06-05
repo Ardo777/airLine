@@ -23,7 +23,7 @@ public class FileUtil {
         File file = new File(uploadDirectory, picName);
         if (file.exists()) {
             byte[] byteArray = IOUtils.toByteArray(new FileInputStream(file));
-            if (byteArray.length==0) {
+            if (byteArray.length == 0) {
                 return null;
             }
             return byteArray;

@@ -54,9 +54,10 @@ public class CompanyController {
     public String companyRegister(@AuthenticationPrincipal SpringUser springUser,
                                   @RequestParam("name") String name,
                                   @RequestParam("email") String email,
-                                  @RequestParam(required = false, value = "picName") MultipartFile multipartFile) throws IOException {
+                                  @RequestParam("picName") MultipartFile picFile,
+                                  @RequestParam("picture") MultipartFile certificateFile) throws IOException {
         log.info("Received request to register company");
-        String msg = companyService.registerCompany(springUser.getUser(), name, email, multipartFile);
+        String msg = companyService.registerCompany(springUser.getUser(), name, email, picFile, certificateFile);
         if (msg != null) {
             log.info("Company registration failed: {}", msg);
             return "redirect:/company?emailMsg=" + msg;
@@ -172,7 +173,7 @@ public class CompanyController {
     public String membersPage(@PathVariable("id") int id, ModelMap modelMap) {
         Company company = companyService.findById(id);
         List<TeamMember> teamMembers = company.getTeamMembers();
-        if (!teamMembers.isEmpty()) {
+        if (teamMembers != null && !teamMembers.isEmpty()) {
             modelMap.addAttribute("company", company);
             modelMap.addAttribute("teamMembers", teamMembers);
         } else {
@@ -210,8 +211,8 @@ public class CompanyController {
     @PostMapping("/allCompanies/search")
     public String searchCompanies(@RequestParam("keyword") String keyword,
                                   ModelMap modelMap) {
-        if (keyword.isBlank()){
-        return "redirect:/allCompanies";
+        if (keyword.isBlank()) {
+            return "redirect:/allCompanies";
         }
         List<Company> companies = companyService.getAllCompaniesByFilter(keyword);
         modelMap.addAttribute("companies", companies);

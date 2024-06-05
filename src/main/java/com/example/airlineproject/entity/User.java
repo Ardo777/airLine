@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
@@ -41,6 +42,7 @@ public class User{
     @Enumerated(EnumType.STRING)
     private UserRole role;
     private boolean isActive;
+    private boolean isDeleted = false;
     private String verificationCode;
     private String picName;
     @Transient
@@ -50,6 +52,10 @@ public class User{
     private Company company;
     @Column(name = "date_Birthday")
     private LocalDate birthday;
+    @Column(name = "deleted_at")
+    private LocalDateTime deletedAt;
 
+    public User(String alice, String smith, String mail, String somepassword, boolean b) {
 
+    }
 }

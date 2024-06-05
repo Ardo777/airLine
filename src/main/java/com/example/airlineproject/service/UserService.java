@@ -1,7 +1,7 @@
 package com.example.airlineproject.service;
 
-import com.example.airlineproject.dto.UserRegisterDto;
 import com.example.airlineproject.dto.ChangePasswordDto;
+import com.example.airlineproject.dto.UserRegisterDto;
 import com.example.airlineproject.dto.UserResponseDto;
 import com.example.airlineproject.entity.User;
 import com.example.airlineproject.security.SpringUser;
@@ -38,4 +38,10 @@ public interface UserService {
     void processEmailUpdate(SpringUser springUser, String email, String verificationCode);
 
     Long getUsersCount();
+
+    boolean delete(SpringUser springUser, String password);
+
+    boolean restoreUser(String email, String verificationCode);
+
+    void verify(String email);
 }

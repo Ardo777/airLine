@@ -1,7 +1,7 @@
 package com.example.airlineproject.service.impl;
 
-import com.example.airlineproject.dto.UserRegisterDto;
 import com.example.airlineproject.dto.ChangePasswordDto;
+import com.example.airlineproject.dto.UserRegisterDto;
 import com.example.airlineproject.dto.UserResponseDto;
 import com.example.airlineproject.entity.QUser;
 import com.example.airlineproject.entity.User;
@@ -26,10 +26,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import static com.example.airlineproject.entity.QUser.user;
 
 @Service
 @RequiredArgsConstructor
@@ -37,7 +40,7 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private final  MailService mailService;
+    private final MailService mailService;
     private final PasswordEncoder passwordEncoder;
     private final UserMapper userMapper;
     private final FileUtil fileUtil;
@@ -127,7 +130,7 @@ public class UserServiceImpl implements UserService {
         log.debug("Filtering users by keyword: {}", keyword);
 
         JPAQuery<User> query = new JPAQuery<>(entityManager);
-        QUser qUser = QUser.user;
+        QUser qUser = user;
         JPAQueryBase<User, JPAQuery<User>> from = query.from(qUser);
         List<User> fetch;
         if (StringUtils.isNotBlank(name) && StringUtils.isNotBlank(surname)) {
@@ -246,5 +249,67 @@ public class UserServiceImpl implements UserService {
         return userRepository.count();
     }
 
+
+    @Override
+    public boolean delete(SpringUser springUser, String password) {
+        if (springUser != null) {
+            User user = springUser.getUser();
+            boolean matches = passwordEncoder.matches(password, user.getPassword());
+            if (matches) {
+                user.setDeleted(true);
+                user.setDeletedAt(LocalDateTime.now());
+                userRepository.save(user);
+                log.info("User marked as deleted successfully for user: {}", user.getEmail());
+                return true;
+            } else {
+                log.warn("Password mismatch for user: {}", user.getEmail());
+                return false;
+            }
+        }
+        log.warn("SpringUser is null, cannot delete user.");
+        return false;
+    }
+
+    @Override
+    public boolean restoreUser(String email, String verificationCode) {
+        log.info("Attempting to restore user with email: {}", email);
+        Optional<User> byEmail = userRepository.findByEmail(email);
+        if (byEmail.isPresent()) {
+            User user = byEmail.get();
+            if (user.getVerificationCode().equals(verificationCode)) {
+                log.info("Verification code matches for user: {}", email);
+                user.setDeletedAt(null);
+                user.setDeleted(false);
+                userRepository.save(user);
+                log.info("User restored successfully for user: {}", email);
+                return true;
+            } else {
+                log.warn("Verification code does not match for user: {}", email);
+            }
+        }
+        log.warn("User not found with email: {}", email);
+        return false;
+    }
+
+    @Override
+    public void verify(String email) {
+        log.info("Attempting to verify user with email: {}", email);
+        Optional<User> byEmail = userRepository.findByEmail(email);
+        if (byEmail.isPresent()) {
+            User user = byEmail.get();
+            if (user.isDeleted() && user.getDeletedAt().plusDays(30).isAfter(LocalDateTime.now())) {
+                log.info("User is eligible for restoration: {}", email);
+                String verificationCode = fileUtil.createVerificationCode();
+                user.setVerificationCode(verificationCode);
+                userRepository.save(user);
+                mailService.sendMail(user);
+                log.info("Verification code sent to user: {}", email);
+            } else {
+                log.warn("User is not eligible for restoration or restoration period expired for user: {}", email);
+            }
+        } else {
+            log.warn("User not found with email: {}", email);
+        }
+    }
 
 }
