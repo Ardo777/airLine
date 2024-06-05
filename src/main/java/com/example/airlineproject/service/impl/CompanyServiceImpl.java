@@ -223,10 +223,10 @@ public class CompanyServiceImpl implements CompanyService {
         QCompany qCompany = QCompany.company;
         JPAQueryBase<Company, JPAQuery<Company>> from = query.from(qCompany);
         List<Company> fetch;
-        if (StringUtils.isNotBlank(keyword)){
+        if (StringUtils.isNotBlank(keyword)) {
             from.where(qCompany.name.contains(keyword));
         }
-        fetch=query.fetch();
+        fetch = query.fetch();
         return fetch;
     }
 

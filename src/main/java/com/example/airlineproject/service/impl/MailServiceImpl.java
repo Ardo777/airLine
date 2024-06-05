@@ -21,8 +21,8 @@ import org.thymeleaf.context.Context;
 public class MailServiceImpl implements MailService {
 
     private final JavaMailSender javaMailSender;
-    @Qualifier("emailTemplateEngine")
-    private final  TemplateEngine templateEngine;
+    private final     @Qualifier("emailTemplateEngine")
+    TemplateEngine templateEngine;
 
 
     @Async

@@ -68,9 +68,14 @@ public class FlightServiceImpl implements FlightService {
 
     @Override
     public List<FlightsResponseDto> findExistingFlights(Company company, Status status) {
-        log.debug("finding existing flights");
-        return flightMapper.map(flightRepository.findAllByCompanyAndStatusNot(company, status));
+        return List.of();
     }
+
+//    @Override
+//    public List<FlightsResponseDto> findExistingFlights(Company company, Status status) {
+//        log.debug("finding existing flights");
+//        return flightMapper.flightsToFlightResponseDtoList(flightRepository.findAllByCompanyAndStatusNot(company, status));
+//    }
 
     @Override
     public FlightResponseDto findCompanyFlight(int flightId, Company company) {
@@ -143,6 +148,12 @@ public class FlightServiceImpl implements FlightService {
     public List<FlightDto> findExistingFlights() {
         return flightMapper.flightsToFlightDtoList(flightRepository.findAllByStatusNot(Status.ARRIVED));
     }
+
+    @Override
+    public List<FlightResponseDto> flightsOfSubscriptions(List<Company> companies) {
+        return flightMapper.flightsToFlightResponseDtoList(flightRepository.findAllByCompanyInAndStatusNot(companies,Status.ARRIVED));
+    }
+
 
     private Company findCompanyByUser(User user) {
         log.debug("Searching for company for user: {}", user.getEmail());

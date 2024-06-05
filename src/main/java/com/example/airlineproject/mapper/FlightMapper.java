@@ -19,7 +19,7 @@ public interface FlightMapper {
     List<FlightDto> flightsToFlightDtoList(List<Flight> flights);
     Flight map(UpdateFlightDto updateFlightDto);
 
-    List<FlightsResponseDto> map(List<Flight> flights);
+    List<FlightResponseDto> flightsToFlightResponseDtoList(List<Flight> flights);
 
     List<FlightsListResponseDto> mapToFlightsListResponseDto(List<Flight> flights);
 

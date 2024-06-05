@@ -44,4 +44,8 @@ public interface UserService {
     User findRandomAdmin();
 
     List<User> findAllByCompany(Company company);
+
+    void subscribeToCompany(int companyId, User user);
+
+
 }

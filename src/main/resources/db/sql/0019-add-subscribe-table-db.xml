@@ -1,0 +1,19 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet id="0019-add-subscribe-table-db.xml" author="VSahakyan">
+        <createTable tableName="subscribe">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="company_id"
+                    type="int">
+                <constraints nullable="true" foreignKeyName="fk_company_id" references="company(id)"/>
+            </column>
+            <column name="user_id"
+                    type="int">
+                <constraints nullable="true" foreignKeyName="fk_user_id" references="user(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

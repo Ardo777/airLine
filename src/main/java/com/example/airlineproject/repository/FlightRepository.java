@@ -23,6 +23,8 @@ public interface FlightRepository extends JpaRepository<Flight, Integer> {
 
     @Query("SELECT f FROM Flight f WHERE f.scheduledTime > ?1 ORDER BY f.scheduledTime ASC LIMIT 10")
     List<Flight> findClosestToCurrentTime(LocalDateTime currentTime);
+
+    List<Flight> findAllByCompanyInAndStatusNot(List<Company> company, Status status);
 }
 
 

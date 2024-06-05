@@ -5,11 +5,15 @@ import com.example.airlineproject.dto.ChangePasswordDto;
 import com.example.airlineproject.dto.UserResponseDto;
 import com.example.airlineproject.entity.Company;
 import com.example.airlineproject.entity.QUser;
+import com.example.airlineproject.entity.Subscribe;
 import com.example.airlineproject.entity.User;
 import com.example.airlineproject.entity.enums.UserRole;
 import com.example.airlineproject.mapper.UserMapper;
+import com.example.airlineproject.repository.CompanyRepository;
+import com.example.airlineproject.repository.SubscribeRepository;
 import com.example.airlineproject.repository.UserRepository;
 import com.example.airlineproject.security.SpringUser;
+import com.example.airlineproject.service.CompanyService;
 import com.example.airlineproject.service.MailService;
 import com.example.airlineproject.service.UserService;
 import com.example.airlineproject.util.FileUtil;
@@ -38,11 +42,13 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private final  MailService mailService;
+    private final MailService mailService;
     private final PasswordEncoder passwordEncoder;
     private final UserMapper userMapper;
     private final FileUtil fileUtil;
     private final EntityManager entityManager;
+    private final CompanyRepository companyRepository;
+    private final SubscribeRepository subscribeRepository;
 
 
     @Override
@@ -257,5 +263,12 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAllByCompany(company);
     }
 
-
+    @Override
+    public void subscribeToCompany(int companyId, User user) {
+        Company company = companyRepository.findById(companyId).orElseThrow();
+        subscribeRepository.save(Subscribe.builder()
+                .company(company)
+                .user(user)
+                .build());
+    }
 }
