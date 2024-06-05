@@ -23,14 +23,11 @@ public class SubscribeServiceImpl implements SubscribeService {
 
     private final SubscribeRepository subscribeRepository;
     private final CompanyMapper companyMapper;
-    private final FlightService flightService;
+
     @Override
     public List<CompanyFewDetailsDto> findCompaniesByUserFromSubscribe(User currentUser) {
         return  companyMapper.companyToCompanyFewDtoList(subscribeRepository.findAllCompaniesByUser(currentUser));
     }
-
-
-
 
 }
 

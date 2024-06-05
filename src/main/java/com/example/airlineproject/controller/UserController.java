@@ -147,8 +147,8 @@ public class UserController {
     @GetMapping("/login/successfully")
     public String successLoginPage(@AuthenticationPrincipal SpringUser springUser) {
 
-        if (springUser.getUser() != null){
-            if (springUser.getUser().getRole() == UserRole.ADMIN){
+        if (springUser.getUser() != null) {
+            if (springUser.getUser().getRole() == UserRole.ADMIN) {
                 return "/admin/index";
             } else if (springUser.getUser().getRole() == UserRole.MANAGER) {
                 return "/manager/index";
@@ -272,7 +272,6 @@ public class UserController {
     }
 
 
-
     @PostMapping("/update")
     public String userProfile(@ModelAttribute User user, @AuthenticationPrincipal SpringUser springUser, @RequestParam(value = "picture", required = false) MultipartFile multipartFile) throws IOException {
         userService.update(user, springUser, multipartFile);
@@ -295,7 +294,7 @@ public class UserController {
             userService.updateEmail(springUser, email);
             modelMap.addAttribute("email", email);
             return "userUpdateMail";
-        }else return "redirect:/user/login";
+        } else return "redirect:/user/login";
     }
 
     @PostMapping("/emailUpdate")
@@ -303,7 +302,7 @@ public class UserController {
         if (springUser.getUser() != null) {
             userService.processEmailUpdate(springUser, email, verificationCode);
             return "redirect:/user/profile";
-        }else return "redirect:/user/login";
+        } else return "redirect:/user/login";
     }
 
     @GetMapping("/users")
@@ -321,13 +320,13 @@ public class UserController {
 
 
     @GetMapping("/subscribe/{companyId}")
-    public String subscribe(@PathVariable("companyId") int companyId,@AuthenticationPrincipal SpringUser user,ModelMap modelMap){
-        userService.subscribeToCompany(companyId,user.getUser());
+    public String subscribe(@PathVariable("companyId") int companyId, @AuthenticationPrincipal SpringUser user, ModelMap modelMap) {
+        userService.subscribeToCompany(companyId, user.getUser());
         return "redirect:/user/news";
     }
 
     @GetMapping("/news")
-    public String subscribe(@AuthenticationPrincipal SpringUser user,ModelMap modelMap){
+    public String subscribe(@AuthenticationPrincipal SpringUser user, ModelMap modelMap) {
         List<CompanyFewDetailsDto> companiesByUserFromSubscribe = subscribeService.findCompaniesByUserFromSubscribe(user.getUser());
         modelMap.addAttribute("subscriptions", companiesByUserFromSubscribe);
         modelMap.addAttribute("flights", flightService.flightsOfSubscriptions(companyMapper.CompanyFewDetailsDtoListToCompany(companiesByUserFromSubscribe)));
