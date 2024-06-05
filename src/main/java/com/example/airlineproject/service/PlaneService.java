@@ -10,6 +10,7 @@ import com.example.airlineproject.security.SpringUser;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 public interface PlaneService {
 
@@ -19,7 +20,7 @@ public interface PlaneService {
 
     PlaneAddDto createPlane(PlaneAddDto planeAddDto, MultipartFile multipartFile);
 
-//    List<PlaneDto> getAllPlanesByCompany(Company company);
+    List<PlaneDto> getAllPlanesByCompany(Company company);
 
     PlaneDto getPlane(int planeId, Company company);
 
