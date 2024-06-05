@@ -5,7 +5,6 @@ import com.example.airlineproject.entity.Company;
 import com.example.airlineproject.entity.Flight;
 import com.example.airlineproject.entity.Plane;
 import com.example.airlineproject.entity.User;
-import com.example.airlineproject.dto.*;
 import com.example.airlineproject.entity.*;
 import com.example.airlineproject.entity.enums.Status;
 import com.example.airlineproject.exception.FlightNotFoundException;
@@ -23,7 +22,6 @@ import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.thymeleaf.util.StringUtils;
 
 import java.time.LocalDateTime;
 import java.util.*;
@@ -87,28 +85,22 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public void changeFLight(ChangeFlightDto changeFlightDto, int planeId, Company company) {
-        // this method of the repository will find airplane of the company
+    public void changeFLight(UpdateFlightDto updateFlightDto, int planeId, Company company) {
         log.debug("Finding airplane with ID {} for company {}", planeId, company);
         Optional<Plane> plane = planeRepository.findByIdAndCompany(planeId, company);
-        // this method of the repository will find existing flight of the company
-        log.debug("Finding existing flight with ID {} for company {}", changeFlightDto.getId(), company);
-        Optional<Flight> existingFlight = flightRepository.findByIdAndCompany(changeFlightDto.getId(), company);
+        log.debug("Finding existing flight with ID {} for company {}", updateFlightDto.getId(), company);
+        Optional<Flight> existingFlight = flightRepository.findByIdAndCompany(updateFlightDto.getId(), company);
         if (existingFlight.isEmpty()) {
-            // when manager change flight id from inspect then findByIdAndCompany method will find existing flight by id and company
-            //when this method <findByIdAndCompany> doesn't find that flight with id and company So, this flight either does not exist, or it belongs to another company that has an id of the flight
-            log.error("Flight not found with ID {} and  company {}", changeFlightDto.getId(), company);
+            log.error("Flight not found with ID {} and  company {}", updateFlightDto.getId(), company);
             throw new FlightNotFoundException();
         }
         if (plane.isEmpty()) {
-            //when this method <findByIdAndCompany> doesn't find that plane with plane id and company So, this airplane either does not exist, or it belongs to another company that has an id of the plane
             log.error("Plane not found with ID {} and company {}", planeId, company);
             throw new PlaneNotFoundException();
         }
-        Flight modifiedFlight = flightMapper.map(changeFlightDto);
+        Flight modifiedFlight = flightMapper.map(updateFlightDto);
         modifiedFlight.setPlane(plane.get());
         modifiedFlight.setCompany(company);
-        //this method will check flight time and return status of the flight
         log.debug("status of the flight  will change");
         modifiedFlight.setStatus(getFlightStatusByTime(modifiedFlight, existingFlight.get()));
         log.debug("Saving modified flight");
@@ -185,20 +177,14 @@ public class FlightServiceImpl implements FlightService {
                 || modifiedFlight.getArrivalTime().isBefore(modifiedFlight.getEstimatedTime())
                 || existingFlight.getScheduledTime().isEqual(LocalDateTime.now())
         ) {
-            //1)The scheduled time should not be earlier than the current time
-            //2)The Estimated Time should not be earlier than the Scheduled Time
-            //3)The Arrival Time should not be earlier than the Estimated Time
-            //4)The Scheduled Time should not be equal than the current time
             log.error("Flight time exception: Scheduled Time of modified flight ({}) is before current time or Estimated Time is before Scheduled Time or Arrival Time is before Estimated Time or Scheduled Time of existing flight ({}) is equal to current time", modifiedFlight.getId(), existingFlight.getId());
             throw new FlightTimeException();
         }
-        //if modified Flight time earlier than existing flight time, so status will return earlier
         if (modifiedFlight.getScheduledTime().isBefore(existingFlight.getScheduledTime())) {
             log.debug("Modified flight {} scheduled earlier than existing flight {}", modifiedFlight.getId(), existingFlight.getId());
             return Status.EARLIER;
         } else if (modifiedFlight.getScheduledTime().isAfter(existingFlight.getScheduledTime())) {
             log.debug("Modified flight {} scheduled after existing flight {}", modifiedFlight.getId(), existingFlight.getId());
-            //if modified Flight time after than existing flight time, so status will return premature
             return Status.PREMATURE;
         }
         log.debug("Modified flight {} scheduled at the same time as existing flight {}", modifiedFlight.getId(), existingFlight.getId());

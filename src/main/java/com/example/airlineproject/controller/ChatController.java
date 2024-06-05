@@ -54,8 +54,7 @@ public class ChatController {
         return "chatMessage";
     }
 
-    @GetMapping("/messages/{" +
-            "companyId}")
+    @GetMapping("/messages/{companyId}")
     public String createChatWithCompany(@PathVariable("companyId") int companyId,
                                         @AuthenticationPrincipal SpringUser springUser,
                                         ModelMap modelMap

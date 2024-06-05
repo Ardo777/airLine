@@ -16,7 +16,7 @@ public interface FlightService {
 
     FlightResponseDto findCompanyFlight(int flight,Company company);
 
-    void changeFLight(ChangeFlightDto changeFlightDto, int planeId, Company company);
+    void changeFLight(UpdateFlightDto updateFlightDto, int planeId, Company company);
 
     List<FlightsListResponseDto> findFirst10Flights();
 

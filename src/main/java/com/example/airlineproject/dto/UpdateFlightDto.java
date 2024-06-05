@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ChangeFlightDto {
+public class UpdateFlightDto {
     private int id;
     @NotEmpty(message = "from should not be empty")
     private String from;
