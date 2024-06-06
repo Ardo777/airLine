@@ -1,7 +1,7 @@
 package com.example.airlineproject.service;
 
-import com.example.airlineproject.dto.UserRegisterDto;
 import com.example.airlineproject.dto.ChangePasswordDto;
+import com.example.airlineproject.dto.UserRegisterDto;
 import com.example.airlineproject.dto.UserResponseDto;
 import com.example.airlineproject.entity.Company;
 import com.example.airlineproject.entity.User;
@@ -25,7 +25,6 @@ public interface UserService {
 
     void deleteById(int id);
 
-
     boolean recoveryPassword(User user, String newPassword);
 
     List<UserResponseDto> getAllByFilter(String keyword);
@@ -38,7 +37,6 @@ public interface UserService {
 
     void processEmailUpdate(SpringUser springUser, String email, String verificationCode);
 
-
     Long getUsersCount();
 
     User findRandomAdmin();
@@ -47,5 +45,9 @@ public interface UserService {
 
     void subscribeToCompany(int companyId, User user);
 
+    boolean delete(SpringUser springUser, String password);
 
+    boolean restoreUser(String email, String verificationCode);
+
+    void verify(String email);
 }

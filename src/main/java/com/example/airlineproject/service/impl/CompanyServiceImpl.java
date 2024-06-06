@@ -9,6 +9,7 @@ import com.example.airlineproject.repository.CompanyRepository;
 import com.example.airlineproject.repository.StarRatingRepository;
 import com.example.airlineproject.repository.UserRepository;
 import com.example.airlineproject.service.CompanyService;
+import com.example.airlineproject.util.FileUtil;
 import com.querydsl.jpa.JPAQueryBase;
 import com.querydsl.jpa.impl.JPAQuery;
 import jakarta.persistence.EntityManager;
@@ -39,42 +40,36 @@ public class CompanyServiceImpl implements CompanyService {
     private final UserRepository userRepository;
     private final StarRatingRepository starRatingRepository;
     private final EntityManager entityManager;
+    private final FileUtil fileUtil;
+
 
     @Value("${picture.upload.directory}")
     private String uploadDirectory;
 
-    private void saveFile(MultipartFile multipartFile, Company company) throws IOException {
-        if (multipartFile != null && !multipartFile.isEmpty()) {
-            String picName = System.currentTimeMillis() + "_" + multipartFile.getOriginalFilename();
-            File picturesDir = new File(uploadDirectory);
-            if (!picturesDir.exists()) {
-                picturesDir.mkdirs();
-            }
-            String filePath = picturesDir.getAbsolutePath() + "/" + picName;
-            File file = new File(filePath);
-            multipartFile.transferTo(file);
-            company.setPicName(picName);
-            log.info("File saved successfully: {}", picName);
-        } else {
-            log.warn("Multipart file is null or empty. No file saved.");
-        }
-    }
-
-
     @Override
-    public String save(Company company, User user, MultipartFile multipartFile) throws IOException {
-        if (companyRepository.findByUser(company.getUser()).isPresent()) {
+    public String save(Company company, User user, MultipartFile picFile, MultipartFile certificateFile) throws IOException {
+        if (picFile.isEmpty() || certificateFile.isEmpty()) {
+            String errorMsg = "Multipart files are empty. Please provide valid files.";
+            log.warn("Company registration failed: {}", errorMsg);
+            return errorMsg;
+        }
+
+        if (companyRepository.findByUser(user).isPresent()) {
             String errorMsg = String.format("The user %s %s already has a registered company",
-                    company.getUser().getName(), company.getUser().getSurname());
+                    user.getName(), user.getSurname());
             log.warn("Company registration failed: {}", errorMsg);
             return errorMsg;
         }
+
         if (companyRepository.findByName(company.getName()).isPresent()) {
-            String errorMsg = String.format("A company with this %s name already exists", company.getName());
+            String errorMsg = String.format("A company with the name %s already exists", company.getName());
             log.warn("Company registration failed: {}", errorMsg);
             return errorMsg;
         }
-        saveFile(multipartFile, company);
+        String certificate = fileUtil.saveFile(certificateFile);
+        String picture = fileUtil.saveFile(picFile);
+        company.setPicName(picture);
+        company.setCertificatePic(certificate);
         user.setCompany(company);
         companyRepository.save(company);
         userRepository.save(user);
@@ -84,7 +79,7 @@ public class CompanyServiceImpl implements CompanyService {
 
 
     @Override
-    public String registerCompany(User user, String name, String email, MultipartFile multipartFile) throws IOException {
+    public String registerCompany(User user, String name, String email, MultipartFile picFile, MultipartFile certificateFile) throws IOException {
         String msg = findByEmail(email);
         if (msg != null) {
             log.warn("Registration failed: {}", msg);
@@ -95,7 +90,7 @@ public class CompanyServiceImpl implements CompanyService {
                 .name(name)
                 .email(email)
                 .build();
-        String result = save(company, user, multipartFile);
+        String result = save(company, user, picFile, certificateFile);
         if (result == null) {
             log.info("Company registered successfully: {}", company);
         } else {

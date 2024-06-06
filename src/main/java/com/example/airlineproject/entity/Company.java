@@ -1,6 +1,7 @@
 package com.example.airlineproject.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,6 +17,7 @@ import java.util.List;
 @Entity
 @Table(name = "company")
 @Builder
+@EqualsAndHashCode(exclude = {"user", "office", "teamMembers", "planes", "flights", "certificates"})
 public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,8 +26,10 @@ public class Company {
     private String name;
     @NotEmpty(message = "email can't be empty")
     private String email;
-    @NotEmpty(message = "picture can't be empty")
+    @NotBlank(message = "picture can't be empty")
     private String picName;
+    @NotBlank(message = "picture can't be empty")
+    private String certificatePic;
     private boolean isActive;
     @OneToOne
     private User user;

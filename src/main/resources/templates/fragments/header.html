@@ -63,8 +63,11 @@
                                 Login
                             </a>
                             <a th:if="${currentUser != null}" href="/user/profile"> <img
-                                    src="https://e7.pngegg.com/pngimages/426/859/png-clipart-computer-icons-user-membership-black-area.png"
-                                    alt="User Icon" width="40">
+                                    th:if="${currentUser.getPicName()!=null}"
+                                    th:src="@{/getImage(picName=${currentUser.picName})}" width="50px" style="border-radius: 100%">
+                                <img th:if="${currentUser.getPicName() == null}"
+                                     src="https://e7.pngegg.com/pngimages/426/859/png-clipart-computer-icons-user-membership-black-area.png"
+                                     alt="User Icon" width="50" >
                             </a>
                             <div class="center_slach d-xl-flex d-none">/</div>
                             <a th:if="${currentUser == null}" href="/user/register" class="main-menu__login">

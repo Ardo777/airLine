@@ -26,10 +26,11 @@ public class SecurityConfig {
                         .csrfTokenRepository(new HttpSessionCsrfTokenRepository())
         ).authorizeHttpRequests(authorize ->
                 authorize
-                        .requestMatchers("/" ,"/user/register", "/user/login/**",
-                                "/user/register/verification/**", "/user/login/successfully/**",
-                                "/user/codeVerification/**", "/user/forgetPassword/**",
-                                "/user/recovery/**", "/flight/list","/flight/list/filter").permitAll()
+                        .requestMatchers("/").permitAll()
+                        .requestMatchers("/user/register", "/user/login/**", "/user/register/verification/**",
+                                "/user/login/successfully/**", "/user/codeVerification/**", "/user/forgetPassword/**",
+                                "/user/recovery/**", "/user/account/restore", "/user/verificationRestore",
+                                "/user/userVerificationPage", "/flight/list", "/flight/list/filter").permitAll()
                         .requestMatchers("/admin/**").hasAnyAuthority(UserRole.ADMIN.name())
                         .requestMatchers("/manager/**").hasAnyAuthority(UserRole.MANAGER.name())
                         .requestMatchers("/subscribe/**", "/news").hasAnyAuthority(UserRole.USER.name())

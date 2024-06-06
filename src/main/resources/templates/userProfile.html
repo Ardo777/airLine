@@ -6,7 +6,6 @@
     <title>User Profile</title>
     <link rel="stylesheet" th:href="@{/css/userProfile.css}"/>
     <style>
-        /* Стили для кнопки возврата на главную */
         .home-link {
             top: 30px;
             left: 10px;
@@ -14,6 +13,21 @@
             color: #007bff;
             text-decoration: none;
             cursor: pointer;
+        }
+
+        .delete-account-btn {
+            padding: 8px 12px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none; /* чтобы стили ссылки не пропадали */
+        }
+
+        .delete-account-btn:hover {
+            background-color: #007bff;
         }
     </style>
 </head>
@@ -57,6 +71,10 @@
         <button id="changeDetailsBtn" onclick="toggleDetailsForm()">Change Details</button>
         <button id="changePasswordBtn" onclick="togglePasswordSection()">Change Password</button>
     </div>
+    <div class="button-container">
+        <a href="/user/delete" id="deleteAccountBtn" class="delete-account-btn">Delete Account</a>
+    </div>
+
 
     <div class="details-section">
         <h3>Change Details</h3>
@@ -115,10 +133,12 @@
         var passwordSection = document.querySelector('.password-section');
         passwordSection.style.display = passwordSection.style.display === 'none' ? 'block' : 'none';
     }
+
     function toggleDetailsForm() {
         var detailsSection = document.querySelector('.details-section');
         detailsSection.style.display = detailsSection.style.display === 'none' ? 'block' : 'none';
     }
+
     function toggleChangeEmailLink() {
         var emailInput = document.getElementById('newEmail');
         var changeEmailLink = document.getElementById('changeEmailLink');
@@ -131,8 +151,8 @@
             changeEmailLink.style.display = 'none';
         }
     }
+
     document.getElementById('newEmail').addEventListener('input', toggleChangeEmailLink);
 </script>
-
 </body>
 </html>

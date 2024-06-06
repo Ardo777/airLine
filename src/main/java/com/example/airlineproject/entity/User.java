@@ -2,14 +2,19 @@ package com.example.airlineproject.entity;
 
 import com.example.airlineproject.entity.enums.UserRole;
 import jakarta.persistence.*;
+import lombok.*;
+import org.springframework.beans.factory.annotation.Value;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-import lombok.*;
-import org.springframework.beans.factory.annotation.Value;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
@@ -36,6 +41,7 @@ public class User{
     @Enumerated(EnumType.STRING)
     private UserRole role;
     private boolean isActive;
+    private boolean isDeleted = false;
     private String verificationCode;
     private String picName;
     @Transient
@@ -45,7 +51,8 @@ public class User{
     private Company company;
     @Column(name = "date_Birthday")
     private LocalDate birthday;
-
+    @Column(name = "deleted_at")
+    private LocalDateTime deletedAt;
 
     public User(String alice, String smith, String mail, String somepassword, boolean b) {
     }
