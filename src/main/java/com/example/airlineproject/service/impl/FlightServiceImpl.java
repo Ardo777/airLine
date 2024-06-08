@@ -66,23 +66,19 @@ public class FlightServiceImpl implements FlightService {
         return null;
     }
 
+
+
     @Override
     public List<FlightsResponseDto> findExistingFlights(Company company, Status status) {
-        return List.of();
+        log.debug("finding existing flights");
+        return flightMapper.flightsToFlightsResponseDtoList(flightRepository.findAllByCompanyAndStatusNot(company,status));
     }
-
-//    @Override
-//    public List<FlightsResponseDto> findExistingFlights(Company company, Status status) {
-//        log.debug("finding existing flights");
-//        return flightMapper.flightsToFlightResponseDtoList(flightRepository.findAllByCompanyAndStatusNot(company, status));
-//    }
 
     @Override
     public FlightResponseDto findCompanyFlight(int flightId, Company company) {
         log.debug("Finding flight with ID {} and company {}", flightId, company.getName());
         Optional<Flight> flight = flightRepository.findByIdAndCompany(flightId, company);
         if (flight.isEmpty()) {
-            log.error("Flight not found with ID {} and  company {}", flightId, company);
             throw new FlightNotFoundException();
         }
         log.debug("flight will be return {}", flight.get());
@@ -125,17 +121,17 @@ public class FlightServiceImpl implements FlightService {
         JPAQuery<Flight> query = new JPAQuery<>(entityManager);
         QFlight qFlight = QFlight.flight;
         JPAQueryBase from = query.from(qFlight);
-        if (flightFilterDto.getTo() != null && !flightFilterDto.getTo().isEmpty()){
+        if (flightFilterDto.getTo() != null && !flightFilterDto.getTo().isEmpty()) {
             from.where(qFlight.to.contains(flightFilterDto.getTo()));
         }
-        if (flightFilterDto.getScheduledTime() != null && flightFilterDto.getScheduledTime().isAfter(LocalDateTime.now())){
+        if (flightFilterDto.getScheduledTime() != null && flightFilterDto.getScheduledTime().isAfter(LocalDateTime.now())) {
             from.where(qFlight.scheduledTime.eq(flightFilterDto.getScheduledTime()));
         }
-        if (flightFilterDto.getFrom() != null && !flightFilterDto.getFrom().isEmpty()){
+        if (flightFilterDto.getFrom() != null && !flightFilterDto.getFrom().isEmpty()) {
             from.where(qFlight.from.contains(flightFilterDto.getFrom()));
         }
-        if (flightFilterDto.getMinimumPrice() != null && flightFilterDto.getMaximumPrice() != null){
-            from.where(qFlight.businessPrice.between(flightFilterDto.getMinimumPrice(),flightFilterDto.getMaximumPrice()).or(qFlight.economyPrice.between(flightFilterDto.getMinimumPrice(),flightFilterDto.getMaximumPrice())));
+        if (flightFilterDto.getMinimumPrice() != null && flightFilterDto.getMaximumPrice() != null) {
+            from.where(qFlight.businessPrice.between(flightFilterDto.getMinimumPrice(), flightFilterDto.getMaximumPrice()).or(qFlight.economyPrice.between(flightFilterDto.getMinimumPrice(), flightFilterDto.getMaximumPrice())));
         } else if (flightFilterDto.getMinimumPrice() != null) {
             from.where(qFlight.economyPrice.goe(flightFilterDto.getMinimumPrice()).or(qFlight.businessPrice.goe(flightFilterDto.getMinimumPrice())));
         } else if (flightFilterDto.getMaximumPrice() != null) {
@@ -151,7 +147,12 @@ public class FlightServiceImpl implements FlightService {
 
     @Override
     public List<FlightResponseDto> flightsOfSubscriptions(List<Company> companies) {
-        return flightMapper.flightsToFlightResponseDtoList(flightRepository.findAllByCompanyInAndStatusNot(companies,Status.ARRIVED));
+        return flightMapper.flightsToFlightResponseDtoList(flightRepository.findAllByCompanyInAndStatusNot(companies, Status.ARRIVED));
+    }
+
+    @Override
+    public FlightDto findById(int id) {
+        return flightMapper.flightToFlightDto(flightRepository.findById(id).orElseThrow(FlightNotFoundException::new));
     }
 
 

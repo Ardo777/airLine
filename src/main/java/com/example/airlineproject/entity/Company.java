@@ -3,10 +3,7 @@ package com.example.airlineproject.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -40,6 +37,7 @@ public class Company {
     private List<TeamMember> teamMembers;
     @OneToMany(mappedBy = "company")
     private List<Plane> planes;
+
 
     @Override
     public String toString() {

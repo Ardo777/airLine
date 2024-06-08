@@ -15,12 +15,13 @@ public interface FlightMapper {
     @Mapping(target = "plane", ignore = true)
     @Mapping(target = "company", ignore = true)
     Flight map(FlightDto flightDto);
+    Flight mapToFlight(FlightDto flightDto);
     FlightResponseDto map(Flight flight);
     List<FlightDto> flightsToFlightDtoList(List<Flight> flights);
     Flight map(UpdateFlightDto updateFlightDto);
-
+    FlightDto flightToFlightDto(Flight flight);
     List<FlightResponseDto> flightsToFlightResponseDtoList(List<Flight> flights);
-
+    List<FlightsResponseDto> flightsToFlightsResponseDtoList(List<Flight> flights);
     List<FlightsListResponseDto> mapToFlightsListResponseDto(List<Flight> flights);
 
 }

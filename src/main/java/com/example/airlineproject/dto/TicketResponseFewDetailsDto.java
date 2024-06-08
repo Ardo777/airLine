@@ -1,18 +1,15 @@
 package com.example.airlineproject.dto;
 
-import com.example.airlineproject.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
-public class CompanyFewDetailsDto {
-    private int id;
+public class TicketResponseFewDetailsDto {
+    private String sitBelt;
     private String name;
-    private String picName;
-    private User user;
 }

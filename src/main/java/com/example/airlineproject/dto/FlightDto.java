@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 public class FlightDto {
+    private int id;
     private String from;
     private String to;
     private double economyPrice;

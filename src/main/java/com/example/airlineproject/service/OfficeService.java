@@ -9,7 +9,6 @@ import java.util.List;
 
 public interface OfficeService {
 
-
     void saveOffice(Office office, User user);
 
     Boolean isOfficeExist(Office office);

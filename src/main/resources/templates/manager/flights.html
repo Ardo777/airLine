@@ -201,7 +201,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="flight : ${flights}">
+                                    <tr th:each="flight:${flights}">
                                         <div>
                                             <td th:text="${flight.id}"></td>
                                             <td th:text="${flight.from}"></td>
@@ -214,13 +214,6 @@
                                                 <a th:href="@{'/manager/update/flight/' + ${flight.id}}" class="delete-user">
                                                     <div>
                                                         <i class="fa-solid fa-pen-to-square"></i>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <a th:href="@{'/flight/delete/' + ${flight.id}}" class="delete-user">
-                                                    <div>
-                                                        <i class="fa-solid fa-x"></i>
                                                     </div>
                                                 </a>
                                             </td>

@@ -15,6 +15,7 @@ public class PlaneDto {
     private String model;
     private String planePic;
     private double maxBaggage;
+    private double countRow;
     private int countEconomy;
     private int countBusiness;
 
