@@ -6,8 +6,6 @@ import com.example.airlineproject.entity.User;
 
 public interface MailService {
 
-    void sendMail(UserRegisterDto userRegisterDto);
-
     void sendMail(User user);
 
     void sendRecoveryMail(String email);

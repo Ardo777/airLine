@@ -79,6 +79,7 @@ public class FlightServiceImpl implements FlightService {
         log.debug("Finding flight with ID {} and company {}", flightId, company.getName());
         Optional<Flight> flight = flightRepository.findByIdAndCompany(flightId, company);
         if (flight.isEmpty()) {
+            log.error("Flight not found with ID {} and  company {}", flightId, company);
             throw new FlightNotFoundException();
         }
         log.debug("flight will be return {}", flight.get());

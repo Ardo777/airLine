@@ -19,22 +19,16 @@ import org.thymeleaf.context.Context;
 @Service
 @RequiredArgsConstructor
 @Slf4j
+@Primary
 public class MailServiceImpl implements MailService {
 
     private final JavaMailSender javaMailSender;
     @Qualifier("emailTemplateEngine")
     private final TemplateEngine templateEngine;
 
-    @Async
-    public void sendMail(UserRegisterDto userRegisterDto) {
-
-        final Context ctx = new Context();
-        ctx.setVariable("userRegisterDto", userRegisterDto);
-
-        mailSending(ctx, userRegisterDto.getEmail());
-    }
 
     @Override
+    @Async
     public void sendMail(User user) {
 
         final Context ctx = new Context();
@@ -43,7 +37,8 @@ public class MailServiceImpl implements MailService {
         mailSendingUser(ctx, user.getEmail());
     }
 
-    private void mailSending(Context ctx, String email) {
+    @Async
+    public void mailSending(Context ctx, String email) {
         final String htmlContent = templateEngine.process("mail/welcome.html", ctx);
 
         final MimeMessage mimeMessage = javaMailSender.createMimeMessage();

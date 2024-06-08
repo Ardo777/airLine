@@ -3,14 +3,19 @@ package com.example.airlineproject.service.impl;
 import com.example.airlineproject.dto.TeamDto;
 import com.example.airlineproject.dto.TeamMemberChangeDto;
 import com.example.airlineproject.entity.Company;
+import com.example.airlineproject.entity.QTeamMember;
 import com.example.airlineproject.entity.TeamMember;
 import com.example.airlineproject.entity.User;
 import com.example.airlineproject.mapper.TeamMapper;
 import com.example.airlineproject.repository.TeamRepository;
 import com.example.airlineproject.security.SpringUser;
 import com.example.airlineproject.service.TeamService;
+import com.querydsl.jpa.JPAQueryBase;
+import com.querydsl.jpa.impl.JPAQuery;
+import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,8 +24,10 @@ import java.util.List;
 @RequiredArgsConstructor
 @Slf4j
 public class TeamServiceImpl implements TeamService {
+
     private final TeamMapper teamMapper;
     private final TeamRepository teamRepository;
+    private final EntityManager entityManager;
 
     @Override
     public TeamMember save(TeamDto teamDto, SpringUser springUser) {

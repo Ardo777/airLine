@@ -4,7 +4,6 @@ import com.example.airlineproject.dto.OfficeChangeDto;
 import com.example.airlineproject.entity.Company;
 import com.example.airlineproject.entity.Office;
 import com.example.airlineproject.entity.User;
-import com.example.airlineproject.mapper.OfficeMapper;
 import com.example.airlineproject.repository.CompanyRepository;
 import com.example.airlineproject.repository.OfficeRepository;
 import com.example.airlineproject.service.OfficeService;
@@ -12,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,14 +18,15 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Slf4j
 public class OfficeServiceImpl implements OfficeService {
+
+    private final OfficeRepository officeRepository;
+    private final CompanyRepository companyRepository;
+
+
     @Override
     public Office findById(int id) {
         return officeRepository.findById(id).orElse(null);
     }
-
-    private final OfficeRepository officeRepository;
-    private final CompanyRepository companyRepository;
-    private final OfficeMapper officeMapper;
 
 
     @Override

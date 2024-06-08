@@ -18,9 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Optional;
-
 
 
 @Service
@@ -44,18 +42,6 @@ public class PlaneServiceImpl implements PlaneService {
         log.info("Plane saved: {}", plane.getModel());
     }
 
-    @Override
-    public PlaneAddDto createPlane(PlaneAddDto planeAddDto, MultipartFile multipartFile) {
-        log.info("Creating plane with model: {}", planeAddDto.getModel());
-
-        return PlaneAddDto.builder()
-                .model(planeAddDto.getModel())
-                .maxBaggage(planeAddDto.getMaxBaggage())
-                .countBusiness(planeAddDto.getCountBusiness())
-                .countEconomy(planeAddDto.getCountEconomy())
-                .countRow(planeAddDto.getCountRow())
-                .build();
-    }
 
     @Override
     public List<PlaneDto> getAllPlanesByCompany(Company company) {
@@ -82,7 +68,7 @@ public class PlaneServiceImpl implements PlaneService {
     public PlaneDto getPlane(int planeId, Company company) {
         log.info("Retrieving plane with ID {} for company: {}", planeId, company.getName());
         Optional<Plane> plane = planeRepository.findByIdAndCompany(planeId, company);
-        if (plane.isEmpty()){
+        if (plane.isEmpty()) {
             log.error("Plane with ID {} not found for company: {}", planeId, company.getName());
             throw new RuntimeException();
         }
@@ -97,7 +83,8 @@ public class PlaneServiceImpl implements PlaneService {
         if (plane.isEmpty()){
             log.error("Plane with ID {} not found for company: {}", planeUpdateDto.getId(), company.getName());
             throw new RuntimeException();
-        }try {
+        }
+        try {
             String picName = fileUtil.saveFile(multipartFile);
             if (picName != null){
                 planeUpdateDto.setPlanePic(picName);

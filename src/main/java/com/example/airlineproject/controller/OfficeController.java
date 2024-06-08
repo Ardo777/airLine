@@ -10,9 +10,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequiredArgsConstructor
@@ -24,7 +25,12 @@ public class OfficeController {
     private final CountryService countryService;
 
     @PostMapping("/addOffice")
-    public String addOffice(@ModelAttribute Office office, @AuthenticationPrincipal SpringUser springUser) {
+    public String addOffice(@Validated Office office, @AuthenticationPrincipal SpringUser springUser,
+                            BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addAttribute("validateMsgOffice", bindingResult.getAllErrors().get(0).getDefaultMessage());
+            return "redirect:/manager/moreDetails";
+        }
         Boolean isOfficeExist = officeService.isOfficeExist(office);
         office.setCompany(springUser.getUser().getCompany());
         if (isOfficeExist) {
@@ -57,11 +63,11 @@ public class OfficeController {
     }
 
     @GetMapping("/offices")
-    public String allOffices(@RequestParam(value = "officeSuccessMsg",required = false) String officeSuccessMsg ,
-            @AuthenticationPrincipal SpringUser springUser,
+    public String allOffices(@RequestParam(value = "officeSuccessMsg", required = false) String officeSuccessMsg,
+                             @AuthenticationPrincipal SpringUser springUser,
                              ModelMap modelMap) {
         if (officeSuccessMsg != null) {
-            modelMap.put("officeSuccessMsg" , officeSuccessMsg);
+            modelMap.put("officeSuccessMsg", officeSuccessMsg);
         }
         modelMap.addAttribute("offices", officeService.getAllOfficesByUser(springUser.getUser()));
         return "/manager/offices";

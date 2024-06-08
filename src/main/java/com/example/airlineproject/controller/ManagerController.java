@@ -18,12 +18,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequiredArgsConstructor
@@ -33,6 +34,7 @@ public class ManagerController {
 
     private final PlaneRepository planeRepository;
     private final FlightService flightService;
+    private final PlaneService planeService;
     private final TeamService teamService;
     private final CountryService countryService;
     private final PlaneService planeService;
@@ -55,6 +57,22 @@ public class ManagerController {
             modelMap.put("planeSuccessMsg", planeSuccessMsg);
             log.info("Success message: {}", planeSuccessMsg);
         }
+        if (validateMsgFlight != null) {
+            modelMap.put("validateMsgFlight", validateMsgFlight);
+            log.info("Validate message: {}", validateMsgFlight);
+        }
+        if (validateMsgPlane != null) {
+            modelMap.put("validateMsgPlane", validateMsgPlane);
+            log.info("Validate message: {}", validateMsgPlane);
+        }
+        if (validateMsgTeam != null) {
+            modelMap.put("validateMsgTeam", validateMsgTeam);
+            log.info("Validate message: {}", validateMsgTeam);
+        }
+        if (validateMsgOffice != null) {
+            modelMap.put("validateMsgOffice", validateMsgOffice);
+            log.info("Validate message: {}", validateMsgOffice);
+        }
         if (officeSuccessMsg != null) {
             modelMap.put("officeSuccessMsg", officeSuccessMsg);
             log.info("Office Success Msg message: {}", officeSuccessMsg);
@@ -76,14 +94,24 @@ public class ManagerController {
 
 
     @PostMapping("/addFlight")
-    public String addFlight(@ModelAttribute FlightDto flightDto, @RequestParam("plane") int planeId, @AuthenticationPrincipal SpringUser springUser) {
+    public String addFlight(@Validated FlightDto flightDto, @RequestParam("plane") int planeId, @AuthenticationPrincipal SpringUser springUser,
+                            BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addAttribute("validateMsgFlight", bindingResult.getAllErrors().get(0).getDefaultMessage());
+            return "redirect:/manager/moreDetails";
+        }
         flightService.save(flightDto, springUser, planeId);
         return "redirect:/manager/moreDetails";
     }
 
 
     @PostMapping("/addTeam")
-    public String addFlight(@ModelAttribute TeamDto teamDto, @AuthenticationPrincipal SpringUser springUser) {
+    public String addFlight(@Validated TeamDto teamDto, @AuthenticationPrincipal SpringUser springUser,
+                            BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addAttribute("validateMsgTeam", bindingResult.getAllErrors().get(0).getDefaultMessage());
+            return "redirect:/manager/moreDetails";
+        }
         log.info("Attempting to add team with data: {}", teamDto);
         TeamMember savedTeamMember = teamService.save(teamDto, springUser);
         if (savedTeamMember != null) {

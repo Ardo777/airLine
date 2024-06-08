@@ -1,7 +1,6 @@
 package com.example.airlineproject.controller;
 
 import com.example.airlineproject.dto.ChangePasswordDto;
-import com.example.airlineproject.dto.CompanyFewDetailsDto;
 import com.example.airlineproject.dto.UserRegisterDto;
 import com.example.airlineproject.dto.UserResponseDto;
 import com.example.airlineproject.entity.ChatRoom;
@@ -15,6 +14,7 @@ import com.example.airlineproject.security.SpringUser;
 import com.example.airlineproject.service.*;
 import com.example.airlineproject.util.FileUtil;
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -22,11 +22,13 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,6 +53,7 @@ public class UserController {
                                 @RequestParam(value = "passwordErrorMsg", required = false) String passwordErrorMsg,
                                 @RequestParam(value = "errorCode", required = false) String errorCode,
                                 @RequestParam(value = "msg", required = false) String msg,
+                                @RequestParam(value = "validateMsg", required = false) String validateMsg,
                                 ModelMap modelMap) {
         if (emailMsg != null) {
             modelMap.put("emailMsg", emailMsg);
@@ -63,6 +66,9 @@ public class UserController {
         }
         if (errorCode != null) {
             modelMap.put("errorCode", errorCode);
+        }
+        if (validateMsg !=null){
+            modelMap.put("validateMsg", validateMsg);
         }
         log.info("Rendering registration page with emailMsg: {}, passwordErrorMsg: {}, errorCode: {}", emailMsg, passwordErrorMsg, errorCode);
         return "register";
@@ -81,30 +87,31 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String registration(@ModelAttribute UserRegisterDto userRegisterDto,
-                               @RequestParam("picture")
-                               MultipartFile multipartFile) throws IOException {
+    public String registration(
+            @Validated UserRegisterDto userRegisterDto,
+            BindingResult bindingResult,
+            RedirectAttributes redirectAttributes) throws IOException {
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addAttribute("validateMsg", bindingResult.getAllErrors().get(0).getDefaultMessage());
+            return "redirect:/user/register";
+        }
         UserResponseDto byEmail = userService.findByEmail(userRegisterDto.getEmail());
-        if (byEmail != null && byEmail.isActive()) {
+        if (byEmail != null) {
             String emailMsg = "User with this email " + userRegisterDto.getEmail() + " already  exist";
             log.warn(emailMsg);
-            return "redirect:/user/register?emailMsg=" + emailMsg;
-        }
-        if (userRegisterDto.getPassword().length() < 6) {
-            String passwordErrorMsg = "Password cannot be shorter than 6 characters";
-            log.warn(passwordErrorMsg);
-            return "redirect:/user/register?passwordErrorMsg=" + passwordErrorMsg;
+            redirectAttributes.addFlashAttribute("emailMsg", emailMsg);
+            return "redirect:/user/register";
         }
         if (!userRegisterDto.getPassword().equals(userRegisterDto.getConfirmPassword())) {
             String msg = "Password mismatch";
             log.warn(msg);
-            return "redirect:/user/register?msg=" + msg;
+            redirectAttributes.addFlashAttribute("msg", msg);
+            return "redirect:/user/register";
         } else {
-            User saveUser = userService.save(userRegisterDto, multipartFile);
+            User saveUser = userService.save(userRegisterDto, userRegisterDto.getPicture());
             log.info("User registered successfully: {}", saveUser.getEmail());
             return "redirect:/user/register/verification/" + saveUser.getEmail();
         }
-
     }
 
     @GetMapping("/register/verification/{mail}")
@@ -124,12 +131,9 @@ public class UserController {
             if (user.getVerificationCode().equals(verificationCode)) {
                 user.setActive(true);
                 userRepository.save(user);
-                //ChatRoom-with-webSocket-VS start
-                //in this case ChatRoom will create for communication with user and random Admin
                 User randomAdmin = userService.findRandomAdmin();
                 String chatId = chatRoomService.createChatId(user.getEmail(), randomAdmin.getEmail());
                 log.info("ChatRoom already crated with {}", chatId);
-                //ChatRoom-with-webSocket-VS end
                 String successMsg = "Verification was successful!";
                 log.info(successMsg);
                 return "redirect:/user/login?successMsg=" + successMsg;
