@@ -149,9 +149,9 @@ public class UserController {
 
         if (springUser.getUser() != null) {
             if (springUser.getUser().getRole() == UserRole.ADMIN) {
-                return "/admin/index";
+                return "/admin/users";
             } else if (springUser.getUser().getRole() == UserRole.MANAGER) {
-                return "/manager/index";
+                return "/manager/flights";
             }
         }
         return "redirect:/";

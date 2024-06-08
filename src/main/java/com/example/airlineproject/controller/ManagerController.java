@@ -39,7 +39,7 @@ public class ManagerController {
 
     @GetMapping
     public String managerPage() {
-        return "/manager/index";
+        return "/manager/flights";
     }
 
 
