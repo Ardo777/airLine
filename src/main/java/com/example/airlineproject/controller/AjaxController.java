@@ -2,7 +2,9 @@ package com.example.airlineproject.controller;
 
 import com.example.airlineproject.dto.UserResponseDto;
 import com.example.airlineproject.entity.City;
+import com.example.airlineproject.entity.TeamMember;
 import com.example.airlineproject.service.CityService;
+import com.example.airlineproject.service.TeamService;
 import com.example.airlineproject.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +21,7 @@ public class AjaxController {
 
     private final CityService cityService;
     private final UserService userService;
+    private final TeamService teamService;
 
     @GetMapping("/cities")
     public List<City> getCities(@RequestParam("countryId") int countryId) {

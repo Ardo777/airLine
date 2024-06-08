@@ -10,6 +10,9 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -33,23 +36,22 @@ public class TeamMemberController {
         return "redirect:/manager/teamMembers";
     }
 
-    @GetMapping("/teamMembers/change/{id}")
+    @GetMapping("/teamMembers/update/{id}")
     public String changeTeamMemberPage(@PathVariable("id") int id,
                                        ModelMap modelMap) {
         TeamMember teamMember = teamService.findById(id);
         if (teamMember != null) {
             if (teamMember.isActive()) {
                 modelMap.addAttribute("teamMember", teamMember);
-                return "teamMemberUpdate";
+                return "/manager/teamMemberUpdate";
             }
         }
         return "/manager/teamMembers";
     }
 
-    @PostMapping("/teamMembers/change")
+    @PostMapping("/teamMembers/update")
     public String changeTeamMember(@ModelAttribute TeamMemberChangeDto teamMemberChangeDto) {
         log.info("Changing team member with ID {}, name {}, surname {}, profession {}", teamMemberChangeDto.getId(), teamMemberChangeDto.getName(), teamMemberChangeDto.getSurname(), teamMemberChangeDto.getProfession());
-
         teamService.changeTeamMember(teamMemberChangeDto);
         return "redirect:/manager/teamMembers";
     }

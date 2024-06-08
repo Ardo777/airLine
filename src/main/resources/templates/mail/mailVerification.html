@@ -122,24 +122,21 @@
         const form = document.getElementById("verificationForm");
 
         form.addEventListener("submit", function (event) {
-            event.preventDefault(); // Предотвращаем стандартное поведение отправки формы
+            event.preventDefault();
 
-            let verificationCode = ""; // Создаем пустую строку для хранения кода
+            let verificationCode = "";
 
-            // Получаем значения из всех полей ввода и добавляем их к verificationCode
             document.querySelectorAll('.code-input').forEach(function (input) {
                 verificationCode += input.value;
             });
 
-            // Присваиваем значение verificationCode скрытому полю формы
             document.getElementById('verificationCodeInput').value = verificationCode;
 
-            // Отправляем форму
             form.submit();
         });
     });
     form.addEventListener("submit", function (event) {
-        event.preventDefault(); // Предотвращаем стандартное поведение отправки формы
+        event.preventDefault();
 
         console.log("Форма отправлена");
 

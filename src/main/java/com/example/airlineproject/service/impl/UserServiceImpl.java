@@ -1,7 +1,7 @@
 package com.example.airlineproject.service.impl;
 
-import com.example.airlineproject.dto.UserRegisterDto;
 import com.example.airlineproject.dto.ChangePasswordDto;
+import com.example.airlineproject.dto.UserRegisterDto;
 import com.example.airlineproject.dto.UserResponseDto;
 import com.example.airlineproject.entity.QUser;
 import com.example.airlineproject.entity.User;
@@ -15,6 +15,7 @@ import com.example.airlineproject.util.FileUtil;
 import com.querydsl.jpa.JPAQueryBase;
 import com.querydsl.jpa.impl.JPAQuery;
 import jakarta.persistence.EntityManager;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -37,7 +38,7 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private final  MailService mailService;
+    private final MailService mailService;
     private final PasswordEncoder passwordEncoder;
     private final UserMapper userMapper;
     private final FileUtil fileUtil;
@@ -45,6 +46,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
+    @Transactional
     public User save(UserRegisterDto userRegisterDto, MultipartFile multipartFile) throws IOException {
 
         Optional<User> byEmail = userRepository.findByEmail(userRegisterDto.getEmail());
@@ -56,20 +58,28 @@ public class UserServiceImpl implements UserService {
             log.info("User saved successfully: {}", save.getEmail());
             return save;
         }
-        validation(userRegisterDto, multipartFile);
-        User user1 = userMapper.mapToUser(userRegisterDto);
-        User save = userRepository.save(user1);
+        User validatedUser = validation(userRegisterDto, multipartFile);
+        User save = userRepository.save(validatedUser);
         log.info("User saved successfully: {}", save.getEmail());
-        return user1;
+        return validatedUser;
     }
 
-    private void validation(UserRegisterDto userRegisterDto, MultipartFile multipartFile) throws IOException {
-        userRegisterDto.setUserRole(UserRole.USER);
-        userRegisterDto.setPassword(passwordEncoder.encode(userRegisterDto.getPassword()));
+
+    public User validation(UserRegisterDto userRegisterDto, MultipartFile multipartFile) throws IOException {
         String picName = fileUtil.saveFile(multipartFile);
-        userRegisterDto.setPicName(picName);
-        userRegisterDto.setVerificationCode(fileUtil.createVerificationCode());
-        mailService.sendMail(userRegisterDto);
+        User buildUser = User.builder()
+                .name(userRegisterDto.getName())
+                .surname(userRegisterDto.getSurname())
+                .email(userRegisterDto.getEmail())
+                .password(passwordEncoder.encode(userRegisterDto.getPassword()))
+                .picName(picName)
+                .verificationCode(fileUtil.createVerificationCode())
+                .role(UserRole.USER)
+                .birthday(userRegisterDto.getBirthday())
+                .isActive(false)
+                .build();
+        mailService.sendMail(buildUser);
+        return buildUser;
     }
 
 

@@ -19,4 +19,6 @@ public interface TeamService {
     void changeTeamMember(TeamMemberChangeDto teamMemberChangeDto);
 
     void deleteTeamMember(int id);
+
+    List<TeamMember> getTeamMembersByFilter(String keyword);
 }

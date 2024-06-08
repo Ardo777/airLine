@@ -35,8 +35,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/css/**", "/js/**",
                                 "/media/**", "/s/**", "/sass/**", "/staticAdminManager/**",
                                 "/up/**", "/css2").permitAll()
-                        .anyRequest()
-                        .authenticated()
+                        .anyRequest().permitAll()
+//                        .authenticated()
         ).formLogin(form ->
                 form.loginPage("/user/login")
                         .loginProcessingUrl("/user/login")

@@ -12,10 +12,7 @@ public interface UserMapper {
     @Mapping(source = "role", target = "role")
     UserResponseDto mapToDto(User user);
 
-    @Mapping(source = "userRole", target = "role")
     User mapToUser(UserRegisterDto userRegisterDto);
-
-    UserRegisterDto mapToUserRegisterDto(User user);
 
     UserResponseDto mapToUserResponseDto(User user);
 }

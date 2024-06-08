@@ -19,7 +19,6 @@ public class CommentServiceImpl implements CommentService {
 
     private final CommentRepository commentRepository;
 
-
     @Override
     public void createComment(Company company, User user, String comment, Date date) {
         Comment saveComment = Comment.builder()
@@ -30,7 +29,6 @@ public class CommentServiceImpl implements CommentService {
                 .build();
         commentRepository.save(saveComment);
     }
-
 
     @Override
     public List<Comment> getAllCommentsByCompanyId(int companyId) {
