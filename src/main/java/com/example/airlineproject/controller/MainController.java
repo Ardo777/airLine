@@ -1,15 +1,11 @@
 package com.example.airlineproject.controller;
 
-import com.example.airlineproject.entity.enums.UserRole;
-import com.example.airlineproject.security.SpringUser;
 import com.example.airlineproject.dto.FlightsListResponseDto;
-import com.example.airlineproject.service.FlightService;
-import com.example.airlineproject.entity.enums.UserRole;
 import com.example.airlineproject.security.SpringUser;
+import com.example.airlineproject.service.FlightService;
 import com.example.airlineproject.util.FileUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -25,7 +21,7 @@ import java.util.List;
 public class MainController {
 
     private final FileUtil fileUtil;
-    private final FlightService flightService; ;
+    private final FlightService flightService;
 
     @GetMapping("/")
     public String homePage(ModelMap modelMap, @AuthenticationPrincipal SpringUser springUser) {

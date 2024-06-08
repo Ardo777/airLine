@@ -587,7 +587,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr class="clickable" th:onclick="|window.location.href='@{/flight/booking/}' + ${flight.id};|"
+            <tr th:if="flightsList != null" class="clickable" th:onclick="|window.location.href='@{/flight/booking/}' + ${flight.id};|"
                 th:each="flight : ${flightsList}">
                 <td th:text="${flight.id}">ZAIRIAN</td>
                 <td th:text="${flight.from}">Рим</td>

@@ -43,16 +43,19 @@
                                     <a href="/allCompanies">Companies</a>
                                 </li>
 
-                                <li class="dropdown">
+                                <li class="dropdown" th:if="${currentUser.Role.name == 'USER'}">
                                     <a href="/company">AddCompany</a>
                                 </li>
                                 <li class="dropdown" th:if="${currentUser != null}">
                                     <a  href="/messages" class="main-menu__login">
                                         Chat
                                     </a>
+
                                 </li>
-
-
+                                <li class="dropdown">
+                                    <a th:if="${currentUser.Role.name == 'ADMIN'}" href="/admin">ADMIN Panel</a>
+                                    <a th:if="${currentUser.Role.name == 'MANAGER'}" href="/manager">MANAGER Panel</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
