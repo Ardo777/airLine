@@ -1,24 +1,22 @@
 package com.example.airlineproject.controller;
-import com.example.airlineproject.dto.*;
-import com.example.airlineproject.entity.ChatRoom;
+
+import com.example.airlineproject.dto.ChangePasswordDto;
+import com.example.airlineproject.dto.CompanyFewDetailsDto;
 import com.example.airlineproject.dto.UserRegisterDto;
 import com.example.airlineproject.dto.UserResponseDto;
-import com.example.airlineproject.dto.ChangePasswordDto;
+import com.example.airlineproject.entity.ChatRoom;
 import com.example.airlineproject.entity.User;
-import com.example.airlineproject.entity.enums.UserRole;
 import com.example.airlineproject.entity.UserDto;
+import com.example.airlineproject.entity.enums.UserRole;
 import com.example.airlineproject.mapper.CompanyMapper;
 import com.example.airlineproject.mapper.FlightMapper;
-import com.example.airlineproject.repository.ChatRoomRepository;
 import com.example.airlineproject.repository.UserRepository;
 import com.example.airlineproject.security.SpringUser;
-import com.example.airlineproject.service.MailService;
-import com.example.airlineproject.service.UserService;
+import com.example.airlineproject.service.*;
 import com.example.airlineproject.util.FileUtil;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
@@ -28,7 +26,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

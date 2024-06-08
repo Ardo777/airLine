@@ -1,6 +1,5 @@
 package com.example.airlineproject.service.impl;
 
-import com.example.airlineproject.dto.UserRegisterDto;
 import com.example.airlineproject.dto.ChangePasswordDto;
 import com.example.airlineproject.dto.UserRegisterDto;
 import com.example.airlineproject.dto.UserResponseDto;
@@ -14,7 +13,6 @@ import com.example.airlineproject.repository.CompanyRepository;
 import com.example.airlineproject.repository.SubscribeRepository;
 import com.example.airlineproject.repository.UserRepository;
 import com.example.airlineproject.security.SpringUser;
-import com.example.airlineproject.service.CompanyService;
 import com.example.airlineproject.service.MailService;
 import com.example.airlineproject.service.UserService;
 import com.example.airlineproject.util.FileUtil;
@@ -46,7 +44,7 @@ import static com.example.airlineproject.entity.QUser.user;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private final  MailService mailService;
+    private final MailService mailService;
     private final PasswordEncoder passwordEncoder;
     private final UserMapper userMapper;
     private final FileUtil fileUtil;
@@ -275,6 +273,7 @@ public class UserServiceImpl implements UserService {
                 .user(user)
                 .build());
     }
+
     @Override
     public boolean delete(SpringUser springUser, String password) {
         if (springUser != null) {
