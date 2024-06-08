@@ -14,7 +14,7 @@ public interface FlightService {
 
     List<FlightsResponseDto> findExistingFlights(Company company, Status status);
 
-    FlightResponseDto findCompanyFlight(int flight,Company company);
+    FlightResponseDto findCompanyFlight(int flight, Company company);
 
     void changeFLight(UpdateFlightDto updateFlightDto, int planeId, Company company);
 
@@ -24,5 +24,7 @@ public interface FlightService {
 
     List<FlightDto> findExistingFlights();
 
-    List<FlightResponseDto>  flightsOfSubscriptions(List<Company> companies);
+    List<FlightResponseDto> flightsOfSubscriptions(List<Company> companies);
+
+    FlightDto findById(int id);
 }

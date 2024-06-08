@@ -20,7 +20,7 @@ spring:
             enable: true
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
   liquibase:
     change-log: classpath*:db/change-log.xml
 picture:
