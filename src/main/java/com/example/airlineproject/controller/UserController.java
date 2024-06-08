@@ -1,6 +1,7 @@
 package com.example.airlineproject.controller;
 
 import com.example.airlineproject.dto.ChangePasswordDto;
+import com.example.airlineproject.dto.CompanyFewDetailsDto;
 import com.example.airlineproject.dto.UserRegisterDto;
 import com.example.airlineproject.dto.UserResponseDto;
 import com.example.airlineproject.entity.ChatRoom;

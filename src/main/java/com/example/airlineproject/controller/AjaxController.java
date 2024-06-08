@@ -4,6 +4,7 @@ import com.example.airlineproject.dto.CompanyFilterDto;
 import com.example.airlineproject.dto.UserResponseDto;
 import com.example.airlineproject.entity.City;
 import com.example.airlineproject.entity.Company;
+import com.example.airlineproject.entity.QCompany;
 import com.example.airlineproject.service.CityService;
 import com.example.airlineproject.service.UserService;
 import com.querydsl.core.types.dsl.BooleanExpression;

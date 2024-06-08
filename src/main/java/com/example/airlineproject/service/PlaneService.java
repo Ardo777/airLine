@@ -18,8 +18,6 @@ public interface PlaneService {
 
     void saveAirPlane(PlaneAddDto planeAddDto, MultipartFile multipartFile, SpringUser springUser) throws IOException;
 
-    PlaneAddDto createPlane(PlaneAddDto planeAddDto, MultipartFile multipartFile);
-
     List<PlaneDto> getAllPlanesByCompany(Company company);
 
     PlaneDto getPlane(int planeId, Company company);
