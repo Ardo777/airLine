@@ -27,15 +27,6 @@
                                 <li class="dropdown">
                                     <a href="/flight/list/filter">Flights</a>
                                 </li>
-
-                                <li class="dropdown">
-                                    <a href="/hotel">Hotel</a>
-                                </li>
-
-                                <li class="dropdown">
-                                    <a href="/aboutUs">About Us</a>
-                                </li>
-
                                 <li class="dropdown" th:if="${currentUser.Role.name != 'ADMIN' and currentUser.Role.name != 'MANAGER'}">
                                     <a href="/user/news">News</a>
                                 </li>

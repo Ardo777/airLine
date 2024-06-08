@@ -1,7 +1,6 @@
 package com.example.airlineproject.controller;
 
 import com.example.airlineproject.entity.User;
-import com.example.airlineproject.service.CompanyService;
 import com.example.airlineproject.service.UserService;
 import com.example.airlineproject.util.CitiesAndCountries;
 import lombok.RequiredArgsConstructor;

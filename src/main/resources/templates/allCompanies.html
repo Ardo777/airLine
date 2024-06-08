@@ -136,6 +136,7 @@
                             <div th:if="${!company.office.isEmpty()}">
                                 <div class="icon d-flex align-items-center gap-8">
                                     <img src="/media/icons/location.png" alt="">
+
                                     <h6
                                             th:text="${company.office[0].country.name}" class="color-medium-gray">Italy
                                         - </h6>
@@ -149,12 +150,16 @@
                                     <img src="/media/icons8-manager-50.png" style="width: 26px">
                                     <h6 th:text="${company.user.name+' '+company.user.surname}"
                                         class="color-medium-gray">Hotels </h6>
+
                                 </div>
                                 <br>
                             </div>
+                            <a th:href="/messages/${company.id}">message</a>
+                            <a th:href="/subscribe/${company.id}" >subscribe</a>
                             <!--                            <div style="margin-top: 96px">-->
                             <button class="open-rating cus-btn full-width test">Rate</button>
                             <!--                            </div>-->
+
                         </div>
                     </div>
                 </div>

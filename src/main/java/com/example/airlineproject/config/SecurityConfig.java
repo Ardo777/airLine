@@ -9,7 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
-import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 import javax.sql.DataSource;
 
@@ -23,11 +23,10 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf(csrf ->
                 csrf
-                        .csrfTokenRepository(new HttpSessionCsrfTokenRepository())
+                        .csrfTokenRepository(new CookieCsrfTokenRepository())
         ).authorizeHttpRequests(authorize ->
                 authorize
-                        .requestMatchers("/").permitAll()
-                        .requestMatchers("/user/register", "/user/login/**", "/user/register/verification/**",
+                        .requestMatchers("/","/user/register", "/user/login/**", "/user/register/verification/**",
                                 "/user/login/successfully/**", "/user/codeVerification/**", "/user/forgetPassword/**",
                                 "/user/recovery/**", "/user/account/restore", "/user/verificationRestore",
                                 "/user/userVerificationPage", "/flight/list", "/flight/list/filter").permitAll()
@@ -39,8 +38,8 @@ public class SecurityConfig {
                                 "/up/**", "/css2").permitAll()
                         .anyRequest().permitAll()
 //                        .authenticated()
-        ).formLogin(form ->
-                form.loginPage("/user/login")
+        ).formLogin(login ->
+                login.loginPage("/user/login")
                         .loginProcessingUrl("/user/login")
                         .successForwardUrl("/user/login/successfully")
                         .defaultSuccessUrl("/user/login/successfully", true)
