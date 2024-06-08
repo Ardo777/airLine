@@ -1,12 +1,11 @@
 package com.example.airlineproject.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -32,15 +31,18 @@ public class Company {
     private String certificatePic;
     private boolean isActive;
     @OneToOne
+    @JsonIgnore
     private User user;
     private int rating;
     @OneToMany(mappedBy = "company")
+    @JsonIgnore
     private List<Office> office;
     @OneToMany(mappedBy = "company")
+    @JsonIgnore
     private List<TeamMember> teamMembers;
     @OneToMany(mappedBy = "company")
+    @JsonIgnore
     private List<Plane> planes;
-
     @Override
     public String toString() {
         return "Company{" +
@@ -57,5 +59,6 @@ public class Company {
     }
 
     @OneToMany(mappedBy = "company")
+    @JsonIgnore
     private List<Flight> flights;
 }

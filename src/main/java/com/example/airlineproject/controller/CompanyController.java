@@ -100,7 +100,7 @@ public class CompanyController {
     @GetMapping("/company/delete/{id}")
     public String delete(@PathVariable("id") int id) {
         companyService.delete(id);
-        return "redirect:/company/requests";
+        return "redirect:/companies";
     }
 
     @GetMapping("/allCompanies")

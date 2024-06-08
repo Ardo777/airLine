@@ -8,7 +8,6 @@ import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Primary;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
@@ -22,9 +21,8 @@ import org.thymeleaf.context.Context;
 public class MailServiceImpl implements MailService {
 
     private final JavaMailSender javaMailSender;
-    private final     @Qualifier("emailTemplateEngine")
-    TemplateEngine templateEngine;
-
+    @Qualifier("emailTemplateEngine")
+    private final TemplateEngine templateEngine;
 
     @Async
     public void sendMail(UserRegisterDto userRegisterDto) {
