@@ -60,7 +60,6 @@
                     </div>
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
-                    <!-- Add your other nav items here -->
                 </ul>
             </nav>
         </div>
@@ -89,7 +88,6 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <!-- Динамически генерируемый контент -->
                                         </tbody>
                                     </table>
                                 </div>
@@ -114,7 +112,7 @@
     $(document).ready(function () {
         console.log("Document is ready. Calling loadCompanies.");
         $('.product-images').slick({dots: true});
-        loadCompanies(); // Вызов функции при загрузке страницы
+        loadCompanies();
 
         $("#keyword").on("input", function () {
             console.log("Keyword input changed. Calling loadCompanies.");
