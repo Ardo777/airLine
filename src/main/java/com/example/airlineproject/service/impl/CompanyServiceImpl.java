@@ -231,6 +231,7 @@ public class CompanyServiceImpl implements CompanyService {
         Optional<Company> byId = companyRepository.findById(id);
         return byId.orElse(null);
     }
+
 }
 
 

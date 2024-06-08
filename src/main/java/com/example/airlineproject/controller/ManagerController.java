@@ -49,6 +49,7 @@ public class ManagerController {
                               @RequestParam(value = "planeErrorMsg", required = false) String planeErrorMsg,
                               @RequestParam(value = "officeSuccessMsg", required = false) String officeSuccessMsg,
                               @RequestParam(value = "officeErrorMsg", required = false) String officeErrorMsg,
+                              @AuthenticationPrincipal SpringUser springUser,
                               ModelMap modelMap) {
         if (planeSuccessMsg != null) {
             modelMap.put("planeSuccessMsg", planeSuccessMsg);
@@ -68,16 +69,11 @@ public class ManagerController {
         }
         modelMap.addAttribute("countries", countryService.getAllCountries());
         log.info("List of countries sent to HTML");
-        return "/manager/moreDetails";
-    }
-
-
-    @GetMapping("/addFlight")
-    public String addFlightPage(@AuthenticationPrincipal SpringUser springUser, ModelMap modelMap) {
         modelMap.addAttribute("planes", planeRepository.findAllByCompany(springUser.getUser().getCompany()));
         log.info("List of planes sent to HTML");
         return "/manager/moreDetails";
     }
+
 
     @PostMapping("/addFlight")
     public String addFlight(@ModelAttribute FlightDto flightDto, @RequestParam("plane") int planeId, @AuthenticationPrincipal SpringUser springUser) {
