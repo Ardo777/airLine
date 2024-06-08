@@ -25,17 +25,9 @@ import java.util.stream.IntStream;
 public class AdminController {
 
     private final UserService userService;
-    private final CompanyService companyService;
     private final CitiesAndCountries citiesAndCountries;
 
-    @GetMapping
-    public String adminPage(ModelMap modelMap) {
-        modelMap.addAttribute("usersCount", userService.getUsersCount());
-        modelMap.addAttribute("companiesCount", companyService.count());
-        return "/admin/index";
-    }
-
-    @GetMapping("/users")
+    @GetMapping()
     public String usersPage(
             @RequestParam(value = "page", defaultValue = "1", required = false) int page,
             @RequestParam(value = "size", defaultValue = "11", required = false) int size,
@@ -61,7 +53,7 @@ public class AdminController {
         log.info("Deleting user with id: {}", id);
         userService.deleteById(id);
         log.info("User deleted successfully");
-        return "redirect:/admin/users";
+        return "redirect:/admin";
     }
 
     @GetMapping("/user/{id}")
