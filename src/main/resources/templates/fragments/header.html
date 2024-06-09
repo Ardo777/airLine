@@ -41,8 +41,8 @@
                                     <a href="/messages" class="main-menu__login">Chat</a>
                                 </li>
                                 <li class="dropdown">
-                                    <a th:if="${currentUser != null and currentUser.Role != null and currentUser.Role.name == 'ADMIN'}" href="/admin">ADMIN Panel</a>
-                                    <a th:if="${currentUser != null and currentUser.Role != null and currentUser.Role.name == 'MANAGER'}" href="/manager">MANAGER Panel</a>
+                                    <a th:if="${currentUser != null and currentUser.Role != null and currentUser.Role.name == 'ADMIN'}" href="/admin">Admin Page</a>
+                                    <a th:if="${currentUser != null and currentUser.Role != null and currentUser.Role.name == 'MANAGER'}" href="/manager">Manager Page</a>
                                 </li>
                             </ul>
                         </div>

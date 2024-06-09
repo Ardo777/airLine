@@ -11,4 +11,6 @@ public interface CardService {
 
 
     Card findByNumber(String number);
+
+    void save(Card card);
 }

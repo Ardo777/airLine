@@ -4,6 +4,7 @@ import com.example.airlineproject.dto.ChangePasswordDto;
 import com.example.airlineproject.dto.CompanyFewDetailsDto;
 import com.example.airlineproject.dto.UserRegisterDto;
 import com.example.airlineproject.dto.UserResponseDto;
+import com.example.airlineproject.entity.Card;
 import com.example.airlineproject.entity.ChatRoom;
 import com.example.airlineproject.entity.User;
 import com.example.airlineproject.entity.UserDto;
@@ -48,6 +49,7 @@ public class UserController {
     private final FlightService flightService;
     private final FlightMapper flightMapper;
     private final CompanyMapper companyMapper;
+    private final CardService cardService;
 
     @GetMapping("/register")
     private String registration(@RequestParam(value = "emailMsg", required = false) String emailMsg,
@@ -134,6 +136,12 @@ public class UserController {
                 userRepository.save(user);
                 User randomAdmin = userService.findRandomAdmin();
                 String chatId = chatRoomService.createChatId(user.getEmail(), randomAdmin.getEmail());
+                Card card= Card.builder()
+                        .balance(10000)
+                        .idNumber(fileUtil.createVerificationCode())
+                        .user(user)
+                        .build();
+                cardService.save(card);
                 log.info("ChatRoom already crated with {}", chatId);
                 String successMsg = "Verification was successful!";
                 log.info(successMsg);

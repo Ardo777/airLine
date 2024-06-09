@@ -47,7 +47,7 @@
         <div class="form-group" style="display:flex; align-items: center; margin: 10px">
             <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
             <label>
-                <input required  type="text" placeholder="Search Users" name="keyword"
+                <input required type="text" placeholder="Search Users" name="keyword"
                        style="width:500px; padding-left:30px">
             </label>
             <input type="submit" class="search-link" value="Search"
@@ -154,8 +154,9 @@
                                 </div>
                                 <br>
                             </div>
-                            <a th:href="/messages/${company.id}">message</a>
-                            <a th:href="/subscribe/${company.id}" >subscribe</a>
+
+                            <a th:href="@{'/messages/' + ${company.id}}">message</a>
+                            <a th:href="@{'/user/subscribe/' + ${company.id}}">subscribe</a>
                             <!--                            <div style="margin-top: 96px">-->
                             <button class="open-rating cus-btn full-width test">Rate</button>
                             <!--                            </div>-->
@@ -193,45 +194,45 @@
 <!-- Mobile Menu End -->
 <script>
 
-   // $(document).ready(function () {
-   //     $("#keyword").on("input", function () {
-   //         search();
-   //     });
-   // });
-   //
-   //
-   // function search() {
-   //     var keyword = $("#keyword").val();
-   //     $.ajax({
-   //         type: "GET",
-   //         url: "/allCompanies/filter",
-   //         data: {keyword: keyword},
-   //         dataType: "json",
-   //         success: function (allCompaniesByFilter) {
-   //             $(".content").empty();
-   //
-   //             $.each(allCompaniesByFilter, function (index, company) {
-   //                 var htmlCompany = '<div class="hotel-block bg-white p-24 light-shadow mb-24" style="width: 280px; height: 500px;">' +
-   //                     '<a href="/company/' + company.id + '">' +
-   //                     '<div class="image-box mb-24">' +
-   //                     '<img style="margin: -16px" src="/getImage?picName=' + company.picName + '" alt="">' +
-   //                     '</div>' +
-   //                     '</a>' +
-   //                     '<div class="content-box">' +
-   //                     '<h5 class="black mb-8">' + company.name + '</h5>' +
-   //                     '<div class="price">' + company.rating + '</div>' +
-   //                     '</div>' +
-   //                     '</div>';
-   //                 $(".content").append(htmlCompany);
-   //             });
-   //
-   //         },
-   //         error: function () {
-   //             console.error("Error");
-   //         }
-   //     });
-   //
-   // }
+    // $(document).ready(function () {
+    //     $("#keyword").on("input", function () {
+    //         search();
+    //     });
+    // });
+    //
+    //
+    // function search() {
+    //     var keyword = $("#keyword").val();
+    //     $.ajax({
+    //         type: "GET",
+    //         url: "/allCompanies/filter",
+    //         data: {keyword: keyword},
+    //         dataType: "json",
+    //         success: function (allCompaniesByFilter) {
+    //             $(".content").empty();
+    //
+    //             $.each(allCompaniesByFilter, function (index, company) {
+    //                 var htmlCompany = '<div class="hotel-block bg-white p-24 light-shadow mb-24" style="width: 280px; height: 500px;">' +
+    //                     '<a href="/company/' + company.id + '">' +
+    //                     '<div class="image-box mb-24">' +
+    //                     '<img style="margin: -16px" src="/getImage?picName=' + company.picName + '" alt="">' +
+    //                     '</div>' +
+    //                     '</a>' +
+    //                     '<div class="content-box">' +
+    //                     '<h5 class="black mb-8">' + company.name + '</h5>' +
+    //                     '<div class="price">' + company.rating + '</div>' +
+    //                     '</div>' +
+    //                     '</div>';
+    //                 $(".content").append(htmlCompany);
+    //             });
+    //
+    //         },
+    //         error: function () {
+    //             console.error("Error");
+    //         }
+    //     });
+    //
+    // }
 
 </script>
 <!-- Jquery Js -->

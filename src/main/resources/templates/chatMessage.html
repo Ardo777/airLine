@@ -12,7 +12,7 @@
 
 <div class="user-form" id="username-page">
     <form id="usernameForm">
-        <input type="hidden" id="nickname" th:value="${currentUser.email}" name="nickname" required>
+        <input type="hidden" id="nickname" th:if="${currentUser.email!=null}" th:value="${currentUser.email}" name="nickname" required>
         <input type="hidden" id="selectedUser" th:value="${selectedUser}" name="nickname" required>
     </form>
 </div>

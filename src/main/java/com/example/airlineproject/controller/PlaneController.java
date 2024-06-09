@@ -9,6 +9,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -24,7 +25,7 @@ public class PlaneController {
     private final PlaneService planeService;
 
     @PostMapping("/addAirPlane")
-    public String addAirPlane(@Validated PlaneAddDto planeAddDto,
+    public String addAirPlane(@ModelAttribute PlaneAddDto planeAddDto,
                               @AuthenticationPrincipal SpringUser springUser,
                               RedirectAttributes redirectAttributes,
                               BindingResult bindingResult) throws IOException {
